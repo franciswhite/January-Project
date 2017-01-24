@@ -1,0 +1,120 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{January Project}
+\author{Silvan Hungerbuehler, Haukur Jonsson}
+\date{Date quo: 24.01.17}
+
+\usepackage{amssymb}
+\usepackage{amsmath, amsthm}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+\usepackage{verbatim}
+\usepackage{hyperref}
+\usepackage{comment}
+
+\begin{document}
+\maketitle
+\section{Introduction}
+The study of phenomena related to natural language use within the formal framework of game theory has taken a variety of forms since David Lewis' (citation) analysis of signaling games. We shall here be concerned mainly with varieties of game theoretic model of the IBR (iterated best response) family. This approach looks to explain and predict pragmatic inferences of natural language users by modelling a forth-and-back reasoning taking place between two agents engaged in conversation (citation). 
+This mode of analysis can be seen both as an attempt to conceptually sharpen Gricean reflections on pragmatics and, at the same time, make them both empirically testable by providing a clear formal framework within which to carry out experiments.\\
+In the present paper we would like to consider some changes to the way IBR models are standardly modeled in the literature. Specifically, we want to look at phenomena where the messages transmitted in signalling games are not only costly for the agent emitting them but also for the receiver.
+
+The present paper will consist roughly of the following parts:\\
+\begin{enumerate}
+\item A brief introduction to the game theoretic perspective of language use and, specifically, the IBR model
+\item A description of the technical changes to the models we are proposing and an overview over a few relevant linguistic phenomena
+\item The details of a number of simulations we ran with our new models
+\item A concluding overview over the results obtained and possible avenues for future investigation.
+\end{enumerate}
+
+\begin{comment}
+\begin{enumerate}
+
+\item Baseline model: David Lewis' Signaling Game\\ 
+Interpretation game - perfectly aligned utilities complete information, perfect rationality.
+\begin{table}[h]
+\centering
+\begin{tabular}{lllll}
+States & Cost Sender & Messages & Cost Receiver & {Actions} \\
+$t_1$  & 0           & $m_1$    & 0                                  & $a_1$                        \\
+$t_2$  & 0           & $m_2$    & 0                                  & $a_2$                       
+\end{tabular}
+\end{table}
+
+\item Costly Signaling Game - for Sender
+Many economic theorists work within this context, eg. Spence's Job Market Signaling Model. Message meaning is determined before start of the game. The sender incurs a cost \textit{c} when sending a message. This cost vector is common knowledge, which, in turn, allows the receiver to distinguish credible and non-credible signals.
+\begin{table}[h]
+\centering
+\begin{tabular}{lllll}
+States & Cost Sender & Messages & {Cost Receiver} & {Actions} \\ 
+$t_1$  & c           & $m_1$    & 0                                  & $a_1$                        \\
+$t_2$  & c           & $m_2$    & 0                                  & $a_2$                       
+\end{tabular}
+\end{table}
+
+\item Costly Signaling Game - for both players\\
+Both the emission and the reception of a message are associated with a cost vector (cs for the sender and cr for the receiver).
+\begin{table}[h]
+\centering
+\begin{tabular}{lllll}
+States & Cost Sender & Messages & Cost Receiver & Actions \\
+$t_1$  & $cs_1$      & $m_1$    & $cr_1$        & $a_1$   \\
+$t_2$  & $cs_2$      & $m_2$    & $cr_2$        & $a_2$  
+\end{tabular}
+\end{table}
+
+Concretely, this receiver's cost could be interpreted as:
+\begin{itemize}
+\item A hearer having to engage in more close listening in order to understand some of the messages because of their phonetic difficulty. This will be discussed in more detail below.
+\item Prior negative experience with a given expression (eg. racist slurs). The word "niggardly", phonetic but not semantic relative of the racist expression, has caused offense in the past for instance. See: \href{https://en.wikipedia.org/wiki/Controversies_about_the_word_\%22niggardly\%22}{Controversies about the word "niggardly"}. So this might affect it's use as a signal.\\ 
+Imagine two agents talking - playing a signaling game - not just once, but multiple times. Now assume further that some of ways to put things - the messages available to the sender - were known to cause discomfort - receiver's cost - to the hearer. It would be conceivable that the hearer would punish the sender for using certain signals although they convey information just as well as others. How would this affect how they talk - their strategies - in the long run?\\ 
+
+Say two players agree to play the following game many times:\\
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lllll}
+States & Cost Sender & Messages & Cost Receiver & Actions \\
+$t_1$  & 0           & $m_1$    & 0             & $a_1$   \\
+$t_2$  & 0           & $m_2$    & 0             & $a_2$   \\
+       & 0        & $m_3$    & 10            &        
+\end{tabular}
+\end{table}
+The payoffs are given by the following table:
+\begin{table}[h]
+\centering
+\begin{tabular}{lll}
+U     & $a_1$ & $a_2$ \\
+$t_1$ & 10,10 & 0,0   \\
+$t_2$ & 0,0   & 10,10
+\end{tabular}
+\end{table}
+
+The set of pure Sender's strategies is \{$<m_1,m_2>,<m_1,m_1>,<m_2,m_2>,<m_2,m_1>,<m_1,m_3>,<m_3,m_1>,<m_2,m_3>,<m_3,m_2>,<m_3,m_3>$ \}.\\
+I do not want to go through the calculations right now, but I am willing to bet that under such circumstances it should be possible for the receiver to punish the sender in the first rounds by refusing to cooperate and to get him to abstain from using $m_3$ altogether.
+\end{itemize}
+\item Costly Signaling Game - Ordered Message Space\\
+This could model a situation where the messages are ordered according to their associated cost for sender and receiver. that is, phonetical difficulty of a word.  
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lllll}
+States & Cost Sender & Messages & Cost Receiver & Actions \\
+$t_1$  & $cs_1$      & $m_1$    & $cr_1$        & $a_1$   \\
+$t_2$  & $cs_2$      & $m_2$    & $cr_2$        & $a_2$   \\
+...    & ...         & ...      & ...           & ...     \\
+$t_n$  & $cs_n$      & $m_n$    & $cr_n$        & $a_n$  
+\end{tabular}
+\end{table}
+Where $cs_1>cs_2>...>cs_n$ and $cr_1>cr_2>cr_n$.\\
+When running this in a simulation where the states do not follow a uniform distribution, I would hope to find that more common states are signaled with less costly messages. The receiver's cost would not play a role here, however. 
+
+On a related note, we might actually be able to apply some sort of optimal coding argument to argue why shorter expressions are assigned to denote more frequent states.
+\item Costly Signaling Game - Cost Function for Receiver\\ 
+Finally, we could look at a model with a compositional message space where the cost a receiver incurs upon hearing an expression is given by a function of said composition.\\ 
+For starters, we could assume a model where $|S|>>|M|$ and the cost of the receiver is an increasing function of the amount of elements of M used to signal a state.
+\end{enumerate}
+\end{comment}
+
+\end{document}
