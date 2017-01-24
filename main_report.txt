@@ -3,7 +3,7 @@
 
 \title{January Project}
 \author{Silvan Hungerbuehler, Haukur Jonsson}
-\date{Date quo: 24.01.17}
+\date{Date quo: 23.01.17}
 
 \usepackage{amssymb}
 \usepackage{amsmath, amsthm}
@@ -20,18 +20,17 @@ The study of phenomena related to natural language use within the formal framewo
 This mode of analysis can be seen both as an attempt to conceptually sharpen Gricean reflections on pragmatics and, at the same time, make them both empirically testable by providing a clear formal framework within which to carry out experiments.\\
 In the present paper we would like to consider some changes to the way IBR models are standardly modeled in the literature. Specifically, we want to look at phenomena where the messages transmitted in signalling games are not only costly for the agent emitting them but also for the receiver.
 
-The present paper will consist roughly of the following parts:\\
+The present paper will consist roughly of the following sections:\\
 \begin{enumerate}
 \item A brief introduction to the game theoretic perspective of language use and, specifically, the IBR model
-\item A description of the technical changes to the models we are proposing and an overview over a few relevant linguistic phenomena
+\item A description of the technical amendments we are proposing to models in the literature an overview over a few relevant linguistic phenomena
 \item The details of a number of simulations we ran with our new models
 \item A concluding overview over the results obtained and possible avenues for future investigation.
 \end{enumerate}
 
-\begin{comment}
-\begin{enumerate}
+\section{Pragmatics as a game between speaker and hearer}
 
-\item Baseline model: David Lewis' Signaling Game\\ 
+ Baseline model: David Lewis' Signaling Game\\ 
 Interpretation game - perfectly aligned utilities complete information, perfect rationality.
 \begin{table}[h]
 \centering
@@ -42,8 +41,10 @@ $t_2$  & 0           & $m_2$    & 0                                  & $a_2$
 \end{tabular}
 \end{table}
 
-\item Costly Signaling Game - for Sender
-Many economic theorists work within this context, eg. Spence's Job Market Signaling Model. Message meaning is determined before start of the game. The sender incurs a cost \textit{c} when sending a message. This cost vector is common knowledge, which, in turn, allows the receiver to distinguish credible and non-credible signals.
+\section{Recipient's Cost}
+Starting from Spence's seminal "Job Market Signalling", much has been written about games where by sending a message an agent incurs a cost. This is the core of so-called \textit{costly signalling games}. Particularly economic theory has been interested in this twist of the Lewisian signaling model.\\
+Common assumptions here are that the message's meaning is determined before the start of the game and that sender's cost vector is common knowledge, which, in turn, allows the receiver to distinguish credible and non-credible signals.\\
+
 \begin{table}[h]
 \centering
 \begin{tabular}{lllll}
@@ -53,8 +54,9 @@ $t_2$  & c           & $m_2$    & 0                                  & $a_2$
 \end{tabular}
 \end{table}
 
-\item Costly Signaling Game - for both players\\
+Costly Signaling Game - for both players. We would like to consider a further refinement of this class of models by analysing a situation where not only the sender but also the receiver face costs associated with a given element in the message set. \\
 Both the emission and the reception of a message are associated with a cost vector (cs for the sender and cr for the receiver).
+
 \begin{table}[h]
 \centering
 \begin{tabular}{lllll}
@@ -81,6 +83,7 @@ $t_2$  & 0           & $m_2$    & 0             & $a_2$   \\
        & 0        & $m_3$    & 10            &        
 \end{tabular}
 \end{table}
+
 The payoffs are given by the following table:
 \begin{table}[h]
 \centering
@@ -94,6 +97,15 @@ $t_2$ & 0,0   & 10,10
 The set of pure Sender's strategies is \{$<m_1,m_2>,<m_1,m_1>,<m_2,m_2>,<m_2,m_1>,<m_1,m_3>,<m_3,m_1>,<m_2,m_3>,<m_3,m_2>,<m_3,m_3>$ \}.\\
 I do not want to go through the calculations right now, but I am willing to bet that under such circumstances it should be possible for the receiver to punish the sender in the first rounds by refusing to cooperate and to get him to abstain from using $m_3$ altogether.
 \end{itemize}
+
+
+
+\begin{enumerate}
+
+
+
+
+
 \item Costly Signaling Game - Ordered Message Space\\
 This could model a situation where the messages are ordered according to their associated cost for sender and receiver. that is, phonetical difficulty of a word.  
 
@@ -115,6 +127,6 @@ On a related note, we might actually be able to apply some sort of optimal codin
 Finally, we could look at a model with a compositional message space where the cost a receiver incurs upon hearing an expression is given by a function of said composition.\\ 
 For starters, we could assume a model where $|S|>>|M|$ and the cost of the receiver is an increasing function of the amount of elements of M used to signal a state.
 \end{enumerate}
-\end{comment}
+
 
 \end{document}
