@@ -138,19 +138,24 @@ This next section seeks to use the framework of Lewisian Signaling Games to shed
 The observation giving rise to this conjecture was that in some languages we happen to know (German, English, Spanish, French) expressions that are used more often tend to be of shorter length. A brief empirical survey of natural languages (English for  now, expansion should be easy though) indeed suggests that a words length in terms of letters is inversely related to its frequency in written text. %present some such finding. look at Van Rooij's universals paper for methods
 Of course a message's (a word's) length can't just be equated with its cost. In fact, we don't want to delve too deeply into the precise nature of communicative cost and merely suggest that some such economizing might reasonably be expected from a game theoretical perspective. How to measure an agent's precise cost when she engages in communication, and indeed the possibly very complex ways in which economizing in natural language use takes place, will be left aside. we would merely like to make the assumption that sending some signals (producing some utterance, writing some word) is more costly than others. This could model a situation where the messages are ordered according to their associated cost for the sender. That is, the phonetical difficulty of each word is given by a cost vector of the same length as the message space.\\
 So let's assume the state space represents a set of "thoughts" $T=\{t_1,...,t_n\}$ a natural language speaker might wish to communicate. Here too we do not want to spend too much time on the philosophical and linguistical difficulties with such a coarse view, but move on with the modeling. To communicate the speaker will have to make use of a set of utterances or words $M=\{m_1,...,m_m\}$, each associated with its specific cost $c$. This is modelled with a cost-vector of length $|M|$, namely $C=(c_1,...,c_m)$. Furthermore, let this be an interpretation game where the sender's and the receiver's interest's are perfectly aligned. So both receive a payoff of 1 if the receiver ends up having the same "thought" as the sender is having and 0 otherwise.\\
- Also, assume that the prior distribution over the "thoughts" in the state space represents the frequency with which the sender would like to communicate a given idea she is having in the course of communication.\\
-This then yields the following model:
+ Also, assume that the prior distribution over the "thoughts" in the state space represents the frequency with which the sender would like to communicate a given idea she is having in the course of communication. (Notice that modeling it this way implies that the probability of having one thought is independent of having another thought.)\\
+Such a model could be depicted in the following way:
+
 \begin{table}[h]
 \centering
-\begin{tabular}{lllll}
-States & Cost Sender & Messages & Cost Receiver & Actions \\
-$t_1$  & $cs_1$      & $m_1$    & $cr_1$        & $a_1$   \\
-$t_2$  & $cs_2$      & $m_2$    & $cr_2$        & $a_2$   \\
-...    & ...         & ...      & ...           & ...     \\their
-$t_n$  & $cs_n$      & $m_n$  & $cr_n$        & $a_n$  
+\begin{tabular}{llll}
+States & Cost Sender & Messages  & Actions \\
+$t_1$  & $cs_1$      & $m_1$     & $a_1$   \\
+$t_2$  & $cs_2$      & $m_2$     & $a_2$   \\
+...    & ...         & ...       & ...     \\
+$t_n$  & $cs_m$      & $m_m$	 & $a_n$  
 \end{tabular}
 \end{table}
-Where $cs_1>cs_2>...>cs_n$ and $cr_1>cr_2>cr_n$.\\
+
+Let the messages be from most costly to least costly: $cs_1>cs_2>...>cs_n$ and $cr_1>cr_2>cr_m$. 
+For the sake of concreteness assume a decrease in message cost characterized by a linear function $f(cs_i)= a - i*b$, where $b>0$ and $a>m*b$\\
+Further, let the states follow some non-uniform probability distribution. Say a Poisson Distribution with parameter $\lambda=1$, so that the probability of the "thought" $t_j$ occurring to the sender is given by $g(t_j)= \dfrac{1^j\times e^{-1}}{j!}$
+
 
 \begin{comment}
 When running this in a simulation where the states do not follow a uniform distribution, I would hope to find that more common states are signaled with less costly messages. The receiver's cost would not play a role here, however. 
