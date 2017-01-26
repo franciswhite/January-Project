@@ -134,24 +134,24 @@ I do not want to go through the calculations right now, but I am willing to bet 
 
 
 \section{Economical Messaging}
-This could model a situation where the messages are ordered according to their associated cost for the sender. That is, the phonetical difficulty of each word is given by a cost vector of the same length as the message space. DO SOME PRELIMINARY CHECKS WHETHER ENGLISH FOLLOWS SOME SUCH RULE!
-
+This next section seeks to use the framework of Lewisian Signaling Games to shed some light on a linguistic conjecture we have. Namely, that natural languages as signaling systems tend to reflect the fact that its speakers strive to economize in the way they express themselves. Put differently, speakers will somehow seek to minimize their effort while trying to communicate accurately. To say it in Lewisian terms, agents facing varying cost for different messages will chose their strategies such that the signaling systems that arise out of their actions maximize their expected utility. \\
+The observation giving rise to this conjecture was that in some languages we happen to know (German, English, Spanish, French) expressions that are used more often tend to be of shorter length. A brief empirical survey of natural languages (English for  now, expansion should be easy though) indeed suggests that a words length in terms of letters is inversely related to its frequency in written text. %present some such finding. look at Van Rooij's universals paper for methods
+Of course a message's (a word's) length can't just be equated with its cost. In fact, we don't want to delve too deeply into the precise nature of communicative cost and merely suggest that some such economizing might reasonably be expected from a game theoretical perspective. How to measure an agent's precise cost when she engages in communication, and indeed the possibly very complex ways in which economizing in natural language use takes place, will be left aside. we would merely like to make the assumption that sending some signals (producing some utterance, writing some word) is more costly than others. This could model a situation where the messages are ordered according to their associated cost for the sender. That is, the phonetical difficulty of each word is given by a cost vector of the same length as the message space. At the same time we assume a prior distribution over states
 \begin{table}[h]
 \centering
 \begin{tabular}{lllll}
 States & Cost Sender & Messages & Cost Receiver & Actions \\
 $t_1$  & $cs_1$      & $m_1$    & $cr_1$        & $a_1$   \\
 $t_2$  & $cs_2$      & $m_2$    & $cr_2$        & $a_2$   \\
-...    & ...         & ...      & ...           & ...     \\
-$t_n$  & $cs_n$      & $m_n$    & $cr_n$        & $a_n$  
+...    & ...         & ...      & ...           & ...     \\their
+$t_n$  & $cs_n$      & $m_n$  & $cr_n$        & $a_n$  
 \end{tabular}
 \end{table}
 Where $cs_1>cs_2>...>cs_n$ and $cr_1>cr_2>cr_n$.\\
-When running this in a simulation where the states do not follow a uniform distribution, I would hope to find that more common states are signaled with less costly messages. The receiver's cost would not play a role here, however. 
-
-On a related note, we might actually be able to apply some sort of optimal coding argument to argue why shorter expressions are assigned to denote more frequent states.
 
 \begin{comment}
+When running this in a simulation where the states do not follow a uniform distribution, I would hope to find that more common states are signaled with less costly messages. The receiver's cost would not play a role here, however. 
+On a related note, we might actually be able to apply some sort of optimal coding argument to argue why shorter expressions are assigned to denote more frequent states.
 Finally, we could look at a model with a compositional message space where the cost a receiver incurs upon hearing an expression is given by a function of said composition.\\
 For starters, we could assume a model where $|S|>>|M|$ and the cost of the receiver is an increasing function of the amount of elements of M used to signal a state.
 \end{comment}
