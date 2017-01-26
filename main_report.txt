@@ -1,0 +1,168 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{January Project}
+\author{Silvan Hungerbuehler, Haukur Jonsson}
+\date{Date quo: 26.01.17}
+
+\usepackage{amssymb}
+\usepackage{amsmath, amsthm}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+\usepackage{verbatim}
+\usepackage{hyperref}
+\usepackage{comment}
+
+\begin{document}
+\maketitle
+\section{Introduction}
+The study of phenomena related to natural language use within the formal framework of game theory has taken a variety of forms since David Lewis' (citation) analysis of signaling games. Our goal here shall be to analyze a small number of games where modeling the cost associated with a message enables us to shed some light on pragmatic phenomena. Although standardly it is assumed that it is exclusively the sender of a message in a signaling game who incurs a cost, we will also look at situations where costs are conncected to a recipient of a message.\\
+To carry out our analysis we will look at two frameworks broadly in the Lewisian tradition:\\
+On one hand we will use game theoretic models of the IBR (Iterated Best Response) family. This approach looks to explain and predict pragmatic inferences of natural language users by modeling a forth-and-back reasoning taking place between two agents engaged in conversation (citation). We will be use them think about the phenomenon of political correctness in particular.\\
+On the other, we will be concerned with the relationship of message cost and meaning. Broadly speaking we conjecture that in the context of a classic Lewisian signaling game, where a) meaning is not yet conventionally established, b) messages are sufficiently costly  and c) there is a non-uniform distribution over the state space, a signaling system will emerge where (both declarative and indicative) costlier messages end up indicating states with lesser probability and vice versa. A model providing such a result might be used towards an explanation why shorter expressions (words???, dangerous linguistic territory here) tend to occur more frequently in language use. 
+
+The paper will roughly follow these sections:\\
+\begin{enumerate}
+\item A brief introduction of David Lewis' Signaling Games the alternative solution concepts provided by the IBR model
+\item Political Correctness in the IBR framework (modeling, simulation, results)
+\item Economical Messaging in still conventionless model (modeling, equilibria, results)
+\item A concluding overview over the results obtained and possible avenues for future investigation.
+\end{enumerate}
+
+\begin{comment}
+\section{Pragmatics as a game between speaker and hearer}
+
+ Baseline model: David Lewis' Signaling Game\\ 
+Interpretation game - perfectly aligned utilities complete information, perfect rationality.
+\begin{table}[h]
+\centering
+\begin{tabular}{lllll}
+States & Cost Sender & Messages & Cost Receiver & {Actions} \\
+$t_1$  & 0           & $m_1$    & 0                                  & $a_1$                        \\
+$t_2$  & 0           & $m_2$    & 0                                  & $a_2$                       
+\end{tabular}
+\end{table}
+\end{comment}
+
+\section{Political Correctness}
+Assume two agents were to talk repeatedly with each other using some shared language fragment. However, although they have this commong language their preferences over how to put things vary a great deal. Say, for example, that Player 1 has distinctly dislikes some message's flavor, while Player 2 has no issue with it whatsoever. They both know the message's meaning but just hearing it uttered, or saying it, causes Player 1 discomfort. We could model this situation by starting with a standard IBR model assuming a cost vector of equal size as the message space for both sender and receiver which will be applied whenever an agent ponders her best response. \\
+The general structure of such a game could be depicted as such:\\
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lllll}
+States & Cost Sender & Messages & Cost Receiver & Actions \\
+$t_1$  & $cs_1$      & $m_1$    & $cr_1$        & $a_1$   \\
+$t_2$  & $cs_2$      & $m_2$    & $cr_2$        & $a_2$  
+\end{tabular}
+\end{table}
+
+Both the emission and the reception of a message are associated with a cost vector (cs for the sender and cr for the receiver).
+
+For concreteness' sake take this to be an interpretation game with states $S=\{black, white\}$, messages $M=\{black,darkie,white,cracker\}$ and actions $A=S$.\\
+The boolean matrix is:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lllll}
+States, Message & black & darkie & white & cracker \\
+$black$  & 1      & 1    & 0        & 0   \\
+$white$  & 0     & 0   & 1       & 1 
+\end{tabular}
+\end{table}
+
+The cost vectors are:\\
+cs=(0,0,0,1) and cr(0,1,0,0)\\ %cr should be transposed
+The priors are (0.5,0.5).
+
+If this game is played once in IBR fashion the expected utility of the sender will be 1, while the expected utility of the receiver is 0.75 because of the cost she incurs when the sender chooses (indifferently to her suffering at hearing it) the message "darkie" when reporting state holds.\\
+Now,  actual language use is an activity which agents play repeatedly and in different roles, so let's assume they play above game many times while nature choses the players' roles in each round with equal probability. Carrying out the same IBR computation yields an expected utility of 0.875 for both players over the course of their (infinite) communicative lives. There is a difference between a pareto optimal outcome and the expected outcome of 0.125. Notice that this loss in utility is solely attributable to the cost which arises upon hearing one rather than another expression. Also, note that for every strategy where such a harmful message is sent there is another strategy which performs just as well in signaling which state holds. In fact, they could obtain an expected (indeed garantueed) payoff of 1 if they were to refrain from using those strategies where they send the message which hurts the other player.\\
+If pre-game talk would be allowed the two players could agree on using only strategies which both are ok with. This would allow them to move to the pareto optimal equilibrium of strategies.
+
+\begin{comment}
+Starting from Spence's seminal "Job Market Signalling", much has been written about games where by sending a message an agent incurs a cost. This is the core of so-called \textit{costly signalling games}. Particularly economic theory has been interested in this twist of the Lewisian signaling model.\\
+Common assumptions here are that the message's meaning is determined before the start of the game and that sender's cost vector is common knowledge, which, in turn, allows the receiver to distinguish credible and non-credible signals.\\
+
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lllll}
+States & Cost Sender & Messages & {Cost Receiver} & {Actions} \\ 
+$t_1$  & c           & $m_1$    & 0                                  & $a_1$                        \\
+$t_2$  & c           & $m_2$    & 0                                  & $a_2$                       
+\end{tabular}
+\end{table} 
+\end{comment}
+
+\textbf{Continuous case:} Consider messages to be in the (real) space from 0 to 1. If a message is sufficiently close to some of the troublesome messages the receiver still incurs a cost when hearing the message.
+Such a model might be able to account for sensitivities towards words that are phonetic (or semantic) relatives of painful expressions. The word "niggardly", phonetic but not semantic relative of the racist expression, has caused offense in the past for instance. See: \href{https://en.wikipedia.org/wiki/Controversies_about_the_word_\%22niggardly\%22}{Controversies about the word "niggardly"}. So this might affect its use as a signal in repeated game play.\\ 
+
+\textbf{A further refinement:}
+Imagine two agents talking - playing a signaling game - not just once, but multiple times. Now assume further that some of ways to put things - the messages available to the sender - were known to cause discomfort - receiver's cost - to the hearer. It would be conceivable that the hearer would punish the sender for using certain signals although they convey information just as well as others. How would this affect how they talk - their strategies - in the long run?\\ 
+
+Say two players play the following game many times:\\
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lllll}
+States & Cost Sender & Messages & Cost Receiver & Actions \\
+$t_1$  & 0           & $m_1$    & 0             & $a_1$   \\
+$t_2$  & 0           & $m_2$    & 0             & $a_2$   \\
+       & 0        & $m_3$    & 10            &        
+\end{tabular}
+\end{table}
+
+The payoffs are given by the following table:
+\begin{table}[h]
+\centering
+\begin{tabular}{lll}
+U     & $a_1$ & $a_2$ \\
+$t_1$ & 10,10 & 0,0   \\
+$t_2$ & 0,0   & 10,10
+\end{tabular}
+\end{table}
+
+The set of pure Sender's strategies is \{$<m_1,m_2>,<m_1,m_1>,<m_2,m_2>,<m_2,m_1>,<m_1,m_3>,<m_3,m_1>,<m_2,m_3>,<m_3,m_2>,<m_3,m_3>$ \}.\\
+I do not want to go through the calculations right now, but I am willing to bet that under such circumstances it should be possible for the receiver to punish the sender in the first rounds by refusing to cooperate and to get him to abstain from using $m_3$ altogether.
+
+
+
+
+
+
+
+
+
+\section{Economical Messaging}
+This next section seeks to use the framework of Lewisian Signaling Games to shed some light on a linguistic conjecture we have. Namely, that natural languages as signaling systems tend to reflect the fact that its speakers strive to economize in the way they express themselves. Put differently, speakers will somehow seek to minimize their effort while trying to communicate accurately. To say it in Lewisian terms, agents facing varying cost for different messages will chose their strategies such that the signaling systems that arise out of their actions maximize their expected utility. \\
+The observation giving rise to this conjecture was that in some languages we happen to know (German, English, Spanish, French) expressions that are used more often tend to be of shorter length. A brief empirical survey of natural languages (English for  now, expansion should be easy though) indeed suggests that a words length in terms of letters is inversely related to its frequency in written text. %present some such finding. look at Van Rooij's universals paper for methods
+Of course a message's (a word's) length can't just be equated with its cost. In fact, we don't want to delve too deeply into the precise nature of communicative cost and merely suggest that some such economizing might reasonably be expected from a game theoretical perspective. How to measure an agent's precise cost when she engages in communication, and indeed the possibly very complex ways in which economizing in natural language use takes place, will be left aside. we would merely like to make the assumption that sending some signals (producing some utterance, writing some word) is more costly than others. This could model a situation where the messages are ordered according to their associated cost for the sender. That is, the phonetical difficulty of each word is given by a cost vector of the same length as the message space.\\
+So let's assume the state space represents a set of "thoughts" $T=\{t_1,...,t_n\}$ a natural language speaker might wish to communicate. Here too we do not want to spend too much time on the philosophical and linguistical difficulties with such a coarse view, but move on with the modeling. To communicate the speaker will have to make use of a set of utterances or words $M=\{m_1,...,m_m\}$, each associated with its specific cost $c$. This is modelled with a cost-vector of length $|M|$, namely $C=(c_1,...,c_m)$. Furthermore, let this be an interpretation game where the sender's and the receiver's interest's are perfectly aligned. So both receive a payoff of 1 if the receiver ends up having the same "thought" as the sender is having and 0 otherwise.\\
+ Also, assume that the prior distribution over the "thoughts" in the state space represents the frequency with which the sender would like to communicate a given idea she is having in the course of communication. (Notice that modeling it this way implies that the probability of having one thought is independent of having another thought.)\\
+Such a model could be depicted in the following way:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{llll}
+States & Cost Sender & Messages  & Actions \\
+$t_1$  & $cs_1$      & $m_1$     & $a_1$   \\
+$t_2$  & $cs_2$      & $m_2$     & $a_2$   \\
+...    & ...         & ...       & ...     \\
+$t_n$  & $cs_m$      & $m_m$	 & $a_n$  
+\end{tabular}
+\end{table}
+
+Let the messages be from most costly to least costly: $cs_1>cs_2>...>cs_n$ and $cr_1>cr_2>cr_m$. 
+For the sake of concreteness assume a decrease in message cost characterized by a linear function $f(cs_i)= a - i*b$, where $b>0$ and $a>m*b$\\
+Further, let the states follow some non-uniform probability distribution. Say a Poisson Distribution with parameter $\lambda=1$, so that the probability of the "thought" $t_j$ occurring to the sender is given by $g(t_j)= \dfrac{1^j\times e^{-1}}{j!}$
+
+
+\begin{comment}
+When running this in a simulation where the states do not follow a uniform distribution, I would hope to find that more common states are signaled with less costly messages. The receiver's cost would not play a role here, however. 
+On a related note, we might actually be able to apply some sort of optimal coding argument to argue why shorter expressions are assigned to denote more frequent states.
+Finally, we could look at a model with a compositional message space where the cost a receiver incurs upon hearing an expression is given by a function of said composition.\\
+For starters, we could assume a model where $|S|>>|M|$ and the cost of the receiver is an increasing function of the amount of elements of M used to signal a state.
+\end{comment}
+
+
+\end{document}
