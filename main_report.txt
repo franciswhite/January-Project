@@ -3,7 +3,7 @@
 
 \title{January Project}
 \author{Silvan Hungerbuehler, Haukur Jonsson}
-\date{Date quo: 23.01.17}
+\date{Date quo: 26.01.17}
 
 \usepackage{amssymb}
 \usepackage{amsmath, amsthm}
