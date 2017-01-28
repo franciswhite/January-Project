@@ -65,15 +65,14 @@ Entirely unsophisticated types, players who do not take the opponents reasoning 
 
 \section{Political Correctness}
 \subsection{Sticks and Stones}
-\textbf{What we want to model}
-
+When it comes to the way iterated response models view cost there is a great deal of variety. Sometimes the messages' cost is viewd as completely irrelevant and is thus not modeled at all - one such example is David Lewis' analysis.  For other purposes the signaling cost a sender incurs is of crucial importance, as, for example, in the analysis of the Horn game in Franke and Jaeger. What these models have in common, however, is that none of them chooses to assign any importance to the cost a certain signal might cause a receiver. Indeed, Franke and Jaeger \textbf{find more examples}, whose basic framework will use in what follows, have considered message cost to be uniquely tied to the sender's role. This is perhaps explainable as a straightforward choice since it lies within the power \textbf{power of players} of the sender which signal to emit \\
+We believe that there is great potential here to shed some light on pragmatic phenomena which could hardly be accounted for were we to stick to viewing receiver's cost as irrelevant.
 \subsection{Asymmetric Case}
 
 \subsection{Symmetric Case}
 
 Assume two agents were to talk repeatedly with each other using some shared language fragment. However, although they have this common language their preferences over how to put things vary a great deal. Say, for example, that Player 1 has distinctly dislikes some message's flavor, while Player 2 has no issue with it whatsoever. They both know the message's meaning but just hearing it uttered, or saying it, causes Player 1 discomfort. We could model this situation by starting with a standard IBR model assuming a cost vector of equal size as the message space for both sender and receiver which will be applied whenever an agent ponders her best response. \\
 The general structure of such a game could be depicted as such:\\
-
 \begin{table}[h]
 \centering
 \begin{tabular}{lllll}
