@@ -67,9 +67,34 @@ Entirely unsophisticated types, players who do not take the opponents reasoning 
 \subsection{Sticks and Stones}
 When it comes to the way iterated response models view cost there is a great deal of variety. Sometimes the messages' cost is viewd as completely irrelevant and is thus not modeled at all - one such example is David Lewis' analysis.  For other purposes the signaling cost a sender incurs is of crucial importance, as, for example, in the analysis of the Horn game in Franke and Jaeger. What these models have in common, however, is that none of them chooses to assign any importance to the cost a certain signal might cause a receiver. Indeed, Franke and Jaeger \textbf{find more examples}, whose basic framework will use in what follows, have considered message cost to be uniquely tied to the sender's role. This is perhaps explainable as a straightforward modeling choice, for, since it lies within the sender's power \textbf{power of players: expand on this topic} which signal to emit, she only needs to consider her own needs. We will come back to this issue of a player's power later.\\
 The power over which message is being sent notwithstanding, there is great potential to shed some light on pragmatic phenomena by including a receiver's cost in the model. We believe that this move could provide accounts for some phenomena which could hardly be accounted for were we to stick to viewing receiver's cost as irrelevant.\\
-To make this more clear, consider the following scenario: Two people sharing some language engage in conversation, one as the speaker, the other as the listener. The speaker would like to communicate to the listener what kind of work a mutual acquaintance of the two does. The options are Ecology and Mathematics; the possible utterances to transfer this knowledge "She's a mathematician.", "She's an ecologist." and "She's a professional treehugger, stupdily trying to protect plants and stuff.". Assume that uttering the first is true just in case the person is a mathematician and the other two if she's an ecologist. As both of the two well know, the listener is a great lover of nature and cares dearly for the environment, while the speaker does not. The listener, although she understands perfectly well what the speaker is trying to convey to her, would be deeply offended by her uttering the word "treehugger". The speaker herself couldn't care less what words are being used, as long as the message comes across and the hearer adopts the right belief about the mutual acquaintances profession.\\
-This is an interesting situation, for the the speaker could perfectly well achieve her goal of communication and not use the word "trehugger".
+To make this more clear, consider the following scenario: Two people sharing some language engage in conversation, one as the speaker, the other as the listener. The speaker would like to communicate to the listener what kind of work a mutual acquaintance of the two does. The listener does not yet know what her occupation happens to be, but would like to do so. The acquaintance could either be an ecologist or a mathematician. To transfer this knowledge the speaker can utter either "She's a mathematician.", "She's an ecologist." or "She's a professional treehugger, stupdily trying to protect plants and stuff.". Assume that uttering the first is true just in case the person is a mathematician and the other two if she's an ecologist. As both of the two well know, the listener is a great lover of nature and cares dearly for the environment, while the speaker does not. The listener, although she understands perfectly well what the speaker is trying to convey to her, would be deeply offended by her uttering the word "treehugger". The speaker herself couldn't care less what words she uses, as long as the message comes across and the hearer adopts the right belief about the mutual acquaintance's profession.\\
+This is an interesting situation, for the the speaker could perfectly well achieve her goal of communication and not use the word "trehugger". The listener, who's not in any position to choose the signal, then has to accept the speaker's decision grudgingly, knowing that there would have been a better way for her. Alas, it was not the better way for the sender and was thus not chosen.\\
+This situation can be modeled fittingly using the IBR approach introduced in previous sections. We will then carry out further analysis on the baseline set by this model.
 \subsection{Asymmetric Case}
+The two interlocutors play an interpretation game. Thus set of states $S$ equals the set of actions $A$: $S=\{mathematician,ecologist\}=A$. The players' utilities are given as:\\
+\begin{table}[]
+\centering
+\caption{My caption}
+\label{my-label}
+\begin{tabular}{lll}
+States, Actions & math & eco \\
+math            & 1,1  & 0,0 \\
+eco             & 0,0  & 1,1
+\end{tabular}
+\end{table}
+
+There are three possible messages. Let them be denoted as $m_{math},m_{eco}$ and $m_{tree}$, where $m_{eco}$ is the non-offensive and $m_{tree}$ the hurtful message. So the message set $M$ is defined as $M=\{m_{math},m_{eco},m_{tree}\}$. According to the semantics just described, the Boolean matrix is given by this table:\\
+\begin{table}[]
+\centering
+\caption{My caption}
+\label{my-label}
+\begin{tabular}{llll}
+States, Messages & math & eco & tree \\
+math             & 1    & 0   & 0    \\
+eco              & 0    & 1   & 1   
+\end{tabular}
+\end{table}
+
 
 \subsection{Symmetric Case}\\
 Assume two agents were to talk repeatedly with each other using some shared language fragment. However, although they have this common language their preferences over how to put things vary a great deal. Say, for example, that Player 1 has distinctly dislikes some message's flavor, while Player 2 has no issue with it whatsoever. They both know the message's meaning but just hearing it uttered, or saying it, causes Player 1 discomfort. We could model this situation by starting with a standard IBR model assuming a cost vector of equal size as the message space for both sender and receiver which will be applied whenever an agent ponders her best response. \\
