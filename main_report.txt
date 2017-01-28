@@ -96,7 +96,30 @@ eco              & 0    & 1   & 1
 \end{tabular}
 \end{table}
 
-Finally, let $c_s$ and $c_r$ be the respective cost vectors for sender and receiver. Each message is thus associated with a cost for both agents. Let the two cost vectors have the length of $|M|$; they are $c_s=(0,0,0)$ and $c_r=(0,0,1)$.
+Finally, let $c_s$ and $c_r$ be the respective cost vectors for sender and receiver. Each message is thus associated with a cost vector of length $|M|$ for both agents. In the present context the sender doesn't face any cost, so they are $c_s=(0,0,0)$ and $c_r=(0,0,1)$. %abstract away from specific numbers. generalize
+Also, assume the receiver is unbiased with respect to which state holds.
+We will now apply the IBR method to this game. As a first step, let's determine what the naive players' strategies are:\\
+\textbf{Level-0 Players}\\
+\begin{equation*}
+S_0=
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & 0.5 & 0.5
+\end{bmatrix}
+\end{equation*}
+\begin{equation*}
+R_0=
+\begin{bmatrix}
+1 & 0\\
+0 & 1\\
+0 & 1
+\end{bmatrix}
+\end{equation*}
+That the naive sender is indifferent about sending either possible message to convey "e
+
+
+
+
 
 
 
