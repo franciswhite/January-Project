@@ -101,7 +101,7 @@ Also, assume the receiver is unbiased with respect to which state holds.
 We will now apply the IBR method to this game. As a first step, let's determine what the naive players' strategies are:\\
 \textbf{Level-0 Players}\\
 \begin{equation*}
-S_0=
+S_1=
 \begin{bmatrix}
 1 & 0 & 0\\
 0 & 0.5 & 0.5
@@ -115,8 +115,25 @@ R_0=
 0 & 1
 \end{bmatrix}
 \end{equation*}
-That the naive sender is indifferent about sending either possible message to convey "e
-
+That the naive sender has no principle to decide between sending either message meaning \textit{ecologist} is represented by her sending both signals half of the time. So she plays a mixed strategy. The receiver's the actions are clearly determined by a pure strategy.\\
+What is the best response of the level-1 hearer and speaker? Following the IBR procedure we transpose $R_0$, deduct the cost vector $c_s$ and check row-wise for the best response to obtain $S_1$. We proceed analogously for the receiver, the main difference being in this case that the receiver faces some actual cost. This then yields strategies for level-1 players:\\ %transposition of cost vector
+\textbf{Level-1 Players}\\
+\begin{equation*}
+S_0=
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & 0.5 & 0.5
+\end{bmatrix}
+\end{equation*}
+\begin{equation*}
+R_1=
+\begin{bmatrix}
+1 & 0\\
+0 & 1\\
+0 & 1
+\end{bmatrix}
+\end{equation*}r s
+The interesting story here, however, lies in the player's expected payoffs. While playing this strategy yields an expected payoff of $1$ for the sender, the receiver obtains a mere 0.75 in expectation. To see why this is, consider the positions the two players are facing in this game. Start with the receiver: Whether she likes the message or not, she can always reason what her interlocutor wants to communicate to her. If the messages $m_{math}$ or $m_{eco}$ are sent, she will chose the respective action, communication is successfull, so both players get their payoff and everyone is happy. If the message $m_{tree}$ is sent, however, she immediately suffers the associated cost. Still, she knows what the sender is trying to communicate and her best response will be to comply and play the respective action.
 
 
 
