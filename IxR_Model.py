@@ -43,11 +43,12 @@ class IteratedModel(object):
 
     def find_response(self, strategy):
         # by rows
-        max_indexes = np.argmax(strategy, axis=0)
-        max_values = np.amax(strategy, axis=0)
+        max_indexes = np.argmax(strategy, axis=1)
+        max_values = np.amax(strategy, axis=1)
+        min_values = np.amin(strategy, axis=1)
         for index, value in enumerate(max_values):
             # the largest number in a row is 0 - we need to respond to it
-            if value == 0.0:
+            if value == 0.0 and min_values[index] == 0.0:
                 strategy[index] = self.resolve_zero_row(strategy[index])
             # there are more than one occurances of the highest number, we must respond to that
             elif np.count_nonzero(strategy[index] == value) != 1:
@@ -69,7 +70,7 @@ class IteratedModel(object):
         return row
 
     def resolve_zero_row(self, row):
-        return row
+        return np.ones((1, row.shape[1])) * 1/row.shape[1]
 
     def __str__(self):
         # TODO adjust nicely with formatting
@@ -98,6 +99,24 @@ import unittest
 
 
 class TestModels(unittest.TestCase):
+
+    def test_assymetric(self):
+        B = np.array([[1, 1, 0],
+                      [0, 0, 1]])
+        iterated_model = IteratedModel(B, [0, 0, 0], [0, 0, 1], None)
+        for x in range(0, 5):
+            iterated_model.next_level_reasoning()
+        print(iterated_model)
+
+    def test_hypo(self):
+        B = np.array([[0, 0, 0],
+                      [0, 0, 0],
+                      [0, 0, 0]])
+        iterated_model = IteratedModel(B, [0, 0.1, 0.2], None, [0.1, 0.2, 0.3])
+        for x in range(0, 5):
+            iterated_model.next_level_reasoning()
+        print(iterated_model)
+
     def test_normalize(self):
         B = np.array([[1, 0],
                       [1, 1]])
