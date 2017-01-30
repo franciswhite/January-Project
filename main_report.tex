@@ -248,8 +248,27 @@ $t_2$  & c           & $m_2$    & 0                                  & $a_2$
 
 \section{Pareto Optimality}
 \subsection{Working together}
-Pareto Optimality is a measure of Nash Equilibrium efficiency. In many games the outcome of the game, defined in terms of Nash equilibriums, is not in everyones best interests, meaning that there is another equilibrium which is strictly more benefitial for either or both players without reducing the outcome for anyone. We say that an outcome of a game is Pareto optimal if there is no other outcome that makes every player at least as well off and at least one player strictly better off. In the previous chapter we discussed the expected utility for each player and claimed that in neither the symmetrical nor the asymmetrical political correctness game the optimal outcome is reached, i.e. that neither outcome is Pareto optimal. In the subsequent section we will demonstrait how a Pareto optimal solution is not reached in either game and then suggest solutions which can reach a Pareto optimal strategy.
+In the previous examples we observed that the IBR model does not give us outcomes which we often observe in real life situations. Why, for an example do people sometimes refrain from using words which the listener considers harmful? The speaker does not gain anything from it, as mentioned above, but the listener is clearly hurt by it. Why should the speaker change her strategy? Well, if the speaker does not lose anything by changing her strategy but the receiver has something to gain then it seems reasonable that the sender changes her strategy, if asked. This correlates well with real world examples of political correctness in language use. As a speaker we might assume that our listener associetes some cost with a specific word and we can simply use another word instead, we can opt for the less costly word for the receiver.
+
+This gives rise to the discussion of Pareto Optimality. Pareto Optimality is a measure of Nash Equilibrium efficiency. In many games the outcome of the game, defined in terms of Nash equilibriums, is not in everyones best interests, meaning that there is another equilibrium which is strictly more benefitial for either or both players without reducing the outcome for anyone. We say that an outcome of a game is Pareto optimal if there is no other outcome that makes every player at least as well off and at least one player strictly better off.
+
+Formally, let S be a set of strategy profiles, let N be a set of players enumrated from 1 to n, and let $u_i$ be the corresponding utilty functions for each player. We say that a strategy profile $s \in S$ Pareto dominates another strategy profile $s' \in S$ if:
+
+\begin{equation*}
+\forall i \in N: u_i(s) \geq u_i(s') \land \exists j \in N: u_j(s) > u_j(s')
+\end{equation*}
+
+Then we define a strategy profile s to be Pareto optimal there is no other strategy profile s' which Pareto dominates it. %not sure if formula is 100% correct.
+
+%\begin{equation*}
+%\forall i \in N: u_i(s) \geq u_i(s') \land \neg \exists j \in N: u_j(s') > u_j(s)
+%\end{equation*}
+
+We can thus say that language speakers sometimes opt for the Pareto optimal solution if available, perhaps in good will, so that if tables were turned some day the listener would do the same for them.
+
 \subsection{Revisiting the asymmetric and symmetric games}
+In the previous section we discussed the expected utility for each player and claimed that in neither the symmetrical nor the asymmetrical political correctness game the optimal outcome is reached, i.e. that neither outcome is Pareto optimal. In the subsequent section we will demonstrait how a Pareto optimal solution is not reached in either game and then suggest solutions which can reach a Pareto optimal strategy.
+
 As claimed above in the asymmetric game there is an equilibrium in which both players can expect a payoff of 1. Since the sender already achieves a payoff of 1 and the receiver only a payoff of 0.75 this equilibrium is sctricly better for the receiver and as good for the sender. This equilibrium is in fact Pareto optimal and strictly better than the previous equilibrium for the receiver. This optimality could be reached by only adjusting the sender strategy so that she never sends the offending message. Still, we don't see this strategy being played, for it is not in the sender's explicit interest and, coincidentally, it is her who wields the power to decide over the matter. This raises questions on how we can make it in the sender's explicit interest to change her strategy to encompass the receiver's interests. In the next section we discuss some ways to achieve this.\\
 In the symmetrical game we observed a similar non-Pareto optimal outcome and claimed that there existed a strictly better strategy which would be Pareto optimal. This is the same strategy as described above in the asymmetrical game. If both players refrain from using harmful/costly messages and instead use other messages which convey the same meaning then a Pareto optimal solution is possible. This could be achvieved by having a pre-game talk in which the two players could agree on using only strategies which both are ok with. This would allow them to move to the pareto optimal equilibrium of strategies. Let us now turn our attention to how we can enforce Pareto optimal solutions.
 
