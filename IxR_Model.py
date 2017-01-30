@@ -15,7 +15,7 @@ class IteratedModel(object):
         if sender_cost is not None:
             self.sender_cost = sender_cost
         else:
-            self.sender_cost = np.zeros(B.shape[0])
+            self.sender_cost = np.zeros(B.shape[1])
         if receiver_cost is not None:
             self.receiver_cost = receiver_cost
         else:
@@ -23,7 +23,7 @@ class IteratedModel(object):
         if receiver_prior is not None:
             self.receiver_prior = receiver_prior
         else:
-            self.receiver_prior = np.ones(B.shape[1])
+            self.receiver_prior = np.ones(B.shape[0])
 
     def next_level_reasoning(self):
         if self.level == 0:
@@ -34,30 +34,41 @@ class IteratedModel(object):
             self.receiver.insert(self.level, [])
             for strategy in self.receiver[self.level - 1]:
                 strategy_to_respond_to = np.copy(strategy.T) - self.sender_cost
-                self.sender[self.level].append(self.find_response(strategy_to_respond_to))
+                self.sender[self.level].append(self.find_best_response(strategy_to_respond_to, "sender"))
             for strategy in self.sender[self.level - 1]:
                 # Notice that first we apply the prior and then we apply the cost!
-                strategy_to_respond_to = np.copy(strategy.T) * self.receiver_prior - self.receiver_cost
-                self.receiver[self.level].append(self.find_response(strategy_to_respond_to))
+                strategy_to_respond_to = ((np.copy(strategy.T) * self.receiver_prior).T - self.receiver_cost).T
+                self.receiver[self.level].append(self.find_best_response(strategy_to_respond_to, "receiver"))
         self.level += 1
 
-    def find_response(self, strategy):
-        # by rows
+    def find_best_response(self, strategy, type):
+        # we find the highest values by rows
         max_indexes = np.argmax(strategy, axis=1)
         max_values = np.amax(strategy, axis=1)
         min_values = np.amin(strategy, axis=1)
         for index, value in enumerate(max_values):
-            # the largest number in a row is 0 - we need to respond to it
-            if value == 0.0 and min_values[index] == 0.0:
-                strategy[index] = self.resolve_zero_row(strategy[index])
-            # there are more than one occurances of the highest number, we must respond to that
-            elif np.count_nonzero(strategy[index] == value) != 1:
-                strategy[index] = self.resolve_multiple_highest(strategy[index], value)
-            # there is a single highest number, we select it and set the rest to 0
+            # the highest value is the same as the lowest => all the same value
+            if max_values[index] == min_values[index]:
+                # a sender with all rows = 0, does not send that message, we leave it as is
+                if type == "sender" and max_values[index] == 0.0:
+                    continue
+                # otherwise we set it uniform. It is always uniform for receiver
+                else:
+                    strategy[index] = self.get_uniform_row(strategy.shape[1])
+            # there are multiple highest values in a row => normalize them and set others to 0
+            elif np.count_nonzero(strategy[index] == max_values[index]) != 1:
+                # find where they are
+                indexes = np.nonzero(strategy[index] == max_values[index])
+                # set all to 0
+                new_row = np.zeros(strategy.shape[1])
+                for high_index in indexes:
+                    new_row[high_index] = 1.0
+                strategy[index] = row_wise_division(new_row)
+            # there is a single highest value
             else:
-                adjusted_row = np.zeros(strategy.shape[1])
-                adjusted_row[max_indexes[index]] = 1.0
-                strategy[index] = adjusted_row
+                new_row = np.zeros(strategy.shape[1])
+                new_row[max_indexes[index]] = 1.0
+                strategy[index] = new_row
         return strategy
 
     def get_sender(self):
@@ -66,11 +77,8 @@ class IteratedModel(object):
     def get_receiver(self):
         return self.receiver
 
-    def resolve_multiple_highest(self, row, value):
-        return row
-
-    def resolve_zero_row(self, row):
-        return np.ones((1, row.shape[1])) * 1/row.shape[1]
+    def get_uniform_row(self, shape):
+        return np.ones(shape) * 1/shape
 
     def __str__(self):
         # TODO adjust nicely with formatting
@@ -103,7 +111,9 @@ class TestModels(unittest.TestCase):
     def test_assymetric(self):
         B = np.array([[1, 1, 0],
                       [0, 0, 1]])
-        iterated_model = IteratedModel(B, [0, 0, 0], [0, 0, 1], None)
+        sender_cost = np.array([0, 0, 0])
+        receiver_cost = np.array([0, 0, 1])
+        iterated_model = IteratedModel(B, sender_cost, receiver_cost, None)
         for x in range(0, 5):
             iterated_model.next_level_reasoning()
         print(iterated_model)
@@ -142,7 +152,7 @@ class TestModels(unittest.TestCase):
         np.testing.assert_array_equal(iterated_model.get_receiver()[0][0], np.array([[0.5, 0.5],
                                                                                   [0., 1.]]))
         np.testing.assert_array_equal(iterated_model.get_receiver()[1][0], np.array([[1., 0.],
-                                                                                  [1., 0.]]))
+                                                                                  [0, 1.]]))
 
     def test_multiple_solution_ibr(self):
         B = np.array([[1, 1],
