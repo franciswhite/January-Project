@@ -73,7 +73,7 @@ Let's see how this is concretely modeled:\\
 $T$ is the set of states the players can be in, $M$ the set of messages at the sender's disposal and $A$ the set of actions from which the receiver can choose. Assume for now that $T,M$ and $A$ are all countably finite. Then,  a sender strategy is a row-stochastic $(|T| \times |M|)$-matrix, denoted by $\sigma$, and a receiver strategy is a row-stochastic $(|M|\times |A|)$-matrix, denoted by $\rho$. This simply means that when the sender observes some state, her strategy determines with which probability she chooses from the different messages; the for the receiver, but with messages and actions. The rows in the strategy matrices thus represent the situations where the players get to decide, and the respective entries in the row describe the probabilities with which they opt for the move in that column.\\
 The meaning of the language fragment in question is modeled as a $(|T| \times |M|$-matrix. If some state $t_i$ semantically warrants the utterance of some message $m_j$, then the entry $x_{ij}$ in the matrix will be $1$, otherwise $0$. This matrix reporting the boolean values is called the \textit{Boolean Matrix}  and denoted with $B$.\\
 Players of the naive - level-0 sophistication - type are represented by simply reporting the normalized boolean matrix. In the case of the receiver the transposed boolean matrix is normalized.\\
-More sophisticated players are modeled to have some belief about the interlocutors behavior. For now we'll assume that players have unbiased beliefs, meaning that there are no further restriction imposed. A belief is unbiased if all elements $x\inX$ of some (finite) set X are deemed to be equally probable. All $y\not\inX$ are assigned probability zero. Each option is considered equally likely.\\
+More sophisticated players are modeled to have some belief about the interlocutors behavior. For now we'll assume that players have unbiased beliefs, meaning that there are no further restriction imposed. A belief is unbiased if all elements $x\in X$ of some (finite) set X are deemed to be equally probable. All $y\not\in X$ are assigned probability zero. Each option is considered equally likely.\\
  \textit{"To use unbiased beliefs about possible opponent behavior is to average over any possible hunch or conjecture an agent may have about her opponent’s behavior and to apply the ‘principle of insufficient reason’ as a strict tie-break rule at every iteration step. We may think of this as essentially a simplifying assumption that keeps the mathematics simple and allows for more straightforward computation in linguistic applications.}[from Franke's Phd Thesis]\\
 We then define the notion of \textit{best response} given a set of beliefs. Intuitively, a sender's best response to some strategy $\rho$ or is any pure strategy that maps each state to that signal which maximizes the expected utility.
 
@@ -154,8 +154,8 @@ The interesting story here, however, is the player's expected payoffs. While pla
 
 Since we assumed that either state holds with equal probability, and the sender uses $m_{tree}$ in half of the cases when signaling $ecologist$, we can expect the receiver to pay the cost of $1$ every fourth time around. This results in $EU(R)=0.75$ and $EU(S)=0.75$.
 
-The crucial thing to note here, however, is that the receiver could be just as well off as the sender without the latter having to lose anything in return. That is, there is an equilibrium in which both players can expect a payoff of 1. In fact, they're garantueed to obtain a payoff of 1 if only the sender were to adhere to that alternative strategy. Still, we don't see this strategy being played, for it is not in the sender's explicit interest and, coincidentally, it is her who wields the power to decide over the matter.\\
-So let us consider a slightly modified version of this game where both sender and receiver stand to lose something from the wrong messages being played.
+The crucial thing to note here, however, is that we claim that the receiver could be just as well off as the sender without the latter having to lose anything in return. For more clarification on optimality of strategies see discussion below on Pareto optimality. \\
+So let us now consider a slightly modified version of this game where both sender and receiver stand to lose something from the wrong messages being played.
 \subsection{Symmetric Offence}
 Assume now that two agents are talking (perhaps repeatedly) with each other using some shared language fragment. Although they have this common language, their preferences over how to put things vary a great deal. Say Player 1 has distinctly dislikes some specific message's flavor, while Player 2 has no issue with it whatsoever. Assume further that this time around there is also some message which upsets Player 2 but doesn't affect Player 1.
 
@@ -187,13 +187,12 @@ $white$  & 0     & 0   & 1       & 1
 \end{table}
 
 The cost vectors are given by 
-cs=(0,0,0,1) and cr(0,1,0,0)\\ %cr should be transposed
+cs=(0,0,0,1) and $cr(0,1,0,0)^T$\\
 The priors are (0.5,0.5).
 
-If this game is played once in IBR fashion the expected utility of the sender will be 1, while the expected utility of the receiver is 0.75 because of the cost she incurs when the sender chooses (indifferently to her suffering at hearing it) the message "darkie" when reporting state holds.
+If this game is played once in IBR fashion the expected utility of the sender will be 1 since the sender will of course refrain from the message which is costly for her and all messages will be understoood by the receiver. But in this case the sender might use the message which is costly for the receiver, so we get an expected utility of 0.75 for the receiver. Similarly as in the asymmetrical case above.
 
-Now,  actual language use is an activity which agents play repeatedly and in different roles, so let's assume they play above game many times while nature choses the players' roles in each round with equal probability. Carrying out the same IBR computation yields an expected utility of 0.875 for both players over the course of their (infinite) communicative lives. There is a difference between a pareto optimal outcome and the expected outcome of 0.125. Notice that this loss in utility is solely attributable to the cost which arises upon hearing one rather than another expression. Also, note that for every strategy where such a harmful message is sent there is another strategy which performs just as well in signaling which state holds. In fact, they could obtain an expected (indeed garantueed) payoff of 1 if they were to refrain from using those strategies where they send the message which hurts the other player.\\
-If pre-game talk would be allowed the two players could agree on using only strategies which both are ok with. This would allow them to move to the pareto optimal equilibrium of strategies.
+Now, actual language use is an activity which agents play repeatedly and in different roles, so let's assume they play above game many times while nature choses the players' roles in each round with equal probability. Carrying out the same IBR computation yields an expected utility of 0.875 for both players over the course of their (infinite) communicative lives. But again we claim that this outcome is not the best outcome for either player since there is a better strategy which will achieve an expected outcome of 1 for both players. Namely, by refraining from using the costly messages of each other. For more clarification on optimality of strategies see discussion below on Pareto optimality.
 
 \begin{comment}
 Starting from Spence's seminal "Job Market Signalling", much has been written about games where by sending a message an agent causes a cost. This is the core of so-called \textit{costly signalling games}. Particularly economic theory has been interested in this twist of the Lewisian signaling model.\\
@@ -209,6 +208,109 @@ $t_2$  & c           & $m_2$    & 0                                  & $a_2$
 \end{tabular}
 \end{table} 
 \end{comment}
+
+\section{Pareto Optimality}
+\subsection{Working together}
+Pareto Optimality is a measure of Nash Equilibrium efficiency. In many games the outcome of the game, defined in terms of Nash equilibriums, is not in everyones best interests, meaning that there is another equilibrium which is strictly more benefitial for either or both players without reducing the outcome for anyone. We say that an outcome of a game is Pareto optimal if there is no other outcome that makes every player at least as well off and at least one player strictly better off. In the previous chapter we discussed the expected utility for each player and claimed that in neither the symmetrical nor the asymmetrical political correctness game the optimal outcome is reached, i.e. that neither outcome is Pareto optimal. In the subsequent section we will demonstrait how a Pareto optimal solution is not reached in either game and then suggest solutions which can reach a Pareto optimal strategy.
+\subsection{Revisiting the asymmetric and symmetric games}
+As claimed above in the asymmetric game there is an equilibrium in which both players can expect a payoff of 1. Since the sender already achieves a payoff of 1 and the receiver only a payoff of 0.75 this equilibrium is sctricly better for the receiver and as good for the sender. This equilibrium is in fact Pareto optimal and strictly better than the previous equilibrium for the receiver. This optimality could be reached by only adjusting the sender strategy so that she never sends the offending message. Still, we don't see this strategy being played, for it is not in the sender's explicit interest and, coincidentally, it is her who wields the power to decide over the matter. This raises questions on how we can make it in the sender's explicit interest to change her strategy to encompass the receiver's interests. In the next section we discuss some ways to achieve this.\\
+In the symmetrical game we observed a similar non-Pareto optimal outcome and claimed that there existed a strictly better strategy which would be Pareto optimal. This is the same strategy as described above in the asymmetrical game. If both players refrain from using harmful/costly messages and instead use other messages which convey the same meaning then a Pareto optimal solution is possible. This could be achvieved by having a pre-game talk in which the two players could agree on using only strategies which both are ok with. This would allow them to move to the pareto optimal equilibrium of strategies. Let us now turn our attention to how we can enforce Pareto optimal solutions.
+
+\subsection{Solutions}
+As we have observed in previous discussions is that to achieve a Pareto optimal solution the sender needs to change her strategy in order to not offend (incur costs to) the receiver. Thus let us define three types of senders a) A nice sender which takes the costs vector of the receiver into account and refrains from sending messages which are costly to the receiver. We can thus define the nice sender cost as: $ncs=cs + cr^T$. b) a malicious sender which takes the costs vector of the receiver into account and attempts to send the costly messages. We can thus define the malicious sender cost as: $mcs=cs - cr^T$. c) an indifferent sender which is essentially the same as used the the above examples. We will not explore the indifferent sender here but consider that sender already covered. \\
+Let us now go through the IBR model for the asymmetric game with a nice sender. We will use the same example as above but only adjust the sender cost to our new defintion.
+
+As before there are three possible messages. Let them be denoted as $m_{math},m_{eco}$ and $m_{tree}$, where $m_{eco}$ is the non-offensive and $m_{tree}$ the hurtful message. So the message set $M$ is defined as $M=\{m_{math},m_{eco},m_{tree}\}$. According to the semantics just described, the Boolean matrix looks like this:\\
+\begin{equation*}
+B =
+\begin{bmatrix}
+
+States, Messages & math & eco & tree \\
+math             & 1    & 0   & 0    \\
+eco              & 0    & 1   & 1
+\end{bmatrix}
+\end{equation*}
+
+Now we, let $c_s$ and $c_r$ be the respective cost vectors for sender and receiver. Each message is thus associated with a cost vector of length $|M|$ for both agents. In the present context the sender doesn't face any cost, so they are $c_s=(0,0,0)$ and $c_r=(0,0,1)$. Thus we get $ncs=cs + cr^T=(0,0,1)$. Since the sender did not originally have any costs associated with the messages we get $c_r=ncs$. Like before we assume the receiver is unbiased with respect to which state holds, thus $p=(0.5,0.5)$.
+We will now apply the IBR method to this game. As a first step, let's determine what the naive players' strategies are:\\
+\begin{equation*}
+S_0=
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & 0.5 & 0.5
+\end{bmatrix}
+\end{equation*}
+\begin{equation*}
+R_0=
+\begin{bmatrix}
+1 & 0\\
+0 & 1\\
+0 & 1
+\end{bmatrix}
+\end{equation*}
+
+\begin{equation*}
+S_1=
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0
+\end{bmatrix}
+\end{equation*}
+\begin{equation*}
+R_1=
+\begin{bmatrix}
+1 & 0\\
+0 & 1\\
+0.5 & 0.5
+\end{bmatrix}
+\end{equation*}
+
+\begin{equation*}
+S_2=S_1
+\end{equation*}
+\begin{equation*}
+R_1=R_2
+\end{equation*}
+
+As we see we reach an equilibrium very quickly and the sender refrains from using messages which are costly to the receiver. The nice sender is thus able to reach the Pareto optimal solution since the expected utility of the sender and receiver is 1 as claimed above.
+
+Let us now explore the symmetrical game with a malicious sender. Let us again use a previously mentioned example.
+\begin{table}[h]
+\centering
+\begin{tabular}{lllll}
+States, Message & black & darkie & white & cracker \\
+$black$  & 1      & 1    & 0        & 0   \\
+$white$  & 0     & 0   & 1       & 1
+\end{tabular}
+\end{table}
+
+%TODO finish calcualting this shiet%
+The cost vectors are given by cs=(0,0,0,1) and $cr(0,1,0,0)^T$. Thus we have $mcs=cs - cr^T =(0,-1,0,1)$ like before the priors are (0.5,0.5).
+\begin{equation*}
+S_0=
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & 0.5 & 0.5
+\end{bmatrix}
+\end{equation*}
+\begin{equation*}
+R_0=
+\begin{bmatrix}
+1 & 0\\
+0 & 1\\
+0 & 1
+\end{bmatrix}
+\end{equation*}
+
+
+
+
+\subsection{Punishment}
+Non-credible threat
+Automatic
+Distribution over a
+-Can be random (uniform, f.ex.)
+-Using priors (I'm not listening I'll just do what I find likely.)
 
 \subsection{Further Research}
 
