@@ -3,7 +3,7 @@
 
 \title{January Project}
 \author{Silvan Hungerbuehler, Haukur Jonsson}
-\date{Date quo: 26.01.17}
+\date{Date quo: 30.01.17}
 
 \usepackage{amssymb}
 \usepackage{amsmath, amsthm}
@@ -12,14 +12,14 @@
 \usepackage{verbatim}
 \usepackage{hyperref}
 \usepackage{comment}
+\bibliography{references.bib}
 
 \begin{document}
 \maketitle
 \section{Introduction}
-The study of phenomena related to natural language use within the formal framework of game theory has taken a variety of forms since David Lewis' (citation) analysis of signaling games. Our goal here shall be to analyze a small number of games where modeling the cost associated with a message enables us to shed some light on pragmatic phenomena. Although standardly it is assumed that it is exclusively the sender of a message in a signaling game who incurs a cost, we will also look at situations where costs are conncected to a recipient of a message.
+The study of phenomena related to natural language use within the formal framework of game theory has taken a variety of forms since David Lewis' \cite{david1969convention} analysis of signaling games. The goal of this paper is to analyze a small number of games where modeling the cost associated with a message enables us to shed some light on pragmatic phenomena. Specifically, we want to forgo the common assumption that it is exclusively the player sending a message for whom this is is costly. We will look at signaling games where costs are conncected not only to the sender, but also to the recipient.
 
-To carry out our analysis we will look at two frameworks broadly in the Lewisian tradition:\\
-On one hand we will use game theoretic models of the IBR (Iterated Best Response) family. This approach looks to explain and predict pragmatic inferences of natural language users by modeling a forth-and-back reasoning taking place between two agents engaged in conversation (citation). We will be use them think about the phenomenon of political correctness in particular.
+To carry out this analysis we will rely on a frameworks that lies broadly in the Lewisian tradition. In fact, it can easily be seen as an extension of it. We will use game theoretic models of the \textit{Iterated Best Response} (IBR) family. This approach looks to explain and predict pragmatic inferences of natural language users by modeling a forth-and-back reasoning taking place between two agents engaged in conversation. In particular we are interested in explaining how speakers sometimes alter their way of expressing themselves, or specifically abstain from using certain communicative alternatives, not because they necessarily dislike some of the available options, but because their audience prefers one over the other. How is it, for example, that many people don't go around calling their fellow citizens by their monikers related to their perceived race? How can it be that multiple means of communication are equally good - expressive, accurate, etc. -, yet some options are used rather than others. We will be use them think about the phenomenon of political correctness in particular.
 
 On the other, we will be concerned with the relationship of message cost and meaning. Broadly speaking we conjecture that in the context of a classic Lewisian signaling game, where a) meaning is not yet conventionally established, b) messages are sufficiently costly  and c) there is a non-uniform distribution over the state space, a signaling system will emerge where (both declarative and indicative) costlier messages end up indicating states with lesser probability and vice versa. A model providing such a result might be used towards an explanation why shorter expressions (words???, dangerous linguistic territory here) tend to occur more frequently in language use. 
 
@@ -418,6 +418,5 @@ On a related note, we might actually be able to apply some sort of optimal codin
 Finally, we could look at a model with a compositional message space where the cost a receiver incurs upon hearing an expression is given by a function of said composition.\\
 For starters, we could assume a model where $|S|>>|M|$ and the cost of the receiver is an increasing function of the amount of elements of M used to signal a state.
 \end{comment}
-
 
 \end{document}
