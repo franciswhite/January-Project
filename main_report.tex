@@ -86,14 +86,33 @@ $T$ is the set of states the players can be in, $M$ the set of messages at the s
 0.5 & 0.5 & 0\\
 0.8 & 0.1 & 0.1 \\
 \end{bmatrix}
+\end{equation*}%add row and column names
+
+When the sender observes some state, her strategy determines with which probability she chooses from the different messages; likewise for the receiver, but with messages and actions. The rows in the strategy matrices thus represent the situations where the players get to decide, and the respective entries in the row describe the probabilities with which they opt for the move in that column. The sender, in this example, would choose $m_1$ with probability $0.2$ upon observing $t_1$, and with probability $1$ when observing $t_3$. The receiver, in turn, would choose $a_1$ and $a_2$ each with probability of $0.5$, while never playing $a_3$, when receiving $m_1$ from the sender.
+
+The meaning of the language fragment in question is modeled as a $(|T| \times |M|$-matrix. If some state $t_i$ semantically warrants the utterance of some message $m_j$, then the entry $x_{ij}$ in the matrix will be $1$, otherwise $0$. This matrix reporting the boolean values is called the \textit{Boolean Matrix} and denoted with $B$. For the purpose of illustration, here's an example where both $t_1$ and $t_2$ can be distinctly expressed, but the game contains no message meaning $t_3$:\\
+\begin{equation*}
+B =
+\begin{bmatrix}
+1 & 0\\
+0 & 1\\
+0 & 0
+\end{bmatrix}
 \end{equation*}
 
-When the sender observes some state, her strategy determines with which probability she chooses from the different messages; likewise for the receiver, but with messages and actions. The rows in the strategy matrices thus represent the situations where the players get to decide, and the respective entries in the row describe the probabilities with which they opt for the move in that column. The sender, in this example, would choose $m_1$ with probability $0.2$ upon observing $t_1$, and with probability $1$ when observing $t_3$. The receiver, in turn, would choose $a_1$ and $a_2$ each with probability of $0.5$, while never playing $a_3$, when receiving $m_1$ from the sender.\\
-The meaning of the language fragment in question is modeled as a $(|T| \times |M|$-matrix. If some state $t_i$ semantically warrants the utterance of some message $m_j$, then the entry $x_{ij}$ in the matrix will be $1$, otherwise $0$. This matrix reporting the boolean values is called the \textit{Boolean Matrix}  and denoted with $B$.\\
-Players of the naive - level-0 sophistication - type are represented by simply reporting the normalized boolean matrix. In the case of the receiver the transposed boolean matrix is normalized.\\
-More sophisticated players are modeled to have some belief about the interlocutors behavior. For now we'll assume that players have unbiased beliefs, meaning that there are no further restriction imposed. A belief is unbiased if all elements $x\in X$ of some (finite) set X are deemed to be equally probable. All $y\not\in X$ are assigned probability zero. Each option is considered equally likely.\\
- \textit{"To use unbiased beliefs about possible opponent behavior is to average over any possible hunch or conjecture an agent may have about her opponent’s behavior and to apply the ‘principle of insufficient reason’ as a strict tie-break rule at every iteration step. We may think of this as essentially a simplifying assumption that keeps the mathematics simple and allows for more straightforward computation in linguistic applications.}[from Franke's Phd Thesis]\\
-We then define the notion of \textit{best response} given a set of beliefs. Intuitively, a sender's best response to some strategy $\rho$ or is any pure strategy that maps each state to that signal which maximizes the expected utility.
+Players of the naive - level-0 sophistication - type are represented by simply reporting the normalized boolean matrix. Normalization here simply means a mapping of some $(m\times n)$-matrix $A$ onto some other $(m\times n)$-matrix $B$ such that $B_i\propto A_i$ if $\sum_j (A_{ij})>0$ and $B_{ij}=\tfrac{1}{n}$ otherwise. In the case of the receiver the transposed boolean matrix is normalized.
+
+More sophisticated players are modeled as to have some belief about the interlocutors behavior. For now we'll assume that players have unbiased beliefs, meaning that there are no further restriction imposed - for example, that some player simply disregards a possible strategy. A belief is unbiased if all elements $x\in X$ of some (finite) set X are deemed to be equally probable. All $y\not\in X$ are assigned probability zero. So that each option is considered equally likely. We thus follow Franke's argument for %Franke Phd
+ using unbiased beliefs about possible opponent behavior as it allows us to simplify the mathematics and allows for more straightforward computation in linguistic applications. Formally, if $X$ is some ordered set of strategies of cardinality $\mathbb{C}$, then the set of beliefs $\Pi$ is defined as\\
+\begin{equation*}
+\Pi(X)=\{\sum_{x\in X} \dfrac{1}{\mathbb{C}}X\}
+\end{equation*} %i don't understand this equation
+ 
+Finally, we define the notion of \textit{best response} given a set of beliefs. Intuitively, a sender's best response to some strategy $\rho$ is any pure strategy that maps each state to that signal which maximizes the expected utility. More formally speaking, the sender's best response to some receiver strategy is\\
+\begin{equation*}
+BR_S(\rho)=\{s\in S | s_{ij}=1\implies j \in arg_kmax(U_S T(\rho)-c)_ik)\}
+\end{equation*}
+As the sender has a set of beliefs $\Pi$ about the receivers possible behavior, the set of best responses is the union of all best responses to
 
 
 \section{Political Correctness}
