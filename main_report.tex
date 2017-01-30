@@ -266,7 +266,90 @@ Then we define a strategy s to be Pareto optimal there is no other strategy prof
 Now let us look again at our political correctness games and present the Pareto optimal strategies.
 
 \subsection{Revisiting the asymmetric and symmetric games}
-In the previous section we discussed the expected utility for each player and claimed that in neither the symmetrical nor the asymmetrical political correctness game the optimal outcome is reached, i.e. that neither outcome is Pareto optimal. In the subsequent section we will demonstrait how a Pareto optimal solution is not reached in either game and then suggest solutions which can reach a Pareto optimal strategy.
+As state before we can reach a Pareto optimal solution by simply refraining from using the costly messages of the receiver. Let us look at the asymmetric game described above again:
+
+ \begin{equation*}
+ B =
+ \begin{bmatrix}
+
+ States, Messages & math & eco & tree \\
+ math             & 1    & 0   & 0    \\
+ eco              & 0    & 1   & 1
+ \end{bmatrix}
+ \end{equation*}
+
+ With $c_s=(0,0,0)$ and $c_r=(0,0,1)$. In that game we reached a stable strategy quickly:
+
+\textbf{Level-1 Players}\\
+\begin{equation*}
+S_1=
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & 0.5 & 0.5
+\end{bmatrix}
+\end{equation*}
+\begin{equation*}
+R_1=
+\begin{bmatrix}
+1 & 0\\
+0 & 1\\
+0 & 1
+\end{bmatrix}
+\end{equation*}
+
+A Pareto optimal strategy would be:
+
+\textbf{Pareto optimal}\\
+\begin{equation*}
+S_*=
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0
+\end{bmatrix}
+\end{equation*}
+\begin{equation*}
+R_*=
+\begin{bmatrix}
+1 & 0\\
+0 & 1\\
+0.5 & 0.5
+\end{bmatrix}
+\end{equation*}
+
+That is, the sender never sends the offending message and that message is considered by the receiver as a surprisal message. Thus only by adjusting the sender strategy an optimal solution can be reached. Similarly for the symmetrical game:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lllll}
+States, Message & black & darkie & white & cracker \\
+$black$  & 1      & 1    & 0        & 0   \\
+$white$  & 0     & 0   & 1       & 1
+\end{tabular}
+\end{table}
+
+With $cs=(0,0,0,1)$ and $cr(0,1,0,0)$. A Pareto optimal strategy would be:
+
+\textbf{Pareto optimal}\\
+\begin{equation*}
+S_*=
+\begin{bmatrix}
+1 & 0 & 0 & 0\\
+0 & 0 & 1 & 0
+\end{bmatrix}
+\end{equation*}
+\begin{equation*}
+R_*=
+\begin{bmatrix}
+1 & 0\\
+0.5 & 0.5 \\
+0 & 1\\
+0.5 & 0.5 \\
+\end{bmatrix}
+\end{equation*}
+
+That is, again, the sender never sends the offending message.
+
+% TODO finish below
 
 As claimed above in the asymmetric game there is an equilibrium in which both players can expect a payoff of 1. Since the sender already achieves a payoff of 1 and the receiver only a payoff of 0.75 this equilibrium is sctricly better for the receiver and as good for the sender. This equilibrium is in fact Pareto optimal and strictly better than the previous equilibrium for the receiver. This optimality could be reached by only adjusting the sender strategy so that she never sends the offending message. Still, we don't see this strategy being played, for it is not in the sender's explicit interest and, coincidentally, it is her who wields the power to decide over the matter. This raises questions on how we can make it in the sender's explicit interest to change her strategy to encompass the receiver's interests. In the next section we discuss some ways to achieve this.\\
 In the symmetrical game we observed a similar non-Pareto optimal outcome and claimed that there existed a strictly better strategy which would be Pareto optimal. This is the same strategy as described above in the asymmetrical game. If both players refrain from using harmful/costly messages and instead use other messages which convey the same meaning then a Pareto optimal solution is possible. This could be achvieved by having a pre-game talk in which the two players could agree on using only strategies which both are ok with. This would allow them to move to the pareto optimal equilibrium of strategies. Let us now turn our attention to how we can enforce Pareto optimal solutions.
