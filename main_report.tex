@@ -235,7 +235,9 @@ The general structure of such a game could be depicted as such: %would rather ha
 \begin{tabular}{lllll}
 States & Cost Sender & Messages & Cost Receiver & Actions \\
 $t_1$  & $c^1_1$      & $m_1$    & $c^2_1$        & $a_1$   \\
-$t_2$  & $c^1_2$      & $m_2$    & $c^2_2$        & $a_2$  
+$t_2$  & $c^1_2$      & $m_2$    & $c^2_2$        & $a_2$  \\
+- & $c^1_3$ 		&$m_3$	& $c^2_3$		& $a_3$ \\
+- & $c^1_4$ 		&$m_4$	& $c^2_4$		& $a_4$
 \end{tabular}
 \end{table}
 \begin{table}[h]
@@ -245,7 +247,9 @@ $t_2$  & $c^1_2$      & $m_2$    & $c^2_2$        & $a_2$
 \begin{tabular}{lllll}
 States & Cost Sender & Messages & Cost Receiver & Actions \\
 $t_1$  & $c^2_1$      & $m_1$    & $c^1_1$        & $a_1$   \\
-$t_2$  & $c^2_2$      & $m_2$    & $c^1_2$        & $a_2$  
+$t_2$  & $c^2_2$      & $m_2$    & $c^1_2$        & $a_2$  \\
+- & $c^2_3$ 		&$m_3$	& $c^1_3$		& $a_3$ \\
+- & $c^2_4$ 		&$m_4$	& $c^1_4$		& $a_4$
 \end{tabular}
 \end{table}
 
@@ -264,7 +268,7 @@ The cost vectors are given by
 \begin{equation*}
 c^1=
 \begin{bmatrix}
-0 & 0 & 0 & o^11
+0 & 0 & 0 & o^1
 \end{bmatrix}
 ,
 c^2=
@@ -424,16 +428,20 @@ BR^2(
 1 & 0 & 0 & 0\\
 0 & 0 & 0.5 & 0.5
 \end{bmatrix}
-=S_2
 \end{equation*}
 \begin{equation*}
+S_3=S_2,
 R_3=R_2
 \end{equation*}
 
+\textbf{INSERT TABLE SHOWING EXPECTED PAYOFFS FOR DIFFERENT LEVELS}
 
-Say this game were played only once in IBR fashion. The the expected utility of whichever player nature chose to be the sender will be  since the sender will of course refrain from the message which is costly for her and all messages will be understoood by the receiver. But in this case the sender might use the message which is costly for the receiver, so we get an expected utility of 0.75 for the receiver. Similarly as in the asymmetrical case above.
+So we have reached a stable set of strategies. Some remarks about these strategies are in order. First, the sender - in this case Player 2 - will never send the message she finds offensive. This makes perfect intuitive sense, because she has a non-costly alternative to spare her from uttering "autist". Second, the receiver - Player 1 - view the message $autist$ as a \textit{surprise message}. That is, although Player 2 will never play it, Player 1 still needs to specify what would happen in this contingency. We'll assume that she simply uses her (unbiased) priors to decide. Finally, notice how in this game too the receiver does can't escape from paying a cost. Because Player 2 does not see the message $treehugger$ as costly, she will play it alternately with $ecologist$.
 
-Now, actual language use is an activity which agents play repeatedly and in different roles, so let's assume they play above game many times while nature choses the players' roles in each round with equal probability. Carrying out the same IBR computation yields an expected utility of 0.875 for both players over the course of their (infinite) communicative lives. But again we claim that this outcome is not the best outcome for either player since there is a better strategy which will achieve an expected outcome of 1 for both players. Namely, by refraining from using the costly messages of each other. For more clarification on optimality of strategies see discussion below on Pareto optimality.
+If this game were played only once in IBR fashion, then the expected utility of whichever player nature chose to be the sender will be $a$. Again, this is due to the fact that the sender will of course refrain from the message which is costly for her. At the same time, it is still the most advantageous move for the receiver to interpret all messages correctly. Furthermore, the sender might still use the message which is costly for the receiver, so she can expect a utility of $a-\tfrac{o^i}{4}$, for $i\in \{1,2\}$. for the receiver. As Player 2 happens to be the sender, she can expect the full payoff of $a$ in any case, while Player 1 should expect a payoff of $a-\tfrac{o^1}{4}$. So in case the game is only played once, things behave similarly as in the asymmetrical case above.
+
+Now, actual language use is an activity which agents play repeatedly and in different roles, so let's assume they play above game many times while nature choses the players' roles in each round with equal probability. Since, as already noted, the game is symmetrical, we can simply interchange the expected payoffs for the two players if they play in the other role. Say, nature happens to be very fair and assign the role of speaker with probability 0.5 to either player. Over the course of a lifetime of conversation - or a sufficient amount of linguistic interactions (thanks Gawd for the weak law of large numbers, dicho sea de paso) - the players can expect a utility of $a-\tfrac{o^i}{8}$, for $i\in \{1,2\}$. Notice that $a-\tfrac{o^i}{8} > a-\tfrac{o^i}{4}$, for any $o^i,a>0$. %is this right?
+Here too our claim applies that this outcome is not the best outcome for either player. There is a better strategy which will achieve an expected outcome of exactly $a$ for both players. 
 
 \begin{comment}
 Starting from Spence's seminal "Job Market Signalling", much has been written about games where by sending a message an agent causes a cost. This is the core of so-called \textit{costly signalling games}. Particularly economic theory has been interested in this twist of the Lewisian signaling model.\\
