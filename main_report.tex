@@ -103,28 +103,29 @@ BR_S(\rho)=\{s\in S | s_{ij}=1\implies j \in arg_kmax(U_S T(\rho)-c)_ik)\}
 As the sender has a set of beliefs $\Pi$ about the receivers possible behavior, the set of best responses is the union of all best responses to
 
 
-\section{Political Correctness}
-\subsection{Sticks and Stones}
-When it comes to the way iterated response models view cost there is a great deal of variety. Sometimes the messages' cost is viewd as completely irrelevant and is thus not modeled at all - one such example is David Lewis' analysis.  For other purposes the signaling cost a sender incurs is of crucial importance, as, for example, in the analysis of the Horn game in Franke and Jaeger. What these models have in common, however, is that none of them chooses to assign any importance to the cost a certain signal might cause a receiver. Indeed, Franke and Jaeger \textbf{find more examples}, whose basic framework will use in what follows, have considered message cost to be uniquely tied to the sender's role. This is perhaps explainable as a straightforward modeling choice, for, since it lies within the sender's power \textbf{power of players: expand on this topic} which signal to emit, she only needs to consider her own needs. We will come back to this issue of a player's power later.
+\section{Sticks and Stones}
+\subsection{Receiver's Cost}
+When it comes to the way iterated response models view cost, there is a great deal of variety. Sometimes the cost of signaling is viewd as completely irrelevant and is thus not modeled at all - one such example is David Lewis' analysis.  For other purposes it is of crucial importance, as, for example, in the analysis of the Horn game in Franke and Jaeger. What these models have in common, however, is that none of them chooses to assign any importance to the cost a certain signal might cause a receiver. Indeed,  in Franke and Jaeger , whose basic framework will use in what follows, have considered message cost to be uniquely tied to the sender's role. This is perhaps explainable as a straightforward modeling choice given that these signaling games are played sequentially. It lies within the sender's power to decide which signal to emit, she thus only needs to consider her own needs. %expand on the point on power. perhaps at later stage?
 
-The power over which message is being sent notwithstanding, there is great potential to shed some light on pragmatic phenomena by including a receiver's cost in the model. We believe that this move could provide accounts for some phenomena which could hardly be accounted for were we to stick to viewing receiver's cost as irrelevant.
+The power over which message is being sent notwithstanding, there is great potential to shed some light on pragmatic phenomena by including a receiver's cost in the model. Capturing it explicitly could provide accounts for some phenomena which could hardly be accounted for were we to stick to viewing receiver's cost as irrelevant.
 
 To make this more clear, consider the following scenario: Two people sharing some language engage in conversation, one as the speaker, the other as the listener. The speaker would like to communicate to the listener what kind of work a mutual acquaintance of the two does. The listener does not yet know what her occupation happens to be, but would like to do so. The acquaintance could either be an ecologist or a mathematician. To transfer this knowledge the speaker can utter either "She's a mathematician.", "She's an ecologist." or "She's a professional treehugger, stupdily trying to protect plants and stuff.". Assume that uttering the first is true just in case the person is a mathematician and the other two if she's an ecologist. As both of the two well know, the listener is a great lover of nature and cares dearly for the environment, while the speaker does not. The listener, although she understands perfectly well what the speaker is trying to convey to her, would be deeply offended by her uttering the word "treehugger". The speaker herself couldn't care less what words she uses, as long as the message comes across and the hearer adopts the right belief about the mutual acquaintance's profession.
 
-This is an interesting situation, for the the speaker could perfectly well achieve her goal of communication and not use the word "treehugger". The listener, who's not in any position to choose the signal, then has to accept the speaker's decision grudgingly, knowing that there would have been a better way for her. Alas, it was not the better way for the sender and was thus not chosen. This situation can be modeled fittingly using the IBR approach introduced in previous sections. We will then carry out further analysis on the baseline set by this model.
+This is an interesting situation, for the the speaker could perfectly well achieve her goal of communication and not use the word "treehugger". The listener, who's not in any position to choose the signal, then has to accept the speaker's decision grudgingly, knowing that there would have been a better way for her. Alas, it was not the better way for the sender and was thus not chosen. This situation can be modeled fittingly using the IBR approach introduced in previous sections. We will do so, and then carry out further analysis on the baseline set by this model.
 \subsection{Asymmetric Offence}
 The two interlocutors play an interpretation game. Thus set of states $S$ equals the set of actions $A$: $S=\{mathematician,ecologist\}=A$. Each state holds with equal probability. The players' utilities are given as:\\
 
 \begin{table}[h]
 \centering
-\caption{My caption}
+\caption{Utility Table for Interpretation Game}
 \label{my-label}
 \begin{tabular}{lll}
 States, Actions & math & eco \\
-math            & 1,1  & 0,0 \\
-eco             & 0,0  & 1,1
+math            & a,a  & 0,0 \\
+eco             & 0,0  & a,a
 \end{tabular}
 \end{table}
+Where $a>0$.
 
 There are three possible messages. Let them be denoted as $m_{math},m_{eco}$ and $m_{tree}$, where $m_{eco}$ is the non-offensive and $m_{tree}$ the hurtful message. So the message set $M$ is defined as $M=\{m_{math},m_{eco},m_{tree}\}$. According to the semantics just described, the Boolean matrix looks like this:\\
 \begin{equation*}
@@ -138,8 +139,8 @@ eco              & 0    & 1   & 1
 \end{equation*}
 %figure out how to name rows and columns in matrix
 
-Finally, let $c_s$ and $c_r$ be the respective cost vectors for sender and receiver. Each message is thus associated with a cost vector of length $|M|$ for both agents. In the present context the sender doesn't face any cost, so they are $c_s=(0,0,0)$ and $c_r=(0,0,1)$. %abstract away from specific numbers. generalize
-Also, assume the receiver is unbiased with respect to which state holds, thus $p=(0.5,0.5)$.
+Finally, let $c_s$ and $c_r$ be the respective cost vectors for sender and receiver. Each message is thus associated with a cost vector of length $|M|$ for both agents. In the present context the sender doesn't face any cost, so her cost vector consists of zeros: $c_S=(0,0,0)$. For the receiver, however, the $m_{tree}$ is associated with some cost $c>0$: $c_R=(0,0,c)$.
+Also, assume for now that the receiver is unbiased with respect to which state holds, thus $p=(0.5,0.5)$.
 We will now apply the IBR method to this game. As a first step, let's determine what the naive players' strategies are:\\
 \textbf{Level-0 Players}\\
 \begin{equation*}
