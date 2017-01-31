@@ -473,26 +473,13 @@ $t_2$  & c           & $m_2$    & 0                                  & $a_2$
 \end{table} 
 \end{comment}
 
-\section{Pareto Optimality}
-\subsection{Working together}
+\section{Towards an Explanation of Political Correctness}
+\subsection{Pareto Optimality}
 The previous section contained a demonstration of how harmful messages can be modelled. Our main addition to the IBR model was the notion of receiver's cost. Furthermore, we showed how the IBR process yields strategies which are sub-optimal for both players. In fact, they happen to be optimal for the sender who is in charge and at liberty to send harmful messages to the receiver. We will momentarily bring to the for what criterium of optimality fails to be satisfied. Meanwhile, the receiver's interests are not directly relevant for sender the sender and therefore easily discarded. This seems at odds with real-life observations of language use. It would seem that speakers sometimes do consider the listeners' interests into account when deciding how to express themselves. As a matter of fact, it seems to have become quite unfashionable in many social contexts to call people by their respective racial slurs over the last couple of decades. There seems to exist some understanding between language users which goes counter to the predictions our IBR model gave so far.
 
 Translating this to our signaling game model would imply that there must be some incentive for players finding themselves in the role of the sender to behave differently than our model's predictions. We will presently speak of possible ways to capture these forces, but let us first look closer at the way in which optimality fails.
 
-There simply are better solutions in the asymmetrical and symmetrical game than the ones found so far. Better in which way? Better in the sense, that in both games there exists a solution which provides a greater expected utility for the receiver without affecting the senders expected utility. Simply put, if the sender were to refrain from sending messages which are costly for the receiver, but is still able to convey the correct meaning, then everyone is better or at least as well off. In terms of finding an intuitive name for the interlocutor's behavior, the notion of \textit{political correctness} seems to capture it quite well. In terms of providing an explanation why equilibria thus reached are better, the notion of \textit{Pareto optimality} can be employed.
-
-When comparing stable strategies of a game one can compare the utilities of the players using each strategy. If a strategy gives either player a higher utility while the other player's utility does not go down compared to the other strategy, we say that the the first mentioned strategy Pareto dominates the other one. Meaning that the average utility is increased, if the previous strategy is used. This strategy is not always viable since it might rely on that a player taking some action which be bad for her if the other player does not co-operate. The famous "Prisoner's dilemma" example is helpful when explaing Pareto optimality. In this example two prisoner, Alice and Bob, are faced with the option of confessing to a crime or not confessing. For now we don't consider the ethics of this game for now but rather only the game theoretical aspect of it. Thus both players have two actions "Confess" or "Not Confess". If Alice confesses to the crime and Bob does so as well, each gets two years in prison. But if Bob does not confess, and Alice confesses, he gets away scot free with no years in prison whilst Alice gets 10 years in prison, or vice versa. If neither confesses both get 6 years in prison. If no pre-game talk is allowed and Alice and Bob act rationally and both will decide not to confess because they will both act risk aversly.
-
-\begin{table}[h]
-\centering
-\begin{tabular}{lll}
-Alice, Bob   & Confess & Not Confess \\
-Confess           & 2,2     & 10,0    \\
-Not Confess        & 0,10    & 6,6
-\end{tabular}
-\end{table}
-
-But clearly if they both confess they are both better off! This is where Pareto optimality comes into play. We say that the "confess-confess" strategy strictly Pareto dominates the "not-confess-not-confess" strategy.
+At a simple gaze, there simply are better solutions in the asymmetrical and symmetrical game than the ones found so far. Better in which way? Better in the sense, that in both games there exists a solution which provides a greater expected utility for the receiver without affecting the senders expected utility. Simply put, if the sender were to refrain from sending messages which are costly for the receiver, but is still able to convey the correct meaning, then everyone is better or at least as well off. In terms of finding an intuitive name for the interlocutor's behavior, the notion of \textit{political correctness} seems to capture it quite well. In terms of providing a technical explanation for why equilibria thus reached are better, the notion of \textit{Pareto optimality} can be employed. 
 
 Formally, let $S$ be a set of strategies, let $N$ be a set of players, from 1 to n, and let $u_i$ be the corresponding utilty functions for each player. We say that a strategy $s \in S$ Pareto dominates another strategy $s' \in S$ if:
 
@@ -503,10 +490,22 @@ Formally, let $S$ be a set of strategies, let $N$ be a set of players, from 1 to
 Then we define a strategy s to be Pareto optimal there is no other strategy profile s' which Pareto dominates it. %not sure if formula is 100% correct.
 
 %\begin{equation*}
-%\forall i \in N: u_i(s) \geq u_i(s') \land \neg \exists j \in N: u_j(s') > u_j(s)
+%\forall i \in N: u_i(s) \geq u_i(s') \land \neg \exists j \in N: u_j(s') > u_j(s) % i think there needs to be some quantification over strategies
 %\end{equation*}
 
-Now let us look again at our political correctness games and present the Pareto optimal strategies.
+When looking at stable strategies of a given game, one can compare the players' utilities when using each strategy. If some alternative strategy gives any player a higher utility while no other player's utility decreases, we say that the alternative \textit{pareto dominates} the first option. Playing the alternative means that the average utility is increased. However, playing the alternative strategy is not always viable. if the players fail to coordinate sufficiently, one or both of them might end up worse. 
+
+The famous prisoner's dilemma example comes in helpful when explaing Pareto optimality. Two prisoners, Alice and Bob, are faced with the option of confessing to a crime or not confessing. Thus both players have two actions "Confess" or "Not Confess". If Alice confesses to the crime and Bob does so as well, each gets two years in prison. But if Bob does not confess, and Alice confesses, he gets away scot free with no years in prison, whilst Alice gets sentenced to 10 years in prison. The sentences are flipped if Bob  confesses and Alice remains silent. If neither confesses, both get 6 years in prison. Take the years in prison to be (linear) disutilities. Standard analysis of this game, where no pre-game talk is allowed and Alice and Bob act rationally and risk-aversely, predicts that both will decide not to confess. Here's the game in normal form:
+\begin{table}[h]
+\centering
+\begin{tabular}{lll}
+Alice, Bob   & Confess & Not Confess \\
+Confess           & 2,2     & 10,0    \\
+Not Confess        & 0,10    & 6,6
+\end{tabular}
+\end{table}
+So both obtain a penalty of 6 years. But they clearly they could be better of. For, the strategy $<confess, confess>$ strictly Pareto dominates the strategy $<not-confess,not-confess>$.
+With this in mind let us look again at our signaling games and present the Pareto optimal strategies.
 
 \subsection{Revisiting the asymmetric and symmetric games}
 As state before we can reach a Pareto optimal solution by simply refraining from using the costly messages of the receiver. Let us look at the asymmetric game described above again:
