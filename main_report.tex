@@ -137,14 +137,14 @@ math             & 1    & 0   & 0    \\
 eco              & 0    & 1   & 1   
 \end{bmatrix}
 \end{equation*}
-%figure out how to name rows and columns in matrix
+%figure out how to name rows and columns in matrix properly
 
 Finally, let $c_s$ and $c_r$ be the respective cost vectors for sender and receiver. Each message is thus associated with a cost vector of length $|M|$ for both agents. In the present context the sender doesn't face any cost, so her cost vector consists of zeros: $c_S=(0,0,0)$. For the receiver, however, the $m_{tree}$ is associated with some cost $c>0$: $c_R=(0,0,c)$.
 Also, assume for now that the receiver is unbiased with respect to which state holds, thus $p=(0.5,0.5)$.
 We will now apply the IBR method to this game. As a first step, let's determine what the naive players' strategies are:\\
 \textbf{Level-0 Players}\\
 \begin{equation*}
-S_1=
+S_0=
 \begin{bmatrix}
 1 & 0 & 0\\
 0 & 0.5 & 0.5
@@ -158,30 +158,60 @@ R_0=
 0 & 1
 \end{bmatrix}
 \end{equation*}
-That the naive sender has no principle to decide between sending either message meaning \textit{ecologist} is represented by her sending both signals half of the time. So she plays a mixed strategy. The receiver's the actions are clearly determined by a pure strategy.\\
-What is the best response of the level-1 hearer and speaker? Following the IBR procedure we transpose $R_0$, deduct the cost vector $c_s$ and check row-wise for the best response to obtain $S_1$. We proceed analogously for the receiver, the main difference being in this case that the receiver faces some actual cost. This then yields strategies for level-1 players:\\ %transposition of cost vector
+That the naive sender has no principle to decide between sending either message meaning \textit{ecologist} is represented by her sending both signals half of the time. So she plays a mixed strategy. The receiver's actions are clearly determined by a pure strategy.\\
+What is the best response of the level-1 hearer and speaker? Following the IBR procedure we transpose $R_0$, subtract the cost vector $c_S$ and check row-wise for the best response to obtain $S_1$. We proceed analogously for the receiver, the main difference being in this case that the receiver faces some actual cost. This then yields strategies for level-1 players:\\
 \textbf{Level-1 Players}\\
 \begin{equation*}
-S_0=
+S_0= BR_S(T(R_0)-c_S)=
+BR_S
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 1
+\end{bmatrix}
+-
+\begin{bmatrix}
+0 & 0 & 0
+\end{bmatrix}
+=
 \begin{bmatrix}
 1 & 0 & 0\\
 0 & 0.5 & 0.5
 \end{bmatrix}
 \end{equation*}
 \begin{equation*}
-R_1=
+R_1=BR_R(T(S_0)-T(c_R)=
+BR_R
+\begin{bmatrix}
+1 & 0\\
+0 & 1\\
+0 & 1
+\end{bmatrix}
+-
+\begin{bmatrix}
+0\\
+0\\
+c
+\end{bmatrix}
+=
+BR_R
+\begin{bmatrix}
+1 & 0\\
+0 & 1\\
+0-c & 1-c
+\end{bmatrix}
+=
 \begin{bmatrix}
 1 & 0\\
 0 & 1\\
 0 & 1
 \end{bmatrix}
 \end{equation*}
-The interesting story here, however, is the player's expected payoffs. While playing this strategy yields an expected payoff of $1$ for the sender, the receiver obtains a mere 0.75 in expectation. To see why this is, consider the positions the two players are facing in this game. Start with the receiver: Whether she likes the message or not, she can always reason what her interlocutor wants to communicate to her. If the messages $m_{math}$ or $m_{eco}$ are sent, she will chose the respective action, communication is successfull, so both players get their payoff and everyone is happy. If the message $m_{tree}$ is sent, however, she immediately suffers the associated cost. Still, she knows what the sender is trying to communicate and her best response will be to comply and play the respective action. Refusing to understand is not an option, for it would only add insult to injury; she would both pay the cost of hearing $m_{tree}$ and lose the payoff of understanding correctly. Because she can anticipate the receiver to behave this way, the sender does not have to care about sending either semantically correct message upon observing that the state $mathematician$ holds.
+$S_0=S_1$ and $R_0=R_1$, we have already reached a point where both players will always play this pair of strategy, irrespective of their level of sophistication. The interesting story here, however, is the player's expected payoffs. While playing this strategy yields an expected payoff of $a$ for the sender, the receiver obtains a mere $a-\tfrac{c}{4}$ in expectation.
+\footnote{The calculation leading to this: With probability 0.5 state $t{eco}$ holds where the receiver sends $m_{tree}$ with probability 0.5. So $m_{tree}$ is sent in $0.5\times 0.5 =0.25$ of all cases and then causes a cost of $c$. Communication is always successfull, as can be gathered from the strategies played, hence the receiver can expect to obtain the payoff of correct interpretation minus the cost$\times$probability of hearing $m_{tree}$.}To see why this is, consider the positions the two players are facing in this game. Start with the receiver: Whether she likes the message or not, she can always reason what her interlocutor wants to communicate to her. If the messages $m_{math}$ or $m_{eco}$ are sent, she will chose the respective action, communication is successfull, so both players get their payoff and everyone is happy. If the message $m_{tree}$ is sent, however, she immediately suffers the associated cost. Still, she knows what the sender is trying to communicate and her best response will be to comply and play the respective action. Refusing to understand is not an option, for it would only add insult to injury; she would both pay the cost of hearing $m_{tree}$ and lose the payoff of understanding correctly. Because she can anticipate the receiver to behave this way, the sender does not have to care about sending either semantically correct message upon observing that the state $mathematician$ holds.
 
-Since we assumed that either state holds with equal probability, and the sender uses $m_{tree}$ in half of the cases when signaling $ecologist$, we can expect the receiver to pay the cost of $1$ every fourth time around. This results in $EU(R)=0.75$ and $EU(S)=0.75$.
+Since we assumed that either state holds with equal probability, and the sender uses $m_{tree}$ in half of the cases when signaling $ecologist$, we can expect the receiver to pay the cost of $c$ every fourth time around. This results in $EU(R)=a$ and $EU(S)=a-\tfrac{c}{4}$.
 
-The crucial thing to note here, however, is that we claim that the receiver could be just as well off as the sender without the latter having to lose anything in return. For more clarification on optimality of strategies see discussion below on Pareto optimality. \\
-So let us now consider a slightly modified version of this game where both sender and receiver stand to lose something from the wrong messages being played.
+We claim that the receiver could be just as well off as the sender without the latter having to lose anything in return. The strategies played fail to satisfy a criterium of optimality known as \texit{pareto optimality}.We will now consider a slightly modified version of this game where both sender and receiver stand to lose something from the wrong messages being played. Then we will turn to a more detailled discussion of the optimal strategies played with respect to pareto optimality.
 \subsection{Symmetric Offence}
 Assume now that two agents are talking (perhaps repeatedly) with each other using some shared language fragment. Although they have this common language, their preferences over how to put things vary a great deal. Say Player 1 has distinctly dislikes some specific message's flavor, while Player 2 has no issue with it whatsoever. Assume further that this time around there is also some message which upsets Player 2 but doesn't affect Player 1.
 
