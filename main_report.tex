@@ -96,11 +96,16 @@ More sophisticated players are modeled as to have some belief about the interloc
 \Pi(X)=\{\sum_{x\in X} \dfrac{1}{\mathbb{C}}X\}
 \end{equation*} %i don't understand this equation
 
-Finally, we define the notion of \textit{best response} given a set of beliefs. Intuitively, a sender's best response to some strategy $\rho$ is any pure strategy that maps each state to that signal which maximizes the expected utility. More formally speaking, the sender's best response to some receiver strategy is\\
+Finally, we define the notion of \textit{best response} given a set of beliefs. A sender's best response to some strategy $\rho$ is any pure strategy that maps each state to that signal which maximizes the expected utility. 
+\begin{comment}
+More formally speaking, the sender's best response to some receiver strategy is\\
 \begin{equation*}
 BR_S(\rho)=\{s\in S | s_{ij}=1\implies j \in arg_kmax(U_S T(\rho)-c)_ik)\}
-\end{equation*}
-As the sender has a set of beliefs $\Pi$ about the receivers possible behavior, the set of best responses is the union of all best responses to
+\end{equation*} 
+\end{comment}
+A receiver's best response to a sender's strategy $\sigma$ is defined essentially the same way. Except that there may be so-called \textit{surprise messages} $m_j$ for which $\sigma_{ij}=0$, for all $i$. These are messages the sender will use with probability 0, that is, never. Since strategies are plans of action for every conceivable contingency that might arise in the course of a game, the best response will need to have some action for surprise messages.
+\textbf{What to do here? Either fall back on literal meaning-change symmetric case. or explain why priors are used}
+As the sender has a set of beliefs $\Pi$ about the receivers possible behavior, the set of best responses is the union of all best responses to these possible strategies: $BR(\Pi=\Cup\{BR(\pi)|\pi\in\Pi\}$.
 
 
 \section{Sticks and Stones}
@@ -640,7 +645,6 @@ Further, let the states follow some non-uniform probability distribution. Say a 
 When running this in a simulation where the states do not follow a uniform distribution, I would hope to find that more common states are signaled with less costly messages. The receiver's cost would not play a role here, however. 
 On a related note, we might actually be able to apply some sort of optimal coding argument to argue why shorter expressions are assigned to denote more frequent states.
 Finally, we could look at a model with a compositional message space where the cost a receiver incurs upon hearing an expression is given by a function of said composition.\\
-For starters, we could assume a model where $|S|>>|M|$ and the cost of the receiver is an increasing function of the amount of elements of M used to signal a state.
-\end{comment}
+For starters, we could assume a model where $|S|>>|M|$ and the cost of the receiver is an increasing function of the amount of elements of M used to signal a state. \end{comment}
 
 \end{document}
