@@ -264,7 +264,7 @@ The cost vectors are given by
 \begin{equation*}
 c^1=
 \begin{bmatrix}
-0 & 0 & 0 & o^1
+0 & 0 & 0 & o^11
 \end{bmatrix}
 ,
 c^2=
@@ -272,11 +272,11 @@ c^2=
 0 & o^2 & 0 & 0
 \end{bmatrix}
 \end{equation*}
-Where $o^1,o^2>0$. When played as an IBR, there are essentially two possible games being played: one where Player 1 is in the role of the sender and Player 2 in the role of receiver, and vice versa. Since the game is entirely symmetrical it will suffice to analyze just one such situation. The players' reasoning, and ultimately behavior, will be the same as their opponent's were they to find themselves in their position.
+Where $o^1,o^2>0$. Successful communication will yield a payoff of $a$ for both players. When played as an IBR, there are essentially two possible games: one where Player 1 is in the role of the sender and Player 2 in the role of receiver, and vice versa. Since the game is entirely symmetrical it will suffice to analyze just one such situation. The players' reasoning, and ultimately behavior, will be the same as their opponent's were they to find themselves in their position.
 
 \subsubsection{Game play}
 Say it's Player 2's lucky day and she were chosen to be in the position of sender.  What does the IBR analysis tell us?\\
-\textbf{Level-0 Players}\footnote{We have assumed that players of this level lack not only epistemic power but even very basic self-awareness. We assumed them to be naive even with respect to the cost they may cause themselves when choosing a message.}\\
+\textbf{Level-0 Players}\footnote{We have assumed that players of this level lack not only epistemic power but even very basic self-awareness. We assumed them to be unaware of the cost they may cause themselves when choosing a message.}\\
 \begin{equation*}
 S_0=
 \begin{bmatrix}
@@ -295,6 +295,141 @@ ecologist & 0 & 1 \\
 treehugger & 0 & 1
 \end{bmatrix}
 \end{equation*}
+
+\begin{equation*}
+S_1=
+BR^2(R_0^T-c^2)=
+BR^2(
+\begin{bmatrix}
+1 & 1 & 0 & 0\\
+0 & 0 & 1 & 1
+\end{bmatrix}
+-
+\begin{bmatrix}
+0 & o^2 & 0 & 0
+\end{bmatrix}
+)
+=
+BR^2(
+\begin{bmatrix}
+ 1      & 1-o^2   & 0  & 0   \\
+0     & 0-o^2   & 1      & 1 
+\end{bmatrix}
+)
+=
+\begin{bmatrix}
+1 & 0 & 0 & 0\\
+0 & 0 & 0.5 & 0.5
+\end{bmatrix}
+\end{equation*}
+
+\begin{equation*}
+R_1=
+BR^1(S_0^T-{c^1}^T)=
+BR^1(
+\begin{bmatrix}
+1 & 0\\
+1 & 0\\
+0 & 1\\
+0 & 1
+\end{bmatrix}
+-
+\begin{bmatrix}
+0 \\
+0 \\
+0 \\
+o^1
+\end{bmatrix}
+)
+=
+BR^1(
+\begin{bmatrix}
+1 & 0\\
+1 & 0\\
+0 & 1\\
+0-o^1 & 1-o^1
+\end{bmatrix}
+)
+=
+\begin{bmatrix}
+1 & 0\\
+1 & 0\\
+0 & 1\\
+0 & 1
+\end{bmatrix}
+\end{equation*}
+
+\begin{equation*}
+S_2=S_1
+\end{equation*}
+
+\begin{equation*}
+R_2=
+BR^1(S_1^T-{c^1}^T)=
+BR^1(
+\begin{bmatrix}
+1 & 0\\
+0 & 0\\
+0 & 0.5\\
+0 & 0.5
+\end{bmatrix}
+-
+\begin{bmatrix}
+0 \\
+0 \\
+0 \\
+o^1
+\end{bmatrix}
+)
+=
+BR^1(
+\begin{bmatrix}
+1 & 0\\
+0 & 0\\
+0 & 0.5\\
+0-o^1 & 0.5-o^1
+\end{bmatrix}
+)
+=
+\begin{bmatrix}
+1 & 0\\
+0.5 & 0.5\\
+0 & 1\\
+0 & 1
+\end{bmatrix}
+\end{equation*}
+
+\begin{equation*}
+S_3=
+BR^2(R_2^T-c^2)=
+BR^2(
+\begin{bmatrix}
+1 & .5 & 0 & 0\\
+0 & .5 & 1 & 1
+\end{bmatrix}
+-
+\begin{bmatrix}
+0 & o^2 & 0 & 0
+\end{bmatrix}
+)
+=
+BR^2(
+\begin{bmatrix}
+ 1      & 0.5-o^2   & 0  & 0   \\
+0     & 0.5-o^2   & 1      & 1 
+\end{bmatrix}
+)
+=
+\begin{bmatrix}
+1 & 0 & 0 & 0\\
+0 & 0 & 0.5 & 0.5
+\end{bmatrix}
+=S_2
+\end{equation*}
+\begin{equation*}
+R_3=R_2
+\end{equation*}
+
 
 Say this game were played only once in IBR fashion. The the expected utility of whichever player nature chose to be the sender will be  since the sender will of course refrain from the message which is costly for her and all messages will be understoood by the receiver. But in this case the sender might use the message which is costly for the receiver, so we get an expected utility of 0.75 for the receiver. Similarly as in the asymmetrical case above.
 
