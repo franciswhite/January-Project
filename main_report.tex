@@ -285,8 +285,8 @@ Say it's Player 2's lucky day and she were chosen to be in the position of sende
 S_0=
 \begin{bmatrix}
 - & mathematician & autist & ecologist & treehugger \\
-mathematician  & 1      & 1    & 0        & 0   \\
-ecologist  & 0     & 0   & 1       & 1 
+mathematician  & 0.5      & 0.5    & 0        & 0   \\
+ecologist  & 0     & 0   & 0.5      & 0.5 
 \end{bmatrix}
 \end{equation*}
 \begin{equation*}
@@ -332,10 +332,10 @@ R_1=
 BR^1(S_0^T-{c^1}^T)=
 BR^1(
 \begin{bmatrix}
-1 & 0\\
-1 & 0\\
-0 & 1\\
-0 & 1
+0.5 & 0\\
+0.5 & 0\\
+0 & 0.5\\
+0 & 0.5
 \end{bmatrix}
 -
 \begin{bmatrix}
@@ -348,10 +348,10 @@ o^1
 =
 BR^1(
 \begin{bmatrix}
-1 & 0\\
-1 & 0\\
-0 & 1\\
-0-o^1 & 1-o^1
+0.5 & 0\\
+0.5 & 0\\
+0 & 0.5\\
+0-o^1 & 0.5-o^1
 \end{bmatrix}
 )
 =
@@ -434,14 +434,26 @@ S_3=S_2,
 R_3=R_2
 \end{equation*}
 
-\textbf{INSERT TABLE SHOWING EXPECTED PAYOFFS FOR DIFFERENT LEVELS}
+So we have reached a stable set of strategies. Some remarks about these strategies are in order. First, the sender - in this case Player 2 - will never send the message she finds offensive. This makes perfect intuitive sense, because she has a non-costly alternative to spare her from uttering "autist". Second, the receiver - Player 1 - view the message $autist$ as a \textit{surprise message}. That is, although Player 2 will never play it, Player 1 still needs to specify what would happen in this contingency. We'll assume that she simply uses her (unbiased) priors to decide.
+Thirdly, while a sender of level zero still harms herself by blindly sending a message she dislikes, every sender of level above zero will stop doing so. Thus, the costly message for sender will not be seen on higher levels and her expected payoff  always be optimal.
+The following table summarizes the third point:
+\begin{table}[h]
+\centering
+\caption{Expected Payoff for Level of Sophistication}
+\label{my-label}
+\begin{tabular}{lll}
+                                    & Sender                                  & Receiver                                \\ \cline{2-3} 
+\multicolumn{1}{l|}{Level-0}        & \multicolumn{1}{l|}{$a-\tfrac{o^S}{4}$} & \multicolumn{1}{l|}{$a-\tfrac{o^R}{4}$} \\ \cline{2-3} 
+\multicolumn{1}{l|}{Level-k, $k>0$} & \multicolumn{1}{l|}{a}                  & \multicolumn{1}{l|}{$a-\tfrac{o^R}{4}$} \\ \cline{2-3} 
+\end{tabular}
+\end{table}
 
-So we have reached a stable set of strategies. Some remarks about these strategies are in order. First, the sender - in this case Player 2 - will never send the message she finds offensive. This makes perfect intuitive sense, because she has a non-costly alternative to spare her from uttering "autist". Second, the receiver - Player 1 - view the message $autist$ as a \textit{surprise message}. That is, although Player 2 will never play it, Player 1 still needs to specify what would happen in this contingency. We'll assume that she simply uses her (unbiased) priors to decide. Finally, notice how in this game too the receiver does can't escape from paying a cost. Because Player 2 does not see the message $treehugger$ as costly, she will play it alternately with $ecologist$.
+Finally, notice how in this game too the receiver can't escape from paying a cost. Because Player 2 does not see the message $treehugger$ as costly, she will play it alternately with $ecologist$.
 
 If this game were played only once in IBR fashion, then the expected utility of whichever player nature chose to be the sender will be $a$. Again, this is due to the fact that the sender will of course refrain from the message which is costly for her. At the same time, it is still the most advantageous move for the receiver to interpret all messages correctly. Furthermore, the sender might still use the message which is costly for the receiver, so she can expect a utility of $a-\tfrac{o^i}{4}$, for $i\in \{1,2\}$. for the receiver. As Player 2 happens to be the sender, she can expect the full payoff of $a$ in any case, while Player 1 should expect a payoff of $a-\tfrac{o^1}{4}$. So in case the game is only played once, things behave similarly as in the asymmetrical case above.
 
 Now, actual language use is an activity which agents play repeatedly and in different roles, so let's assume they play above game many times while nature choses the players' roles in each round with equal probability. Since, as already noted, the game is symmetrical, we can simply interchange the expected payoffs for the two players if they play in the other role. Say, nature happens to be very fair and assign the role of speaker with probability 0.5 to either player. Over the course of a lifetime of conversation - or a sufficient amount of linguistic interactions (thanks Gawd for the weak law of large numbers, dicho sea de paso) - the players can expect a utility of $a-\tfrac{o^i}{8}$, for $i\in \{1,2\}$. Notice that $a-\tfrac{o^i}{8} > a-\tfrac{o^i}{4}$, for any $o^i,a>0$. %is this right?
-Here too our claim applies that this outcome is not the best outcome for either player. There is a better strategy which will achieve an expected outcome of exactly $a$ for both players. 
+Here too, we claim that this outcome is not optimal outcome for either player. There is a better strategy which will achieve an expected outcome of exactly $a$ for both players. 
 
 \begin{comment}
 Starting from Spence's seminal "Job Market Signalling", much has been written about games where by sending a message an agent causes a cost. This is the core of so-called \textit{costly signalling games}. Particularly economic theory has been interested in this twist of the Lewisian signaling model.\\
