@@ -475,16 +475,200 @@ $t_2$  & c           & $m_2$    & 0                                  & $a_2$
 
 \section{Pareto Optimality}
 \subsection{Working together}
-Pareto Optimality is a measure of Nash Equilibrium efficiency. In many games the outcome of the game, defined in terms of Nash equilibriums, is not in everyones best interests, meaning that there is another equilibrium which is strictly more benefitial for either or both players without reducing the outcome for anyone. We say that an outcome of a game is Pareto optimal if there is no other outcome that makes every player at least as well off and at least one player strictly better off. In the previous chapter we discussed the expected utility for each player and claimed that in neither the symmetrical nor the asymmetrical political correctness game the optimal outcome is reached, i.e. that neither outcome is Pareto optimal. In the subsequent section we will demonstrait how a Pareto optimal solution is not reached in either game and then suggest solutions which can reach a Pareto optimal strategy.
+In the previous section we demonstrated how harmful messages could be modelled by adding into the IBR model the notion of receivers cost. Further more we demonstrated how the IBR model does not provide a solution optimal for both receiver and sender. In fact, it is only optimal for the sender, since she is in charge and can send costly messages to the receiver. The receiver's interests are therefore not directly taken into account by the sender. This seems counter-intuitive since we observe in real-life that often the speaker takes the receivers intrests into account when deciding which messages to send. The receiver could of course simply not take the receivers cost into account and say what ever suites her the best, this seems to be the conclusion of the IBR model in the previous chapter. We, however, claim that there are better solutions in the asymmetrical and symmetrical game. That is, there exists a solution which provides a greater expected utility for the receiver without affecting the senders expected utility. This solution consists of the sender refraining from sending messages which are costly for the receiver but is still able to convay the correct meaning. This solution seems to correlate quite well with our intuitive notion of \textit{political correctness}. The optimality of this solution, with regard to the other previously discussed solution, can be defined in terms of Pareto optimality.
+
+When comparing stable strategies of a game one can compare the utilities of the players using each strategy. If a strategy gives either player a higher utility while the other player's utility does not go down compared to the other strategy, we say that the the first mentioned strategy Pareto dominates the other one. Meaning that the average utility is increased, if the previous strategy is used. This strategy is not always viable since it might rely on that a player taking some action which be bad for her if the other player does not co-operate. The famous "Prisoner's dilemma" example is helpful when explaing Pareto optimality. In this example two prisoner, Alice and Bob, are faced with the option of confessing to a crime or not confessing. For now we don't consider the ethics of this game for now but rather only the game theoretical aspect of it. Thus both players have two actions "Confess" or "Not Confess". If Alice confesses to the crime and Bob does so as well, each gets two years in prison. But if Bob does not confess, and Alice confesses, he gets away scot free with no years in prison whilst Alice gets 10 years in prison, or vice versa. If neither confesses both get 6 years in prison. If no pre-game talk is allowed and Alice and Bob act rationally and both will decide not to confess because they will both act risk aversly.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lll}
+Alice, Bob   & Confess & Not Confess \\
+Confess           & 2,2     & 10,0    \\
+Not Confess        & 0,10    & 6,6
+\end{tabular}
+\end{table}
+
+But clearly if they both confess they are both better off! This is where Pareto optimality comes into play. We say that the "confess-confess" strategy strictly Pareto dominates the "not-confess-not-confess" strategy.
+
+Formally, let $S$ be a set of strategies, let $N$ be a set of players, from 1 to n, and let $u_i$ be the corresponding utilty functions for each player. We say that a strategy $s \in S$ Pareto dominates another strategy $s' \in S$ if:
+
+\begin{equation*}
+\forall i \in N: u_i(s) \geq u_i(s') \land \exists j \in N: u_j(s) > u_j(s')
+\end{equation*}
+
+Then we define a strategy s to be Pareto optimal there is no other strategy profile s' which Pareto dominates it. %not sure if formula is 100% correct.
+
+%\begin{equation*}
+%\forall i \in N: u_i(s) \geq u_i(s') \land \neg \exists j \in N: u_j(s') > u_j(s)
+%\end{equation*}
+
+Now let us look again at our political correctness games and present the Pareto optimal strategies.
+
 \subsection{Revisiting the asymmetric and symmetric games}
-As claimed above in the asymmetric game there is an equilibrium in which both players can expect a payoff of 1. Since the sender already achieves a payoff of 1 and the receiver only a payoff of 0.75 this equilibrium is sctricly better for the receiver and as good for the sender. This equilibrium is in fact Pareto optimal and strictly better than the previous equilibrium for the receiver. This optimality could be reached by only adjusting the sender strategy so that she never sends the offending message. Still, we don't see this strategy being played, for it is not in the sender's explicit interest and, coincidentally, it is her who wields the power to decide over the matter. This raises questions on how we can make it in the sender's explicit interest to change her strategy to encompass the receiver's interests. In the next section we discuss some ways to achieve this.\\
-In the symmetrical game we observed a similar non-Pareto optimal outcome and claimed that there existed a strictly better strategy which would be Pareto optimal. This is the same strategy as described above in the asymmetrical game. If both players refrain from using harmful/costly messages and instead use other messages which convey the same meaning then a Pareto optimal solution is possible. This could be achvieved by having a pre-game talk in which the two players could agree on using only strategies which both are ok with. This would allow them to move to the pareto optimal equilibrium of strategies. Let us now turn our attention to how we can enforce Pareto optimal solutions.
+As state before we can reach a Pareto optimal solution by simply refraining from using the costly messages of the receiver. Let us look at the asymmetric game described above again:
+
+ \begin{equation*}
+ B =
+ \begin{bmatrix}
+
+ States, Messages & math & eco & tree \\
+ math             & 1    & 0   & 0    \\
+ eco              & 0    & 1   & 1
+ \end{bmatrix}
+ \end{equation*}
+
+ With $c_s=(0,0,0)$ and $c_r=(0,0,1)$. In that game we reached a stable strategy quickly:
+
+\textbf{Level-1 Players}\\
+\begin{equation*}
+S_1=
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & 0.5 & 0.5
+\end{bmatrix}
+\end{equation*}
+\begin{equation*}
+R_1=
+\begin{bmatrix}
+1 & 0\\
+0 & 1\\
+0 & 1
+\end{bmatrix}
+\end{equation*}
+
+A Pareto optimal strategy would be:
+
+\textbf{Pareto optimal}\\
+\begin{equation*}
+S_*=
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0
+\end{bmatrix}
+\end{equation*}
+\begin{equation*}
+R_*=
+\begin{bmatrix}
+1 & 0\\
+0 & 1\\
+0.5 & 0.5
+\end{bmatrix}
+\end{equation*}
+
+That is, the sender never sends the offending message and that message is considered by the receiver as a surprisal message. Thus only by adjusting the sender strategy an optimal solution can be reached. Similarly for the symmetrical game:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lllll}
+States, Message & black & darkie & white & cracker \\
+$black$  & 1      & 1    & 0        & 0   \\
+$white$  & 0     & 0   & 1       & 1
+\end{tabular}
+\end{table}
+
+With $cs=(0,0,0,1)$ and $cr(0,1,0,0)$. A Pareto optimal strategy would be:
+
+\textbf{Pareto optimal}\\
+\begin{equation*}
+S_*=
+\begin{bmatrix}
+1 & 0 & 0 & 0\\
+0 & 0 & 1 & 0
+\end{bmatrix}
+\end{equation*}
+\begin{equation*}
+R_*=
+\begin{bmatrix}
+1 & 0\\
+0.5 & 0.5 \\
+0 & 1\\
+0.5 & 0.5 \\
+\end{bmatrix}
+\end{equation*}
+
+That is, again, the sender never sends the offending message.
+
+We can clearly see that there is a strategy, in both games, which is better than the strategy reached by the IBR model, namely, the strategy above. This optimal strategy could be reached by only adjusting the sender strategy so that she never sends the offending message. We don't see this strategy in the IBR model since it is not explicitly in the sender's interest and, coincidentally, it is her who wields the power to decide over the matter. Thus we might adjust the sender preferences so that she takes into account the receiver's interests, i.e. the receivers cost. In the next section we discuss some ways to achieve this.\\
 
 \subsection{Solutions}
-As we have observed in previous discussions is that to achieve a Pareto optimal solution the sender needs to change her strategy in order to not offend (incur costs to) the receiver. Thus let us define three types of senders a) A nice sender which takes the costs vector of the receiver into account and refrains from sending messages which are costly to the receiver. We can thus define the nice sender cost as: $ncs=cs + cr^T$. b) a malicious sender which takes the costs vector of the receiver into account and attempts to send the costly messages. We can thus define the malicious sender cost as: $mcs=cs - cr^T$. c) an indifferent sender which is essentially the same as used the the above examples. We will not explore the indifferent sender here but consider that sender already covered. \\
-Let us now go through the IBR model for the asymmetric game with a nice sender. We will use the same example as above but only adjust the sender cost to our new defintion.
 
-As before there are three possible messages. Let them be denoted as $m_{math},m_{eco}$ and $m_{tree}$, where $m_{eco}$ is the non-offensive and $m_{tree}$ the hurtful message. So the message set $M$ is defined as $M=\{m_{math},m_{eco},m_{tree}\}$. According to the semantics just described, the Boolean matrix looks like this:\\
+If both players refrain from using harmful/costly messages and instead use other messages which convey the same meaning then a Pareto optimal solution is possible. This could be achvieved by having a pre-game talk in which the two players could agree on using only strategies which both agree wwith. This would allow them to move to the pareto optimal equilibrium of strategies. This does not seem so far fetched since it seems in language user's best interests to opt of Pareto optimal solutions, since someday the tables might turn.
+
+How do we then go about adjusting the model in order to take the receiver's preference explicitly into account? One solution might be to define three types of sender types: \\
+
+\begin{enumerate}
+\item A nice sender
+\item A malicous sender
+\item Indifferent sender
+\end{enumerate}
+
+Then for the \textit{Nice sender} we extend the sender's cost vector:
+
+\begin{equation*}
+c_s^n= c_s + c_r
+\end{equation*}
+
+Where $c_s^n$ is sender cost vector used for the sender in the IBR model, $c_s$ is the original cost vector of the sender and $c_r$ is the cost vector of the receiver. A nice sender thus takes the costs vector of the receiver into account and refrains from sending messages which are costly to the receiver. An explicit example:
+
+\begin{equation*}
+c_s^n= c_s + c_r
+\end{equation*}
+\begin{equation*}
+c_s^n=
+\begin{bmatrix}
+0 \\
+0 \\
+0
+\end{bmatrix}
++
+\begin{bmatrix}
+0 \\
+0 \\
+1
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 \\
+0 \\
+1
+\end{bmatrix}
+\end{equation*}
+
+Similiarly for the \textit{Malicious sender} we extend the sender's cost vector:
+
+\begin{equation*}
+c_s^m= c_s - c_r
+\end{equation*}
+
+Where $c_s^m$ is sender cost vector used for the sender in the IBR model, $c_s$ is the original cost vector of the sender and $c_r$ is the cost vector of the receiver. A malicious sender thus takes the costs vector of the receiver into account and attempts to send the costly messages. An explicit example:
+
+\begin{equation*}
+c_s^m= c_s - c_r
+\end{equation*}
+\begin{equation*}
+c_s^n=
+\begin{bmatrix}
+0 \\
+0 \\
+0
+\end{bmatrix}
+-
+\begin{bmatrix}
+0 \\
+0 \\
+1
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 \\
+0 \\
+-1
+\end{bmatrix}
+\end{equation*}
+
+The indifferent sender is essentially the same sender as used the the examples above and therefore does not need further discussion. \\
+
+Let us now go through the IBR model for the asymmetric game with a nice sender. We will use the same example as above and only adjust the sender cost to our new defintion. As before there are three possible messages. Let them be denoted as $m_{math},m_{eco}$ and $m_{tree}$, where $m_{eco}$ is the non-offensive and $m_{tree}$ the hurtful message. So the message set $M$ is defined as $M=\{m_{math},m_{eco},m_{tree}\}$. According to the semantics just described, the Boolean matrix looks like this:\\
 \begin{equation*}
 B =
 \begin{bmatrix}
@@ -495,7 +679,7 @@ eco              & 0    & 1   & 1
 \end{bmatrix}
 \end{equation*}
 
-Now we, let $c_s$ and $c_r$ be the respective cost vectors for sender and receiver. Each message is thus associated with a cost vector of length $|M|$ for both agents. In the present context the sender doesn't face any cost, so they are $c_s=(0,0,0)$ and $c_r=(0,0,1)$. Thus we get $ncs=cs + cr^T=(0,0,1)$. Since the sender did not originally have any costs associated with the messages we get $c_r=ncs$. Like before we assume the receiver is unbiased with respect to which state holds, thus $p=(0.5,0.5)$.
+Now we, let $c_s$ and $c_r$ be the respective cost vectors for sender and receiver. Each message is thus associated with a cost vector of length $|M|$ for both agents. In the present context the sender doesn't face any cost, so they are $c_s=(0,0,0)$ and $c_r=(0,0,1)$. Thus use $c_s^n=cs + cr=(0,0,1)$. Since the sender did not originally have any costs associated with the messages we get $c_r=c_s^n$. Like before we assume the receiver is unbiased with respect to which state holds, thus $p=(0.5,0.5)$.
 We will now apply the IBR method to this game. As a first step, let's determine what the naive players' strategies are:\\
 \begin{equation*}
 S_0=
@@ -536,20 +720,9 @@ S_2=S_1
 R_1=R_2
 \end{equation*}
 
-As we see we reach an equilibrium very quickly and the sender refrains from using messages which are costly to the receiver. The nice sender is thus able to reach the Pareto optimal solution since the expected utility of the sender and receiver is 1 as claimed above.
+As we see we reach an equilibrium very quickly and the sender refrains from using messages which are costly to the receiver. The nice sender is thus able to reach the Pareto optimal solution discussed above.
 
-Let us now explore the symmetrical game with a malicious sender. Let us again use a previously mentioned example.
-\begin{table}[h]
-\centering
-\begin{tabular}{lllll}
-States, Message & black & darkie & white & cracker \\
-$black$  & 1      & 1    & 0        & 0   \\
-$white$  & 0     & 0   & 1       & 1
-\end{tabular}
-\end{table}
-
-%TODO finish calcualting this shiet%
-The cost vectors are given by cs=(0,0,0,1) and $cr(0,1,0,0)^T$. Thus we have $mcs=cs - cr^T =(0,-1,0,1)$ like before the priors are (0.5,0.5).
+Let us now explore the asymmetrical game with a malicious sender. The only thing which changes is the sender cost used: $c_s^m=cs - cr=(0,0,-1)$
 \begin{equation*}
 S_0=
 \begin{bmatrix}
@@ -566,10 +739,50 @@ R_0=
 \end{bmatrix}
 \end{equation*}
 
+\begin{equation*}
+S_1=
+\begin{bmatrix}
+0.5 & 0.5 & 0\\
+0 & 1 & 0
+\end{bmatrix}
+\end{equation*}
+\begin{equation*}
+R_1=
+\begin{bmatrix}
+1 & 0\\
+0 & 1\\
+0 & 1
+\end{bmatrix}
+\end{equation*}
 
+\begin{equation*}
+S_2=S_1=
+\begin{bmatrix}
+0.5 & 0.5 & 0\\
+0 & 1 & 0
+\end{bmatrix}
+\end{equation*}
+\begin{equation*}
+R_2=
+\begin{bmatrix}
+1 & 0\\
+0 & 1\\
+0.5 & 0.5
+\end{bmatrix}
+\end{equation*}
 
+Thus given the malicious cost vector the sender will end with a mixed strategy, sometimes opting for insults rather than communication.
+
+If we generalize the \textit{nice} and \textit{malicious} definitions of the sender's cost vector we get a new adjusted sender cost vector.
+
+\begin{equation*}
+c_s^a= c_s + a * c_r
+\end{equation*}
+
+Where a is a scalar value, s.t. $a \in \R $. So if $a=0$ we get an indifferent sender, if$a <0$ we get a malicious sender and if $a>0$ we get a considerate sender.
 
 \subsection{Punishment}
+We can also consider different ways of attempting to achieve Pareto optimality.
 Non-credible threat
 Automatic
 Distribution over a

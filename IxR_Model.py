@@ -78,16 +78,20 @@ class IteratedModel(object):
         return self.receiver
 
     def get_uniform_row(self, shape):
-        return np.ones(shape) * 1/shape
+        return np.ones(shape) * 1 / shape
 
     def __str__(self):
         # TODO adjust nicely with formatting
+        np.set_printoptions(formatter={'float': '{: 0.3f}'.format})
         print("Initial setup")
         print(self.B)
+        print("Sender cost: " + str(self.sender_cost))
+        print("Receiver cost: " + str(self.receiver_cost))
+        print("Priors: " + str(self.receiver_prior))
         print("-----Sender------:------Receiver-------\n")
         for level in range(0, self.level):
-            print(self.sender[level])
-            print(self.receiver[level])
+            print(str(self.sender[level]))
+            print(str(self.receiver[level]))
             print("\n")
         # TODO fix to string hack
         return ""
@@ -103,29 +107,70 @@ def row_wise_division(row):
         return row
     return row * (1 / sum)
 
+
 import unittest
 
 
 class TestModels(unittest.TestCase):
+    def test_symmetric_evil_sender(self):
+        B = np.array([[1, 1, 0, 0],
+                      [0, 0, 1, 1]])
+        receiver_cost = np.array([0, 0, 0, 1])
+        sender_cost = np.array([0, 1, 0, 0]) - receiver_cost
+        # works, the sender does not send the costly message of the receiver
+        iterated_model = IteratedModel(B, sender_cost, receiver_cost, None)
+        for x in range(0, 5):
+            iterated_model.next_level_reasoning()
+        np.testing.assert_array_equal(iterated_model.get_receiver()[4][0], np.array([[1., 0.],
+                                                                                     [0.5, 0.5],
+                                                                                     [0.5, 0.5],
+                                                                                     [0., 1.]]))
+        np.testing.assert_array_equal(iterated_model.get_sender()[4][0], np.array([[ 0.5,  0.000,  0.000,  0.5],
+                                                                                   [0., 0., 0., 1.]]))
 
-    def test_assymetric(self):
-        B = np.array([[1, 1, 0],
-                      [0, 0, 1]])
-        sender_cost = np.array([0, 0, 0])
-        receiver_cost = np.array([0, 0, 1])
+    def test_symmetric_nice_sender(self):
+        B = np.array([[1, 1, 0, 0],
+                      [0, 0, 1, 1]])
+        receiver_cost = np.array([0, 0, 0, 1])
+        sender_cost = receiver_cost + np.array([0, 1, 0, 0])
+        # works, the sender does not send the costly message of the receiver
+        iterated_model = IteratedModel(B, sender_cost, receiver_cost, None)
+        for x in range(0, 5):
+            iterated_model.next_level_reasoning()
+        np.testing.assert_array_equal(iterated_model.get_receiver()[4][0], np.array([[ 1. ,  0. ],
+                                                                                     [ 0.5,  0.5],
+                                                                                     [ 0. ,  1. ],
+                                                                                     [ 0.5,  0.5]]))
+        np.testing.assert_array_equal(iterated_model.get_sender()[4][0], np.array([[ 1.,  0.,  0.,  0.],
+                                                                                   [ 0.,  0.,  1.,  0.]]))
+
+    def test_symmetric(self):
+        B = np.array([[1, 1, 0, 0],
+                      [0, 0, 1, 1]])
+        sender_cost = np.array([0, 1, 0, 0])
+        receiver_cost = np.array([0, 0, 0, 1])
+        iterated_model = IteratedModel(B, sender_cost, receiver_cost, None)
+        for x in range(0, 5):
+            iterated_model.next_level_reasoning()
+
+    def test_asymmetric_evil_sender(self):
+        B = np.array([[1, 0, 0],
+                      [0, 1, 1]])
+        receiver_cost = np.array([0, 1, 0])
+        sender_cost = np.array([0, 0, 0]) - receiver_cost
         iterated_model = IteratedModel(B, sender_cost, receiver_cost, None)
         for x in range(0, 5):
             iterated_model.next_level_reasoning()
         print(iterated_model)
 
-    def test_hypo(self):
-        B = np.array([[0, 0, 0],
-                      [0, 0, 0],
-                      [0, 0, 0]])
-        iterated_model = IteratedModel(B, [0, 0.1, 0.2], None, [0.1, 0.2, 0.3])
+    def test_asymmetric(self):
+        B = np.array([[1, 0, 0],
+                      [0, 1, 1]])
+        sender_cost = np.array([0, 0, 0])
+        receiver_cost = np.array([0, 1, 0])
+        iterated_model = IteratedModel(B, sender_cost, receiver_cost, None)
         for x in range(0, 5):
             iterated_model.next_level_reasoning()
-        print(iterated_model)
 
     def test_normalize(self):
         B = np.array([[1, 0],
@@ -146,13 +191,13 @@ class TestModels(unittest.TestCase):
         for x in range(0, 5):
             iterated_model.next_level_reasoning()
         np.testing.assert_array_equal(iterated_model.get_sender()[0][0], np.array([[1., 0.],
-                                                                                [0.5, 0.5]]))
+                                                                                   [0.5, 0.5]]))
         np.testing.assert_array_equal(iterated_model.get_sender()[1][0], np.array([[1., 0.],
-                                                                                [0., 1.]]))
+                                                                                   [0., 1.]]))
         np.testing.assert_array_equal(iterated_model.get_receiver()[0][0], np.array([[0.5, 0.5],
-                                                                                  [0., 1.]]))
+                                                                                     [0., 1.]]))
         np.testing.assert_array_equal(iterated_model.get_receiver()[1][0], np.array([[1., 0.],
-                                                                                  [0, 1.]]))
+                                                                                     [0, 1.]]))
 
     def test_multiple_solution_ibr(self):
         B = np.array([[1, 1],
@@ -160,15 +205,14 @@ class TestModels(unittest.TestCase):
         iterated_model = IteratedModel(B, np.array([0, 0.1]), np.array([0, 0]), np.array([0.51, 0.49]))
         for x in range(0, 5):
             iterated_model.next_level_reasoning()
-        print(iterated_model)
         np.testing.assert_array_equal(iterated_model.get_sender()[0][0], np.array([[0.5, 0.5],
-                                                                                [0.5, 0.5]]))
+                                                                                   [0.5, 0.5]]))
         np.testing.assert_array_equal(iterated_model.get_sender()[1][0], np.array([[1., 0.],
-                                                                                [1., 0.]]))
+                                                                                   [1., 0.]]))
         np.testing.assert_array_equal(iterated_model.get_receiver()[0][0], np.array([[0.5, 0.5],
-                                                                                  [0.5, 0.5]]))
+                                                                                     [0.5, 0.5]]))
         np.testing.assert_array_equal(iterated_model.get_receiver()[1][0], np.array([[1., 0.],
-                                                                                  [1., 0.]]))
+                                                                                     [1., 0.]]))
 
 
 if __name__ == '__main__':
