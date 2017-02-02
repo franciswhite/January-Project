@@ -105,7 +105,7 @@ BR_S(\rho)=\{s\in S | s_{ij}=1\implies j \in arg_kmax(U_S T(\rho)-c)_ik)\}
 \end{equation*} 
 A receiver's best response to a sender's strategy $\sigma$ is defined essentially the same way. Except that there may be so-called \textit{surprise messages} $m_j$ for which $\sigma_{ij}=0$, for all $i$. These are messages the sender will use with probability 0, that is, never. Since strategies are plans of action for every conceivable contingency that might arise in the course of a game, the best response will need to have some action for surprise messages.
 \textbf{explain why priors are used}
-As the sender has a set of beliefs $\Pi$ about the receivers possible behavior, the set of best responses is the union of all best responses to these possible strategies: $BR(\Pi=\Cup\{BR(\pi)|\pi\in\Pi\}$.
+As the sender has a set of beliefs $\Pi$ about the receivers possible behavior, the set of best responses is the union of all best responses to these possible strategies: $BR(\Pi)=\Cup\{BR(\pi)|\pi\in\Pi\}$.
 
 \section{Sticks and Stones}
 \subsection{Receiver's Cost}
@@ -145,88 +145,142 @@ Let us now assume that we have four messages $M=\{geologist, stonehugger, ecolog
   c^G =
   \bordermatrix{
              & m_{geo} & m_{stone} & m_{geo} & m_{tree}    \cr
-             &       0 &         1 & 0       & 0
+             &       0 &         c & 0       & 0
   }\qquad
   c^E =
     \bordermatrix{
                & m_{geo} & m_{stone} & m_{geo} & m_{tree}    \cr
-               &       0 &         0 & 0       & 1
+               &       0 &         0 & 0       & c
     }\qquad
   \end{equation*}
 
-Usually language users will encounter the expressions of their language many times over the course of their communicative lives - both as listeners as well as speakers. To capture this we'll posit a third player - nature - which decides at the beginning of the game who of the two players gets to talk and who gets to listen. As rational language users they will need to have some plan of action for all roles, states of the world or messages they encounter. 
+Where $c>0$.
 
-Also, assume for now that the receiver is unbiased with respect to which state holds, thus $p=(0.5,0.5)$.
+Furthermore we assume that the receiver is unbiased with respect to which state holds, thus $p=(0.5,0.5)$.
+
+Usually language users will encounter the expressions of their language many times over the course of their communicative lives - both as listeners as well as speakers. To capture this we'll posit a third player - nature - which decides at the beginning of the game who of the two players gets to talk and who gets to listen. As rational language users they will need to have some plan of action for all roles, states of the world or messages they encounter. During game play we assume that the geologist is the speaker and the ecologist the receiver thus $c^R=c^E$ and $c^S=c^G$.
+
 \subsubsection{Game Play}
 As a first step, let's determine what the naive players' strategies are:\\
 \textbf{Level-0 Players}\\
 \begin{equation*}
-S_0=
+S_0=Norm(B)=
 \bordermatrix{
-           & m_{math} & m_{eco} & m_{tree}    \cr
-  t_{math} & 1 & 0 & 0 \cr
-  t_{eco}     & 0 & 0.5 & 0.5
-}\qquad
-R_0=
+            & & & &    \cr
+ &       0.5 &         0.5 & 0       & 0 \cr
+ &       0 &         0 & 0.5       & 0.5
+ }\qquad
+R_0=Norm(T(B))
 \bordermatrix{
-                & t_{math} & t_{eco}   \cr
-  m_{math}      & 1 & 0 \cr
-  m_{eco}       & 0 & 1 \cr
-  m_{tree}      & 0 & 1
-}\qquad
+            &  & \cr
+    & 1 & 0 \cr
+     & 1 & 0 \cr
+     & 0 & 1 \cr
+     & 0 & 1 \cr
+ }\qquad
 \end{equation*}
-The naive sender has no principle to decide between sending either $m_{eco}$ or $m_{tree}$ when observing $t_{eco}$. This is represented by her sending each message half of the time. So she plays a mixed strategy. The receiver's actions are clearly determined by a pure strategy.\\
-What is the best response of the level-1 hearer and speaker? Following the IBR procedure we transpose $R_0$, subtract the cost vector $c_S$ and check row-wise for the best response to obtain $S_1$. We proceed analogously for the receiver, the main difference being in this case that the receiver faces some actual cost. This then yields strategies for level-1 players:\\
+The naive sender has no principle to decide between sending either $m_{geo}$ or $m_{stone}$ when whishing to communicate $t_{geo}$. Similarly she has no principle to decide between sending either $m_{eco}$ or $m_{tree}$ when whishing to communicate $t_{eco}$. This is represented by her sending each message half of the time. So she plays a mixed strategy. The receiver's actions are clearly determined by a pure strategy.\\
+What is the best response of the level-1 hearer and speaker? Following the IBR procedure we transpose $R_0$, subtract the cost vector $c^S$ and check row-wise for the best response to obtain $S_1$. We proceed analogously for the receiver, the main difference being in this case that the receiver faces some actual cost, $c^R$. This then yields strategies for level-1 players:\\ %TODO: we need to add the prior. %
 \textbf{Level-1 Players}\\
 \begin{equation*}
-% Haukur matrix fixes to here
-S_1= BR_S(T(R_0)-c_S)=
+% These matrices look strange when rendered
+S_1= BR_S(T(R_0)-c^S)=
 BR_S(
-\begin{bmatrix}
-1 & 0 & 0\\
-0 & 1 & 1
-\end{bmatrix}
+\bordermatrix{
+            & & & &    \cr
+ &       1 &         1 & 0       & 0 \cr
+ &       0 &         0 & 1      & 1
+ }\qquad
 -
-\begin{bmatrix}
-0 & 0 & 0
-\end{bmatrix}
+\bordermatrix{
+            & & & &    \cr
+ &       0 &         c & 0       & 0 \cr
+ }\qquad
 )
-=
-\begin{bmatrix}
-1 & 0 & 0\\
-0 & 0.5 & 0.5
-\end{bmatrix}
 \end{equation*}
 \begin{equation*}
-R_1=BR_R(T(S_0)-T(c_R)=
-BR_R(
-\begin{bmatrix}
-1 & 0\\
-0 & 1\\
-0 & 1
-\end{bmatrix}
--
-\begin{bmatrix}
-0\\
-0\\
-c
-\end{bmatrix}
-)
+=BR_S(
+\bordermatrix{
+                & & & &    \cr
+     &       1 &         1-c & 0       & 0 \cr
+     &       0 &         0 & 0.5      & 0.5
+ }\qquad
+ )
 =
-BR_R(
-\begin{bmatrix}
-1 & 0\\
-0 & 1\\
-0-c & 1-c
-\end{bmatrix}
-)
-=
-\begin{bmatrix}
-1 & 0\\
-0 & 1\\
-0 & 1
-\end{bmatrix}
+\bordermatrix{
+                 & & & &    \cr
+      &       1 &         0 & 0       & 0 \cr
+      &       0 &         0 & 0.5      & 0.5
+  }\qquad
 \end{equation*}
+\begin{equation*}
+R_1=BR_R(T(S_0)-T(c^R)=
+BR_R(
+\bordermatrix{
+            &  & \cr
+    & 0.5 & 0 \cr
+     & 0.5 & 0 \cr
+     & 0 & 0.5 \cr
+     & 0 & 0.5 \cr
+ }\qquad
+-
+\bordermatrix{
+  & \cr
+    & 0 \cr
+     & 0 \cr
+     & 0 \cr
+     & c \cr
+ }\qquad
+)
+\end{equation*}
+\begin{equation*}
+=
+BR_R(
+\bordermatrix{
+            &  & \cr
+    & 0.5 & 0 \cr
+     & 0.5 & 0 \cr
+     & 0 & 0.5 \cr
+     & 0-c & 0.5-c \cr
+ }\qquad)
+=
+\bordermatrix{
+            &  & \cr
+    & 1 & 0 \cr
+     & 1 & 0 \cr
+     & 0 & 1 \cr
+     & 0 & 1 \cr
+ }\qquad
+\end{equation*}
+We see that $R_1=R_0$ thus we conclude that $S_2=S_1$.
+\begin{equation*}
+R_2=BR_R(T(S_1)-T(c^R)=
+BR_R(
+\bordermatrix{
+            &  & \cr
+    & 1 & 0 \cr
+     & 0 & 0 \cr
+     & 0 & 0.5 \cr
+     & 0 & 0.5 \cr
+ }\qquad
+-
+\bordermatrix{
+  & \cr
+    & 0 \cr
+     & 0 \cr
+     & 0 \cr
+     & c \cr
+ }\qquad
+)
+=
+\bordermatrix{
+            &  & \cr
+    & 1 & 0 \cr
+     & 0.5 & 0.5 \cr
+     & 0 & 1 \cr
+     & 0 & 1 \cr
+ }\qquad
+\end{equation*}%Perhaps add something that "here we see a surprisal message"%
 $S_0=S_1$ and $R_0=R_1$, we have already reached a point where both players will always play this pair of strategy, irrespective of their level of sophistication. The interesting story here, however, is the player's expected payoffs. While playing this strategy yields an expected payoff of $a$ for the sender, the receiver obtains a mere $a-\tfrac{c}{4}$ in expectation.
 \footnote{The calculation leading to this: With probability 0.5 state $t{eco}$ holds where the receiver sends $m_{tree}$ with probability 0.5. So $m_{tree}$ is sent in $0.5\times 0.5 =0.25$ of all cases and then causes a cost of $c$. Communication is always successfull, as can be gathered from the strategies played, hence the receiver can expect to obtain the payoff of correct interpretation minus the cost$\times$probability of hearing $m_{tree}$.}To see why this is, consider the positions the two players are facing in this game. Start with the receiver: Whether she likes the message or not, she can always reason what her interlocutor wants to communicate to her. If the messages $m_{math}$ or $m_{eco}$ are sent, she will chose the respective action, communication is successfull, so both players get their payoff and everyone is happy. If the message $m_{tree}$ is sent, however, she immediately suffers the associated cost. Still, she knows what the sender is trying to communicate and her best response will be to comply and play the respective action. Refusing to understand is not an option, for it would only add insult to injury; she would both pay the cost of hearing $m_{tree}$ and lose the payoff of understanding correctly. Because she can anticipate the receiver to behave this way, the sender does not have to care about sending either semantically correct message upon observing that the state $mathematician$ holds.
 
