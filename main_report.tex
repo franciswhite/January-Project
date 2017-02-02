@@ -74,7 +74,7 @@ $T$ is the set of states the players can be in, $M$ the set of messages at the s
           m_1 & 0.5 & 0.5 & 0  \cr
           m_2 & 0.8 & 0.1 & 0.1
         }\qquad
-\end{equation*}%add row and column names
+\end{equation*}
 
 When the sender observes some state, her strategy determines with which probability she chooses from the different messages; likewise for the receiver, but with messages and actions. The rows in the strategy matrices thus represent the situations where the players get to decide, and the respective entries in the row describe the probabilities with which they opt for the move in that column. The sender, in this example, would choose $m_1$ with probability $0.2$ upon observing $t_1$, and with probability $1$ when observing $t_3$. The receiver, in turn, would choose $a_1$ and $a_2$ each with probability of $0.5$, while never playing $a_3$, when receiving $m_1$ from the sender.
 
@@ -104,10 +104,9 @@ More formally speaking, the sender's best response to some receiver strategy is\
 BR_S(\rho)=\{s\in S | s_{ij}=1\implies j \in arg_kmax(U_S T(\rho)-c)_ik)\}
 \end{equation*} 
 A receiver's best response to a sender's strategy $\sigma$ is defined essentially the same way. Except that there may be so-called \textit{surprise messages} $m_j$ for which $\sigma_{ij}=0$, for all $i$. These are messages the sender will use with probability 0, that is, never. Since strategies are plans of action for every conceivable contingency that might arise in the course of a game, the best response will need to have some action for surprise messages.
-\textbf{What to do here? Either fall back on literal meaning-change symmetric case. or explain why priors are used}
+\textbf{explain why priors are used}
 As the sender has a set of beliefs $\Pi$ about the receivers possible behavior, the set of best responses is the union of all best responses to these possible strategies: $BR(\Pi=\Cup\{BR(\pi)|\pi\in\Pi\}$.
 
-% Haukur has read up to here:...:P
 \section{Sticks and Stones}
 \subsection{Receiver's Cost}
 When it comes to the way iterated response models view cost, there is a great deal of variety. Sometimes the cost of signaling is viewed as completely irrelevant and is thus not modeled at all - one such example is David Lewis' analysis.  For other purposes it is of crucial importance, as, for example, in the analysis of the Horn game in Franke and Jaeger. What these models have in common, however, is that none of them chooses to assign any importance to the cost a certain signal might cause a receiver. Indeed,  in Franke and Jaeger , whose basic framework will use in what follows, have considered message cost to be uniquely tied to the sender's role. This is perhaps explainable as a straightforward modeling choice given that these signaling games are played sequentially. It lies within the sender's power to decide which signal to emit, she thus only needs to consider her own needs. %expand on the point on power. perhaps at later stage?
@@ -117,50 +116,66 @@ The power over which message is being sent notwithstanding, there is great poten
 To make this more clear, consider the following scenario: Two people sharing some language engage in conversation, one as the speaker, the other as the listener. The speaker would like to communicate to the listener what kind of work a mutual acquaintance of the two does. The listener does not yet know what her occupation happens to be, but would like to do so. The acquaintance could either be an ecologist or a mathematician. To transfer this knowledge the speaker can utter either "She's a mathematician.", "She's an ecologist." or "She's a professional treehugger, stupdily trying to protect plants and stuff.". Assume that uttering the first is true just in case the person is a mathematician and the other two if she's an ecologist. As both of the two well know, the listener is a great lover of nature and cares dearly for the environment, while the speaker does not. The listener, although she understands perfectly well what the speaker is trying to convey to her, would be deeply offended by her uttering the word "treehugger". The speaker herself couldn't care less what words she uses, as long as the message comes across and the hearer adopts the right belief about the mutual acquaintance's profession.
 
 This is an interesting situation, for the the speaker could perfectly well achieve her goal of communication and not use the word "treehugger". The listener, who's not in any position to choose the signal, then has to accept the speaker's decision grudgingly, knowing that there would have been a better way for her. Alas, it was not the better way for the sender and was thus not chosen. This situation can be modeled fittingly using the IBR approach introduced in previous sections. We will do so, and then carry out further analysis on the baseline set by this model.
-\subsection{Asymmetric Offence}
+\subsection{Symmetric Triggering}
 \subsubsection{Game Structure}
-The two interlocutors play an interpretation game. Thus set of states $T$ equals the set of actions $A$: $T=\{mathematician,ecologist\}=A$. Each state holds with equal probability. The players' utilities are given as:\\
-\bordermatrix{
-      & mathematician & ecologist    \cr
-  mathematician & a,a & 0,0  \cr
-  ecologist & 0,0 & a,a
-}\qquad
+Let us now use the IBR model to model communication where triggering can occur. We define two players which are talking with each other using some shared language fragment. Although they have this common language, they are triggered by different messages. Say that a geologist and an ecologist are talking and they discuss each others professions. Thus we define the states as $T=\{geologist, ecologist\}$ and set $T=A$. They both share the goal of successful communication, thus we set their utilities such that when the speaker wants to communicate $t_{j}$ by some message $m_i$ then they both have equal positive utility when the receiver to associates $m_i$ with $t_{j}$. Thus we have:
 
-Where $a>0$.
-
-There are three possible messages. Let them be denoted as $m_{math}$, which correctly represents $t_{mathematician}$, $m_{eco}$ and $m_{tree}$ both correctly representing $t_{ecologist}$, where $m_{eco}$ is the non-offensive and $m_{tree}$ the hurtful message. So the message set $M$ is defined as $M=\{m_{math},m_{eco},m_{tree}\}$. According to the semantics just described, the Boolean matrix looks like this:\\
 \begin{equation*}
-B =
 \bordermatrix{
-                    & m_{math} & m_{eco} & m_{tree}    \cr
-  t_{mathematician} & 1 & 0 & 0 \cr
-  t_{ecologist}     & 0 & 1 & 1
+      & t_{geologist} & t_{ecologist}    \cr
+  t_{geologist} & a,a & 0,0  \cr
+  t_{ecologist} & 0,0 & a,a
 }\qquad
 \end{equation*}
+Where $a>0$.
 
-Finally, we define $c_S$ and $c_R$ to be the cost vectors for sender and receiver, respectively. The cost vector has length $|M|$ for both agents. In the present context the sender doesn't face any cost, so her cost vector consists of zeros: $c_S=(0,0,0)$. For the receiver, however, the $m_{tree}$ is associated with some cost $c>0$: $c_R=(0,0,c)$.
+Let us now assume that we have four messages $M=\{geologist, stonehugger, ecologist, treehugger\}$ with the given sematic meaning:
+ \begin{equation*}
+ B =
+ \bordermatrix{
+            & m_{geo} & m_{stone} & m_{eco} & m_{tree}    \cr
+   t_{geo}  &       1 &         1 & 0       & 0 \cr
+   t_{eco}  &       0 &         0 & 1       & 1
+ }\qquad
+ \end{equation*}
+
+ And further assume that $m_{stonehugger}$ is a trigger message for the geologist and $m_{treehugger}$ is a trigger messages for the ecologist. We therefore define $c^G$ as a cost vector for the geologist and $c^E$ for the ecologist:
+
+  \begin{equation*}
+  c^G =
+  \bordermatrix{
+             & m_{geo} & m_{stone} & m_{geo} & m_{tree}    \cr
+             &       0 &         1 & 0       & 0
+  }\qquad
+  c^E =
+    \bordermatrix{
+               & m_{geo} & m_{stone} & m_{geo} & m_{tree}    \cr
+               &       0 &         0 & 0       & 1
+    }\qquad
+  \end{equation*}
+
+Usually language users will encounter the expressions of their language many times over the course of their communicative lives - both as listeners as well as speakers. To capture this we'll posit a third player - nature - which decides at the beginning of the game who of the two players gets to talk and who gets to listen. As rational language users they will need to have some plan of action for all roles, states of the world or messages they encounter. 
+
 Also, assume for now that the receiver is unbiased with respect to which state holds, thus $p=(0.5,0.5)$.
-We will now apply the IBR method to this game. 
-
 \subsubsection{Game Play}
-As a first step, let's determine what the naive players' strategies are\\
+As a first step, let's determine what the naive players' strategies are:\\
 \textbf{Level-0 Players}\\
 \begin{equation*}
 S_0=
 \bordermatrix{
-                    & m_{math} & m_{eco} & m_{tree}    \cr
-  t_{mathematician} & 1 & 0 & 0 \cr
-  t_{ecologist}     & 0 & 0.5 & 0.5
+           & m_{math} & m_{eco} & m_{tree}    \cr
+  t_{math} & 1 & 0 & 0 \cr
+  t_{eco}     & 0 & 0.5 & 0.5
 }\qquad
 R_0=
 \bordermatrix{
-                & m_{mathematician} & m_{ecologist}   \cr
+                & t_{math} & t_{eco}   \cr
   m_{math}      & 1 & 0 \cr
   m_{eco}       & 0 & 1 \cr
   m_{tree}      & 0 & 1
 }\qquad
 \end{equation*}
-That the naive sender has no principle to decide between sending either message meaning \textit{ecologist} is represented by her sending both signals half of the time. So she plays a mixed strategy. The receiver's actions are clearly determined by a pure strategy.\\
+The naive sender has no principle to decide between sending either $m_{eco}$ or $m_{tree}$ when observing $t_{eco}$. This is represented by her sending each message half of the time. So she plays a mixed strategy. The receiver's actions are clearly determined by a pure strategy.\\
 What is the best response of the level-1 hearer and speaker? Following the IBR procedure we transpose $R_0$, subtract the cost vector $c_S$ and check row-wise for the best response to obtain $S_1$. We proceed analogously for the receiver, the main difference being in this case that the receiver faces some actual cost. This then yields strategies for level-1 players:\\
 \textbf{Level-1 Players}\\
 \begin{equation*}
@@ -219,14 +234,6 @@ Since we assumed that either state holds with equal probability, and the sender 
 
 We claim that the receiver could be just as well off as the sender without the latter having to lose anything in return. The strategies played fail to satisfy a criterium of optimality known as \textit{pareto optimality}.We will now consider a slightly modified version of this game where both sender and receiver stand to lose something from the wrong messages being played. Then we will turn to a more detailled discussion of the optimal strategies played with respect to pareto optimality.
 
-\subsection{Symmetric Offence}
-\subsubsection{Game Structure}
-Assume now that two agents are talking with each other using some shared language fragment. Although they have this common language, their preferences over how to put things vary a great deal. Say Player 1 has distinctly dislikes some specific message's flavor, while Player 2 has no issue with it whatsoever. Assume further that this time around there is also some message which upsets Player 2 but doesn't affect Player 1.
-
-Usually language users will encounter the expressions of their language many times over the course of their communicative lives - both as listeners as well as speakers. To capture this we'll posit a third player - nature - which decides at the beginning of the game who of the two players gets to talk and who gets to listen. As rational language users they will need to have some plan of action for all roles, states of the world or messages they encounter.
-
-We model this situation again by starting with a standard IBR model assuming a cost vector of equal size as the message space for both sender and receiver which will be applied whenever an agent ponders her best response. \\
-The general structure of such a game could be depicted as such: %would rather have a tree here
 \begin{table}[h]
 \centering
 \caption{Game Structure - Player 1 as sender}
