@@ -1,9 +1,9 @@
-\documentclass{article}
+\documentclass[10]{article}
 \usepackage[utf8]{inputenc}
 
 \title{January Project}
 \author{Silvan Hungerbuehler, Haukur Jonsson}
-\date{Date quo: 30.01.17}
+\date{Date quo: 1.02.17}
 
 \usepackage{amssymb}
 \usepackage{amsmath, amsthm}
@@ -13,40 +13,36 @@
 \usepackage{hyperref}
 \usepackage{comment}
 \bibliography{references.bib}
-
 \begin{document}
 \maketitle
+
 \section{Introduction}
-The study of phenomena related to natural language use within the formal framework of game theory has taken a variety of forms since David Lewis' \cite{david1969convention} analysis of signaling games. The goal of this paper is to analyze a small number of games where modeling the cost associated with a message enables us to shed some light on pragmatic phenomena. Specifically, we want to forgo the common assumption that it is exclusively the player sending a message for whom this is is costly. We will look at signaling games where costs are conncected not only to the sender, but also to the recipient.
+When Donald Trump, the current president of the United States of America, was asked to explain calling women ‘fat pigs,’ ‘dogs,’ ‘slobs,’ and ‘disgusting animals’ his reply was:
+\textit{I’ve been challenged by so many people, I don’t frankly have time for total political correctness. And to be honest with you, this country doesn’t have time either.'}
+%https://www.theguardian.com/us-news/2016/nov/30/political-correctness-how-the-right-invented-phantom-enemy-donald-trump
+In contrast to Mr Trump, the authors of the present paper had time. We provide a formal framework in order to analyze the pragmatic phenomenon of hurtful use of language. Our goal is twofold: First, we want to offer a formal explanation for the persistence of hurtful use of language. Second, our results suggest that a parameter one might call "empathy" is of crucial importance to the issue. 
+We will rely on game theoretic models of the \textit{Iterated Best Response} (IBR) family. This approach looks to explain and predict pragmatic inferences of natural language users by modeling a forth-and-back reasoning taking place between two agents engaged in conversation. In particular we are interested in explaining under which circumstances speakers will alter their way of expressing themselves. More specifically, what must be given so they abstain from using certain communicative mean, not because they themselves directly dislike it, but because their audience prefers one over the other. Although the wording of a message might not affect the transfer of information, it can have an impact on the listener. Obvious cases in point are racial slurs. It seems clear that some of these ways of putting things do have an effect on communcication, depending on who is speaking, and, crucially, who is listening. The question then becomes not how many people don't go around offending others, but why many still do? When studying the use of language as the transfer of information, the issue then becomes to explain how there can coexist equally good - expressive, accurate, etc. - forms of communication, yet some options are used rather than others.
 
-To carry out this analysis we will rely on a frameworks that lies broadly in the Lewisian tradition. In fact, it can easily be seen as an extension of it. We will use game theoretic models of the \textit{Iterated Best Response} (IBR) family. This approach looks to explain and predict pragmatic inferences of natural language users by modeling a forth-and-back reasoning taking place between two agents engaged in conversation. In particular we are interested in explaining how speakers sometimes alter their way of expressing themselves, or specifically abstain from using certain communicative alternatives, not because they necessarily dislike some of the available options, but because their audience prefers one over the other. How is it, for example, that most people don't go around calling their fellow citizens monikers related to their race, religion or other social group? Whether someone is referred to someone as a "kyke" or a "jew", "faggot" or "homosexual", "bimbo" or "black" probably won't affect the transfer of information. People will understand what is meant, however they feel about the terms employed. It seems equally clear that some of these ways of putting thins do have an effect on communcication, depending on who is speaking, and, crucially, who is listening. The question then becomes not how many people don't go around offending others, but why many still do? When studying the use of language as the transfer of information, the issue then becomes to explain how there can coexist equally good - expressive, accurate, etc. - forms of communication, yet some options are used rather than others.
-
+Specifically, we want to forgo the common assumption that it is exclusively the player sending a message for whom this is is costly. We will look at signaling games where costs are conncected not only to the sender, but also to the recipient.
 We will offer some take on these questions by following this outline:
-\begin{enumerate}
-\item Brief Introduction to Lewisian Signaling Games
+\begin{enumerate} %need to make this prose. but will do so later, once order is established.
+\item Brief Introduction to Signaling Games
 \item Introduction to the IBR Model
 \item Sticks and Stones
 \item Conclusion, Unexplored Topics \& Further Research
 \end{enumerate}
 
 \section{Game Theory and Pragmatics}
-\subsection{Lewisian Signaling Game}
-The philosopher David Lewis first suggested using a game theoretical framework to study communication. His seminal work on conventions \cite{david1969convention} laid the foundations for a whole plethora of research in the fields of theoretical biology, economics and, perhaps more recently, linguistics. We will go over the definition as well as some of the core features and assumptions of Lewis-style signaling games. We'll also occasionally highlight some aspect which stands in contrast to later games we would like to analyze in this paper.
+\subsection{Signaling Games}
+Signaling games are sequential games between two players: a sender and a receiver. In the context of linguistic modeling one can usually think of the sender as a speaker and of the receiver as a listener. The game is playerd in some particular state of the world, formally an element of set $T$ which represents possibles ways the world could be. Only the sender knows which state this happens to be. The receiver, however, has some beliefs about the possible states. These beliefs are modeled with a probability measure, so that $T$ is sample space and $P_R$ is probability measure which is a function $P_R: T\rightarrow \mathbb{R}_{\geq 0}$ satisfying $\sum_{t\in T}P_R(t)=1$.
 
-Signaling games are sequential games between two players: a sender and a receiver. In the context of linguistic modeling one can usually think of the sender as a talker and of the receiver as a listener, but we'll use the terms interchangeably for nothing crucial hinges on them. The game takes place in some particular state of the world, formally an element of set $T$ which represents possibles ways the world could be. Throughout the game the two of them are in one state, yet only the sender knows which state this happens to be. The receiver, however, has some beliefs about the probability that they encounter themselves in one of the possible world. These beliefs are modeled with a probability measure, so that $T$ is sample space and $P_R$ is probability measure which is a function $P_R: T\rightarrow \mathbb{R}_{\geq 0}$ satisfying $\sum_{t\in T}P_R(t)=1$.
-
-Then game is then played such: After the sender observes the true state of the world $t$ she sends some message $m_i$ out of a set of messages $M$. 
-\footnote{We could explicitly model the sender being certain about which state holds by assigning a probability function $P_S$ to the sender too. Namely one, where the true state is assigned probability 1 and all other states 0. This would have the conceptual benefit of making it more straightforward to later drop the assumption that the sender always is certain which state she is in when choosing an action. This might be useful for some modeling intention we might have at that moment. 
-}
+The game is then played such: After the sender observes the true state of the world $t$ she sends some message $m_i$ out of a set of messages $M$.
 The receiver then observes which element $m_i$ from $M$ was sent and chooses some action $a_j$ from a set of actions $A$.
-
-The players' respective utility is given by functions $u_S$ and $u_R$. They take as arguments the state the players find themselves in and the action performed by the receiver, so that $u_S(t,a)$ and $u_R(t,a)$. Importantly for the classical Lewisian model, what message is being sent does not directly affect the players' payoff. For this reason the type of games Lewis introduced are now referred to as cheap talk games. Sending one messages rather than another is payoff-irrelevant, for the message is not part of the utility function. Jence, the only effect a message can have is the way it alters the receiver's belief about which state she is in. Different beliefs of the receiver have the potential to alter her optimal action and thereby to affect both players' payoff.
+The players' respective utility is given by functions $u_S$ and $u_R$. They take as arguments the state the players find themselves in and the action performed by the receiver, so that $u_S(t,a)$ and $u_R(t,a)$. We will only consider cooperative games, so that $u_S(t,a)=u_R(t,a)$ for $\forall t\in T$ and $\forall a\in A$.
+What message is being sent does not directly affect the players' payoff. For this reason the type of games Lewis introduced are now referred to as cheap talk games. Sending one messages rather than another is payoff-irrelevant, for the message is not part of the utility function. Jence, the only effect a message can have is the way it alters the receiver's belief about which state she is in. Different beliefs of the receiver have the potential to alter her optimal action and thereby to affect both players' payoff.
 
 The last piece missing in the description of this signaling game is the players' strategies. For the sender this is a function from the set of states $T$ to the set of messages $M$; for the receiver a function from the messages $M$ to the set of actions $A$. A pure strategy is thus a complete plan of action which tells the players exactly how to react in any situation in the game where they have the power to decide what action to take. \textit{Pure} here simply means that a player will choose a some action with certainty, that is, always, when confronted with a given situation. In contrast to pure strategies stand \textit{mixed} strategies where players will choose from various actions, each with a certain probability.
 
-\textbf{Finish Example}
-To make clearer what is meant by a Lewis' style signaling game, consider the following example:\\
-There be two possible states the world could be, $t_1$ or $t_2$. I observe which state holds. Blablablah
 
 \subsection{Extension towards pragmatics}
 Since its initial publicaiton in 1969 Lewis' work on signaling games been used as the basis for game theoretic modeling of a variety of phenomena related to information transmission. Amongst other disciplines, it was applied in linguistics, specifically in attempts to obtain a firmer conceptual grip on Gricean pragmatics. Here the communication between (rational) agents is thought of as a game played between interlocutors. Formulating situations where pragmatic phenomena arise with mathematical precision helps in different ways: On one hand it allows bridging the gap between theoretical work on pragmatics and actual experimental data with language users; that is, to generate testable predictions about language use under a variety of parametrizations, as pertaining to the agent's (limited) rationality, cognitive ability to think multiple steps ahead, their preferences and methods of deciding on what action to take - so-called \textit{choice rules} - or their beliefs about the world. On the other hand, and perhaps somewhat idealistically, it is hoped that such models provide insight into how agents actually arrive at the linguistic behavior they exhibit. Indeed, models concerned with pragmatic behavior of linguistic agents are caught between the pressure of trying to accurately predict and fit experimental data and the hope to realistically capture one or the other aspect of a pragmatic phenomenon - to represent "what actually is going on", so to speak.
