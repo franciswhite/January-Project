@@ -356,12 +356,65 @@ Where $d \in \mathbb{R}$. Then we define the sender's best response with disposi
 BR_S(\rho)=\{s\in S | s_{ij}=1\implies j \in arg_kmax(U_S T(\rho)-c^{S*})_ik)\}
 \end{equation*}
 That is, just like before but now with $c^{S*}$ instead of $c^{S}$. We can now see that setting $d=0$ we get the original best response since then $c^{S*}=c^{S}$.
-If we set $d<0$ the sender's best response will select receiver costly messages over other messages. If we set $d>0$ the sender's best response will select receiver non-costly messages over others. Setting $d=1$ will treat receiver's cost equally to sender's cost. Let us now go through the symmetric game again with the extended sender's cost.
+Let us now go through the symmetric game again with the extended sender's cost. $S_0$ and $R_0$ remain unchanged so let us start with $S_1$:
+\begin{equation*}
+S_1= BR_S(T(R_0)-c^{S*})=
+BR_S(
+\bordermatrix{
+            & & & &    \cr
+ &       1 &         1 & 0       & 0 \cr
+ &       0 &         0 & 1      & 1
+ }\qquad
+-(
+\bordermatrix{
+            & & & &    \cr
+ &       0 &         c & 0       & 0 \cr
+ }\qquad
++ d \cdot
+\bordermatrix{
+            & & & &    \cr
+ &       0 &         0 & 0       & c \cr
+ }\qquad
+ )
+)
+\end{equation*}
+\begin{equation*}
+=BR_S(
+\bordermatrix{
+                & & & &    \cr
+     &       1 &         1-c & 0       & 0-d\cdot c \cr
+     &       0 &         0-c & 1      & 1-d\cdot c
+ }\qquad
+ )
+ \end{equation*}
+immediately we see that depending on the value of $d$ there are different sender responses. If $1<0-d\cdot c$ the sender's best response will be to send receiver costly messages over communication.  If $1>1-d\cdot c$ the sender's best response will be to send receiver non-costly messages over others. We can also see that if $d=1$ the receiver's cost is treated equally to the sender's cost. We define $d=1$ as an \textit{empathetic disposition}. Let us now continue with $d=1$.
 
-
-
-Voila show that EU is optimal, i.e. the costs are sidestepped and communication was successful.
-
+\begin{equation*}
+S_1=BR_S(
+\bordermatrix{
+                & & & &    \cr
+     &       1 &         1-c & 0       & 0-c \cr
+     &       0 &         0-c & 1      & 1-c
+ }\qquad
+ )
+=
+\bordermatrix{
+                & & & &    \cr
+     &       1 &         0 & 0       & 0 \cr
+     &       0 &         0 & 1      & 0
+ }\qquad
+ \end{equation*}
+$R_1=R_0$ thus $S_2=S_1$ and we end with $S_2$ and $R_2$ as a stable strategies.
+\begin{equation*}
+  R_2= \bordermatrix{
+              &  & \cr
+      & 1 & 0 \cr
+       & 0.5 & 0.5 \cr
+       & 0 & 1 \cr
+       & 0.5 & 0.5 \cr
+   }\qquad
+\end{equation*}
+And indeed these strategies are Pareto optimal since the expected utility for both players is $a$. Thus we conclude by stating that if the sender takes up an \textit{empathetic disposition} towards the receiver's cost a Pareto optimal solution is reached.
 \subsection{Conclusion}
 %Haukur ideas%
 It is hard to perceive which dispostion is held by the speaker in daily langauge use because we always base our word selection on incomplete information about the sender's preferences.
