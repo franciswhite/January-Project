@@ -362,38 +362,32 @@ Yields expected utility ...
 ... balblablalb
 Need to finish this part showing the Pareto domination of the pruposed strategy
 
-\section{Solution concept}
-We therefore want to adjust the IBR model so that it is able to reach this Pareto optimal solution. This can be done by adjusting the sender's stratey such that she refrains from using the message associated with receiver's cost. That is, the sender never sends the offending message and that message is considered by the receiver as a surprisal message.
+% I think we should compare the IBR solution to our empathetic solution thus we can just point to it later.
 
-We can clearly see that there is a strategy, in both games, which is better than the strategy reached by the IBR model, namely, the strategy above. This optimal strategy could be reached by only adjusting the sender strategy so that she never sends the offending message. We don't see this strategy in the IBR model since it is not explicitly in the sender's interest and, coincidentally, it is her who wields the power to decide over the matter. Thus we might adjust the sender preferences so that she takes into account the receiver's interests, i.e. the receivers cost. In the next section we discuss some ways to achieve this.\\
+\section{Solution concept}
+We have presented the problem of offensive language use and now we will present a solution which can explain offensive and non-offensive language use and puts the speaker in a position to decide between offensive and non-offensive language use. The core idea is to model the disposition of the speaker towards the receiver. For an example, the speaker can be indifferent, empathetic or even hostile towards the receiver. By modelling this disposition it allows us to make it in the speaker's interest to take the receiver's preferences into account. Furthermore we show that only if the speaker acts empathetically a Pareto optimal solution can be reached.
 
 \subsection{Solution statement informal}
-If both players refrain from using harmful/costly messages and instead use other messages which convey the same meaning then a Pareto optimal solution is possible. This could be achvieved by having a pre-game talk in which the two players could agree on using only strategies which both agree wwith. This would allow them to move to the pareto optimal equilibrium of strategies. This does not seem so far fetched since it seems in language user's best interests to opt of Pareto optimal solutions, since someday the tables might turn.
-
-How do we then go about adjusting the model in order to take the receiver's preference explicitly into account? One solution might be to define three types of sender types: \\
-
-\begin{enumerate}
-\item A nice sender
-\item A malicous sender
-\item Indifferent sender
-\end{enumerate}
+We have shown that a optimal strategy can be reached if we adjust the sender's best response. We did not see the optimal strategy in the IBR model since it is not explicitly in the sender's interest to consider the receiver's interests and, coincidentally, it is her who wields the power to decide if an offensive message is sent or not. Furthermore we saw that if we added a third player, nature, to decide the players' positions, both players were worse off if they did not take the other preferences into account. Thus both players must take the receiver's preferences into account and base the response such that is not offensive for the receiver, i.e. the sender must refrain from sending costly messages for the receiver. If the sender does not send receiver costly messages successful communication is still established and the receiver did not incur any cost in the process. Thus a Pareto optimal solution. We therefore adjust the IBR model by adjusting the sender's response such that she takes the receiver's cost into account.
 
 \subsection{Solution statement formal}
-
-Then for the \textit{Nice sender} we extend the sender's cost vector:
-
-If we generalize the \textit{nice} and \textit{malicious} definitions of the sender's cost vector we get a new adjusted sender cost vector.
-
+We extend the sender's cost vector to $c^{S*}$ s.t. % use something else for the new cost vector...
+$$c^{S*}=c^{S} + d \cdot c^{R}$$
+Where $d \in \mathbb{R}$. Then we define the sender's best response with disposition to the receiver as:
 \begin{equation*}
-c_s^a= c_s + a * c_r
+BR_S(\rho)=\{s\in S | s_{ij}=1\implies j \in arg_kmax(U_S T(\rho)-c^{S*})_ik)\}
 \end{equation*}
+That is, just like before but now with $c^{S*}$ instead of $c^{S}$. We can now see that setting $d=0$ we get the original best response since then $c^{S*}=c^{S}$.
+If we set $d<0$ the sender's best response will select receiver costly messages over other messages. If we set $d>0$ the sender's best response will select receiver non-costly messages over others. Setting $d=1$ will treat receiver's cost equally to sender's cost. Let us now go through the symmetric game again with the extended sender's cost.
 
-Where a is a scalar value, s.t. $a \in \mathbb{R} $. So if $a=0$ we get an indifferent sender, if$a <0$ we get a malicious sender and if $a>0$ we get a considerate sender.
 
-Show simply how a playthrough works
+
+Voila show that EU is optimal, i.e. the costs are sidestepped and communication was successful.
 
 \subsection{Conclusion}
-
+%Haukur ideas%
+It is hard to perceive which dispostion is held by the speaker in daily langauge use because we always base our word selection on incomplete information about the sender's preferences.
+Being empathetic might strike some poeple as a Dove and Hawk game (clarify better) but our model does not associate any cost by being empathetic as well as the resources (utility of communication) are shared it really does not makes sense to view empathetic in such a light.
 \subsection{References}
 
 \section{Appendix}
