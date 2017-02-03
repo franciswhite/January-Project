@@ -6,7 +6,6 @@
 
 \usepackage{mathptmx} % "times new roman"
 \usepackage[a4paper,bindingoffset=0.2in, left=5cm,right=4cm,top=4.5cm,bottom=6.5cm,footskip=.25in]{geometry} % for submission requirements
-\usepackage{blkarray}
 \usepackage{amssymb}
 \usepackage{amsmath, amsthm}
 \usepackage{amsfonts}
@@ -53,20 +52,19 @@ We call a strategy \textit{pure} if a player will choose a some action with cert
 \textit{mixed} strategies where players will choose from various actions, each with a certain probability.
 
 \subsection{Extension towards pragmatics}
-Game theoretic modeling has been used for of a variety of phenomena related to information transmission. See, for notable examples, \cite{spence1973job, smith1982evolution, cho1987signaling}.
+Game theoretic modeling has been used for of a variety of phenomena related to information transmission. For notable examples in economics and biology, see \cite{spence1973job, smith1982evolution, cho1987signaling}.
 In linguistics, it was applied in attempts to obtain a firmer conceptual grip on Gricean pragmatics. Here the communication between (rational) agents is thought of as a game played between interlocutors. Formulating situations where pragmatic phenomena arise with mathematical precision helps in different ways: On the one hand, it allows bridging the gap between theoretical work on pragmatics and actual experimental data with language users. More specifically, it generates testable predictions about language use under a variety of parametrizations, as pertaining to the agent's (limited) rationality, cognitive ability to think multiple steps ahead, their preferences and methods of deciding on what action to take - so-called \textit{choice rules} %References? perhaps paolo's phd thesis?
  - or their beliefs about the world. On the other hand, such models ought to provide insight into how agents actually arrive at the linguistic behavior they exhibit. %Do you like the last sentence? or do you prefer "...arrive at their linguistic behaviour"?
  Indeed, models concerned with pragmatic behavior of linguistic agents are caught between the pressure of trying to accurately predict and fit experimental data and the hope to realistically capture one or the other aspect of a pragmatic phenomenon - to represent ''what actually is going on'', so to speak.
 
-The family of models we will be concerned with tries to capture the agents' mutual reasoning about each other. Which action the players deem optimal for them and perform depends on a process of reasoning about what the respective other believes. The model tries to capture this process of reasoning about what the respective other does, believes that her opponent will do, believes what her opponent will believe that she will do, and so forth. %Our model will be an extension of this ''Pragmatic Back-and-Forth Reasoning'' \cite{franke2014pragmatic}.
-%Should we mention it explicitly? or just name it as a reference when we give the introduction to the workings of the model?
+The family of models we will be concerned with tries to capture the agents' mutual reasoning about each other. Which action the players deem optimal for them and perform depends on a process of reasoning about what the respective other believes. The model tries to capture this process of reasoning about what the respective other does, believes that her opponent will do, believes what her opponent will believe that she will do, and so forth.
 \subsection{The IBR model}
 We are going to use the \textit{iterated best response} (IBR) to provide our solution concept. %WHY?
 For details and discussion see \cite{franke2009signal} and \cite{franke2014pragmatic}. IBR relies on an explicit representation of the agents' beliefs about each other. The interlocutors beliefs are spelled out in a round-for-round manner in order to capture what intuitively could be the described as the epistemic dynamic of: ''I think that you think that I think that you think...etc.''. Language users are represented to have some hierarchically ordered level of sophistication which correspond to the number of steps an agent can reason forth and back between herself and the other agents. The reasoning chain formed by such steps is then a sequence of iterated optimal responses. It is bounded by the maximal depth a player of a given level of sophistication - or strategic type - can go to.
 
 Entirely unsophisticated types, players who do not take the opponents reasoning into account at all and are thus completely unstrategic, are assigned the level-0. In the games under discussion in this paper this will mean that senders of level-0 will be only concerned with saying whatever is true according to the semantics of the language fragment in question, while receivers of that level will always interpret a message they receive literally. An agent of level-$k$ then forms some belief about the other's behavior who, by assumption, is of some level $l$, where $k\geq l$. Intuitively, this can be interpreted as the player looking down the sophistication hierarchy in order to build some rational expectation of what the other of some specified level $l\leq k$ will do. It is common to assume for simplicity that players of level $k$ expect their opponents to reason exactly one step less than themselves and are thus of level $k-1$.
 
-As in standard signaling games, $T$ is the set of states the players can be in, $M$ the set of messages at the sender's disposal and $A$ the set of actions from which the receiver can choose. Assume for now that $T,M$ and $A$ are all countably finite. A sender strategy is a row-stochastic $(|T| \times |M|)$-matrix $\sigma$, and a receiver strategy is a row-stochastic $(|M|\times |A|)$-matrix $\rho$. By way of example, here are two strategies for a game with $|S|=|A|=3$ and $|M|=2$, so three states and actions, and two messages. \\
+As in standard signaling games, $T$ is the set of states the players can be in, $M$ the set of messages at the sender's disposal and $A$ the set of actions from which the receiver can choose. Assume for now that $T,M$ and $A$ are all countably finite. A sender strategy is a row-stochastic $(|T| \times |M|)$-matrix $S$, and a receiver strategy is a row-stochastic $(|M|\times |A|)$-matrix $R$. By way of example, here are two strategies for a game with $|S|=|A|=3$ and $|M|=2$, so three states and actions, and two messages. \\
 %Do we need the examples? Do we have space for the examples?
 %This whole section can be made shorter.
 \begin{equation*}
@@ -120,29 +118,27 @@ A receiver's best response to a sender's strategy $S$ is defined almost analogou
 %Do we need the the following?
 As the sender has a set of beliefs $\Pi$ about the receivers possible behavior, the set of best responses is the union of all best responses to these possible strategies: $BR(\Pi=\Cup\{BR(\pi)|\pi\in\Pi\}$.
 
-\section{Sticks and Stones}
-\subsection{Exposition of Phenomenon/Interpretation}
-%This needs to be introduced.
+\section{Costly Signaling}
+\subsection{How should we call this stuff?}
+Communication is a messy affair. Expressions change their meaning over time and each person as well as the words they use carry a history with them. Examples abound where language users harm their interlocutors not by the content their speech - by revealing some inconvenient truth, for axmple -, but by choosing inappropriate terms to express the matter. Think of any derogatory name for social groups you like and compare it to using a more appropriate synonym.%This still needs some work.
 
-Consider the following scenario: Two people sharing some language engage in conversation, one as the speaker, the other as the listener. The speaker would like to communicate to the listener what kind of work a mutual acquaintance of the two does. The listener does not yet know what her occupation happens to be, but would like to do so. The acquaintance could either be an ecologist or a geologist. To transfer this knowledge the speaker can utter either ''She's a geologist.'', ''She's an ecologist.'' or ''She's a professional treehugger, stupdily trying to protect plants and stuff.''. Assume that uttering the first is true just in case the person is a geologist and the other two if she's an ecologist. As both of the two well know, the listener cares dearly for the environment, while the speaker does not. The listener, although she understands perfectly well what the speaker is trying to convey to her, would be deeply offended by her uttering the word ''treehugger''. The speaker herself couldn't care less what words she uses, as long as the message comes across and the hearer adopts the right belief about the mutual acquaintance's profession.
+We will now use apparatus lately introduced to analyse one scenario of information transmission where certain expressions have the potential to harm the interlocutors. Assume two people sharing some language engage in conversation, one as the speaker, the other as the listener. The speaker would like to communicate what kind of work a mutual acquaintance of the two does. The listener does not yet know what her occupation happens to be. The acquaintance could either be an ecologist or a geologist. To transfer this knowledge the speaker can utter either ''She's an ecologist.'', ''She's a professional treehugger, stupdily trying to protect plants and stuff.'', ''She's a geologist.'' or ''She's a professional stonehugger, stupidly looking at rocks and stuff.''. Assume that uttering any of the first two is true just in case the person is an ecologist and the last two if she's a geologist. As both of the two well know, the listener cares dearly for the environment, while the speaker does not. The listener, although she understands perfectly well what the speaker is trying to convey to her, would be deeply offended by her uttering the word ''treehugger''. The speaker herself couldn't care less what words are used when talking about ecology, as long as the message comes across and the hearer adopts the right belief about the mutual acquaintance's profession. However, the speaker has a deep-rooted fear of rocks. Merely hearing the word ''stonehugger'' would send chills down her spine. She will avoid the term whenever she can.
 
-This is an interesting situation, for the the speaker could perfectly well achieve her goal of communication and not use the word ''treehugger''. The listener, who is not in any position to choose the signal, then has to accept the speaker's decision grudgingly, knowing that there would have been a better way for her. Alas, it was not the better way for the sender and was thus not chosen. This situation can be modeled fittingly using the IBR approach introduced in previous sections. We will do so, and then carry out further analysis on the baseline set by this model.
+This is an interesting situation, for the the speaker could perfectly well achieve her goal of communication and not use the word ''treehugger''. The listener, who is not in any position to choose the expressions employed, then has to accept the speaker's decision grudgingly, knowing that there would have been a better way for her. Alas, it was not the better way for the sender and was thus not chosen. IBR provides a fitting approach to this problem.
 \subsection{Asymmetric Model}
 \subsubsection{Game Structure}
-Let us now use the IBR model to model the scenario above. Assume that For completeness sake we expand scenario by adding one more utterance ''She's a professional stonehugger who cares more about lifeless things than people.'' We therefore have
-%equiprobability of states needs to be mentioned here. also this could be shorter.
-two players which are talking with each other using some shared language fragment. Although they have this common language, they are triggered by different messages. Say that a geologist and an ecologist are talking and they discuss each others professions. Thus we define the states as $T=\{geologist, ecologist\}$ and set $T=A$. They both share the goal of successful communication, thus we set their utilities such that when the speaker wants to communicate $t_{j}$ by some message $m_i$ then they both have equal positive utility when the receiver to associates $m_i$ with $t_{j}$. Thus we have:
+Two players $P_1$ and $P_2$ are playing a signaling game. $P_1$ is the sender and $P_2$ the receiver.
+Let $T=\{t_geo, t_eco\}$, where $t_geo$ is a world where the acquaintence is a geologist, and in $t_eco$ an ecologist. Both worlds are equally likely before the start of the game, so $P(t_{geo})=P(t_{eco})=0.5$. This is an interpretation game where it is only payoff relevant that the listener adopts the right belief, so $T=A$. Since the goal of transmitting the true state is shared, they receive equal payoffs for successful communication. Let that payoff be $a$ in case of success and 0 otherwise, where $a>0$.
 
 \begin{equation*}
 \bordermatrix{
-      & t_{geologist} & t_{ecologist}    \cr
-  t_{geologist} & a,a & 0,0  \cr
-  t_{ecologist} & 0,0 & a,a
+      & t_{geo} & t_{eco}    \cr
+  t_{geo} & a,a & 0,0  \cr
+  t_{eco} & 0,0 & a,a
 }
 \end{equation*}
-Where $a>0$.
 
-Let us now assume that we have four messages $M=\{geologist, stonehugger, ecologist, treehugger\}$ with the given sematic meaning:
+The set of messages is $M=\{m_{geo}, m_{stone}, m_{eco}, m_{tree}\}$. Its semantics are given by $B$.
  \begin{equation*}
  B =
  \bordermatrix{
@@ -152,29 +148,27 @@ Let us now assume that we have four messages $M=\{geologist, stonehugger, ecolog
  }
  \end{equation*}
 
- And further assume that $m_{stonehugger}$ is a trigger message for the geologist and $m_{treehugger}$ is a trigger messages for the ecologist. We therefore define $c^G$ as a cost vector for the geologist and $c^E$ for the ecologist:
+$m_{stone}$ being played inflicts a cost of $c^1$ to $P_1$, while $m_{tree}$ bears cost $c^2$ for $P_2$. Assume for now that $c^1=c^2=c$, where $a>c>0$.\footnote{Communicating is always preferable to non-communication.} The two cost vectors are thus
 
   \begin{equation*}
-  c^G =
+  c^1 =
   \bordermatrix{
              & m_{geo} & m_{stone} & m_{geo} & m_{tree}    \cr
-             &       0 &         o^G & 0       & 0
-  }\quad
-  c^E =
+             &       0 &         c & 0       & 0
+  }\qquad
+  c^2 =
     \bordermatrix{
                & m_{geo} & m_{stone} & m_{geo} & m_{tree}    \cr
-               &       0 &         0 & 0       & o^E
+               &       0 &         0 & 0       & c
     }
   \end{equation*}
 
-Where $c>0$.
-
-Furthermore we assume that the receiver is unbiased with respect to which state holds, thus $p=(0.5,0.5)$.
-
-Usually language users will encounter the expressions of their language many times over the course of their communicative lives - both as listeners as well as speakers. To capture this we'll posit a third player - nature - which decides at the beginning of the game who of the two players gets to talk and who gets to listen. As rational language users they will need to have some plan of action for all roles, states of the world or messages they encounter. During game play we assume that the geologist is the speaker and the ecologist the receiver thus $c^R=c^E$ and $c^S=c^G$.
-
+Furthermore, the receiver is unbiased with respect to which state holds.
+%Do we even need this assumption?
+%Usually language users will encounter the expressions of their language many times over the course of their communicative lives - both as listeners as well as speakers. To capture this we'll posit a third player - nature - which decides at the beginning of the game who of the two players gets to talk and who gets to listen. As rational language users they will need to have some plan of action for all roles, states of the world or messages they encounter.
+%Elsewhere or delete.
 \subsubsection{Game Play}
-As a first step, let's determine what the naive players' strategies are:\\
+As a first step, we determine what the naive players' strategies are:\\
 \textbf{Level-0 Players}\\
 \begin{equation*}
 S_0=Norm(B)=
@@ -183,7 +177,7 @@ S_0=Norm(B)=
  &       0.5 &         0.5 & 0       & 0 \cr
  &       0 &         0 & 0.5       & 0.5
  }\quad
-R_0=Norm(T(B))
+R_0=Norm(B^T)
 \bordermatrix{
             &  & \cr
     & 1 & 0 \cr
@@ -197,7 +191,7 @@ What is the best response of the level-1 hearer and speaker? Following the IBR p
 \textbf{Level-1 Players}\\
 \begin{equation*}
 % These matrices look strange when rendered
-S_1= BR_S(T(R_0)-c^S)=
+S_1= BR_S(R^T_0-c^S)=
 BR_S(
 \bordermatrix{
             & & & &    \cr
@@ -207,7 +201,7 @@ BR_S(
 -
 \bordermatrix{
             & & & &    \cr
- &       0 &         o^S & 0       & 0 \cr
+ &       0 &         c & 0       & 0 \cr
  }
 )
 \end{equation*}
@@ -215,9 +209,9 @@ BR_S(
 =BR_S(
 \bordermatrix{
                 & & & &    \cr
-     &       1 &         1-o^S & 0       & 0 \cr
-     &       0 &         0-o^S & 1      & 1
- }
+     &       1 &         1-c & 0       & 0 \cr
+     &       0 &         0-c & 1      & 1
+ }\qquad
  )
 =
 \bordermatrix{
@@ -242,7 +236,7 @@ BR_R(
     & 0 \cr
      & 0 \cr
      & 0 \cr
-     & o^R \cr
+     & c \cr
  }
 )
 \end{equation*}
@@ -254,7 +248,7 @@ BR_R(
     & 0.5 & 0 \cr
      & 0.5 & 0 \cr
      & 0 & 0.5 \cr
-     & 0-o^R & 0.5-o^R
+     & 0-c & 0.5-c \cr
  }
  )
 =
