@@ -130,9 +130,9 @@ This is an interesting situation, for the the speaker could perfectly well achie
 \subsubsection{Game Structure}
 Let us now use the IBR model to model the scenario above. Assume that
 
-For completeness sake we expand scenario by adding one more utterance ''She's a professional stonehugger who cares more about lifless things than people''
-
- The  communication where triggering can occur. We define two players which are talking with each other using some shared language fragment. Although they have this common language, they are triggered by different messages. Say that a geologist and an ecologist are talking and they discuss each others professions. Thus we define the states as $T=\{geologist, ecologist\}$ and set $T=A$. They both share the goal of successful communication, thus we set their utilities such that when the speaker wants to communicate $t_{j}$ by some message $m_i$ then they both have equal positive utility when the receiver to associates $m_i$ with $t_{j}$. Thus we have:
+For completeness sake we expand scenario by adding one more utterance ''She's a professional stonehugger who cares more about lifeless things than people.''
+%equiprobability of states needs to be mentioned here. also this could be shorter.
+The  communication where triggering can occur. We define two players which are talking with each other using some shared language fragment. Although they have this common language, they are triggered by different messages. Say that a geologist and an ecologist are talking and they discuss each others professions. Thus we define the states as $T=\{geologist, ecologist\}$ and set $T=A$. They both share the goal of successful communication, thus we set their utilities such that when the speaker wants to communicate $t_{j}$ by some message $m_i$ then they both have equal positive utility when the receiver to associates $m_i$ with $t_{j}$. Thus we have:
 
 \begin{equation*}
 \bordermatrix{
@@ -295,10 +295,9 @@ BR_R(
      & 0 & 1 \cr
  }\qquad
 \end{equation*}
-% These section below requires some work. I tried to collect together all relevant parts of our arguments and threw the rest away. You can check the commit if you miss something. "Player 1 and player 2 have not been introduced at this point.
-$S_3=S_2$ and $R_3=R_2$. So we have reached a stable set of strategies. Some remarks about these strategies are in order. First, the sender will never send the message she finds offensive. This makes perfect intuitive sense, because she has a non-costly alternative to spare her from uttering "autist". Second, the receiver - Player 1 - view the message $autist$ as a \textit{surprise message}. That is, although Player 2 will never play it, Player 1 still needs to specify what would happen in this contingency. We'll assume that she simply uses her (unbiased) priors to decide. Thirdly, while a sender of level zero still harms herself by blindly sending a message she dislikes, every sender of level above zero will stop doing so. Thus, the costly message for sender will not be seen on higher levels and her expected payoff always be optimal.
+$S_3=S_2$ and $R_3=R_2$. Since $S_3$ and $R_3$ are the best responses to each other, we have reached a stable strategy. 
+Some remarks about these strategies are in order. First, the sender will never send the message she finds offensive. This makes perfect intuitive sense, because she has a non-costly alternative which spares her from uttering ''stonehugger''. Second, the receiver views $m_{stone}$ as a surprise message. Although the sender will never play it, the receiver still needs has some plan of action for that contingency. Thirdly, while a sender of level zero still harms herself by blindly sending a costly message, senders above level zero will stop doing so. Thus, $m_{stone}$ will not be seen on higher levels. 
 
-The following table summarizes the third point:
 \begin{table}[h]
 \centering
 \caption{Expected Payoff for Level of Sophistication}
@@ -309,58 +308,37 @@ The following table summarizes the third point:
 \multicolumn{1}{l|}{Level-k, $k>0$} & \multicolumn{1}{l|}{a}                  & \multicolumn{1}{l|}{$a-\tfrac{o^R}{4}$} \\ \cline{2-3}
 \end{tabular}
 \end{table}
+
 \subsection{Informal problem characterization}
-Successful communication will yield a payoff of $a$ for both players. When played as an IBR, there are essentially two possible games: one where Player 1 is in the role of the sender and Player 2 in the role of receiver, and vice versa. Since the game is entirely symmetrical it will suffice to analyze just one such situation. The players' reasoning, and ultimately behavior, will be the same as their opponent's were they to find themselves in their position.
-The interesting story here, however, are their expected payoffs. While playing this strategy yields an expected payoff of $a$ for the sender, the receiver obtains a mere $a-\tfrac{c}{4}$ in expectation.
-\footnote{The calculation leading to this: With probability 0.5 state $t{eco}$ holds where the receiver sends $m_{tree}$ with probability 0.5. So $m_{tree}$ is sent in $0.5\times 0.5 =0.25$ of all cases and then causes a cost of $c$. Communication is always successfull, as can be gathered from the strategies played, hence the receiver can expect to obtain the payoff of correct interpretation minus the cost$\times$probability of hearing $m_{tree}$.}To see why this is, consider the positions the two players are facing in this game. Start with the receiver: Whether she likes the message or not, she can always reason what her interlocutor wants to communicate to her. If the messages $m_{geo}$ or $m_{eco}$ are sent, she will chose the respective action, communication is successfull, so both players get their payoff and everyone is happy. If the message $m_{tree}$ is sent, however, she immediately suffers the associated cost. Still, she knows what the sender is trying to communicate and her best response will be to comply and play the respective action. Refusing to understand is not an option, for it would only add insult to injury; she would both pay the cost of hearing $m_{tree}$ and lose the payoff of understanding correctly. Because she can anticipate the receiver to behave this way, the sender does not have to care about sending either semantically correct message upon observing that the state $mathematician$ holds.
+Here's what's unsatisfactory with this situation: Successful communication yields equal payoffs of $a$ for both players. Indeed, the \textit{sender's payoff} is always $a$, for the the strategy pair $<S_3,R_3>$ garantuees successful communication. For the receiver, however, the story looks different. In $S_3$ $P(m_{tree})=0.5$ if $t_{eco}$ holds. Since $P(t_{eco})=0.5$ $m_{tree}$ is sent in $\tfrac{1}{2}\times \tfrac{1}{2} = \tfrac{1}{2}$ of all cases on average, inflicting a cost of $c$. In expectation, she will thus obtain a mere payoff of $a-\tfrac{c}{4}$.
 
-Since we assumed that either state holds with equal probability, and the sender uses $m_{tree}$ in half of the cases when signaling $ecologist$, we can expect the receiver to pay the cost of $c$ every fourth time around. This results in $EU(R)=a$ and $EU(S)=a-\tfrac{c}{4}$.
+As a way of intuitive explanation, consider the positions the agents are facing in this game. Whether the receiver likes the message or not, she can always reason what her interlocutor wants to communicate to her. If the messages $m_{geo}$ or $m_{eco}$ are sent, she will chose the corresponding action, communication is successfull, so both players get their payoff and everyone is happy. If the message $m_{tree}$ is sent, however, she pays the associated cost. Still, she knows what the sender is trying to communicate and her best response will be to cooperate. Refusing to understand is not an option, for it would only add insult to injury; she would both pay the cost of hearing $m_{tree}$ and lose the payoff of understanding correctly. Because the sender can anticipate the receiver to behave this way, she does not need to care about sending either semantically correct message.
 
-Now, actual language use is an activity which agents play repeatedly and in different roles, so let's assume they play above game many times while nature choses the players' roles in each round with equal probability. Since, as already noted, the game is symmetrical, we can simply interchange the expected payoffs for the two players if they play in the other role. Say, nature happens to be very fair and assign the role of speaker with probability 0.5 to either player. Over the course of a lifetime of conversation - or a sufficient amount of linguistic interactions (thanks Gawd for the weak law of large numbers, dicho sea de paso) - the players can expect a utility of $a-\tfrac{o^i}{8}$, for $i\in \{1,2\}$. Notice that $a-\tfrac{o^i}{8} > a-\tfrac{o^i}{4}$, for any $o^i,a>0$. %is this right?
+Now, actual language use is an activity which agents engage in repeatedly, sometimes as speakers, sometimes as listeners. To model this we assumed they play above game many times, each either role with equal probability. Because the game is symmetrical, we can simply interchange the expected payoffs for the two agents if they play in the other role. Over the course of a lifetime of conversation - a sufficient amount of linguistic interactions - the players can expect a utility of $\tfrac{1}{2}\times a + \tfrac{1}{2}\times (a-\tfrac{o^i}{4})=a-\tfrac{o^i}{8}$, for $i\in \{1,2\}$. 
+%Notice that $a-\tfrac{o^i}{8} > a-\tfrac{o^i}{4}$, for any $o^i,a>0$.
+%Check whether this is right.
+%I would like to have high-indexed cost entries to the matrix depending on the players.
+ 
+The crucial observation to make here is that the agents could have done better. To see this, imagine the agents only used $m_{eco}$ and $m_{geo}$ to communicate. If neither of them would ever inflict a cost and communication could still be reliably successfull, then both receive a full payoff of $a$.
+Never playing costly messages formally means that the respective sender plays strategy $S_*$ where neither $m_{tree}$ nor $m_{stone}$ are ever played. 
+\begin{equation*}
+S_*=
+\bordermatrix{
+            & & & &    \cr
+ &       1 &    0      & 0       & 0 \cr
+ &       0 &         0 & 1      & 0
+ }\qquad
+\end{equation*}
 
-Translating this to our signaling game model would imply that there must be some incentive for players finding themselves in the role of the sender to behave differently than our model's predictions. We will presently speak of possible ways to capture these forces, but let us first look closer at the way in which optimality fails.
+If this sender strategy is still able to convey the correct state, then everyone is better or at least as well off as before. In fact, such an improvement would imply satisfying a criterium for efficiency, namely the  \textit{Pareto optimality}.
 
-At a simple gaze, there simply are better solutions in the game than the ones found so far. Better in which way? Better in the sense, that in both games there exists a solution which provides a greater expected utility for the receiver without affecting the senders expected utility. Simply put, if the sender were to refrain from sending messages which are costly for the receiver, but is still able to convey the correct meaning, then everyone is better or at least as well off. In terms of finding an intuitive name for the interlocutor's behavior, the notion of \textit{political correctness} seems to capture it quite well. In terms of providing a technical explanation for why equilibria thus reached are better, the notion of \textit{Pareto optimality} can be employed.
-
-
-\subsection{Pareto Aparatus}
-The previous section contained a demonstration of how receiver costly messages can be modelled. Furthermore, we showed how the IBR process yields strategies which are sub-optimal for both players. In fact, they happen to be optimal for the sender who is in charge and at liberty to send harmful messages to the receiver. We will momentarily bring to the for what criterium of optimality fails to be satisfied. Meanwhile, the receiver's interests are not directly relevant for sender the sender and therefore easily discarded. This seems at odds with real-life observations of language use. It would seem that speakers sometimes do consider the listeners' interests into account when deciding how to express themselves. As a matter of fact, it seems to have become quite unfashionable in many social contexts to call people by their respective racial slurs over the last couple of decades. There seems to exist some understanding between language users which goes counter to the predictions our IBR model gave so far.
-
-Formally, let $S$ be a set of strategies, let $N$ be a set of players, from 1 to n, and let $u_i$ be the corresponding utilty functions for each player. We say that a strategy $s \in S$ Pareto dominates another strategy $s' \in S$ if:
-
+Formally, some strategy is Pareto optimal if it is not \textit{Pareto dominated} by some other strategy. Pareto domination, in its turn, is defined as follows:
+Let $S$ be a set of strategies, $N$ a set of players, from 1 to n, and $u_i$ be each player's utility function. A strategy $s \in S$ Pareto dominates another strategy $s' \in S$ if:
 \begin{equation*}
 \forall i \in N: u_i(s) \geq u_i(s') \land \exists j \in N: u_j(s) > u_j(s')
 \end{equation*}
 
-Then we define a strategy s to be Pareto optimal there is no other strategy profile s' which Pareto dominates it. %not sure if formula is 100% correct.
-
-%\begin{equation*}
-%\forall i \in N: u_i(s) \geq u_i(s') \land \neg \exists j \in N: u_j(s') > u_j(s) % i think there needs to be some quantification over strategies
-%\end{equation*}
-
-When looking at stable strategies of a given game, one can compare the players' utilities when using each strategy. If some alternative strategy gives any player a higher utility while no other player's utility decreases, we say that the alternative \textit{pareto dominates} the first option. Playing the alternative means that the average utility is increased. However, playing the alternative strategy is not always viable. if the players fail to coordinate sufficiently, one or both of them might end up worse.
-\subsection{Formal problem characterization}
-We claim that the receiver could be just as well off as the sender without the latter having to lose anything in return. The strategies played fail to satisfy a criterium of optimality known as \textit{pareto optimality}. Let us now compare the IBR result to another strategy:
-
-\begin{equation*}
-S_{BR}=
-\bordermatrix{
-            & & & &    \cr
- &       1 &         0 & 0       & 0 \cr
- &       0 &         0 & 0.5      & 0.5
- }\qquad
-R_{BR}=
-\bordermatrix{
-            &  & \cr
-    & 1 & 0 \cr
-     & 0.5 & 0.5 \cr
-     & 0 & 1 \cr
-     & 0 & 1 \cr
- }\qquad
-\end{equation*}
-Yields expected utility ...
-... balblablalb
-Need to finish this part showing the Pareto domination of the pruposed strategy
+If strategy $s'$ gives any player a higher utility than $s$, while no other player's utility decreases, we say that the $s'$ \textit{Pareto dominates} $s$.
 
 % I think we should compare the IBR solution to our empathetic solution thus we can just point to it later.
 
