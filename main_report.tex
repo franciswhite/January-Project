@@ -108,24 +108,22 @@ More sophisticated players are modeled as to have some belief about the interloc
 
 %HERE WE NEED A PARAGRAPH ABOUT PRIORS FOR RECEIVER AND COST VECTORS IN GENERAL. this is also the chance to mention the vector notation later applied.
 
-Finally, we define the notion of \textit{best response} given a set of beliefs. A sender's best response to some strategy $\rho$ is any pure strategy that maps each state to that signal which maximizes the expected utility.
-More formally speaking, the sender's best response to some receiver strategy is\\
-\begin{equation*}
-BR_S(\rho)=\{s\in S | s_{ij}=1\implies j \in arg_kmax(U_S T(\rho)-c)_ik)\}
-\end{equation*} 
-A receiver's best response to a sender's strategy $\sigma$ is defined essentially the same way. Except that there may be so-called \textit{surprise messages} $m_j$ for which $\sigma_{ij}=0$, for all $i$. These are messages the sender will use with probability 0, that is, never. Since strategies are plans of action for every conceivable contingency that might arise in the course of a game, we'll assume that a receiver will fall back on her prior beliefs about the true state and play her best response.
-%I believe that there is an inconsistency between the way we define BR and the way we applied it. This is not good.
-%One way out: Define BR to be possibly mixed. If there is no strict best response, then randomize between the two that are equal.
+Finally, we define the notion of \textit{best response} given a set of beliefs. A sender's best response to some receiver strategy $R$ is any strategy that maps each state to that signal which maximizes the expected utility. In case $n$ signals are tied for expected utility, the sender will play each with probability $\tfrac{1}{n}$.
+%More formally speaking, the sender's best response to some receiver strategy is\\
+%\begin{equation*}
+%BR_S(R)=\{s\in S | s_{ij}=1\implies j \in arg_kmax(U_S T(\rho)-c)_ik)\}
+%\end{equation*}
+A receiver's best response to a sender's strategy $S$ is defined almost analogously. Except that there may be so-called \textit{surprise messages} $m_j$ for which $R{ij}=0$, for all $i$. These are messages the sender will use with probability 0, that is, never. Since strategies are plans of action for every conceivable contingency that might arise in the course of a game, we'll assume that a receiver will then play each option with probability $\tfrac{1}{|A|}$.
+%Do we need the the following?
 As the sender has a set of beliefs $\Pi$ about the receivers possible behavior, the set of best responses is the union of all best responses to these possible strategies: $BR(\Pi=\Cup\{BR(\pi)|\pi\in\Pi\}$.
 
 \section{Sticks and Stones}
 \subsection{Exposition of Phenomenon/Interpretation}
 %This needs to be introduced.
 
-To make this more clear, consider the following scenario: Two people sharing some language engage in conversation, one as the speaker, the other as the listener. The speaker would like to communicate to the listener what kind of work a mutual acquaintance of the two does. The listener does not yet know what her occupation happens to be, but would like to do so. The acquaintance could either be an ecologist or a geologist. To transfer this knowledge the speaker can utter either ''She's a geologist.'', ''She's an ecologist.'' or ''She's a professional treehugger, stupdily trying to protect plants and stuff.''. Assume that uttering the first is true just in case the person is a geologist and the other two if she's an ecologist. As both of the two well know, the listener cares dearly for the environment, while the speaker does not. The listener, although she understands perfectly well what the speaker is trying to convey to her, would be deeply offended by her uttering the word ''treehugger''. The speaker herself couldn't care less what words she uses, as long as the message comes across and the hearer adopts the right belief about the mutual acquaintance's profession.
+Consider the following scenario: Two people sharing some language engage in conversation, one as the speaker, the other as the listener. The speaker would like to communicate to the listener what kind of work a mutual acquaintance of the two does. The listener does not yet know what her occupation happens to be, but would like to do so. The acquaintance could either be an ecologist or a geologist. To transfer this knowledge the speaker can utter either ''She's a geologist.'', ''She's an ecologist.'' or ''She's a professional treehugger, stupdily trying to protect plants and stuff.''. Assume that uttering the first is true just in case the person is a geologist and the other two if she's an ecologist. As both of the two well know, the listener cares dearly for the environment, while the speaker does not. The listener, although she understands perfectly well what the speaker is trying to convey to her, would be deeply offended by her uttering the word ''treehugger''. The speaker herself couldn't care less what words she uses, as long as the message comes across and the hearer adopts the right belief about the mutual acquaintance's profession.
 
-This is an interesting situation, for the the speaker could perfectly well achieve her goal of communication and not use the word ''treehugger''. The listener, who's not in any position to choose the signal, then has to accept the speaker's decision grudgingly, knowing that there would have been a better way for her. Alas, it was not the better way for the sender and was thus not chosen. This situation can be modeled fittingly using the IBR approach introduced in previous sections. We will do so, and then carry out further analysis on the baseline set by this model.
-%
+This is an interesting situation, for the the speaker could perfectly well achieve her goal of communication and not use the word ''treehugger''. The listener, who is not in any position to choose the signal, then has to accept the speaker's decision grudgingly, knowing that there would have been a better way for her. Alas, it was not the better way for the sender and was thus not chosen. This situation can be modeled fittingly using the IBR approach introduced in previous sections. We will do so, and then carry out further analysis on the baseline set by this model.
 \subsection{Asymmetric Model}
 \subsubsection{Game Structure}
 Let us now use the IBR model to model the scenario above. Assume that
