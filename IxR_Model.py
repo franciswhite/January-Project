@@ -1,11 +1,5 @@
 import numpy as np
 
-
-# class IBR_Model(IteratedModel):
-#     functions specific for ibr
-#         selection
-#
-
 class IteratedModel(object):
     def __init__(self, B, sender_cost=None, receiver_cost=None, receiver_prior=None):
         self.B = B
