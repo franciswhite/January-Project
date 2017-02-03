@@ -1,9 +1,8 @@
-\documentclass{article}
+\documentclass[10]{article}
 \usepackage[utf8]{inputenc}
 
-\title{January Project}
-\author{Silvan Hungerbuehler, Haukur P. Jónsson}
-\date{Date quo: 30.01.17}
+\title{Sticks and Stones}
+\date{Date quo: 1.02.17}
 
 \usepackage{amssymb}
 \usepackage{amsmath, amsthm}
@@ -13,53 +12,60 @@
 \usepackage{hyperref}
 \usepackage{comment}
 \bibliography{references.bib}
-
 \begin{document}
 \maketitle
+
 \section{Introduction}
-The study of phenomena related to natural language use within the formal framework of game theory has taken a variety of forms since David Lewis' \cite{david1969convention} analysis of signaling games. The goal of this paper is to analyze a small number of games where modeling the cost associated with a message enables us to shed some light on pragmatic phenomena. Specifically, we want to forgo the common assumption that it is exclusively the player sending a message for whom this is is costly. We will look at signaling games where costs are conncected not only to the sender, but also to the recipient.
+When Donald Trump, the current president of the United States of America, was asked to explain calling women ''fat pigs'', ''dogs'', ''slobs'' and ''disgusting animals'' his reply was:
+\textit{I’ve been challenged by so many people, I don’t frankly have time for total political correctness. And to be honest with you, this country doesn’t have time either.'}
+%https://www.theguardian.com/us-news/2016/nov/30/political-correctness-how-the-right-invented-phantom-enemy-donald-trump
+In contrast to Mr Trump, the authors of the present paper had time. We provide a formal framework in order to analyze the pragmatic phenomenon of harmful use of language.
 
-To carry out this analysis we will rely on a framework that lies broadly in the Lewisian tradition. In fact, it can easily be seen as an extension of it. We will use game theoretic models of the \textit{Iterated Best Response} (IBR) family. This approach looks to explain and predict pragmatic inferences of natural language users by modeling a forth-and-back reasoning taking place between two agents engaged in conversation. In particular we are interested in explaining how speakers sometimes alter their way of expressing themselves, or specifically abstain from using certain communicative alternatives, not because they necessarily dislike some of the available options, but because their audience prefers one over the other. How is it, for example, that most people don't go around calling their fellow citizens monikers related to their race, religion or other social group? Whether someone is referred to someone as a "kyke" or a "jew", "faggot" or "homosexual", "bimbo" or "black" probably won't affect the transfer of information. People will understand what is meant, however they feel about the terms employed. It seems equally clear that some of these ways of putting thins do have an effect on communcication, depending on who is speaking, and, crucially, who is listening. The question then becomes not how many people don't go around offending others, but why many still do? When studying the use of language as the transfer of information, the issue then becomes to explain how there can coexist equally good - expressive, accurate, etc. - forms of communication, yet some options are used rather than others.
+We are interested in explaining under which circumstances speakers will be disposed to alter their way of expressing themselves. Specifically, we will analyse the situation where a speaker is indifferent about various communicative options, while the audience dislikes some of the alternatives. Although the wording of a message might not affect the transfer of information, it can have an impact on the listener. Obvious cases in point are racial slurs and so-called ''trigger words'' which cause listeners suffering from postraumatic stress disorder (PTSD) to re-live past trauma. \cite{fagan2004confronting, yehuda2002post} So although two expressions might be semantically identical, choosing one over the other can have a substantial effect on actual communication, depending on who is speaking, and, crucially, who is listening. We thus take the pragmatic slogan seriously that there is far more to communication than the literal meaning of the expressions employed.
+When studying the use of language as the transfer of information, the issue becomes to explain how there can coexist equally good - expressive, accurate, etc. - forms of communication, yet some options are used rather than others.
 
+Based on our model we will present three core results: First, we will offer a formal explanation for the reason why offensive use of language is so persistent. Given that there are many ways of putting things, how come people still offend and harm each other?  Second, we will argue that there is potential for better communication, benefitting everyone. Third, we will argue that the degree of ''empathy'' language users exhibit is of crucial importance to reap those benefits.
+
+We will rely on game theoretic models of the \textit{Iterated Best Response} (IBR) family. This approach looks to explain and predict pragmatic inferences of natural language users by modeling a forth-and-back reasoning taking place between two agents engaged in conversation.
+Our main formal addition to such models is that we want to forgo the common assumption that it is exclusively the player sending a message for whom this is is costly. We will look at signaling games where costs are conncected not only to the sender, but also to the recipient.
 We will offer some take on these questions by following this outline:
-\begin{enumerate}
-\item Brief Introduction to Lewisian Signaling Games
+\begin{enumerate} %need to make this prose. but will do so later, once order is established.
+\item Brief Introduction to Signaling Games
 \item Introduction to the IBR Model
 \item Sticks and Stones
 \item Conclusion, Unexplored Topics \& Further Research
 \end{enumerate}
 
 \section{Game Theory and Pragmatics}
-\subsection{Lewisian Signaling Game}
-The philosopher David Lewis first suggested using a game theoretical framework to study communication. His seminal work on conventions \cite{david1969convention} laid the foundations for a whole plethora of research in the fields of theoretical biology, economics and, perhaps more recently, linguistics. We will go over the definition as well as some of the core features and assumptions of Lewis-style signaling games. We'll also occasionally highlight some aspect which stands in contrast to later games we would like to analyze in this paper.
+\subsection{Signaling Games}
+Signaling games are sequential games between two players: a sender and a receiver. In the context of linguistic modeling one can usually think of the sender as a speaker and of the receiver as a listener. The game is playerd in some particular state of the world, formally an element of set $T$ which represents possibles ways the world could be. Only the sender knows which state this happens to be. The receiver, however, has some beliefs about the possible states. These beliefs are modeled with a probability measure, so that $T$ is sample space and $P_R$ is probability measure which is a function $P_R: T\rightarrow \mathbb{R}_{\geq 0}$ satisfying $\sum_{t\in T}P_R(t)=1$.
 
-Signaling games are sequential games between two players: a sender and a receiver. In the context of linguistic modeling one can usually think of the sender as a talker and of the receiver as a listener, but we'll use the terms interchangeably for nothing crucial hinges on them. The game takes place in some particular state of the world, formally an element of set $T$ which represents possibles ways the world could be. Throughout the game the two of them are in one state, yet only the sender knows which state this happens to be. The receiver, however, has some beliefs about the probability that they encounter themselves in one of the possible world. These beliefs are modeled with a probability measure, so that $T$ is sample space and $P_R$ is probability measure which is a function $P_R: T\rightarrow \mathbb{R}_{\geq 0}$ satisfying $\sum_{t\in T}P_R(t)=1$.
-
-Then game is then played such: After the sender observes the true state of the world $t_k$ she sends some message $m_i$ out of a set of messages $M$.
-\footnote{We could explicitly model the sender being certain about which state holds by assigning a probability function $P_S$ to the sender too. Namely one, where the true state is assigned probability 1 and all other states 0. This would have the conceptual benefit of making it more straightforward to later drop the assumption that the sender always is certain which state she is in when choosing an action. This might be useful for some modeling intention we might have at that moment. 
-}
+The game is then played such: After the sender observes the true state of the world $t$ she sends some message $m_i$ out of a set of messages $M$.
 The receiver then observes which element $m_i$ from $M$ was sent and chooses some action $a_j$ from a set of actions $A$.
-
-The players' respective utility is given by functions $u_S$ and $u_R$. They take as arguments the state the players find themselves in and the action performed by the receiver, so that $u_S(t,a)$ and $u_R(t,a)$. Importantly for the classical Lewisian model, what message is being sent does not directly affect the players' payoff. For this reason the type of games Lewis introduced are now referred to as cheap talk games. Sending one messages rather than another is payoff-irrelevant, for the message is not part of the utility function. Hence, the only effect a message can have is the way it alters the receiver's belief about which state she is in. Different beliefs of the receiver have the potential to alter her optimal action and thereby to affect both players' payoff.
-
-The last piece missing in the description of this signaling game is the players' strategies. For the sender this is a function from the set of states $T$ to the set of messages $M$; for the receiver this is a function from the set of messages $M$ to the set of actions $A$. A pure strategy is thus a complete plan of action which tells the players exactly how to react in any situation in the game where they have the power to decide what action to take. \textit{Pure} here simply means that a player will choose a some action with certainty, that is, always, when confronted with a given situation. In contrast to pure strategies stand \textit{mixed} strategies where players will choose from various actions, each with a certain probability.
-
-\textbf{Finish Example}
-To make clearer what is meant by a Lewis' style signaling game, consider the following example:\\
-There be two possible states the world could be, $t_1$ or $t_2$. I observe which state holds. Blablablah
+The players' respective utility is given by functions $u_S$ and $u_R$. They take as arguments the state the players find themselves in and the action performed by the receiver, so that $u_S(t,a)$ and $u_R(t,a)$. We will only consider cooperative games, so that $u_S(t,a)=u_R(t,a)$ for $\forall t\in T$ and $\forall a\in A$.
+What message is being sent does not directly affect the players' payoff, for the message is not part of the utility function. Hence, the only effect a message can have is by altering the receiver's belief. Different beliefs have the potential to alter her optimal action and thereby to affect both players' payoff.
+The sender's strategy is a function from the set of states $T$ to the set of messages $M$; the receiver's strategy is a function from the messages $M$ to the set of actions $A$.
+%We could already introduce priors, cost and expected utility here.
+We call a strategy \textit{pure} if a player will choose a some action with certainty, that is, always, when confronted with a given situation. In contrast to pure strategies stand
+\textit{mixed} strategies where players will choose from various actions, each with a certain probability.
 
 \subsection{Extension towards pragmatics}
-Since its initial publicaiton in 1969 Lewis' work on signaling games been used as the basis for game theoretic modeling of a variety of phenomena related to information transmission. Amongst other disciplines, it was applied in linguistics, specifically in attempts to obtain a firmer conceptual grip on Gricean pragmatics. Here the communication between (rational) agents is thought of as a game played between interlocutors. Formulating situations where pragmatic phenomena arise with mathematical precision helps in different ways: On one hand it allows bridging the gap between theoretical work on pragmatics and actual experimental data with language users; that is, to generate testable predictions about language use under a variety of parametrizations, as pertaining to the agent's (limited) rationality, cognitive ability to think multiple steps ahead, their preferences and methods of deciding on what action to take - so-called \textit{choice rules} - or their beliefs about the world. On the other hand, and perhaps somewhat idealistically, it is hoped that such models provide insight into how agents actually arrive at the linguistic behavior they exhibit. Indeed, models concerned with pragmatic behavior of linguistic agents are caught between the pressure of trying to accurately predict and fit experimental data and the hope to realistically capture one or the other aspect of a pragmatic phenomenon - to represent "what actually is going on", so to speak.
+Game theoretic modeling has been used for of a variety of phenomena related to information transmission. See, for notable examples, \cite{spence1973job, smith1982evolution, cho1987signaling}.
+In linguistics, it was applied in attempts to obtain a firmer conceptual grip on Gricean pragmatics. Here the communication between (rational) agents is thought of as a game played between interlocutors. Formulating situations where pragmatic phenomena arise with mathematical precision helps in different ways: On the one hand, it allows bridging the gap between theoretical work on pragmatics and actual experimental data with language users. More specifically, it generates testable predictions about language use under a variety of parametrizations, as pertaining to the agent's (limited) rationality, cognitive ability to think multiple steps ahead, their preferences and methods of deciding on what action to take - so-called \textit{choice rules} %References? perhaps paolo's phd thesis?
+ - or their beliefs about the world. On the other hand, such models ought to provide insight into how agents actually arrive at the linguistic behavior they exhibit. %Do you like the last sentence? or do you prefer "...arrive at their linguistic behaviour"?
+ Indeed, models concerned with pragmatic behavior of linguistic agents are caught between the pressure of trying to accurately predict and fit experimental data and the hope to realistically capture one or the other aspect of a pragmatic phenomenon - to represent ''what actually is going on'', so to speak.
 
-The family of models we will be concerned with tries to capture the agents' mutual reasoning about each other. The basic idea is that which action the players deem optimal for them depends on a process of reasoning about what the respective other believes. The model tries to capture this process of reasoning about what the respective other does, believes that her opponent will do, believes what her opponent will believe that she will do and so forth. This process of mutual reasoning about each other has been called "Pragmatic Back-and-Forth Reasoning" \cite{franke2014pragmatic}. Our model is based on that basic set-up but goes on to add some novel elements.
-
+The family of models we will be concerned with tries to capture the agents' mutual reasoning about each other. Which action the players deem optimal for them and perform depends on a process of reasoning about what the respective other believes. The model tries to capture this process of reasoning about what the respective other does, believes that her opponent will do, believes what her opponent will believe that she will do, and so forth. %Our model will be an extension of this ''Pragmatic Back-and-Forth Reasoning'' \cite{franke2014pragmatic}.
+%Should we mention it explicitly? or just name it as a reference when we give the introduction to the workings of the model?
 \subsection{The IBR model}
-While Lewis' analysis of the basic signaling game described above relied on the notion of Nash Equilibria, we are going to use the \textit{iterated best response} (IBR) to provide our solution concept. For a detailed discussion of the following see also Michael Franke's PhD Thesis \cite{franke2009signal}. The IBR relies on an explicit representation of the agents' beliefs about each other. The interlocutors beliefs are spelled out in a round-for-round manner in order to capture what intuitively could be the described as the epistemic dynamic of: "I think that you think that I think that you think...etc.". Language users are represented to have some hierarchically ordered level of sophistication which correspond to the number of steps a player can reason forth and back between herself and the other players. The reasoning chain of such steps forms then a sequence of iterated optimal responses and is only bounded by the maximal depth a player of a given level of sophistication - or strategic type - can go to.
+We are going to use the \textit{iterated best response} (IBR) to provide our solution concept. %WHY?
+For details and discussion see \cite{franke2009signal} and \cite{franke2014pragmatic}. IBR relies on an explicit representation of the agents' beliefs about each other. The interlocutors beliefs are spelled out in a round-for-round manner in order to capture what intuitively could be the described as the epistemic dynamic of: ''I think that you think that I think that you think...etc.''. Language users are represented to have some hierarchically ordered level of sophistication which correspond to the number of steps an agent can reason forth and back between herself and the other agents. The reasoning chain formed by such steps is then a sequence of iterated optimal responses. It is bounded by the maximal depth a player of a given level of sophistication - or strategic type - can go to.
 
-Entirely unsophisticated types, players who do not take the opponents reasoning into account at all and are thus completely unstrategic, are assigned the level-0. In the games under discussion in this paper this will mean that senders of level-0 will be only concerned with saying whatever is true according to the semantics of the language fragment in question, while receivers of that level will always interpret a message they receive literally. An agent of level-$k$ then forms some belief about the other's behavior who, by assumption, is of some level $l$, where $k\geq l$. Intuitively, this can be interpreted as the player looking down the sophistication hierarchy in order to build some rational expectation of what the opponent, who is thought to be rational exactly to some specified level $l\leq k$ will do. For simplicity it is often assumed - and will be assumed throughout our discussion in this paper - that players of level $k$ assume that their opponents will reason exactly one step less than them and are thus of level $k-1$. This \textit{myopic} assumption can of course be lifted and a player's expectation about the opponent's level, and consequently about her behavior, modeled differently.
+Entirely unsophisticated types, players who do not take the opponents reasoning into account at all and are thus completely unstrategic, are assigned the level-0. In the games under discussion in this paper this will mean that senders of level-0 will be only concerned with saying whatever is true according to the semantics of the language fragment in question, while receivers of that level will always interpret a message they receive literally. An agent of level-$k$ then forms some belief about the other's behavior who, by assumption, is of some level $l$, where $k\geq l$. Intuitively, this can be interpreted as the player looking down the sophistication hierarchy in order to build some rational expectation of what the other of some specified level $l\leq k$ will do. It is common to assume for simplicity that players of level $k$ expect their opponents to reason exactly one step less than themselves and are thus of level $k-1$.
 
-Concretely, such a model takes the following shape:\\
-$T$ is the set of states the players can be in, $M$ the set of messages at the sender's disposal and $A$ the set of actions from which the receiver can choose. Assume for now that $T,M$ and $A$ are all countably finite. A sender strategy is a row-stochastic $(|T| \times |M|)$-matrix $\sigma$, and a receiver strategy is a row-stochastic $(|M|\times |A|)$-matrix $\rho$. By way of example, here are two strategies for a game with $|T|=|A|=3$ and $|M|=2$, so three states and actions, and two messages. \\
+As in standard signaling games, $T$ is the set of states the players can be in, $M$ the set of messages at the sender's disposal and $A$ the set of actions from which the receiver can choose. Assume for now that $T,M$ and $A$ are all countably finite. A sender strategy is a row-stochastic $(|T| \times |M|)$-matrix $\sigma$, and a receiver strategy is a row-stochastic $(|M|\times |A|)$-matrix $\rho$. By way of example, here are two strategies for a game with $|S|=|A|=3$ and $|M|=2$, so three states and actions, and two messages. \\
+%Do we need the examples? Do we have space for the examples?
+%This whole section can be made shorter.
 \begin{equation*}
 \sigma =
     \bordermatrix{
@@ -74,11 +80,13 @@ $T$ is the set of states the players can be in, $M$ the set of messages at the s
           m_1 & 0.5 & 0.5 & 0  \cr
           m_2 & 0.8 & 0.1 & 0.1
         }\qquad
-\end{equation*}%add row and column names
+\end{equation*}
 
-When the sender observes some state, her strategy determines with which probability she chooses from the different messages; likewise for the receiver, but with messages and actions. The rows in the strategy matrices thus represent the situations where the players get to decide, and the respective entries in the row describe the probabilities with which they opt for the move in that column. The sender, in this example, would choose $m_1$ with probability $0.2$ upon observing $t_1$, and with probability $1$ when observing $t_3$. The receiver, in turn, would choose $a_1$ and $a_2$ each with probability of $0.5$, while never playing $a_3$, when receiving $m_1$ from the sender.
+When the sender observes some state, her strategy determines with which probability she chooses from the different messages; likewise for the receiver, but with messages and actions. The rows in the strategy matrices thus represent the situations where the players get to decide, and the respective entries in the row describe the probabilities with which they opt for the move in that column. The sender, in this example, would choose $m_1$ with probability $0.2$ upon observing $t_1$, and with probability $1$ when observing $t_3$. The receiver, in turn, would choose $a_1$ and $a_2$ each with probability $0.5$, while never playing $a_3$, when receiving $m_1$ from the sender.
+%Here is the place to use the definition of pure and mixed strategies. If we actually want to define them before.
 
-The meaning of the language fragment in question is modeled as a $(|T| \times |M|)$-matrix. If some state $t_i$ semantically warrants the utterance of some message $m_j$, then the entry $B_{ij}$ in the matrix will be $1$, otherwise $0$. This matrix reporting the boolean values is called the \textit{Boolean Matrix} and denoted with $B$. For the purpose of illustration, here's an example where both $t_1$ and $t_2$ can be distinctly expressed, but the game contains no message meaning $t_3$:\\
+The meaning of the language fragment in question is modeled as a $(|T| \times |M|$-matrix. If some state $t_i$ semantically warrants the utterance of some message $m_j$, then the entry $x_{ij}$ in the matrix will be $1$, otherwise $0$. This matrix reporting the boolean values is called the \textit{Boolean Matrix} and denoted by $B$. For the purpose of illustration, an example where both $t_1$ and $t_2$ can be distinctly expressed, but the game contains no message meaning $t_3$:\\
+%Do we need this example? I would say it's the first to go if we run short of space.
 \begin{equation*}
 B =
     \bordermatrix{
@@ -89,393 +97,234 @@ B =
         }\qquad
 \end{equation*}
 
-% the line below here is hard to understand. Do you map a matrix onto some other matrix? don't you rather map a matrix to another matrix?
-Players of the naive - level-0 sophistication - type are represented by simply reporting the normalized boolean matrix. Normalization here simply means a mapping of some $(|T| \times |M|)$-matrix $A$ onto some other $(|T| \times |M|)$-matrix $B$ such that $B_i\propto A_i$ if $\sum_j (A_{ij})>0$ and $B_{ij}=\tfrac{1}{|M|}$ otherwise. In the case of the receiver the transposed boolean matrix is normalized.
+The strategies of level-0 type are represented by the normalized boolean matrix. Normalization here simply means a mapping of some $(m\times n)$-matrix $A$ onto some other $(m\times n)$-matrix $B$ such that $B_i\propto A_i$ if $\sum_j (A_{ij})>0$ and $B_{ij}=\tfrac{1}{n}$ otherwise. In the case of the receiver the transposed boolean matrix is normalized.
 
-More sophisticated players are modeled as to have some belief about the interlocutors behavior. For now we'll assume that players have unbiased beliefs. A belief is unbiased if all elements $x\in X$ of some (finite) set X are deemed to be equally probable. All $y\not\in X$ are assigned probability zero. So that each option is considered equally likely. We thus follow Franke's argument for %Franke Phd
+More sophisticated players are modeled as to have some belief about the interlocutors behavior. For now we will assume that players have unbiased beliefs, meaning that there are no further restriction imposed - for example, that some player simply disregards a possible strategy. A belief is unbiased if all elements $x\in X$ of some (finite) set X are deemed to be equally probable. All $y\not\in X$ are assigned probability zero. So that each option is considered equally likely. We thus follow Franke's argument for
+%Franke Phd also contains probabilistic argument about the Principle of Indifference
  using unbiased beliefs about possible opponent behavior as it allows us to simplify the mathematics and allows for more straightforward computation in linguistic applications. Formally, if $X$ is some ordered set of strategies of cardinality $\mathbb{C}$, then the set of beliefs $\Pi$ is defined as\\
 \begin{equation*}
 \Pi(X)=\{\sum_{x\in X} \dfrac{1}{\mathbb{C}}X\}
 \end{equation*} %i don't understand this equation
 
-Finally, we define the notion of \textit{best response} given a set of beliefs. A sender's best response to some strategy $\rho$ is any pure strategy that maps each state to that signal which maximizes the expected utility. 
+%HERE WE NEED A PARAGRAPH ABOUT PRIORS FOR RECEIVER AND COST VECTORS IN GENERAL. this is also the chance to mention the vector notation later applied.
+
+Finally, we define the notion of \textit{best response} given a set of beliefs. A sender's best response to some strategy $\rho$ is any pure strategy that maps each state to that signal which maximizes the expected utility.
 More formally speaking, the sender's best response to some receiver strategy is\\
 \begin{equation*}
 BR_S(\rho)=\{s\in S | s_{ij}=1\implies j \in arg_kmax(U_S T(\rho)-c)_ik)\}
 \end{equation*} 
-A receiver's best response to a sender's strategy $\sigma$ is defined essentially the same way. Except that there may be so-called \textit{surprise messages} $m_j$ for which $\sigma_{ij}=0$, for all $i$. These are messages the sender will use with probability 0, that is, never. Since strategies are plans of action for every conceivable contingency that might arise in the course of a game, the best response will need to have some action for surprise messages.
-\textbf{What to do here? Either fall back on literal meaning-change symmetric case. or explain why priors are used}
+A receiver's best response to a sender's strategy $\sigma$ is defined essentially the same way. Except that there may be so-called \textit{surprise messages} $m_j$ for which $\sigma_{ij}=0$, for all $i$. These are messages the sender will use with probability 0, that is, never. Since strategies are plans of action for every conceivable contingency that might arise in the course of a game, we'll assume that a receiver will fall back on her prior beliefs about the true state and play her best response.
+%I believe that there is an inconsistency between the way we define BR and the way we applied it. This is not good.
+%One way out: Define BR to be possibly mixed. If there is no strict best response, then randomize between the two that are equal.
 As the sender has a set of beliefs $\Pi$ about the receivers possible behavior, the set of best responses is the union of all best responses to these possible strategies: $BR(\Pi=\Cup\{BR(\pi)|\pi\in\Pi\}$.
 
-% Haukur has read up to here:...:P
 \section{Sticks and Stones}
-\subsection{Receiver's Cost}
-When it comes to the way iterated response models view cost, there is a great deal of variety. Sometimes the cost of signaling is viewed as completely irrelevant and is thus not modeled at all - one such example is David Lewis' analysis.  For other purposes it is of crucial importance, as, for example, in the analysis of the Horn game in Franke and Jaeger. What these models have in common, however, is that none of them chooses to assign any importance to the cost a certain signal might cause a receiver. Indeed,  in Franke and Jaeger , whose basic framework will use in what follows, have considered message cost to be uniquely tied to the sender's role. This is perhaps explainable as a straightforward modeling choice given that these signaling games are played sequentially. It lies within the sender's power to decide which signal to emit, she thus only needs to consider her own needs. %expand on the point on power. perhaps at later stage?
+\subsection{Exposition of Phenomenon/Interpretation}
+%This needs to be introduced.
 
-The power over which message is being sent notwithstanding, there is great potential to shed some light on pragmatic phenomena by including a receiver's cost in the model. Capturing it explicitly could provide accounts for some phenomena which could hardly be accounted for were we to stick to viewing receiver's cost as irrelevant.
+To make this more clear, consider the following scenario: Two people sharing some language engage in conversation, one as the speaker, the other as the listener. The speaker would like to communicate to the listener what kind of work a mutual acquaintance of the two does. The listener does not yet know what her occupation happens to be, but would like to do so. The acquaintance could either be an ecologist or a geologist. To transfer this knowledge the speaker can utter either ''She's a geologist.'', ''She's an ecologist.'' or ''She's a professional treehugger, stupdily trying to protect plants and stuff.''. Assume that uttering the first is true just in case the person is a geologist and the other two if she's an ecologist. As both of the two well know, the listener cares dearly for the environment, while the speaker does not. The listener, although she understands perfectly well what the speaker is trying to convey to her, would be deeply offended by her uttering the word ''treehugger''. The speaker herself couldn't care less what words she uses, as long as the message comes across and the hearer adopts the right belief about the mutual acquaintance's profession.
 
-To make this more clear, consider the following scenario: Two people sharing some language engage in conversation, one as the speaker, the other as the listener. The speaker would like to communicate to the listener what kind of work a mutual acquaintance of the two does. The listener does not yet know what her occupation happens to be, but would like to do so. The acquaintance could either be an ecologist or a mathematician. To transfer this knowledge the speaker can utter either "She's a mathematician.", "She's an ecologist." or "She's a professional treehugger, stupdily trying to protect plants and stuff.". Assume that uttering the first is true just in case the person is a mathematician and the other two if she's an ecologist. As both of the two well know, the listener is a great lover of nature and cares dearly for the environment, while the speaker does not. The listener, although she understands perfectly well what the speaker is trying to convey to her, would be deeply offended by her uttering the word "treehugger". The speaker herself couldn't care less what words she uses, as long as the message comes across and the hearer adopts the right belief about the mutual acquaintance's profession.
-
-This is an interesting situation, for the the speaker could perfectly well achieve her goal of communication and not use the word "treehugger". The listener, who's not in any position to choose the signal, then has to accept the speaker's decision grudgingly, knowing that there would have been a better way for her. Alas, it was not the better way for the sender and was thus not chosen. This situation can be modeled fittingly using the IBR approach introduced in previous sections. We will do so, and then carry out further analysis on the baseline set by this model.
-\subsection{Asymmetric Offence}
+This is an interesting situation, for the the speaker could perfectly well achieve her goal of communication and not use the word ''treehugger''. The listener, who's not in any position to choose the signal, then has to accept the speaker's decision grudgingly, knowing that there would have been a better way for her. Alas, it was not the better way for the sender and was thus not chosen. This situation can be modeled fittingly using the IBR approach introduced in previous sections. We will do so, and then carry out further analysis on the baseline set by this model.
+%
+\subsection{Asymmetric Model}
 \subsubsection{Game Structure}
-The two interlocutors play an interpretation game. Thus set of states $T$ equals the set of actions $A$: $T=\{mathematician,ecologist\}=A$. Each state holds with equal probability. The players' utilities are given as:\\
-\bordermatrix{
-      & mathematician & ecologist    \cr
-  mathematician & a,a & 0,0  \cr
-  ecologist & 0,0 & a,a
-}\qquad
+Let us now use the IBR model to model the scenario above. Assume that
 
+For completeness sake we expand scenario by adding one more utterance ''She's a professional stonehugger who cares more about lifless things than people''
+
+ The  communication where triggering can occur. We define two players which are talking with each other using some shared language fragment. Although they have this common language, they are triggered by different messages. Say that a geologist and an ecologist are talking and they discuss each others professions. Thus we define the states as $T=\{geologist, ecologist\}$ and set $T=A$. They both share the goal of successful communication, thus we set their utilities such that when the speaker wants to communicate $t_{j}$ by some message $m_i$ then they both have equal positive utility when the receiver to associates $m_i$ with $t_{j}$. Thus we have:
+
+\begin{equation*}
+\bordermatrix{
+      & t_{geologist} & t_{ecologist}    \cr
+  t_{geologist} & a,a & 0,0  \cr
+  t_{ecologist} & 0,0 & a,a
+}\qquad
+\end{equation*}
 Where $a>0$.
 
-There are three possible messages. Let them be denoted as $m_{math}$, which correctly represents $t_{mathematician}$, $m_{eco}$ and $m_{tree}$ both correctly representing $t_{ecologist}$, where $m_{eco}$ is the non-offensive and $m_{tree}$ the hurtful message. So the message set $M$ is defined as $M=\{m_{math},m_{eco},m_{tree}\}$. According to the semantics just described, the Boolean matrix looks like this:\\
-\begin{equation*}
-B =
-\bordermatrix{
-                    & m_{math} & m_{eco} & m_{tree}    \cr
-  t_{mathematician} & 1 & 0 & 0 \cr
-  t_{ecologist}     & 0 & 1 & 1
-}\qquad
-\end{equation*}
+Let us now assume that we have four messages $M=\{geologist, stonehugger, ecologist, treehugger\}$ with the given sematic meaning:
+ \begin{equation*}
+ B =
+ \bordermatrix{
+            & m_{geo} & m_{stone} & m_{eco} & m_{tree}    \cr
+   t_{geo}  &       1 &         1 & 0       & 0 \cr
+   t_{eco}  &       0 &         0 & 1       & 1
+ }\qquad
+ \end{equation*}
 
-Finally, we define $c_S$ and $c_R$ to be the cost vectors for sender and receiver, respectively. The cost vector has length $|M|$ for both agents. In the present context the sender doesn't face any cost, so her cost vector consists of zeros: $c_S=(0,0,0)$. For the receiver, however, the $m_{tree}$ is associated with some cost $c>0$: $c_R=(0,0,c)$.
-Also, assume for now that the receiver is unbiased with respect to which state holds, thus $p=(0.5,0.5)$.
-We will now apply the IBR method to this game. 
+ And further assume that $m_{stonehugger}$ is a trigger message for the geologist and $m_{treehugger}$ is a trigger messages for the ecologist. We therefore define $c^G$ as a cost vector for the geologist and $c^E$ for the ecologist:
+
+  \begin{equation*}
+  c^G =
+  \bordermatrix{
+             & m_{geo} & m_{stone} & m_{geo} & m_{tree}    \cr
+             &       0 &         c & 0       & 0
+  }\qquad
+  c^E =
+    \bordermatrix{
+               & m_{geo} & m_{stone} & m_{geo} & m_{tree}    \cr
+               &       0 &         0 & 0       & c
+    }\qquad
+  \end{equation*}
+
+Where $c>0$.
+
+Furthermore we assume that the receiver is unbiased with respect to which state holds, thus $p=(0.5,0.5)$.
+
+Usually language users will encounter the expressions of their language many times over the course of their communicative lives - both as listeners as well as speakers. To capture this we'll posit a third player - nature - which decides at the beginning of the game who of the two players gets to talk and who gets to listen. As rational language users they will need to have some plan of action for all roles, states of the world or messages they encounter. During game play we assume that the geologist is the speaker and the ecologist the receiver thus $c^R=c^E$ and $c^S=c^G$.
 
 \subsubsection{Game Play}
-As a first step, let's determine what the naive players' strategies are\\
+As a first step, let's determine what the naive players' strategies are:\\
 \textbf{Level-0 Players}\\
 \begin{equation*}
-S_0=
+S_0=Norm(B)=
 \bordermatrix{
-                    & m_{math} & m_{eco} & m_{tree}    \cr
-  t_{mathematician} & 1 & 0 & 0 \cr
-  t_{ecologist}     & 0 & 0.5 & 0.5
-}\qquad
-R_0=
+            & & & &    \cr
+ &       0.5 &         0.5 & 0       & 0 \cr
+ &       0 &         0 & 0.5       & 0.5
+ }\qquad
+R_0=Norm(T(B))
 \bordermatrix{
-                & m_{mathematician} & m_{ecologist}   \cr
-  m_{math}      & 1 & 0 \cr
-  m_{eco}       & 0 & 1 \cr
-  m_{tree}      & 0 & 1
-}\qquad
+            &  & \cr
+    & 1 & 0 \cr
+     & 1 & 0 \cr
+     & 0 & 1 \cr
+     & 0 & 1 \cr
+ }\qquad
 \end{equation*}
-That the naive sender has no principle to decide between sending either message meaning \textit{ecologist} is represented by her sending both signals half of the time. So she plays a mixed strategy. The receiver's actions are clearly determined by a pure strategy.\\
-What is the best response of the level-1 hearer and speaker? Following the IBR procedure we transpose $R_0$, subtract the cost vector $c_S$ and check row-wise for the best response to obtain $S_1$. We proceed analogously for the receiver, the main difference being in this case that the receiver faces some actual cost. This then yields strategies for level-1 players:\\
+The naive sender has no principle to decide between sending either $m_{geo}$ or $m_{stone}$ when whishing to communicate $t_{geo}$. Similarly she has no principle to decide between sending either $m_{eco}$ or $m_{tree}$ when whishing to communicate $t_{eco}$. This is represented by her sending each message half of the time. So she plays a mixed strategy. The receiver's actions are clearly determined by a pure strategy.\\
+What is the best response of the level-1 hearer and speaker? Following the IBR procedure we transpose $R_0$, subtract the cost vector $c^S$ and check row-wise for the best response to obtain $S_1$. We proceed analogously for the receiver, the main difference being in this case that the receiver faces some actual cost, $c^R$. This then yields strategies for level-1 players:\\ %TODO : we need to add the prior. %
 \textbf{Level-1 Players}\\
 \begin{equation*}
-% Haukur matrix fixes to here
-S_1= BR_S(T(R_0)-c_S)=
+% These matrices look strange when rendered
+S_1= BR_S(T(R_0)-c^S)=
 BR_S(
-\begin{bmatrix}
-1 & 0 & 0\\
-0 & 1 & 1
-\end{bmatrix}
+\bordermatrix{
+            & & & &    \cr
+ &       1 &         1 & 0       & 0 \cr
+ &       0 &         0 & 1      & 1
+ }\qquad
 -
-\begin{bmatrix}
-0 & 0 & 0
-\end{bmatrix}
+\bordermatrix{
+            & & & &    \cr
+ &       0 &         c & 0       & 0 \cr
+ }\qquad
 )
-=
-\begin{bmatrix}
-1 & 0 & 0\\
-0 & 0.5 & 0.5
-\end{bmatrix}
 \end{equation*}
 \begin{equation*}
-R_1=BR_R(T(S_0)-T(c_R)=
+=BR_S(
+\bordermatrix{
+                & & & &    \cr
+     &       1 &         1-c & 0       & 0 \cr
+     &       0 &         0 & 0.5      & 0.5
+ }\qquad
+ )
+=
+\bordermatrix{
+                 & & & &    \cr
+      &       1 &         0 & 0       & 0 \cr
+      &       0 &         0 & 0.5      & 0.5
+  }\qquad
+\end{equation*}
+\begin{equation*}
+R_1=BR_R(T(S_0)-T(c^R)=
 BR_R(
-\begin{bmatrix}
-1 & 0\\
-0 & 1\\
-0 & 1
-\end{bmatrix}
+\bordermatrix{
+            &  & \cr
+    & 0.5 & 0 \cr
+     & 0.5 & 0 \cr
+     & 0 & 0.5 \cr
+     & 0 & 0.5 \cr
+ }\qquad
 -
-\begin{bmatrix}
-0\\
-0\\
-c
-\end{bmatrix}
+\bordermatrix{
+  & \cr
+    & 0 \cr
+     & 0 \cr
+     & 0 \cr
+     & c \cr
+ }\qquad
 )
+\end{equation*}
+\begin{equation*}
 =
 BR_R(
-\begin{bmatrix}
-1 & 0\\
-0 & 1\\
-0-c & 1-c
-\end{bmatrix}
-)
+\bordermatrix{
+            &  & \cr
+    & 0.5 & 0 \cr
+     & 0.5 & 0 \cr
+     & 0 & 0.5 \cr
+     & 0-c & 0.5-c \cr
+ }\qquad)
 =
-\begin{bmatrix}
-1 & 0\\
-0 & 1\\
-0 & 1
-\end{bmatrix}
+\bordermatrix{
+            &  & \cr
+    & 1 & 0 \cr
+     & 1 & 0 \cr
+     & 0 & 1 \cr
+     & 0 & 1 \cr
+ }\qquad
 \end{equation*}
-$S_0=S_1$ and $R_0=R_1$, we have already reached a point where both players will always play this pair of strategy, irrespective of their level of sophistication. The interesting story here, however, is the player's expected payoffs. While playing this strategy yields an expected payoff of $a$ for the sender, the receiver obtains a mere $a-\tfrac{c}{4}$ in expectation.
-\footnote{The calculation leading to this: With probability 0.5 state $t{eco}$ holds where the receiver sends $m_{tree}$ with probability 0.5. So $m_{tree}$ is sent in $0.5\times 0.5 =0.25$ of all cases and then causes a cost of $c$. Communication is always successfull, as can be gathered from the strategies played, hence the receiver can expect to obtain the payoff of correct interpretation minus the cost$\times$probability of hearing $m_{tree}$.}To see why this is, consider the positions the two players are facing in this game. Start with the receiver: Whether she likes the message or not, she can always reason what her interlocutor wants to communicate to her. If the messages $m_{math}$ or $m_{eco}$ are sent, she will chose the respective action, communication is successfull, so both players get their payoff and everyone is happy. If the message $m_{tree}$ is sent, however, she immediately suffers the associated cost. Still, she knows what the sender is trying to communicate and her best response will be to comply and play the respective action. Refusing to understand is not an option, for it would only add insult to injury; she would both pay the cost of hearing $m_{tree}$ and lose the payoff of understanding correctly. Because she can anticipate the receiver to behave this way, the sender does not have to care about sending either semantically correct message upon observing that the state $mathematician$ holds.
-
-Since we assumed that either state holds with equal probability, and the sender uses $m_{tree}$ in half of the cases when signaling $ecologist$, we can expect the receiver to pay the cost of $c$ every fourth time around. This results in $EU(R)=a$ and $EU(S)=a-\tfrac{c}{4}$.
-
-We claim that the receiver could be just as well off as the sender without the latter having to lose anything in return. The strategies played fail to satisfy a criterium of optimality known as \textit{pareto optimality}.We will now consider a slightly modified version of this game where both sender and receiver stand to lose something from the wrong messages being played. Then we will turn to a more detailled discussion of the optimal strategies played with respect to pareto optimality.
-
-\subsection{Symmetric Offence}
-\subsubsection{Game Structure}
-Assume now that two agents are talking with each other using some shared language fragment. Although they have this common language, their preferences over how to put things vary a great deal. Say Player 1 has distinctly dislikes some specific message's flavor, while Player 2 has no issue with it whatsoever. Assume further that this time around there is also some message which upsets Player 2 but doesn't affect Player 1.
-
-Usually language users will encounter the expressions of their language many times over the course of their communicative lives - both as listeners as well as speakers. To capture this we'll posit a third player - nature - which decides at the beginning of the game who of the two players gets to talk and who gets to listen. As rational language users they will need to have some plan of action for all roles, states of the world or messages they encounter.
-
-We model this situation again by starting with a standard IBR model assuming a cost vector of equal size as the message space for both sender and receiver which will be applied whenever an agent ponders her best response. \\
-The general structure of such a game could be depicted as such: %would rather have a tree here
-\begin{table}[h]
-\centering
-\caption{Game Structure - Player 1 as sender}
-\label{my-label}
-\begin{tabular}{lllll}
-States & Cost Sender & Messages & Cost Receiver & Actions \\
-$t_1$  & $c^1_1$      & $m_1$    & $c^2_1$        & $a_1$   \\
-$t_2$  & $c^1_2$      & $m_2$    & $c^2_2$        & $a_2$  \\
-- & $c^1_3$ 		&$m_3$	& $c^2_3$		& $a_3$ \\
-- & $c^1_4$ 		&$m_4$	& $c^2_4$		& $a_4$
-\end{tabular}
-\end{table}
-\begin{table}[h]
-\centering
-\caption{Game Structure - Player 2 as sender}
-\label{my-label}
-\begin{tabular}{lllll}
-States & Cost Sender & Messages & Cost Receiver & Actions \\
-$t_1$  & $c^2_1$      & $m_1$    & $c^1_1$        & $a_1$   \\
-$t_2$  & $c^2_2$      & $m_2$    & $c^1_2$        & $a_2$  \\
-- & $c^2_3$ 		&$m_3$	& $c^1_3$		& $a_3$ \\
-- & $c^2_4$ 		&$m_4$	& $c^1_4$		& $a_4$
-\end{tabular}
-\end{table}
-
-Both the emission and the reception of the available signals are associated with a cost vector - $c^1$ for Player 1 and $c^2$ for Player 2. The game is played in either configuration with some probability $p$. Take this to be another interpretation game with states $S=\{mathematician, ecologist\}$, messages $M=\{mathematician,autist,ecologist,trehugger\}$ and actions $A=S$.\\
-The boolean matrix is:
+We see that $R_1=R_0$ thus we conclude that $S_2=S_1$.
 \begin{equation*}
-B=
-\begin{bmatrix}
-- & mathematician & autist & ecologist & treehugger \\
-mathematician  & 1      & 1    & 0        & 0   \\
-ecologist  & 0     & 0   & 1       & 1 
-\end{bmatrix}
-\end{equation*}
-
-The cost vectors are given by 
-\begin{equation*}
-c^1=
-\begin{bmatrix}
-0 & 0 & 0 & o^1
-\end{bmatrix}
-,
-c^2=
-\begin{bmatrix}
-0 & o^2 & 0 & 0
-\end{bmatrix}
-\end{equation*}
-Where $o^1,o^2>0$. Successful communication will yield a payoff of $a$ for both players. When played as an IBR, there are essentially two possible games: one where Player 1 is in the role of the sender and Player 2 in the role of receiver, and vice versa. Since the game is entirely symmetrical it will suffice to analyze just one such situation. The players' reasoning, and ultimately behavior, will be the same as their opponent's were they to find themselves in their position.
-
-\subsubsection{Game play}
-Say it's Player 2's lucky day and she were chosen to be in the position of sender.  What does the IBR analysis tell us?\\
-\textbf{Level-0 Players}\footnote{We have assumed that players of this level lack not only epistemic power but even very basic self-awareness. We assumed them to be unaware of the cost they may cause themselves when choosing a message.}\\
-\begin{equation*}
-S_0=
-\begin{bmatrix}
-- & mathematician & autist & ecologist & treehugger \\
-mathematician  & 0.5      & 0.5    & 0        & 0   \\
-ecologist  & 0     & 0   & 0.5      & 0.5 
-\end{bmatrix}
-\end{equation*}
-\begin{equation*}
-R_0=
-\begin{bmatrix}
-- & mathematician & ecologist\\
-mathematician  & 1      & 0 \\
-autist  & 1     & 0   \\
-ecologist & 0 & 1 \\
-treehugger & 0 & 1
-\end{bmatrix}
-\end{equation*}
-
-\begin{equation*}
-S_1=
-BR^2(R_0^T-c^2)=
-BR^2(
-\begin{bmatrix}
-1 & 1 & 0 & 0\\
-0 & 0 & 1 & 1
-\end{bmatrix}
+R_2=BR_R(T(S_1)-T(c^R)=
+BR_R(
+\bordermatrix{
+            &  & \cr
+    & 1 & 0 \cr
+     & 0 & 0 \cr
+     & 0 & 0.5 \cr
+     & 0 & 0.5 \cr
+ }\qquad
 -
-\begin{bmatrix}
-0 & o^2 & 0 & 0
-\end{bmatrix}
+\bordermatrix{
+  & \cr
+    & 0 \cr
+     & 0 \cr
+     & 0 \cr
+     & c \cr
+ }\qquad
 )
 =
-BR^2(
-\begin{bmatrix}
- 1      & 1-o^2   & 0  & 0   \\
-0     & 0-o^2   & 1      & 1 
-\end{bmatrix}
-)
-=
-\begin{bmatrix}
-1 & 0 & 0 & 0\\
-0 & 0 & 0.5 & 0.5
-\end{bmatrix}
+\bordermatrix{
+            &  & \cr
+    & 1 & 0 \cr
+     & 0.5 & 0.5 \cr
+     & 0 & 1 \cr
+     & 0 & 1 \cr
+ }\qquad
 \end{equation*}
+% These section below requires some work. I tried to collect together all relevant parts of our arguments and threw the rest away. You can check the commit if you miss something. "Player 1 and player 2 have not been introduced at this point.
+$S_3=S_2$ and $R_3=R_2$. So we have reached a stable set of strategies. Some remarks about these strategies are in order. First, the sender will never send the message she finds offensive. This makes perfect intuitive sense, because she has a non-costly alternative to spare her from uttering "autist". Second, the receiver - Player 1 - view the message $autist$ as a \textit{surprise message}. That is, although Player 2 will never play it, Player 1 still needs to specify what would happen in this contingency. We'll assume that she simply uses her (unbiased) priors to decide. Thirdly, while a sender of level zero still harms herself by blindly sending a message she dislikes, every sender of level above zero will stop doing so. Thus, the costly message for sender will not be seen on higher levels and her expected payoff always be optimal.
 
-\begin{equation*}
-R_1=
-BR^1(S_0^T-{c^1}^T)=
-BR^1(
-\begin{bmatrix}
-0.5 & 0\\
-0.5 & 0\\
-0 & 0.5\\
-0 & 0.5
-\end{bmatrix}
--
-\begin{bmatrix}
-0 \\
-0 \\
-0 \\
-o^1
-\end{bmatrix}
-)
-=
-BR^1(
-\begin{bmatrix}
-0.5 & 0\\
-0.5 & 0\\
-0 & 0.5\\
-0-o^1 & 0.5-o^1
-\end{bmatrix}
-)
-=
-\begin{bmatrix}
-1 & 0\\
-1 & 0\\
-0 & 1\\
-0 & 1
-\end{bmatrix}
-\end{equation*}
-
-\begin{equation*}
-S_2=S_1
-\end{equation*}
-
-\begin{equation*}
-R_2=
-BR^1(S_1^T-{c^1}^T)=
-BR^1(
-\begin{bmatrix}
-1 & 0\\
-0 & 0\\
-0 & 0.5\\
-0 & 0.5
-\end{bmatrix}
--
-\begin{bmatrix}
-0 \\
-0 \\
-0 \\
-o^1
-\end{bmatrix}
-)
-=
-BR^1(
-\begin{bmatrix}
-1 & 0\\
-0 & 0\\
-0 & 0.5\\
-0-o^1 & 0.5-o^1
-\end{bmatrix}
-)
-=
-\begin{bmatrix}
-1 & 0\\
-0.5 & 0.5\\
-0 & 1\\
-0 & 1
-\end{bmatrix}
-\end{equation*}
-
-\begin{equation*}
-S_3=
-BR^2(R_2^T-c^2)=
-BR^2(
-\begin{bmatrix}
-1 & .5 & 0 & 0\\
-0 & .5 & 1 & 1
-\end{bmatrix}
--
-\begin{bmatrix}
-0 & o^2 & 0 & 0
-\end{bmatrix}
-)
-=
-BR^2(
-\begin{bmatrix}
- 1      & 0.5-o^2   & 0  & 0   \\
-0     & 0.5-o^2   & 1      & 1 
-\end{bmatrix}
-)
-=
-\begin{bmatrix}
-1 & 0 & 0 & 0\\
-0 & 0 & 0.5 & 0.5
-\end{bmatrix}
-\end{equation*}
-\begin{equation*}
-S_3=S_2,
-R_3=R_2
-\end{equation*}
-
-So we have reached a stable set of strategies. Some remarks about these strategies are in order. First, the sender - in this case Player 2 - will never send the message she finds offensive. This makes perfect intuitive sense, because she has a non-costly alternative to spare her from uttering "autist". Second, the receiver - Player 1 - view the message $autist$ as a \textit{surprise message}. That is, although Player 2 will never play it, Player 1 still needs to specify what would happen in this contingency. We'll assume that she simply uses her (unbiased) priors to decide.
-Thirdly, while a sender of level zero still harms herself by blindly sending a message she dislikes, every sender of level above zero will stop doing so. Thus, the costly message for sender will not be seen on higher levels and her expected payoff  always be optimal.
 The following table summarizes the third point:
 \begin{table}[h]
 \centering
 \caption{Expected Payoff for Level of Sophistication}
 \label{my-label}
 \begin{tabular}{lll}
-                                    & Sender                                  & Receiver                                \\ \cline{2-3} 
-\multicolumn{1}{l|}{Level-0}        & \multicolumn{1}{l|}{$a-\tfrac{o^S}{4}$} & \multicolumn{1}{l|}{$a-\tfrac{o^R}{4}$} \\ \cline{2-3} 
-\multicolumn{1}{l|}{Level-k, $k>0$} & \multicolumn{1}{l|}{a}                  & \multicolumn{1}{l|}{$a-\tfrac{o^R}{4}$} \\ \cline{2-3} 
+                                    & Sender                                  & Receiver                                \\ \cline{2-3}
+\multicolumn{1}{l|}{Level-0}        & \multicolumn{1}{l|}{$a-\tfrac{o^S}{4}$} & \multicolumn{1}{l|}{$a-\tfrac{o^R}{4}$} \\ \cline{2-3}
+\multicolumn{1}{l|}{Level-k, $k>0$} & \multicolumn{1}{l|}{a}                  & \multicolumn{1}{l|}{$a-\tfrac{o^R}{4}$} \\ \cline{2-3}
 \end{tabular}
 \end{table}
+\subsection{Informal problem characterization}
+Successful communication will yield a payoff of $a$ for both players. When played as an IBR, there are essentially two possible games: one where Player 1 is in the role of the sender and Player 2 in the role of receiver, and vice versa. Since the game is entirely symmetrical it will suffice to analyze just one such situation. The players' reasoning, and ultimately behavior, will be the same as their opponent's were they to find themselves in their position.
+The interesting story here, however, are their expected payoffs. While playing this strategy yields an expected payoff of $a$ for the sender, the receiver obtains a mere $a-\tfrac{c}{4}$ in expectation.
+\footnote{The calculation leading to this: With probability 0.5 state $t{eco}$ holds where the receiver sends $m_{tree}$ with probability 0.5. So $m_{tree}$ is sent in $0.5\times 0.5 =0.25$ of all cases and then causes a cost of $c$. Communication is always successfull, as can be gathered from the strategies played, hence the receiver can expect to obtain the payoff of correct interpretation minus the cost$\times$probability of hearing $m_{tree}$.}To see why this is, consider the positions the two players are facing in this game. Start with the receiver: Whether she likes the message or not, she can always reason what her interlocutor wants to communicate to her. If the messages $m_{geo}$ or $m_{eco}$ are sent, she will chose the respective action, communication is successfull, so both players get their payoff and everyone is happy. If the message $m_{tree}$ is sent, however, she immediately suffers the associated cost. Still, she knows what the sender is trying to communicate and her best response will be to comply and play the respective action. Refusing to understand is not an option, for it would only add insult to injury; she would both pay the cost of hearing $m_{tree}$ and lose the payoff of understanding correctly. Because she can anticipate the receiver to behave this way, the sender does not have to care about sending either semantically correct message upon observing that the state $mathematician$ holds.
 
-Finally, notice how in this game too the receiver can't escape from paying a cost. Because Player 2 does not see the message $treehugger$ as costly, she will play it alternately with $ecologist$.
-
-If this game were played only once in IBR fashion, then the expected utility of whichever player nature chose to be the sender will be $a$. Again, this is due to the fact that the sender will of course refrain from the message which is costly for her. At the same time, it is still the most advantageous move for the receiver to interpret all messages correctly. Furthermore, the sender might still use the message which is costly for the receiver, so she can expect a utility of $a-\tfrac{o^i}{4}$, for $i\in \{1,2\}$. for the receiver. As Player 2 happens to be the sender, she can expect the full payoff of $a$ in any case, while Player 1 should expect a payoff of $a-\tfrac{o^1}{4}$. So in case the game is only played once, things behave similarly as in the asymmetrical case above.
+Since we assumed that either state holds with equal probability, and the sender uses $m_{tree}$ in half of the cases when signaling $ecologist$, we can expect the receiver to pay the cost of $c$ every fourth time around. This results in $EU(R)=a$ and $EU(S)=a-\tfrac{c}{4}$.
 
 Now, actual language use is an activity which agents play repeatedly and in different roles, so let's assume they play above game many times while nature choses the players' roles in each round with equal probability. Since, as already noted, the game is symmetrical, we can simply interchange the expected payoffs for the two players if they play in the other role. Say, nature happens to be very fair and assign the role of speaker with probability 0.5 to either player. Over the course of a lifetime of conversation - or a sufficient amount of linguistic interactions (thanks Gawd for the weak law of large numbers, dicho sea de paso) - the players can expect a utility of $a-\tfrac{o^i}{8}$, for $i\in \{1,2\}$. Notice that $a-\tfrac{o^i}{8} > a-\tfrac{o^i}{4}$, for any $o^i,a>0$. %is this right?
-Here too, we claim that this outcome is not optimal outcome for either player. There is a better strategy which will achieve an expected outcome of exactly $a$ for both players. 
-
-\begin{comment}
-Starting from Spence's seminal "Job Market Signalling", much has been written about games where by sending a message an agent causes a cost. This is the core of so-called \textit{costly signalling games}. Particularly economic theory has been interested in this twist of the Lewisian signaling model.\\
-Common assumptions here are that the message's meaning is determined before the start of the game and that sender's cost vector is common knowledge, which, in turn, allows the receiver to distinguish credible and non-credible signals.\\
-
-
-\begin{table}[h]
-\centering
-\begin{tabular}{lllll}
-States & Cost Sender & Messages & {Cost Receiver} & {Actions} \\ 
-$t_1$  & c           & $m_1$    & 0                                  & $a_1$                        \\
-$t_2$  & c           & $m_2$    & 0                                  & $a_2$                       
-\end{tabular}
-\end{table} 
-\end{comment}
-
-\section{Towards an Explanation of Political Correctness}
-\subsection{Pareto Optimality}
-The previous section contained a demonstration of how harmful messages can be modelled. Our main addition to the IBR model was the notion of receiver's cost. Furthermore, we showed how the IBR process yields strategies which are sub-optimal for both players. In fact, they happen to be optimal for the sender who is in charge and at liberty to send harmful messages to the receiver. We will momentarily bring to the for what criterium of optimality fails to be satisfied. Meanwhile, the receiver's interests are not directly relevant for sender the sender and therefore easily discarded. This seems at odds with real-life observations of language use. It would seem that speakers sometimes do consider the listeners' interests into account when deciding how to express themselves. As a matter of fact, it seems to have become quite unfashionable in many social contexts to call people by their respective racial slurs over the last couple of decades. There seems to exist some understanding between language users which goes counter to the predictions our IBR model gave so far.
 
 Translating this to our signaling game model would imply that there must be some incentive for players finding themselves in the role of the sender to behave differently than our model's predictions. We will presently speak of possible ways to capture these forces, but let us first look closer at the way in which optimality fails.
 
-At a simple gaze, there simply are better solutions in the asymmetrical and symmetrical game than the ones found so far. Better in which way? Better in the sense, that in both games there exists a solution which provides a greater expected utility for the receiver without affecting the senders expected utility. Simply put, if the sender were to refrain from sending messages which are costly for the receiver, but is still able to convey the correct meaning, then everyone is better or at least as well off. In terms of finding an intuitive name for the interlocutor's behavior, the notion of \textit{political correctness} seems to capture it quite well. In terms of providing a technical explanation for why equilibria thus reached are better, the notion of \textit{Pareto optimality} can be employed.
+At a simple gaze, there simply are better solutions in the game than the ones found so far. Better in which way? Better in the sense, that in both games there exists a solution which provides a greater expected utility for the receiver without affecting the senders expected utility. Simply put, if the sender were to refrain from sending messages which are costly for the receiver, but is still able to convey the correct meaning, then everyone is better or at least as well off. In terms of finding an intuitive name for the interlocutor's behavior, the notion of \textit{political correctness} seems to capture it quite well. In terms of providing a technical explanation for why equilibria thus reached are better, the notion of \textit{Pareto optimality} can be employed.
+
+
+\subsection{Pareto Aparatus}
+The previous section contained a demonstration of how receiver costly messages can be modelled. Furthermore, we showed how the IBR process yields strategies which are sub-optimal for both players. In fact, they happen to be optimal for the sender who is in charge and at liberty to send harmful messages to the receiver. We will momentarily bring to the for what criterium of optimality fails to be satisfied. Meanwhile, the receiver's interests are not directly relevant for sender the sender and therefore easily discarded. This seems at odds with real-life observations of language use. It would seem that speakers sometimes do consider the listeners' interests into account when deciding how to express themselves. As a matter of fact, it seems to have become quite unfashionable in many social contexts to call people by their respective racial slurs over the last couple of decades. There seems to exist some understanding between language users which goes counter to the predictions our IBR model gave so far.
 
 Formally, let $S$ be a set of strategies, let $N$ be a set of players, from 1 to n, and let $u_i$ be the corresponding utilty functions for each player. We say that a strategy $s \in S$ Pareto dominates another strategy $s' \in S$ if:
 
@@ -490,106 +339,35 @@ Then we define a strategy s to be Pareto optimal there is no other strategy prof
 %\end{equation*}
 
 When looking at stable strategies of a given game, one can compare the players' utilities when using each strategy. If some alternative strategy gives any player a higher utility while no other player's utility decreases, we say that the alternative \textit{pareto dominates} the first option. Playing the alternative means that the average utility is increased. However, playing the alternative strategy is not always viable. if the players fail to coordinate sufficiently, one or both of them might end up worse.
+\subsection{Formal problem characterization}
+We claim that the receiver could be just as well off as the sender without the latter having to lose anything in return. The strategies played fail to satisfy a criterium of optimality known as \textit{pareto optimality}. Let us now compare the IBR result to another strategy:
 
-The famous prisoner's dilemma example comes in helpful when explaing Pareto optimality. Two prisoners, Alice and Bob, are faced with the option of confessing to a crime or not confessing. Thus both players have two actions "Confess" or "Not Confess". If Alice confesses to the crime and Bob does so as well, each gets two years in prison. But if Bob does not confess, and Alice confesses, he gets away scot free with no years in prison, whilst Alice gets sentenced to 10 years in prison. The sentences are flipped if Bob  confesses and Alice remains silent. If neither confesses, both get 6 years in prison. Take the years in prison to be (linear) disutilities. Standard analysis of this game, where no pre-game talk is allowed and Alice and Bob act rationally and risk-aversely, predicts that both will decide not to confess. Here's the game in normal form:
-\begin{table}[h]
-\centering
-\begin{tabular}{lll}
-Alice, Bob   & Confess & Not Confess \\
-Confess           & 2,2     & 10,0    \\
-Not Confess        & 0,10    & 6,6
-\end{tabular}
-\end{table}
-So both obtain a penalty of 6 years. But they clearly they could be better of. For, the strategy $<confess, confess>$ strictly Pareto dominates the strategy $<not-confess,not-confess>$.
-With this in mind let us look again at our signaling games and present the Pareto optimal strategies.
-
-\subsection{Revisiting the asymmetric and symmetric games}
-A strategy in which the sender in the asymmetric signaling game from above refrains from using the message associated with receiver's cost. To see this, let us look at the asymmetric game again:
- \begin{equation*}
- B =
- \begin{bmatrix}
-
- States, Messages & math & eco & tree \\
- math             & 1    & 0   & 0    \\
- eco              & 0    & 1   & 1
- \end{bmatrix}
- \end{equation*}
-
- With $c^S=(0,0,0)$ and $c^R=(0,0,1)$. In that game we reached a stable strategy quickly:
-
-\textbf{Level-1 Players}\\
 \begin{equation*}
-S_1=
-\begin{bmatrix}
-1 & 0 & 0\\
-0 & 0.5 & 0.5
-\end{bmatrix}
+S_{BR}=
+\bordermatrix{
+            & & & &    \cr
+ &       1 &         0 & 0       & 0 \cr
+ &       0 &         0 & 0.5      & 0.5
+ }\qquad
+R_{BR}=
+\bordermatrix{
+            &  & \cr
+    & 1 & 0 \cr
+     & 0.5 & 0.5 \cr
+     & 0 & 1 \cr
+     & 0 & 1 \cr
+ }\qquad
 \end{equation*}
-\begin{equation*}
-R_1=
-\begin{bmatrix}
-1 & 0\\
-0 & 1\\
-0 & 1
-\end{bmatrix}
-\end{equation*}
+Yields expected utility ...
+... balblablalb
+Need to finish this part showing the Pareto domination of the pruposed strategy
 
-A Pareto optimal strategy would be:
-
-\textbf{Pareto optimal}\\
-\begin{equation*}
-S_*=
-\begin{bmatrix}
-1 & 0 & 0\\
-0 & 1 & 0
-\end{bmatrix}
-\end{equation*}
-\begin{equation*}
-R_*=
-\begin{bmatrix}
-1 & 0\\
-0 & 1\\
-0.5 & 0.5
-\end{bmatrix}
-\end{equation*}
-
-That is, the sender never sends the offending message and that message is considered by the receiver as a surprisal message. Thus only by adjusting the sender strategy an optimal solution can be reached. Similarly for the symmetrical game:
-
-\begin{table}[h]
-\centering
-\begin{tabular}{lllll}
-States, Message & black & darkie & white & cracker \\
-$black$  & 1      & 1    & 0        & 0   \\
-$white$  & 0     & 0   & 1       & 1
-\end{tabular}
-\end{table}
-
-With $cs=(0,0,0,1)$ and $cr(0,1,0,0)$. A Pareto optimal strategy would be:
-
-\textbf{Pareto optimal}\\
-\begin{equation*}
-S_*=
-\begin{bmatrix}
-1 & 0 & 0 & 0\\
-0 & 0 & 1 & 0
-\end{bmatrix}
-\end{equation*}
-\begin{equation*}
-R_*=
-\begin{bmatrix}
-1 & 0\\
-0.5 & 0.5 \\
-0 & 1\\
-0.5 & 0.5 \\
-\end{bmatrix}
-\end{equation*}
-
-That is, again, the sender never sends the offending message.
+\section{Solution concept}
+We therefore want to adjust the IBR model so that it is able to reach this Pareto optimal solution. This can be done by adjusting the sender's stratey such that she refrains from using the message associated with receiver's cost. That is, the sender never sends the offending message and that message is considered by the receiver as a surprisal message.
 
 We can clearly see that there is a strategy, in both games, which is better than the strategy reached by the IBR model, namely, the strategy above. This optimal strategy could be reached by only adjusting the sender strategy so that she never sends the offending message. We don't see this strategy in the IBR model since it is not explicitly in the sender's interest and, coincidentally, it is her who wields the power to decide over the matter. Thus we might adjust the sender preferences so that she takes into account the receiver's interests, i.e. the receivers cost. In the next section we discuss some ways to achieve this.\\
 
-\subsection{Solutions}
-
+\subsection{Solution statement informal}
 If both players refrain from using harmful/costly messages and instead use other messages which convey the same meaning then a Pareto optimal solution is possible. This could be achvieved by having a pre-game talk in which the two players could agree on using only strategies which both agree wwith. This would allow them to move to the pareto optimal equilibrium of strategies. This does not seem so far fetched since it seems in language user's best interests to opt of Pareto optimal solutions, since someday the tables might turn.
 
 How do we then go about adjusting the model in order to take the receiver's preference explicitly into account? One solution might be to define three types of sender types: \\
@@ -600,176 +378,9 @@ How do we then go about adjusting the model in order to take the receiver's pref
 \item Indifferent sender
 \end{enumerate}
 
+\subsection{Solution statement formal}
+
 Then for the \textit{Nice sender} we extend the sender's cost vector:
-
-\begin{equation*}
-c_s^n= c_s + c_r
-\end{equation*}
-
-Where $c_s^n$ is sender cost vector used for the sender in the IBR model, $c_s$ is the original cost vector of the sender and $c_r$ is the cost vector of the receiver. A nice sender thus takes the costs vector of the receiver into account and refrains from sending messages which are costly to the receiver. An explicit example:
-
-\begin{equation*}
-c_s^n= c_s + c_r
-\end{equation*}
-\begin{equation*}
-c_s^n=
-\begin{bmatrix}
-0 \\
-0 \\
-0
-\end{bmatrix}
-+
-\begin{bmatrix}
-0 \\
-0 \\
-1
-\end{bmatrix}
-=
-\begin{bmatrix}
-0 \\
-0 \\
-1
-\end{bmatrix}
-\end{equation*}
-
-Similiarly for the \textit{Malicious sender} we extend the sender's cost vector:
-
-\begin{equation*}
-c_s^m= c_s - c_r
-\end{equation*}
-
-Where $c_s^m$ is sender cost vector used for the sender in the IBR model, $c_s$ is the original cost vector of the sender and $c_r$ is the cost vector of the receiver. A malicious sender thus takes the costs vector of the receiver into account and attempts to send the costly messages. An explicit example:
-
-\begin{equation*}
-c_s^m= c_s - c_r
-\end{equation*}
-\begin{equation*}
-c_s^n=
-\begin{bmatrix}
-0 \\
-0 \\
-0
-\end{bmatrix}
--
-\begin{bmatrix}
-0 \\
-0 \\
-1
-\end{bmatrix}
-=
-\begin{bmatrix}
-0 \\
-0 \\
--1
-\end{bmatrix}
-\end{equation*}
-
-The indifferent sender is essentially the same sender as used the the examples above and therefore does not need further discussion. \\
-
-Let us now go through the IBR model for the asymmetric game with a nice sender. We will use the same example as above and only adjust the sender cost to our new defintion. As before there are three possible messages. Let them be denoted as $m_{math},m_{eco}$ and $m_{tree}$, where $m_{eco}$ is the non-offensive and $m_{tree}$ the hurtful message. So the message set $M$ is defined as $M=\{m_{math},m_{eco},m_{tree}\}$. According to the semantics just described, the Boolean matrix looks like this:\\
-\begin{equation*}
-B =
-\begin{bmatrix}
-
-States, Messages & math & eco & tree \\
-math             & 1    & 0   & 0    \\
-eco              & 0    & 1   & 1
-\end{bmatrix}
-\end{equation*}
-
-Now we, let $c_s$ and $c_r$ be the respective cost vectors for sender and receiver. Each message is thus associated with a cost vector of length $|M|$ for both agents. In the present context the sender doesn't face any cost, so they are $c_s=(0,0,0)$ and $c_r=(0,0,1)$. Thus use $c_s^n=cs + cr=(0,0,1)$. Since the sender did not originally have any costs associated with the messages we get $c_r=c_s^n$. Like before we assume the receiver is unbiased with respect to which state holds, thus $p=(0.5,0.5)$.
-We will now apply the IBR method to this game. As a first step, let's determine what the naive players' strategies are:\\
-\begin{equation*}
-S_0=
-\begin{bmatrix}
-1 & 0 & 0\\
-0 & 0.5 & 0.5
-\end{bmatrix}
-\end{equation*}
-\begin{equation*}
-R_0=
-\begin{bmatrix}
-1 & 0\\
-0 & 1\\
-0 & 1
-\end{bmatrix}
-\end{equation*}
-
-\begin{equation*}
-S_1=
-\begin{bmatrix}
-1 & 0 & 0\\
-0 & 1 & 0
-\end{bmatrix}
-\end{equation*}
-\begin{equation*}
-R_1=
-\begin{bmatrix}
-1 & 0\\
-0 & 1\\
-0.5 & 0.5
-\end{bmatrix}
-\end{equation*}
-
-\begin{equation*}
-S_2=S_1
-\end{equation*}
-\begin{equation*}
-R_1=R_2
-\end{equation*}
-
-As we see we reach an equilibrium very quickly and the sender refrains from using messages which are costly to the receiver. The nice sender is thus able to reach the Pareto optimal solution discussed above.
-
-Let us now explore the asymmetrical game with a malicious sender. The only thing which changes is the sender cost used: $c_s^m=cs - cr=(0,0,-1)$
-\begin{equation*}
-S_0=
-\begin{bmatrix}
-1 & 0 & 0\\
-0 & 0.5 & 0.5
-\end{bmatrix}
-\end{equation*}
-\begin{equation*}
-R_0=
-\begin{bmatrix}
-1 & 0\\
-0 & 1\\
-0 & 1
-\end{bmatrix}
-\end{equation*}
-
-\begin{equation*}
-S_1=
-\begin{bmatrix}
-0.5 & 0.5 & 0\\
-0 & 1 & 0
-\end{bmatrix}
-\end{equation*}
-\begin{equation*}
-R_1=
-\begin{bmatrix}
-1 & 0\\
-0 & 1\\
-0 & 1
-\end{bmatrix}
-\end{equation*}
-
-\begin{equation*}
-S_2=S_1=
-\begin{bmatrix}
-0.5 & 0.5 & 0\\
-0 & 1 & 0
-\end{bmatrix}
-\end{equation*}
-\begin{equation*}
-R_2=
-\begin{bmatrix}
-1 & 0\\
-0 & 1\\
-0.5 & 0.5
-\end{bmatrix}
-\end{equation*}
-
-Thus given the malicious cost vector the sender will end with a mixed strategy, sometimes opting for insults rather than communication.
 
 If we generalize the \textit{nice} and \textit{malicious} definitions of the sender's cost vector we get a new adjusted sender cost vector.
 
@@ -779,6 +390,13 @@ c_s^a= c_s + a * c_r
 
 Where a is a scalar value, s.t. $a \in \mathbb{R} $. So if $a=0$ we get an indifferent sender, if$a <0$ we get a malicious sender and if $a>0$ we get a considerate sender.
 
+Show simply how a playthrough works
+
+\subsection{Conclusion}
+
+\subsection{References}
+
+\section{Appendix}
 \subsection{Threats \& Punishments}
 The receiver can try different strategies in order to encourage the sender to use Pareto optimal strategies. The Pareto optimal strategies we have presented thus far only improve the receiver's utility not the sender's. So one might ask; Can the receiver force another stragey which would be sub-optimal for both. Thus making a strategy change in the sender's explicit interest? If so, would this enforcement be credible? A credible enforcement is a strategy which does not give a worse outcome to receiver but gives a worse outcome to the sender. Let us now consider that the receiver issues threats to the sender in a pre-game talk. %fix ending%
 %do we formalize this? Damn this seems terrible%
@@ -812,35 +430,4 @@ That is when receiving message $m_i$ she will act as if she received message $m_
 Let us now go through the case when the sender sends a costly message and the receiver interprets it as some other message and compare to our original example. The sender sends a costly message and the receiver interprets it as some other message and associate the state with an incorrect action, thus $\mu^S=0$ and $\mu^S=0$ since successful communication was not reached. Compared to the normal strategy of accepting the costly message and achieve a successful communication with $\mu^S=a$ and $\mu^S=a-c$. %Here there are some missing steps (doing the EU) which we can add.
 We can therefore see that $EU(R)$ increases but $EU(S)$ decreases. We can therefore see that if $a-c \leq 0$ then mixing the messages is a credible threat for the receiver.
 
-\subsection{Further Research}
-
-\textbf{Continuous case:} Consider messages to be in the (real) space from 0 to 1. If a message is sufficiently close to some of the troublesome messages the receiver still incurs a cost when hearing the message.
-Such a model might be able to account for sensitivities towards words that are phonetic (or semantic) relatives of painful expressions. The word "niggardly", phonetic but not semantic relative of the racist expression, has caused offense in the past for instance. See: \href{https://en.wikipedia.org/wiki/Controversies_about_the_word_\%22niggardly\%22}{Controversies about the word "niggardly"}. So this might affect its use as a signal in repeated game play.\\ 
-
-\textbf{A further refinement:}
-Imagine two agents talking - playing a signaling game - not just once, but multiple times. Now assume further that some of ways to put things - the messages available to the sender - were known to cause discomfort - receiver's cost - to the hearer. It would be conceivable that the hearer would punish the sender for using certain signals although they convey information just as well as others. How would this affect how they talk - their strategies - in the long run?\\ 
-
-Say two players play the following game many times:\\
-
-\begin{table}[h]
-\centering
-\begin{tabular}{lllll}
-States & Cost Sender & Messages & Cost Receiver & Actions \\
-$t_1$  & 0           & $m_1$    & 0             & $a_1$   \\
-$t_2$  & 0           & $m_2$    & 0             & $a_2$   \\
-       & 0        & $m_3$    & 10            &        
-\end{tabular}
-\end{table}
-
-The payoffs are given by the following table:
-\begin{table}[h]
-\centering
-\begin{tabular}{lll}
-U     & $a_1$ & $a_2$ \\
-$t_1$ & 10,10 & 0,0   \\
-$t_2$ & 0,0   & 10,10
-\end{tabular}
-\end{table}
-
-The set of pure Sender's strategies is \{$<m_1,m_2>,<m_1,m_1>,<m_2,m_2>,<m_2,m_1>,<m_1,m_3>,<m_3,m_1>,<m_2,m_3>,<m_3,m_2>,<m_3,m_3>$ \}.\\
 \end{document}
