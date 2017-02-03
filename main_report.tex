@@ -420,39 +420,4 @@ And indeed these strategies are Pareto optimal since the expected utility for bo
 It is hard to perceive which dispostion is held by the speaker in daily langauge use because we always base our word selection on incomplete information about the sender's preferences.
 Being empathetic might strike some poeple as a Dove and Hawk game (clarify better) but our model does not associate any cost by being empathetic as well as the resources (utility of communication) are shared it really does not makes sense to view empathetic in such a light.
 \subsection{References}
-
-\section{Appendix}
-\subsection{Threats \& Punishments}
-The receiver can try different strategies in order to encourage the sender to use Pareto optimal strategies. The Pareto optimal strategies we have presented thus far only improve the receiver's utility not the sender's. So one might ask; Can the receiver force another stragey which would be sub-optimal for both. Thus making a strategy change in the sender's explicit interest? If so, would this enforcement be credible? A credible enforcement is a strategy which does not give a worse outcome to receiver but gives a worse outcome to the sender. Let us now consider that the receiver issues threats to the sender in a pre-game talk. %fix ending%
-%do we formalize this? Damn this seems terrible%
-\subsubsection{Threatning miscommunication}
-Let us now consider that the receiver issues a threat to associate costly messages with another action. The receiver can then choose another action to associate with that message by some distribution. (We assume that the receiver has to associate the message with something, otherwise the whole game breaks down.) Let us now consider a few distributions the receiver can use:
-
-A uniform distributions over all actions. \\
-A uniform distributions over all actions excluding actions which yield any positive utility/ where the cost is high. \\%(Here it would be useful to define cost as a function of message and state/action. Thus we could get rid of the cost by associating it with another action)
-Over the priors of states. \\
-
-Using the uniform distribution the receiver will sometimes remain in status quo by associating the message with an action which yields positive utility for the sender, that is, the sender has a utility of $\mu^S=a$ and receiver $\mu^R=a-c$. When associating the message with another action which does not yield any positive utility to the sender the sender has a utility of $\mu_S=0$ and receiver $\mu_R=0-c$. %(Here it would be useful to define cost as a function of message and state/action. Thus we could get rid of the cost by associating it with another state)%
-This gives:
-$$EU(S)=a-a \cdot P_C \cdot P_S$$
- where $P_C$ is the probability of using a costly message and $P_S$ is the probability of associating the message with an action which does not yield a positive utility.
- $$EU(R)=a-a \cdot P_C \cdot P_S - c \cdot P_C$$
- Using the asymmetrical example above we get
- $$EU(S)=a-a \cdot 1/4 \cdot 1/2=7/8 \cdot a$$
- $$EU(R)=a-a \cdot 1/4 \cdot 1/2 - c \cdot 1/4=7/8 \cdot a - 1/4c$$
- The same result as before but both receiver and sender with $a \cdot P_C \cdot P_S$ lower utility as before. Therefore it is not credible that the sender will use this distribution.
-
-A uniform distributions over all actions excluding actions which yield any positive utility we essentially set $P_S=1$. But this does not change the final outcome. (In fact it can be shown with an IBR model that in the asymmetrical example by associating the costly message with the other action the sender will use the costly message to associate that action. Thus with a small message space this can prove destructive strategy for the receiver)
-
-Similarly the sender can use the prior distribution to her advantage.
-
-We therfore conclude that the threat of associating costly messages with other actions is not credible.
-
-\subsubsection{Mixing messages}
-Let us now consider the threat that when receiver receives a costly message she will interpret it as another message. %how do we argue this? this sounds terrible...%
-That is when receiving message $m_i$ she will act as if she received message $m_j$. By doing this we say that she avoids the costly messages all together. Again it becomes a problem of how she decides which message to confuse it with, i.e. a problem of which distribution to choose. Furthermore when choosing another message she has to consider the utility of the receiver and her self of that message. Since if she chooses another message which has a positive utility for the sender and is costly for her she is back to square one. We therefore only consider messages which give no utility for the sender and are not costly to the receiver.
-
-Let us now go through the case when the sender sends a costly message and the receiver interprets it as some other message and compare to our original example. The sender sends a costly message and the receiver interprets it as some other message and associate the state with an incorrect action, thus $\mu^S=0$ and $\mu^S=0$ since successful communication was not reached. Compared to the normal strategy of accepting the costly message and achieve a successful communication with $\mu^S=a$ and $\mu^S=a-c$. %Here there are some missing steps (doing the EU) which we can add.
-We can therefore see that $EU(R)$ increases but $EU(S)$ decreases. We can therefore see that if $a-c \leq 0$ then mixing the messages is a credible threat for the receiver.
-
 \end{document}
