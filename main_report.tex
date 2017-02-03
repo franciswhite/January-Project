@@ -319,7 +319,8 @@ Now, actual language use is an activity which agents engage in repeatedly, somet
 %Check whether this is right.
 %I would like to have high-indexed cost entries to the matrix depending on the players.
  
-The crucial observation to make here is that the agents could have done better. Consider altering $<S_3,R_3>$ so that neither $m_{tree}$ are $m_{stone}$ ever played. 
+The crucial observation to make here is that the agents could have done better. To see this, imagine the agents only used $m_{eco}$ and $m_{geo}$ to communicate. If neither of them would ever inflict a cost and communication could still be reliably successfull, then both receive a full payoff of $a$.
+Never playing costly messages formally means that the respective sender plays strategy $S_*$ where neither $m_{tree}$ nor $m_{stone}$ are ever played. 
 \begin{equation*}
 S_*=
 \bordermatrix{
@@ -328,46 +329,16 @@ S_*=
  &       0 &         0 & 1      & 0
  }\qquad
 \end{equation*}
- So, by using theses strategies, the agents are mutually prohibiting each other from obtaining a payoff of $a$. Better in the sense, that in both games there exists a solution which provides a greater expected utility for the receiver without affecting the senders expected utility. Simply put, if the sender were to refrain from sending messages which are costly for the receiver, but is still able to convey the correct meaning, then everyone is better or at least as well off. In terms of finding an intuitive name for the interlocutor's behavior, the notion of \textit{political correctness} seems to capture it quite well. In terms of providing a technical explanation for why equilibria thus reached are better, the notion of \textit{Pareto optimality} can be employed.
 
-The previous section contained a demonstration of how receiver costly messages can be modelled. Furthermore, we showed how the IBR process yields strategies which are sub-optimal for both players. In fact, they happen to be optimal for the sender who is in charge and at liberty to send harmful messages to the receiver. 
-Meanwhile, the receiver's interests are not directly relevant for sender the sender and therefore easily discarded. 
+If this sender strategy is still able to convey the correct state, then everyone is better or at least as well off as before. In fact, such an improvement would imply satisfying a criterium for efficiency, namely the  \textit{Pareto optimality}.
 
-Formally, let $S$ be a set of strategies, let $N$ be a set of players, from 1 to n, and let $u_i$ be the corresponding utilty functions for each player. We say that a strategy $s \in S$ Pareto dominates another strategy $s' \in S$ if:
-
+Formally, some strategy is Pareto optimal if it is not \textit{Pareto dominated} by some other strategy. Pareto domination, in its turn, is defined as follows:
+Let $S$ be a set of strategies, $N$ a set of players, from 1 to n, and $u_i$ be each player's utility function. A strategy $s \in S$ Pareto dominates another strategy $s' \in S$ if:
 \begin{equation*}
 \forall i \in N: u_i(s) \geq u_i(s') \land \exists j \in N: u_j(s) > u_j(s')
 \end{equation*}
 
-Then we define a strategy s to be Pareto optimal there is no other strategy profile s' which Pareto dominates it. %not sure if formula is 100% correct.
-
-%\begin{equation*}
-%\forall i \in N: u_i(s) \geq u_i(s') \land \neg \exists j \in N: u_j(s') > u_j(s) % i think there needs to be some quantification over strategies
-%\end{equation*}
-
-When looking at stable strategies of a given game, one can compare the players' utilities when using each strategy. If some alternative strategy gives any player a higher utility while no other player's utility decreases, we say that the alternative \textit{pareto dominates} the first option. Playing the alternative means that the average utility is increased. However, playing the alternative strategy is not always viable. if the players fail to coordinate sufficiently, one or both of them might end up worse.
-\subsection{Formal problem characterization}
-We claim that the receiver could be just as well off as the sender without the latter having to lose anything in return. The strategies played fail to satisfy a criterium of optimality known as \textit{pareto optimality}. Let us now compare the IBR result to another strategy:
-
-\begin{equation*}
-S_{BR}=
-\bordermatrix{
-            & & & &    \cr
- &       1 &         0 & 0       & 0 \cr
- &       0 &         0 & 0.5      & 0.5
- }\qquad
-R_{BR}=
-\bordermatrix{
-            &  & \cr
-    & 1 & 0 \cr
-     & 0.5 & 0.5 \cr
-     & 0 & 1 \cr
-     & 0 & 1 \cr
- }\qquad
-\end{equation*}
-Yields expected utility ...
-... balblablalb
-Need to finish this part showing the Pareto domination of the pruposed strategy
+If strategy $s'$ gives any player a higher utility than $s$, while no other player's utility decreases, we say that the $s'$ \textit{Pareto dominates} $s$.
 
 \section{Solution concept}
 We therefore want to adjust the IBR model so that it is able to reach this Pareto optimal solution. This can be done by adjusting the sender's stratey such that she refrains from using the message associated with receiver's cost. That is, the sender never sends the offending message and that message is considered by the receiver as a surprisal message.
