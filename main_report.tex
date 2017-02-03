@@ -5,7 +5,8 @@
 \date{Date quo: 1.02.17}
 
 \usepackage{mathptmx} % "times new roman"
-\usepackage[a4paper,bindingoffset=0.1in, left=5cm,right=4cm,top=4.5cm,bottom=6.5cm,footskip=.25in]{geometry}
+\usepackage[a4paper,bindingoffset=0.2in, left=5cm,right=4cm,top=4.5cm,bottom=6.5cm,footskip=.25in]{geometry} % for submission requirements
+\usepackage{blkarray}
 \usepackage{amssymb}
 \usepackage{amsmath, amsthm}
 \usepackage{amsfonts}
@@ -75,13 +76,13 @@ As in standard signaling games, $T$ is the set of states the players can be in, 
       t_1 & 0.2 & 0.8  \cr
       t_2 & 0.4 & 0.6  \cr
       t_3 & 1 & 0
-    }\qquad
+    } \quad
 \rho =
     \bordermatrix{
               & a_1 & a_2 & a_3    \cr
           m_1 & 0.5 & 0.5 & 0  \cr
           m_2 & 0.8 & 0.1 & 0.1
-        }\qquad
+        }
 \end{equation*}
 
 When the sender observes some state, her strategy determines with which probability she chooses from the different messages; likewise for the receiver, but with messages and actions. The rows in the strategy matrices thus represent the situations where the players get to decide, and the respective entries in the row describe the probabilities with which they opt for the move in that column. The sender, in this example, would choose $m_1$ with probability $0.2$ upon observing $t_1$, and with probability $1$ when observing $t_3$. The receiver, in turn, would choose $a_1$ and $a_2$ each with probability $0.5$, while never playing $a_3$, when receiving $m_1$ from the sender.
@@ -96,7 +97,7 @@ B =
           t_1 & 1 & 0  \cr
           t_2 & 0 & 1  \cr
           t_3 & 0 & 0
-        }\qquad
+        }
 \end{equation*}
 
 The strategies of level-0 type are represented by the normalized boolean matrix. Normalization here simply means a mapping of some $(m\times n)$-matrix $A$ onto some other $(m\times n)$-matrix $B$ such that $B_i\propto A_i$ if $\sum_j (A_{ij})>0$ and $B_{ij}=\tfrac{1}{n}$ otherwise. In the case of the receiver the transposed boolean matrix is normalized.
@@ -137,7 +138,7 @@ two players which are talking with each other using some shared language fragmen
       & t_{geologist} & t_{ecologist}    \cr
   t_{geologist} & a,a & 0,0  \cr
   t_{ecologist} & 0,0 & a,a
-}\qquad
+}
 \end{equation*}
 Where $a>0$.
 
@@ -148,7 +149,7 @@ Let us now assume that we have four messages $M=\{geologist, stonehugger, ecolog
             & m_{geo} & m_{stone} & m_{eco} & m_{tree}    \cr
    t_{geo}  &       1 &         1 & 0       & 0 \cr
    t_{eco}  &       0 &         0 & 1       & 1
- }\qquad
+ }
  \end{equation*}
 
  And further assume that $m_{stonehugger}$ is a trigger message for the geologist and $m_{treehugger}$ is a trigger messages for the ecologist. We therefore define $c^G$ as a cost vector for the geologist and $c^E$ for the ecologist:
@@ -158,12 +159,12 @@ Let us now assume that we have four messages $M=\{geologist, stonehugger, ecolog
   \bordermatrix{
              & m_{geo} & m_{stone} & m_{geo} & m_{tree}    \cr
              &       0 &         o^G & 0       & 0
-  }\qquad
+  }\quad
   c^E =
     \bordermatrix{
                & m_{geo} & m_{stone} & m_{geo} & m_{tree}    \cr
                &       0 &         0 & 0       & o^E
-    }\qquad
+    }
   \end{equation*}
 
 Where $c>0$.
@@ -181,7 +182,7 @@ S_0=Norm(B)=
             & & & &    \cr
  &       0.5 &         0.5 & 0       & 0 \cr
  &       0 &         0 & 0.5       & 0.5
- }\qquad
+ }\quad
 R_0=Norm(T(B))
 \bordermatrix{
             &  & \cr
@@ -189,7 +190,7 @@ R_0=Norm(T(B))
      & 1 & 0 \cr
      & 0 & 1 \cr
      & 0 & 1 \cr
- }\qquad
+ }
 \end{equation*}
 The naive sender has no principle to decide between sending either $m_{geo}$ or $m_{stone}$ when whishing to communicate $t_{geo}$. Similarly she has no principle to decide between sending either $m_{eco}$ or $m_{tree}$ when whishing to communicate $t_{eco}$. This is represented by her sending each message half of the time. So she plays a mixed strategy. The receiver's actions are clearly determined by a pure strategy.\\
 What is the best response of the level-1 hearer and speaker? Following the IBR procedure we transpose $R_0$, subtract the cost vector $c^S$ and check row-wise for the best response to obtain $S_1$. We proceed analogously for the receiver, the main difference being in this case that the receiver faces some actual cost, $c^R$. This then yields strategies for level-1 players:\\ %TODO : we need to add the prior. %
@@ -202,12 +203,12 @@ BR_S(
             & & & &    \cr
  &       1 &         1 & 0       & 0 \cr
  &       0 &         0 & 1      & 1
- }\qquad
+ }
 -
 \bordermatrix{
             & & & &    \cr
  &       0 &         o^S & 0       & 0 \cr
- }\qquad
+ }
 )
 \end{equation*}
 \begin{equation*}
@@ -216,14 +217,14 @@ BR_S(
                 & & & &    \cr
      &       1 &         1-o^S & 0       & 0 \cr
      &       0 &         0-o^S & 1      & 1
- }\qquad
+ }
  )
 =
 \bordermatrix{
                  & & & &    \cr
       &       1 &         0 & 0       & 0 \cr
       &       0 &         0 & 0.5      & 0.5
-  }\qquad
+  }
 \end{equation*}
 \begin{equation*}
 R_1=BR_R(T(S_0)-T(c^R)=
@@ -234,7 +235,7 @@ BR_R(
      & 0.5 & 0 \cr
      & 0 & 0.5 \cr
      & 0 & 0.5 \cr
- }\qquad
+ }
 -
 \bordermatrix{
   & \cr
@@ -242,7 +243,7 @@ BR_R(
      & 0 \cr
      & 0 \cr
      & o^R \cr
- }\qquad
+ }
 )
 \end{equation*}
 \begin{equation*}
@@ -253,8 +254,9 @@ BR_R(
     & 0.5 & 0 \cr
      & 0.5 & 0 \cr
      & 0 & 0.5 \cr
-     & 0-o^R & 0.5-o^R \cr
- }\qquad)
+     & 0-o^R & 0.5-o^R
+ }
+ )
 =
 \bordermatrix{
             &  & \cr
@@ -262,7 +264,7 @@ BR_R(
      & 1 & 0 \cr
      & 0 & 1 \cr
      & 0 & 1 \cr
- }\qquad
+ }
 \end{equation*}
 We see that $R_1=R_0$ thus we conclude that $S_2=S_1$.
 \begin{equation*}
@@ -273,7 +275,7 @@ R_2=BR_R(T(S_1)-T(c^R)=
      & 0.5 & 0.5 \cr
      & 0 & 1 \cr
      & 0 & 1 \cr
- }\qquad
+ }
 \end{equation*}
 $S_3=S_2$ and $R_3=R_2$. Since $S_3$ and $R_3$ are the best responses to each other, we have reached a stable strategy. 
 Some remarks about these strategies are in order. First, the sender will never send the message she finds offensive. This makes perfect intuitive sense, because she has a non-costly alternative which spares her from uttering ''stonehugger''. Second, the receiver views $m_{stone}$ as a surprise message. Although the sender will never play it, the receiver still needs has some plan of action for that contingency. Thirdly, while a sender of level zero still harms herself by blindly sending a costly message, senders above level zero will stop doing so. Thus, $m_{stone}$ will not be seen on higher levels.
@@ -306,14 +308,14 @@ S_*=
             & & & &    \cr
  &       1 &    0      & 0       & 0 \cr
  &       0 &         0 & 1      & 0
- }\qquad
+ }\quad
 R_*= \bordermatrix{
            &  & \cr
    & 1 & 0 \cr
     & 0.5 & 0.5 \cr
     & 0 & 1 \cr
     & 0.5 & 0.5 \cr
-}\qquad
+}
 \end{equation*}
 
 If this sender strategy is still able to convey the correct state, then everyone is better or at least as well off as before. In fact, such an improvement would imply satisfying a criterium for efficiency, namely the  \textit{Pareto optimality}. When the sender plays $S_*$ the receiver then plays $R_*$.
@@ -350,12 +352,12 @@ BR_S(
             & & & &    \cr
  &       1 &         1 & 0       & 0 \cr
  &       0 &         0 & 1      & 1
- }\qquad
+ }
 -
 \bordermatrix{
             & & & &    \cr
  &       0 &         o^S & 0       & d \cdot o^R \cr
- }\qquad
+ }
 )
 \end{equation*}
 \begin{equation*}
@@ -364,7 +366,7 @@ BR_S(
                 & & & &    \cr
      &       1 &         1-o^S & 0       & 0-d\cdot o^R \cr
      &       0 &         0-o^S & 1      & 1-d\cdot o^R
- }\qquad
+ }
  )
  \end{equation*}
 immediately we see that depending on the value of $d$ there are different sender responses. If $1<0-d\cdot o^R$ the sender's best response will be to send receiver costly messages over communication.  If $1>1-d\cdot o^R$ the sender's best response will be to send receiver non-costly messages over others. We can also see that if $d=1$ the receiver's cost is treated equally to the sender's cost. We define $d=1$ as an \textit{empathetic disposition}. Let us now continue with $d=1$.
@@ -375,14 +377,14 @@ S_1=BR_S(
                 & & & &    \cr
      &       1 &         1-o^S & 0       & 0-o^R \cr
      &       0 &         0-o^S & 1      & 1-o^R
- }\qquad
+ }
  )
 =
 \bordermatrix{
                 & & & &    \cr
      &       1 &         0 & 0       & 0 \cr
      &       0 &         0 & 1      & 0
- }\qquad
+ }
  =S_*
  \end{equation*}
 $R_1=R_0$ thus $S_2=S_1$ and we end with $S_2$ and $R_2$ as a stable strategies.
@@ -393,7 +395,7 @@ $R_1=R_0$ thus $S_2=S_1$ and we end with $S_2$ and $R_2$ as a stable strategies.
        & 0.5 & 0.5 \cr
        & 0 & 1 \cr
        & 0.5 & 0.5 \cr
-   }\qquad
+   }
    =R_*
 \end{equation*}
 And indeed these strategies are Pareto optimal since the expected utility for both players is $a$. Thus we conclude by stating that if the sender takes up an \textit{empathetic disposition} towards the receiver's cost a Pareto optimal solution is reached.
