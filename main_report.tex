@@ -128,11 +128,9 @@ Consider the following scenario: Two people sharing some language engage in conv
 This is an interesting situation, for the the speaker could perfectly well achieve her goal of communication and not use the word ''treehugger''. The listener, who is not in any position to choose the signal, then has to accept the speaker's decision grudgingly, knowing that there would have been a better way for her. Alas, it was not the better way for the sender and was thus not chosen. This situation can be modeled fittingly using the IBR approach introduced in previous sections. We will do so, and then carry out further analysis on the baseline set by this model.
 \subsection{Asymmetric Model}
 \subsubsection{Game Structure}
-Let us now use the IBR model to model the scenario above. Assume that
-
-For completeness sake we expand scenario by adding one more utterance ''She's a professional stonehugger who cares more about lifeless things than people.''
+Let us now use the IBR model to model the scenario above. Assume that For completeness sake we expand scenario by adding one more utterance ''She's a professional stonehugger who cares more about lifeless things than people.'' We therefore have
 %equiprobability of states needs to be mentioned here. also this could be shorter.
-The  communication where triggering can occur. We define two players which are talking with each other using some shared language fragment. Although they have this common language, they are triggered by different messages. Say that a geologist and an ecologist are talking and they discuss each others professions. Thus we define the states as $T=\{geologist, ecologist\}$ and set $T=A$. They both share the goal of successful communication, thus we set their utilities such that when the speaker wants to communicate $t_{j}$ by some message $m_i$ then they both have equal positive utility when the receiver to associates $m_i$ with $t_{j}$. Thus we have:
+two players which are talking with each other using some shared language fragment. Although they have this common language, they are triggered by different messages. Say that a geologist and an ecologist are talking and they discuss each others professions. Thus we define the states as $T=\{geologist, ecologist\}$ and set $T=A$. They both share the goal of successful communication, thus we set their utilities such that when the speaker wants to communicate $t_{j}$ by some message $m_i$ then they both have equal positive utility when the receiver to associates $m_i$ with $t_{j}$. Thus we have:
 
 \begin{equation*}
 \bordermatrix{
@@ -159,12 +157,12 @@ Let us now assume that we have four messages $M=\{geologist, stonehugger, ecolog
   c^G =
   \bordermatrix{
              & m_{geo} & m_{stone} & m_{geo} & m_{tree}    \cr
-             &       0 &         c & 0       & 0
+             &       0 &         o^G & 0       & 0
   }\qquad
   c^E =
     \bordermatrix{
                & m_{geo} & m_{stone} & m_{geo} & m_{tree}    \cr
-               &       0 &         0 & 0       & c
+               &       0 &         0 & 0       & o^E
     }\qquad
   \end{equation*}
 
@@ -208,7 +206,7 @@ BR_S(
 -
 \bordermatrix{
             & & & &    \cr
- &       0 &         c & 0       & 0 \cr
+ &       0 &         o^S & 0       & 0 \cr
  }\qquad
 )
 \end{equation*}
@@ -216,8 +214,8 @@ BR_S(
 =BR_S(
 \bordermatrix{
                 & & & &    \cr
-     &       1 &         1-c & 0       & 0 \cr
-     &       0 &         0 & 0.5      & 0.5
+     &       1 &         1-o^S & 0       & 0 \cr
+     &       0 &         0-o^S & 1      & 1
  }\qquad
  )
 =
@@ -243,7 +241,7 @@ BR_R(
     & 0 \cr
      & 0 \cr
      & 0 \cr
-     & c \cr
+     & o^R \cr
  }\qquad
 )
 \end{equation*}
@@ -255,7 +253,7 @@ BR_R(
     & 0.5 & 0 \cr
      & 0.5 & 0 \cr
      & 0 & 0.5 \cr
-     & 0-c & 0.5-c \cr
+     & 0-o^R & 0.5-o^R \cr
  }\qquad)
 =
 \bordermatrix{
@@ -269,24 +267,6 @@ BR_R(
 We see that $R_1=R_0$ thus we conclude that $S_2=S_1$.
 \begin{equation*}
 R_2=BR_R(T(S_1)-T(c^R)=
-BR_R(
-\bordermatrix{
-            &  & \cr
-    & 1 & 0 \cr
-     & 0 & 0 \cr
-     & 0 & 0.5 \cr
-     & 0 & 0.5 \cr
- }\qquad
--
-\bordermatrix{
-  & \cr
-    & 0 \cr
-     & 0 \cr
-     & 0 \cr
-     & c \cr
- }\qquad
-)
-=
 \bordermatrix{
             &  & \cr
     & 1 & 0 \cr
@@ -296,21 +276,20 @@ BR_R(
  }\qquad
 \end{equation*}
 $S_3=S_2$ and $R_3=R_2$. Since $S_3$ and $R_3$ are the best responses to each other, we have reached a stable strategy. 
-Some remarks about these strategies are in order. First, the sender will never send the message she finds offensive. This makes perfect intuitive sense, because she has a non-costly alternative which spares her from uttering ''stonehugger''. Second, the receiver views $m_{stone}$ as a surprise message. Although the sender will never play it, the receiver still needs has some plan of action for that contingency. Thirdly, while a sender of level zero still harms herself by blindly sending a costly message, senders above level zero will stop doing so. Thus, $m_{stone}$ will not be seen on higher levels. 
+Some remarks about these strategies are in order. First, the sender will never send the message she finds offensive. This makes perfect intuitive sense, because she has a non-costly alternative which spares her from uttering ''stonehugger''. Second, the receiver views $m_{stone}$ as a surprise message. Although the sender will never play it, the receiver still needs has some plan of action for that contingency. Thirdly, while a sender of level zero still harms herself by blindly sending a costly message, senders above level zero will stop doing so. Thus, $m_{stone}$ will not be seen on higher levels.
+
+\subsection{Informal problem characterization}
+Here's what's unsatisfactory with this situation: Successful communication yields equal payoffs of $a$ for both players. Indeed, the \textit{sender's payoff} is always $a$, for the the strategy pair $<S_3,R_3>$ entails successful communication. For the receiver, however, the story is different. In $S_3$ $P(m_{tree})=0.5$ if $t_{eco}$ holds. Since $P(t_{eco})=0.5$ $m_{tree}$ is sent in $\tfrac{1}{2}\times \tfrac{1}{2} = \tfrac{1}{2}$ of all cases on average, inflicting a cost of $c$. In expectation, she will thus obtain a mere payoff of $a-\tfrac{c}{4}$.
 
 \begin{table}[h]
 \centering
 \caption{Expected Payoff for Level of Sophistication}
-\label{my-label}
 \begin{tabular}{lll}
                                     & Sender                                  & Receiver                                \\ \cline{2-3}
 \multicolumn{1}{l|}{Level-0}        & \multicolumn{1}{l|}{$a-\tfrac{o^S}{4}$} & \multicolumn{1}{l|}{$a-\tfrac{o^R}{4}$} \\ \cline{2-3}
-\multicolumn{1}{l|}{Level-k, $k>0$} & \multicolumn{1}{l|}{a}                  & \multicolumn{1}{l|}{$a-\tfrac{o^R}{4}$} \\ \cline{2-3}
+\multicolumn{1}{l|}{Level-k, $k>0$} & \multicolumn{1}{l|}{$a$}                  & \multicolumn{1}{l|}{$a-\tfrac{o^R}{4}$} \\ \cline{2-3}
 \end{tabular}
 \end{table}
-
-\subsection{Informal problem characterization}
-Here's what's unsatisfactory with this situation: Successful communication yields equal payoffs of $a$ for both players. Indeed, the \textit{sender's payoff} is always $a$, for the the strategy pair $<S_3,R_3>$ garantuees successful communication. For the receiver, however, the story looks different. In $S_3$ $P(m_{tree})=0.5$ if $t_{eco}$ holds. Since $P(t_{eco})=0.5$ $m_{tree}$ is sent in $\tfrac{1}{2}\times \tfrac{1}{2} = \tfrac{1}{2}$ of all cases on average, inflicting a cost of $c$. In expectation, she will thus obtain a mere payoff of $a-\tfrac{c}{4}$.
 
 As a way of intuitive explanation, consider the positions the agents are facing in this game. Whether the receiver likes the message or not, she can always reason what her interlocutor wants to communicate to her. If the messages $m_{geo}$ or $m_{eco}$ are sent, she will chose the corresponding action, communication is successfull, so both players get their payoff and everyone is happy. If the message $m_{tree}$ is sent, however, she pays the associated cost. Still, she knows what the sender is trying to communicate and her best response will be to cooperate. Refusing to understand is not an option, for it would only add insult to injury; she would both pay the cost of hearing $m_{tree}$ and lose the payoff of understanding correctly. Because the sender can anticipate the receiver to behave this way, she does not need to care about sending either semantically correct message.
 
@@ -320,7 +299,7 @@ Now, actual language use is an activity which agents engage in repeatedly, somet
 %I would like to have high-indexed cost entries to the matrix depending on the players.
  
 The crucial observation to make here is that the agents could have done better. To see this, imagine the agents only used $m_{eco}$ and $m_{geo}$ to communicate. If neither of them would ever inflict a cost and communication could still be reliably successfull, then both receive a full payoff of $a$.
-Never playing costly messages formally means that the respective sender plays strategy $S_*$ where neither $m_{tree}$ nor $m_{stone}$ are ever played. 
+Never playing costly messages formally means that the respective sender plays strategy $S_*$ where neither $m_{tree}$ nor $m_{stone}$ are ever played.
 \begin{equation*}
 S_*=
 \bordermatrix{
@@ -328,9 +307,16 @@ S_*=
  &       1 &    0      & 0       & 0 \cr
  &       0 &         0 & 1      & 0
  }\qquad
+R_*= \bordermatrix{
+           &  & \cr
+   & 1 & 0 \cr
+    & 0.5 & 0.5 \cr
+    & 0 & 1 \cr
+    & 0.5 & 0.5 \cr
+}\qquad
 \end{equation*}
 
-If this sender strategy is still able to convey the correct state, then everyone is better or at least as well off as before. In fact, such an improvement would imply satisfying a criterium for efficiency, namely the  \textit{Pareto optimality}.
+If this sender strategy is still able to convey the correct state, then everyone is better or at least as well off as before. In fact, such an improvement would imply satisfying a criterium for efficiency, namely the  \textit{Pareto optimality}. When the sender plays $S_*$ the receiver then plays $R_*$.
 
 Formally, some strategy is Pareto optimal if it is not \textit{Pareto dominated} by some other strategy. Pareto domination, in its turn, is defined as follows:
 Let $S$ be a set of strategies, $N$ a set of players, from 1 to n, and $u_i$ be each player's utility function. A strategy $s \in S$ Pareto dominates another strategy $s' \in S$ if:
@@ -340,7 +326,7 @@ Let $S$ be a set of strategies, $N$ a set of players, from 1 to n, and $u_i$ be 
 
 If strategy $s'$ gives any player a higher utility than $s$, while no other player's utility decreases, we say that the $s'$ \textit{Pareto dominates} $s$.
 
-% I think we should compare the IBR solution to our empathetic solution thus we can just point to it later.
+We claim that the strategy pair $<S_*,R_*>$ is Pareto optimal. In the next chapter we show how we can adjust the IBR model to reach the strategy pairs $<S_*,R_*>$ and show that $<S_*,R_*>$ is Pareto optimal.
 
 \section{Solution concept}
 We have presented the problem of offensive language use and now we will present a solution which can explain offensive and non-offensive language use and puts the speaker in a position to decide between offensive and non-offensive language use. The core idea is to model the disposition of the speaker towards the receiver. For an example, the speaker can be indifferent, empathetic or even hostile towards the receiver. By modelling this disposition it allows us to make it in the speaker's interest to take the receiver's preferences into account. Furthermore we show that only if the speaker acts empathetically a Pareto optimal solution can be reached.
@@ -365,36 +351,30 @@ BR_S(
  &       1 &         1 & 0       & 0 \cr
  &       0 &         0 & 1      & 1
  }\qquad
--(
+-
 \bordermatrix{
             & & & &    \cr
- &       0 &         c & 0       & 0 \cr
+ &       0 &         o^S & 0       & d \cdot o^R \cr
  }\qquad
-+ d \cdot
-\bordermatrix{
-            & & & &    \cr
- &       0 &         0 & 0       & c \cr
- }\qquad
- )
 )
 \end{equation*}
 \begin{equation*}
 =BR_S(
 \bordermatrix{
                 & & & &    \cr
-     &       1 &         1-c & 0       & 0-d\cdot c \cr
-     &       0 &         0-c & 1      & 1-d\cdot c
+     &       1 &         1-o^S & 0       & 0-d\cdot o^R \cr
+     &       0 &         0-o^S & 1      & 1-d\cdot o^R
  }\qquad
  )
  \end{equation*}
-immediately we see that depending on the value of $d$ there are different sender responses. If $1<0-d\cdot c$ the sender's best response will be to send receiver costly messages over communication.  If $1>1-d\cdot c$ the sender's best response will be to send receiver non-costly messages over others. We can also see that if $d=1$ the receiver's cost is treated equally to the sender's cost. We define $d=1$ as an \textit{empathetic disposition}. Let us now continue with $d=1$.
+immediately we see that depending on the value of $d$ there are different sender responses. If $1<0-d\cdot o^R$ the sender's best response will be to send receiver costly messages over communication.  If $1>1-d\cdot o^R$ the sender's best response will be to send receiver non-costly messages over others. We can also see that if $d=1$ the receiver's cost is treated equally to the sender's cost. We define $d=1$ as an \textit{empathetic disposition}. Let us now continue with $d=1$.
 
 \begin{equation*}
 S_1=BR_S(
 \bordermatrix{
                 & & & &    \cr
-     &       1 &         1-c & 0       & 0-c \cr
-     &       0 &         0-c & 1      & 1-c
+     &       1 &         1-o^S & 0       & 0-o^R \cr
+     &       0 &         0-o^S & 1      & 1-o^R
  }\qquad
  )
 =
@@ -403,6 +383,7 @@ S_1=BR_S(
      &       1 &         0 & 0       & 0 \cr
      &       0 &         0 & 1      & 0
  }\qquad
+ =S_*
  \end{equation*}
 $R_1=R_0$ thus $S_2=S_1$ and we end with $S_2$ and $R_2$ as a stable strategies.
 \begin{equation*}
@@ -413,6 +394,7 @@ $R_1=R_0$ thus $S_2=S_1$ and we end with $S_2$ and $R_2$ as a stable strategies.
        & 0 & 1 \cr
        & 0.5 & 0.5 \cr
    }\qquad
+   =R_*
 \end{equation*}
 And indeed these strategies are Pareto optimal since the expected utility for both players is $a$. Thus we conclude by stating that if the sender takes up an \textit{empathetic disposition} towards the receiver's cost a Pareto optimal solution is reached.
 \subsection{Conclusion}
