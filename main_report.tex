@@ -146,26 +146,9 @@ The set of messages is $M=\{m_{geo}, m_{stone}, m_{eco}, m_{tree}\}$. Its semant
  }
  \end{equation*}
 
-$m_{stone}$ being played inflicts a cost of $\alpha$ to $P_1$, while $m_{tree}$ bears cost $\beta$ for $P_2$, where $a>\alpha,\beta>0$.\footnote{Communicating is always preferable to non-communication and no expressions can only be harmful.} The two cost vectors are thus \tb{This takes up a lot of space. Just say that messages are ordered as above, and cost vector are ordered in the same manner. Just put them inline, no labeling necessary}
-
-  \begin{equation*}
-  c^1 =
-  \bordermatrix{
-             & m_{geo} & m_{stone} & m_{geo} & m_{tree}    \cr
-             &       0 &         \alpha & 0       & 0
-  }\qquad
-  c^2 =
-    \bordermatrix{
-               & m_{geo} & m_{stone} & m_{geo} & m_{tree}    \cr
-               &       0 &         0 & 0       & \beta
-    }
-  \end{equation*}
-
-Furthermore, the receiver is unbiased with respect to which state holds. \tb{You should introduce the model with this example immediately. This saves space and directly shows how you're using the model. That is, all of this section and the preceding two could be a single section that is much shorter}
-%Do we even need this assumption?
+$m_{stone}$ being played inflicts a cost of $\alpha$ to $P_1$, while $m_{tree}$ bears cost $\beta$ for $P_2$, where $a>\alpha,\beta>0$.\footnote{Communicating is always preferable to non-communication and no expressions can only be harmful.} Using the same ordering as above, the cost vectors are $c^1=(0,\alpha,0,0)$ and $c^2=(0,0,0,\beta)$.
 %Usually language users will encounter the expressions of their language many times over the course of their communicative lives - both as listeners as well as speakers. To capture this we'll posit a third player - nature - which decides at the beginning of the game who of the two players gets to talk and who gets to listen. As rational language users they will need to have some plan of action for all roles, states of the world or messages they encounter.
-%Use this section elsewhere or delete.
-\subsubsection{Game play}
+% TODO: Use this section elsewhere or delete. Perhaps we use it when talking about expected utility
 As a first step, we determine what the naive players' strategies are:\\
 \textbf{Level-0 Players}\\
 \begin{equation*}
@@ -184,12 +167,12 @@ R_0=Norm(B^T)
      & 0 & 1 \cr
  }
 \end{equation*}
-The naive sender has no principle to decide between sending either $m_{geo}$ or $m_{stone}$ when whishing to communicate $t_{geo}$. \tb{What does ``having a principle'' mean? Informally, she has no preference to send one over the other, because both messages are true in the state -- so she doesn't care and picks randomly} Similarly she has no principle to decide between sending either $m_{eco}$ or $m_{tree}$ when whishing to communicate $t_{eco}$. This is represented by her sending each message half of the time. So she plays a mixed strategy. The receiver's actions are clearly determined by a pure strategy.\\
+We can see that the naive sender plays a mixed strategy when whishing to communicate the state, sending either applicable message half of the time. The receiver's actions are clearly determined by a pure strategy.
 
-What is the best response of the level-1 hearer and speaker? Following the IBR procedure we transpose $R_0$, subtract the cost vector $c^1$ and check row-wise for the best response to obtain $S_1$. \tb{No need to spell this out procedurally. Explain intuitively what higher level players do, and then just go straight to the formula. The step-by-step derivations are cumbersome and can be confusing. You have not said, in all generally, how they are computed up to here. So it's hard to digest for a na\"ive reader}  We proceed analogously for the receiver, the main difference being in this case that the receiver faces some actual cost, $c^2$. This then yields strategies for level-1 players:\\ %TODO : we need to add the prior. %
+The best response of a k-level players is based on the interlocutor's k-1 level with message cost taken into account. %Explain better%
+Thus we get the best response of the level-1 hearer and speaker: %  Following the IBR procedure we transpose $R_0$, subtract the cost vector $c^1$ and check row-wise for the best response to obtain $S_1$. \tb{No need to spell this out procedurally. Explain intuitively what higher level players do, and then just go straight to the formula. The step-by-step derivations are cumbersome and can be confusing. You have not said, in all generally, how they are computed up to here. So it's hard to digest for a na\"ive reader}  We proceed analogously for the receiver, the main difference being in this case that the receiver faces some actual cost, $c^2$. This then yields strategies for level-1 players:\\ %TODO : we need to add the prior. %
 \textbf{Level-1 Players}\\
 \begin{equation*}
-% These matrices look strange when rendered
 S_1= BR_S(R^T_0-c^1)=
 BR_S(
 \bordermatrix{
@@ -259,7 +242,7 @@ BR_R(
      & 0 & 1 \cr
  }
 \end{equation*}
-We see that $R_1=R_0$ thus we conclude that $S_2=S_1$. \tb{What does this mean, informally? i.e., fixed point of the reasoning process. No need to go higher}
+We see that $R_1=R_0$, i.e. the receiver did not change strategy from 0-level to 1-level, thus we conclude that $S_2=S_1$. But $S_1$ did thus we calculate:
 \begin{equation*}
 R_2=BR_R({S_1}^T-{c^2}^T)=
 \bordermatrix{
@@ -270,8 +253,9 @@ R_2=BR_R({S_1}^T-{c^2}^T)=
      & 0 & 1 \cr
  }
 \end{equation*}
-$S_3=S_2$ and $R_3=R_2$. Since $S_3$ and $R_3$ are the best responses to each other, we have reached a stable strategy.
-Some remarks about these strategies are in order. First, the sender will never send the message she finds offensive. \sout{This makes perfect intuitive sense} \tb{Never tell the reader that something is clear or intuitive. Maybe it's not so intuitive for them. Rather, say ``Intuitively, this is so because...''}, because she has a non-costly alternative which spares her from uttering ''stonehugger''. Second, the receiver views $m_{stone}$ as a surprise message \tb{What does this mean?}. Although the sender will never play it, the receiver still needs has some plan of action for that contingency. Thirdly, while a sender of level zero still harms herself by blindly sending a costly message, senders above level zero will stop doing so. Thus, $m_{stone}$ will not be seen on higher levels.
+$S_3=S_2$ and $R_3=R_2$. Since neither strategy changed from 2-level to 3-level we have reached a fixed point of the reasoning process. That is,  $<S_2,R_2>$ is a stable strategy pair.
+
+Some remarks about these strategies are in order. First, the sender will never send the message she finds offensive. Intuitively, this is because she has a non-costly alternative to choose from. Second, although the sender will never play $m_{stone}$ the receiver still needs has some plan of action for that contingency. Thirdly, while a sender of level zero still harms herself by blindly sending a costly message, senders above level zero will stop doing so. Thus, $m_{stone}$ will not be seen on higher levels. Fourth, and most relevant to our discussion, is that even though the $m_{tree}$ is costly for the receiver, the sender will still send it half of the time.
 
 \subsection{Problem characterization}
 Here's what's unsatisfactory with this situation: Successful communication yields equal payoffs of $a$ for both players. Indeed, the \textit{sender's payoff} is always $a$, for the the strategy pair $<S_3,R_3>$ entails successful communication. For the receiver, however, the story is different. \tb{Above, you claimed payoffs are equal for both. Now you tell me that this is not true.} When $S_3$ is played and $t_{eco}$ holds, $(m_{tree}$ will be sent with probability 0.5. Since the probability of $t_{eco}$ is 0.5, $m_{tree}$ is sent in $\tfrac{1}{2}\times \tfrac{1}{2} = \tfrac{1}{4}$ of all cases on average, inflicting a cost of $\beta$. In expectation, she will thus obtain a mere payoff of $a-\tfrac{\beta}{4}$.
