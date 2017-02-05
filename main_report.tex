@@ -30,33 +30,28 @@ When Donald Trump was asked to explain calling women ``fat pigs'', ``dogs'', ``s
 We will present three core results: First, we offer a formal explanation for the reason why offensive use of language is so persistent. Second, we argue that there is potential for better communication. Third, we will argue that the degree of empathy language users exhibit is of crucial importance to reap these benefits. To this end, we us a game theoretic model of rational language use between agents that reason about each others linguistic choices \cite{franke2014pragmatic}. This approach looks to explain and predict pragmatic inferences of natural language users by modeling a back-and-forth reasoning between two agents engaged in conversation.
 Our formal contribution is to forgo the common assumption that it is exclusively the player sending a message for whom the word choice is costly. Instead, we will look at situations where the cost a message's recipient faces also varies depending on the expressions employed by the sender.
 
-In section 1 we give a brief introduction to the application of game theory to the study of pragmatics.
-Section 2 contains an overview over the particular type of model used in our analysis, while Section 3 uses the model to carry it out.
-Section 4: Solution
-Section 5: Discussion
-Section 6: Conclusion
-
+In Section 1 we give a brief introduction to the application of game theory to the study of pragmatics as well as the specifics of the model we use.
+Section 2 contains the model's application to message related cost and a discussion of its predictions, while Section 3 presents an extension of the model.
+Section 4 discusses the results and concludes.
 \section{Game Theory and Pragmatics}
-\subsection{Signaling Games}
+\textbf{Signaling Games}\\
 We model language use as a signaling game. These are sequential games between two players: a sender and a receiver \cite{david1969convention}. The game is played in a particular state of the world, formally an element of set $T$ which represents possibles ways the world could be. Only the sender knows which state this happens to be and would like to transfer this information to the receiver. The receiver, who cannot observe the true state, tries to infer the true state by observing a signal which the sender emits.
 
 The game is then played as follows: After the sender observes the true state of the world $t$ she sends some message $m_i$, $m_i \in M$ where $M$ is a set of messages. The receiver then observes the message $m_i$ and points to some $t\in T$ which she thinks holds. If this is the actual $t$, communication was successful.
 The players payoff depends on whether communication was successful and which message was used. The different messages bear a specific cost for each player, formally this is a player-specific cost vector.
 
 A sender's \textit{strategy} is a function from $T$ to $M$; a receiver's strategy is a function $M$ to $T$. Informally, strategies are plans of actions for the players which tell them what to do whenever they get to make a move. We call a strategy \textit{pure} if a player will choose some action with certainty, that is, always, when confronted with a given situation. In contrast to pure strategies stand \textit{mixed} strategies where players will choose from various actions, each with a given probability.
-
 Players are assumed to be payoff maximizers. They will play the strategies which lead to the highest expected utility, denoted by EU.
 
-\subsection{Extension Towards Pragmatics}
+\noindent \textbf{Extension Towards Pragmatics}\\
 Game theory has been used to model a variety of phenomena related to information transmission. (\cite{spence1973job, smith1982evolution, cho1987signaling})
-In the field of linguistics it was applied to obtain a firmer conceptual grip on Gricean pragmatics.
-\sh{Insert references}
-Here the communication between (rational) agents is thought of as a game played between interlocutors. Formulating situations where pragmatic phenomena arise with mathematical precision helps in different ways: On the one hand, it allows one to bridge the gap between theoretical work on pragmatics and experimental data with language users (e.g. \cite{frank2012predicting}). More specifically, it generates testable predictions about language use under a variety of parametrizations, as pertaining to the agent's (limited) rationality, cognitive ability to think multiple steps ahead, their preferences and methods of deciding on what action to take - so-called \textit{choice rules} \cite{galeazzi2017play}
- - or their beliefs about the world. On the other hand, such models provide insight into how agents actually arrive at the linguistic behavior they exhibit.
+In the field of linguistics it was applied to obtain a firmer conceptual grip on Gricean pragmatics (cf. \cite{benz2006introduction, jager2007language}).
+Here the communication between (rational) agents is thought of as a game played between interlocutors. Formulating situations where pragmatic phenomena arise with mathematical precision helps in different ways: On the one hand, it allows one to bridge the gap between theoretical work on pragmatics and experimental data with language users (e.g. \cite{frank2012predicting}). More specifically, it generates testable predictions about language use under a variety of parametrizations, as pertaining to the agent's (limited) rationality, cognitive ability to think multiple steps ahead, their preferences and methods of deciding on what action to take or their beliefs about the world. On the other hand, such models provide insight into how agents actually arrive at the linguistic behavior they exhibit.
  Indeed, models concerned with pragmatic behavior of linguistic agents are caught between the pressure of trying to accurately predict and fit experimental data and the hope to realistically capture one or the other aspect of a pragmatic phenomenon - to represent ''what actually is going on'', so to speak.
 
 The model we are concerned with tries to capture the agents' mutual reasoning about each other. Which action the players deem optimal for them and perform depends on a process of reasoning about what the other player believes. The model tries to capture this process of reasoning about what the other player does, believes that her opponent will do, believes what her opponent will believe that she will do, and so forth.
-\subsection{The IBR Model}
+
+\noindent \textbf{The IBR Model}\\
 We use the \textit{iterated best response} (IBR) model as our formal framework \cite{franke2009signal}, \cite{franke2014pragmatic}. IBR relies on an explicit representation of the agents' beliefs about each other. The interlocutors beliefs are spelled out in a round-for-round manner in order to capture what intuitively could be the described as the epistemic dynamic of: ''I think that you think that I think that you think...etc.''. Language users in the modl have some hierarchically ordered level of sophistication which correspond to the number of steps an agent can reason back and forth between herself and the other agents. The reasoning chain formed by such steps is then a sequence of iterated optimal responses. This chain is bounded by the maximal depth a player of a given level of sophistication - or strategic type - can go to.
 
 Entirely unsophisticated types, players who do not take the opponents reasoning into account at all and are thus completely unstrategic, are assigned the level-0. In the games under discussion in this paper this will mean that senders of level-0 will be only concerned with saying whatever is true according to the semantics of the language fragment in question, while receivers of that level will always interpret a message they receive literally. An agent of level-$k$ then forms some belief about the other's behavior who, by assumption, is of some level $l$, where $k\geq l$. Intuitively, this can be interpreted as the player looking down the sophistication hierarchy in order to build some rational expectation of what the other of some specified level $l\leq k$ will do. We also make the common assumption that players of level $k$ expect their opponents to reason exactly one step less than themselves and are thus of level $k-1$.
