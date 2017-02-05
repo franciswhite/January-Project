@@ -245,12 +245,14 @@ Technically speaking, some strategy is Pareto optimal if it is not \textit{Paret
 It is straightforward to see that the strategy pair $<S_*,R_*>$ is Pareto optimal since the highest possible utility for either player is $a$ and $<S_*,R_*>$ has utility of $a$ for both players, therefore there is no other strategy which \textit{Pareto dominates} it. Furthermore we see that $<S_*,R_*>$ \textit{Pareto dominates} the IBR strategy which has expected utility of $a-\tfrac{i}{8}$, for $i\in \{\alpha,\beta \}$. In the next section we show that a small adjustment to our model suffices to reach the strategy pairs $<S_*,R_*>$.
 
 \section{Reaching the Optimum}
-We have presented the problem of offensive language to be a strategy which is non-Pareto optimal. There exists a strategy pair, namely, $<S_*,R_*>$ which gives better payoff. Furthermore we showed that a optimal strategy can be reached if we adjust the sender's best response. We did not see the optimal strategy in the IBR model since in the model the sender is indifferent to the receiver's cost. Since it is not explicitly in the sender's interest to consider the receiver's interests and, coincidentally, it is her who wields the power to decide if an offensive message is sent or not. Furthermore we saw that if we added a third player, nature, to decide the players' positions, both players were worse off if they did not take the other preferences into account. Thus in order to reach a Pareto optimal solution both players must take the receiver's preferences into account and base the response such that is not offensive for the receiver, i.e. the sender must refrain from sending costly messages for the receiver. If the sender does not send receiver costly messages successful communication is still established and the receiver did not incur any cost in the process. We therefore adjust the IBR model by adjusting the sender's response such that she takes the receiver's cost into account. We do this by extending the sender's cost vector:
+So far it has been supposed that players in the role of the sender do not care about the harm they inflict when choosing one over the other message. We have seen that the players then arrive at non-optimal strategies because they are indifferent to the respective other's cost. 
+However, if this assumption concerning the indifferent stance of the sender is given up, then the employment of different strategies is predicted. We can gain clarity under which circumstances agents will play strategies that are Pareto optimal.
 
+More to the point, we reach the optimal solution if both players must consider receiver's preferences. We do this by extending the sender's cost vector:
 $$c^{1*}=c^{1} + d \cdot c^{2}$$
-Where $c^{1}$ is the original sender's cost, $c^{2}$ the receiver's cost and $d \in \mathbb{R}$. By extending the sender cost in this way we make it explicitly in the sender's interest to take the receiver's cost into account and $d$ is intuitivly the sender's disposition towards the receiver's cost. We can now see that by setting $d=0$ we get the original best response since then $c^{1*}=c^{1}$. Thus we consider this definition as an exstension of the original model.
+Where $c^{1}$ is the original sender's cost, $c^{2}$ the receiver's cost and $d \in \mathbb{R}$ a parameter representing the players' disposition to ''feel'' the other's cost. Intuitively, if $d>0$ the players are empathetic, if $d<0$ they are malicious and $d=0$ is the indifferent case. By extending the model in this way we can make the sender's interest in the receiver's cost explicit. Setting $d=0$ yields the original model because then $c^{1*}=c^{1}$, for all other values of $d$ we get an extended model. 
 
-Let us now go through the game again with the extended sender's cost. $S_0$ and $R_0$ remain unchanged. So let us start with $S_1$:
+What happens when empathetic agents play the game from above? $S_0$ and $R_0$ remain unchanged. So let us start with $S_1$:
 \begin{equation*}
 S_1= BR_S(R_0^T-c^{1*})=BR_S(
 \bordermatrix{
@@ -260,7 +262,7 @@ S_1= BR_S(R_0^T-c^{1*})=BR_S(
  }
 )
 \end{equation*}
-We see immediately that depending on the value of $d$ there are different sender responses. If $1<0-d\cdot \beta$ the sender's best response will be to send receiver costly messages over communication.  If $1>1-d\cdot \beta$ the sender's best response will be to send receiver non-costly messages over otihers. We can also see that if $d=1$ the receiver's cost is treated equally to the sender's cost. We define $d=1$ as an \textit{empathetic disposition}. Let us now continue with $d=1$ and then we get:
+Depending on the value of $d$ there are different sender responses. If $1<0-d\cdot \beta$ the sender's best response will be to send receiver costly messages over communication.  If $1>1-d\cdot \beta$ the sender's best response will be to send receiver non-costly messages over otihers. We can also see that if $d=1$ the receiver's cost is treated equally to the sender's cost. We define $d=1$ as an \textit{empathetic disposition}. Let us now continue with $d=1$ and then we get:
 
 \begin{equation*}
 S_1=BR_S(
