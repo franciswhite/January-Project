@@ -70,10 +70,10 @@ We are going to use the \textit{iterated best response} model (IBR) model as our
 
 Entirely unsophisticated types, players who do not take the opponents reasoning into account at all and are thus completely unstrategic, are assigned the level-0. In the games under discussion in this paper this will mean that senders of level-0 will be only concerned with saying whatever is true according to the semantics of the language fragment in question, while receivers of that level will always interpret a message they receive literally. An agent of level-$k$ then forms some belief about the other's behavior who, by assumption, is of some level $l$, where $k\geq l$. Intuitively, this can be interpreted as the player looking down the sophistication hierarchy in order to build some rational expectation of what the other of some specified level $l\leq k$ will do. We'll also make the common assumption that players of level $k$ expect their opponents to reason exactly one step less than themselves and are thus of level $k-1$.
 
-As in standard signaling games, $T$ is the set of states the players can be in, $M$ the set of messages at the sender's disposal. We assume that $T$ and $M$ are finite sets, $|M|=m$, $|T|=n$. A sender strategy is a row-stochastic $(n \times m)$-matrix $S$, and a receiver strategy is a row-stochastic $(m\times t)$-matrix $R$.  
+As in standard signaling games, $T$ is the set of states the players can be in, $M$ the set of messages at the sender's disposal. We assume that $T$ and $M$ are finite sets, $|M|=m$, $|T|=n$. A sender strategy is a row-stochastic $(n \times m)$-matrix $S$, and a receiver strategy is a row-stochastic $(m\times t)$-matrix $R$.
 The matrices' entries represent the probability with which the players choose a move in the column - messages for senders, states for receivers - when observing the situation in the row - state for senders, messages for receivers, $P(m|t,S) = S_{tm}$ and likewise $P(t|m,R) = S_{ma}$.
 
-The semantics of the language fragment in question is modeled as a $(n \times m)$-matrix. If a state $t_i$ makes a message $m_j$ true, then the entry $x_{ij}$ in the matrix will be $1$, otherwise $0$. This matrix reporting the boolean values is called the \textit{Boolean Matrix} and denoted by $B$.  
+The semantics of the language fragment in question is modeled as a $(n \times m)$-matrix. If a state $t_i$ makes a message $m_j$ true, then the entry $x_{ij}$ in the matrix will be $1$, otherwise $0$. This matrix reporting the boolean values is called the \textit{Boolean Matrix} and denoted by $B$.
 Players of level-0 are supposed to be \textit{naive} with respect to sending and receiving messages. Naive senders always send true messages, while naive receivers always take messages literally.
 The strategies of level-0 type are represented by the normalized boolean matrix. Normalization here simply means a mapping of some $(m\times n)$-matrix $A$ onto some other $(m\times n)$-matrix $B$ such that $B_i\propto A_i$ if $\sum_j (A_{ij})>0$ and $B_{ij}=\tfrac{1}{n}$ otherwise. In the case of the receiver the transposed boolean matrix is normalized.
 
@@ -118,7 +118,8 @@ R_0=Norm(B^T)
 \end{equation*}
 We can see that the naive sender plays a mixed strategy when whishing to communicate the state, sending either applicable message half of the time. The receiver's actions are clearly determined by a pure strategy.
 
-The best response of a k-level players is based on the interlocutor's k-1 level when message cost taken into account. 
+The best response of a k-level players is based on the interlocutor's k-1 level when message cost taken into account.
+
 We obtain the best response of the level-1 sender by analysing her reasoning about a level-0 receiver. She looks at what a naive receiver would do and then chooses the best answer to that strategy, while accounting for the cost of her own moves. We proceed analogously for the receiver. This then yields strategies for both level-1 players:
 \textbf{Level-1 Players}\\
 \begin{equation*}
@@ -244,55 +245,22 @@ Technically speaking, some strategy is Pareto optimal if it is not \textit{Paret
 It is straightforward to see that the strategy pair $<S_*,R_*>$ is Pareto optimal since the highest possible utility for either player is $a$ and $<S_*,R_*>$ has utility of $a$ for both players, therefore there is no other strategy which \textit{Pareto dominates} it. Furthermore we see that $<S_*,R_*>$ \textit{Pareto dominates} the IBR strategy which has expected utility of $a-\tfrac{i}{8}$, for $i\in \{\alpha,\beta \}$. In the next section we show that a small adjustment to our model suffices to reach the strategy pairs $<S_*,R_*>$.
 
 \section{Reaching the Optimum}
-%In general, I think that our emphasis should lie on the fact that this solution naturally arises out of the technicalities of our modeling. It's not interesting that we personally believe that the solution to both players missing out on payoff is empathy. What's interesting is that we point to a small formal variation of our model which then happens to have an intuitive counterpart in the concept of empathy/altruism/also caring about others well-being. Ideally, we would introduce the technical changes while offering a running commentary of what they mean in intuitive terms.
-%Also, the paper is not geared anymore to offer explanations for various types of behavior people actually exhibit. i would therefore not talk of offering explanations.
-%Many things were said multiple times here. I will need to work on it longer still to rid it of all redudancy.
-\sh{+} So far it has been supposed that players in the role of the sender do not care about the harm they inflict when choosing one over the other message. Whether this is an accurate representation of human preferences is beyond the content of this paper. Nonetheless, we want to draw attention to the fact that if this assumption concerning the indifferent stance of the sender is given up, then the employment of different strategies is predicted. More to the point, we can gain clarity under which circumstances agents will play strategies that are Pareto optimal.
-% Silvan
-\sh{This is a header we might want to skip}
-%\section{The solution}
-We have presented the problem of offensive language use \tb{summarize in 1 sentence} and now we will present a solution which can explain offensive and non-offensive language use and puts the speaker in a position to decide between offensive and non-offensive language use. \tb{shorten sentence. These are 2-3 sentences} The core idea is to model the disposition of the speaker towards the receiver. For an example, the speaker can be indifferent, empathetic or even hostile towards the receiver. \sh{Modeling} By modelling this disposition it allows us to make it in the speaker's interest to take the receiver's preferences into account. Furthermore we show that only if the speaker acts empathetically a Pareto optimal solution can be reached.
-%Silvan
-The core idea is to model the sender's disposition towards the receiver. The sender could be indifferent, empathetic or even hostile towards the receiver. We model this by letting the sender take the receiver's interest into account. We will show that only if the speaker acts in way we'll call \sh{empathetic} \textit{emphatic} a Pareto optimal solution is reached.
-+
-+As demonstrated before, payoffs could be optimal if senders were to adjust their best response. Until now, however, the strategies leading to such payoffs were not explicitly in the sender's interest and it happens to the player in this role who wields the power to decide over messages. Furthermore, if the players' positions are reversed systematically both players harmed each other by not taking the respective other's interest into account.
-+
-+At this stage, the solution to this issue becomes apparent: Both players must take the receiver's preferences into account when being in the position to send messages. If the sender does not send receiver costly messages, successful communication is still established and the receiver pays no cost in the process.
+We have presented the problem of offensive language to be a strategy which is non-Pareto optimal. There exists a strategy pair, namely, $<S_*,R_*>$ which gives better payoff. Furthermore we showed that a optimal strategy can be reached if we adjust the sender's best response. We did not see the optimal strategy in the IBR model since in the model the sender is indifferent to the receiver's cost. Since it is not explicitly in the sender's interest to consider the receiver's interests and, coincidentally, it is her who wields the power to decide if an offensive message is sent or not. Furthermore we saw that if we added a third player, nature, to decide the players' positions, both players were worse off if they did not take the other preferences into account. Thus in order to reach a Pareto optimal solution both players must take the receiver's preferences into account and base the response such that is not offensive for the receiver, i.e. the sender must refrain from sending costly messages for the receiver. If the sender does not send receiver costly messages successful communication is still established and the receiver did not incur any cost in the process. We therefore adjust the IBR model by adjusting the sender's response such that she takes the receiver's cost into account. We do this by extending the sender's cost vector:
 
-%Silvan
-We have shown that a optimal strategy can be reached if we adjust the sender's best response. We did not see the optimal strategy in the IBR model since it is not explicitly in the sender's interest to consider the receiver's interests and, coincidentally, it is her who wields the power to decide if an offensive message is sent or not. Furthermore we saw that if we added a third player, nature, to decide the players' positions, both players were worse off if they did not take the other preferences into account. Thus both players must take the receiver's preferences into account and base the response such that is not offensive for the receiver, i.e. the sender must refrain from sending costly messages for the receiver. If the sender does not send receiver costly messages successful communication is still established and the receiver did not incur any cost in the process. Thus a Pareto optimal solution. We therefore adjust the IBR model by adjusting the sender's response such that she takes the receiver's cost into account. \tb{This is good. I would move it right after my first remark in this subsection, and then say what you will do next}
-
-\subsection{Extending the IBR model}
-We extend the sender's cost vector to $c^{S*}$ s.t. % use something else for the new cost vector...
 $$c^{1*}=c^{1} + d \cdot c^{2}$$
-Where $d \in \mathbb{R}$. The best response is defined as previously. \tb{Was this defined previously? If so, no need to say that BR is BR. This is invariant across game theoretical frameworks assuming (expected) utility maximization. However, do explain intuitively what this is doing and how the parameters can be understood. That is, explain why I should think that this is an appropriate modification}
-We can now see that by setting $d=0$ we get the original best response since then $c^{1*}=c^{1}$.
-Let us now go through the game again with the extended sender's cost. $S_0$ and $R_0$ remain unchanged because these types don't take cost into account at all, so let us start with $S_1$: \tb{Again, I would background the intermediate computations}
+Where $c^{1}$ is the original sender's cost, $c^{2}$ the receiver's cost and $d \in \mathbb{R}$. By extending the sender cost in this way we make it explicitly in the sender's interest to take the receiver's cost into account and $d$ is intuitivly the sender's disposition towards the receiver's cost. We can now see that by setting $d=0$ we get the original best response since then $c^{1*}=c^{1}$. Thus we consider this definition as an exstension of the original model.
+
+Let us now go through the game again with the extended sender's cost. $S_0$ and $R_0$ remain unchanged. So let us start with $S_1$:
 \begin{equation*}
-S_1= BR_S(R_0^T-c^{1*})=
-BR_S(
-\bordermatrix{
-            & & & &    \cr
- &       1 &         1 & 0       & 0 \cr
- &       0 &         0 & 1      & 1
- }
--
-\bordermatrix{
-            & & & &    \cr
- &       0 &         \alpha & 0       & d \cdot \beta \cr
- }
-)
-\end{equation*}
-\begin{equation*}
-=BR_S(
+S_1= BR_S(R_0^T-c^{1*})=BR_S(
 \bordermatrix{
                 & & & &    \cr
      &       1 &         1-\alpha & 0       & 0-d\cdot \beta \cr
      &       0 &         0-\alpha & 1      & 1-d\cdot \beta
  }
- )
- \end{equation*}
-We see immediately that depending on the value of $d$ there are different sender responses. If $1<0-d\cdot \beta$ the sender's best response will be to send receiver costly messages over communication.  If $1>1-d\cdot \beta$ the sender's best response will be to send receiver non-costly messages over otihers. We can also see that if $d=1$ the receiver's cost is treated equally to the sender's cost. We define $d=1$ as an \textit{empathetic disposition}. Let us now continue with $d=1$.
+)
+\end{equation*}
+We see immediately that depending on the value of $d$ there are different sender responses. If $1<0-d\cdot \beta$ the sender's best response will be to send receiver costly messages over communication.  If $1>1-d\cdot \beta$ the sender's best response will be to send receiver non-costly messages over otihers. We can also see that if $d=1$ the receiver's cost is treated equally to the sender's cost. We define $d=1$ as an \textit{empathetic disposition}. Let us now continue with $d=1$ and then we get:
 
 \begin{equation*}
 S_1=BR_S(
@@ -321,7 +289,10 @@ $R_1=R_0$ thus $S_2=S_1$ and we end with $S_2$ and $R_2$ as a stable strategies.
    }
    =R_*
 \end{equation*}
-And indeed these strategies are Pareto optimal since the expected utility for both players is $a$. Thus we conclude by stating that if the sender takes up an \textit{empathetic disposition} towards the receiver's cost a Pareto optimal solution is reached. \tb{Rephrase to an intuitive 1-2 line summary in words}
+As we showed in the previous section, this strategy pair is Pareto optimal. We have therefore extended the IBR model to allow for Pareto optimal solutions when modelling offensive language use by explicitly making it in the sender's interest to not offend the receiver.
+
+% Maybe we add this somewhere:
+The core idea is to model the disposition of the speaker towards the receiver. For an example, the speaker can be indifferent, empathetic or even hostile towards the receiver. By modelling this disposition it allows us to make it in the speaker's interest to take the receiver's preferences into account. Furthermore we show that only if the speaker acts empathetically a Pareto optimal solution can be reached.
 
 \section{Discussion}
 
