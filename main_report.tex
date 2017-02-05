@@ -252,7 +252,7 @@ More to the point, we reach the optimal solution if both players must consider r
 $$c^{1*}=c^{1} + d \cdot c^{2}$$
 Where $c^{1}$ is the original sender's cost, $c^{2}$ the receiver's cost and $d \in \mathbb{R}$ a parameter representing the players' disposition to ''feel'' the other's cost. Intuitively, if $d>0$ the players are empathetic, if $d<0$ they are malicious and $d=0$ is the indifferent case. By extending the model in this way we can make the sender's interest in the receiver's cost explicit. Setting $d=0$ yields the original model because then $c^{1*}=c^{1}$, for all other values of $d$ we get an extended model. 
 
-What happens when empathetic agents play the game from above? $S_0$ and $R_0$ remain unchanged. So let us start with $S_1$:
+What happens when empathetic agents - $d$ - play the game from above again? $S_0$ and $R_0$ remain unchanged. So let us start with $S_1$:
 \begin{equation*}
 S_1= BR_S(R_0^T-c^{1*})=BR_S(
 \bordermatrix{
@@ -262,8 +262,7 @@ S_1= BR_S(R_0^T-c^{1*})=BR_S(
  }
 )
 \end{equation*}
-Depending on the value of $d$ there are different sender responses. If $1<0-d\cdot \beta$ the sender's best response will be to send receiver costly messages over communication.  If $1>1-d\cdot \beta$ the sender's best response will be to send receiver non-costly messages over otihers. We can also see that if $d=1$ the receiver's cost is treated equally to the sender's cost. We define $d=1$ as an \textit{empathetic disposition}. Let us now continue with $d=1$ and then we get:
-
+Assume, for example, the sender fully considers the receiver's cost - $d=1$:
 \begin{equation*}
 S_1=BR_S(
 \bordermatrix{
@@ -291,11 +290,7 @@ $R_1=R_0$ thus $S_2=S_1$ and we end with $S_2$ and $R_2$ as a stable strategies.
    }
    =R_*
 \end{equation*}
-As we showed in the previous section, this strategy pair is Pareto optimal. We have therefore extended the IBR model to allow for Pareto optimal solutions when modelling offensive language use by explicitly making it in the sender's interest to not offend the receiver.
-
-% Maybe we add this somewhere:
-The core idea is to model the disposition of the speaker towards the receiver. For an example, the speaker can be indifferent, empathetic or even hostile towards the receiver. By modelling this disposition it allows us to make it in the speaker's interest to take the receiver's preferences into account. Furthermore we show that only if the speaker acts empathetically a Pareto optimal solution can be reached.
-
+As already shown, this strategy pair is Pareto optimal.
 \section{Discussion}
 
 \tb{Recapitulate. What was the problem? What did you do to solve it? What is the technical contribution? (Why does IBR fail and what did you have to do to change it). How does this address the initial problem? (What are the predictions?) What's the intuitive take home message? Then add another paragraph explaining shortcomings: When does this fail? What could be made differently? Open questions?}
