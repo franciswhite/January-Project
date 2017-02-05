@@ -18,6 +18,7 @@
 
 \usepackage{color}
 \newcommand{\tb}[1]{\textcolor[rgb]{.8,.33,.0}{[TB: #1]}}% prints in orange
+\newcommand{\sh}[1]{\textcolor[rgb]{.8,.33,.0}{[TB: #1]}}% prints in orange
 \usepackage[normalem]{ulem}
 
 \bibliography{references.bib}
@@ -31,7 +32,7 @@ In contrast to Mr Trump, the authors of the present paper had time. We provide a
 Specifically, we analyse situations where a speaker is indifferent about the use of one expression over another, while her audience has a clear preference over them. That is, we model a situation in which the wording of an utterance can have an impact on the listener, despite its irrelevance in terms of information transfer. Cases in point are racial slurs and so-called \textit{trigger words} which cause listeners suffering from postraumatic stress disorder (PTSD) to re-live past trauma \cite{fagan2004confronting, yehuda2002post}. So although two expressions might be semantically identical, choosing one over the other can have a substantial effect on actual communication, depending on who is speaking, and, crucially, who is listening. We thus take the pragmatic slogan seriously that there is far more to communication than the literal meaning of the expressions employed, cf. \cite{grice1975logic}. %Format the cf correctly!
 When studying the use of language as the transfer of information, the issue becomes to explain how there can coexist equally good - expressive, accurate, etc. - forms of communication, yet some options are used rather than others.
 
-We will present three core results: First, we offer a formal explanation for the reason why offensive use of language is so persistent. Second, we argue that there is potential for better communication, according to standards of Pareto efficiency. Third, we will argue that the degree of ``empathy'' language users exhibit is of crucial importance to reap these benefits. \tb{To save space and make everything more concise, you could add the references to the appropriate sections in this paragraph. E.g. In \S N.N we offer...} or put section references in brackets at the end of each points.
+We will present three core results: First, we offer a formal explanation for the reason why offensive use of language is so persistent. Second, we argue that there is potential for better communication, according to standards of Pareto efficiency. Third, we will argue that the degree of empathy language users exhibit is of crucial importance to reap these benefits. \tb{To save space and make everything more concise, you could add the references to the appropriate sections in this paragraph. E.g. In \S N.N we offer...} or put section references in brackets at the end of each points.
 
 To this end, we us a game theoretic model of rational language use between agents that reason about each others linguistic choices \cite{franke2014pragmatic}. This approach looks to explain and predict pragmatic inferences of natural language users by modeling a back-and-forth reasoning between two agents engaged in conversation.
 Our formal contribution is to forgo the common assumption that it is exclusively the player sending a message for whom the word choice is costly. Instead, we will look at situations where the cost a message's recipient faces also varies depending on the expressions employed by the sender.
@@ -42,10 +43,9 @@ Section 4: Solution
 Section 5: Discussion
 Section 6: Conclusion
 
-\section{Game theory and pragmatics}
-\subsection{Signaling games}
-We model language use as a signaling games. These are sequential games between two players: a sender and a receiver \cite{david1969convention}. The game is player in a particular state of the world, formally an element of set $T$ which represents possibles ways the world could be. Only the sender knows which state this happens to be and would like to transfer this information to the receiver. The receiver, who cannot observe the true state, tries to infer the true state by observing a signal which the sender emits. Moreover, the receiver has some probabilistic beliefs about the possible state which are modeled by a probability distribution over the elements of $T$.
-%Do we even make us of the probabilistic beliefs over states?
+\section{Game Theory and Pragmatics}
+\subsection{Signaling Games}
+We model language use as a signaling game. These are sequential games between two players: a sender and a receiver \cite{david1969convention}. The game is player in a particular state of the world, formally an element of set $T$ which represents possibles ways the world could be. Only the sender knows which state this happens to be and would like to transfer this information to the receiver. The receiver, who cannot observe the true state, tries to infer the true state by observing a signal which the sender emits.
 
 The game is then played as follows: After the sender observes the true state of the world $t$ she sends some message $m_i$,  $m_i \in M$.
 The receiver then observes the message $m_i$ and points to some $t\in T$ which she thinks holds. If this is the actual $t$, communication was successful.
@@ -56,52 +56,24 @@ A sender's \textit{strategy} is a function from the set of states $T$ to the set
 
 Players are assumed to be payoff maximizers. They will play the strategies which lead to the highest expected utility, denoted by EU.
 
-\subsection{Extension towards pragmatics}
+\subsection{Extension Towards Pragmatics}
 Game theoretic modeling has been used for of a variety of phenomena related to information transmission. (\cite{spence1973job, smith1982evolution, cho1987signaling})
 In the field of linguistics it was applied to obtain a firmer conceptual grip on Gricean pragmatics.
-%References! all the papers we read for the week of class
+\sh{Insert references}
 Here the communication between (rational) agents is thought of as a game played between interlocutors. Formulating situations where pragmatic phenomena arise with mathematical precision helps in different ways: On the one hand, it allows bridging the gap between theoretical work on pragmatics and experimental data with language users (e.g. \cite{frank2012predicting}). More specifically, it generates testable predictions about language use under a variety of parametrizations, as pertaining to the agent's (limited) rationality, cognitive ability to think multiple steps ahead, their preferences and methods of deciding on what action to take - so-called \textit{choice rules} \cite{galeazzi2017play}
  - or their beliefs about the world. On the other hand, such models may to provide insight into how agents actually arrive at the linguistic behavior they exhibit.
  Indeed, models concerned with pragmatic behavior of linguistic agents are caught between the pressure of trying to accurately predict and fit experimental data and the hope to realistically capture one or the other aspect of a pragmatic phenomenon - to represent ''what actually is going on'', so to speak.
 
 The family of models we will be concerned with tries to capture the agents' mutual reasoning about each other. Which action the players deem optimal for them and perform depends on a process of reasoning about what the respective other believes. The model tries to capture this process of reasoning about what the respective other does, believes that her opponent will do, believes what her opponent will believe that she will do, and so forth.
-\subsection{The IBR model}
+\subsection{The IBR Model}
 We are going to use the \textit{iterated best response} model (IBR) model as our formal framework (for details and discussion see \cite{franke2009signal} and \cite{franke2014pragmatic}). IBR relies on an explicit representation of the agents' beliefs about each other. The interlocutors beliefs are spelled out in a round-for-round manner in order to capture what intuitively could be the described as the epistemic dynamic of: ''I think that you think that I think that you think...etc.''. Language users are represented to have some hierarchically ordered level of sophistication which correspond to the number of steps an agent can reason back and forth between herself and the other agents. The reasoning chain formed by such steps is then a sequence of iterated optimal responses. This chain is bounded by the maximal depth a player of a given level of sophistication - or strategic type - can go to.
 
 Entirely unsophisticated types, players who do not take the opponents reasoning into account at all and are thus completely unstrategic, are assigned the level-0. In the games under discussion in this paper this will mean that senders of level-0 will be only concerned with saying whatever is true according to the semantics of the language fragment in question, while receivers of that level will always interpret a message they receive literally. An agent of level-$k$ then forms some belief about the other's behavior who, by assumption, is of some level $l$, where $k\geq l$. Intuitively, this can be interpreted as the player looking down the sophistication hierarchy in order to build some rational expectation of what the other of some specified level $l\leq k$ will do. We'll also make the common assumption that players of level $k$ expect their opponents to reason exactly one step less than themselves and are thus of level $k-1$.
 
-As in standard signaling games, $T$ is the set of states the players can be in, $M$ the set of messages at the sender's disposal. We assume that $T$ and $M$ are finite sets, $|M|=m$, $|T|=n$. A sender strategy is a row-stochastic $(n \times m)$-matrix $S$, and a receiver strategy is a row-stochastic $(m\times t)$-matrix $R$.  way of example, here are two strategies for a game with $|S|=|A|=3$ and $|M|=2$, so three states and actions, and two messages.
-\textbf{If space needed this example plus its explanation will have to go.}
-\begin{equation*}
-\sigma =
-    \bordermatrix{
-          & m_1 & m_2    \cr
-      t_1 & 0.2 & 0.8  \cr
-      t_2 & 0.4 & 0.6  \cr
-      t_3 & 1 & 0
-    } \quad
-\rho =
-    \bordermatrix{
-              & a_1 & a_2 & a_3    \cr
-          m_1 & 0.5 & 0.5 & 0  \cr
-          m_2 & 0.8 & 0.1 & 0.1
-        }
-\end{equation*}
+As in standard signaling games, $T$ is the set of states the players can be in, $M$ the set of messages at the sender's disposal. We assume that $T$ and $M$ are finite sets, $|M|=m$, $|T|=n$. A sender strategy is a row-stochastic $(n \times m)$-matrix $S$, and a receiver strategy is a row-stochastic $(m\times t)$-matrix $R$.  
+The matrices' entries represent the probability with which the players choose a move in the column - messages for senders, states for receivers - when observing the situation in the row - state for senders, messages for receivers, $P(m|t,S) = S_{tm}$ and likewise $P(t|m,R) = S_{ma}$.
 
-When the sender observes some state, her strategy determines with which probability she chooses from the different messages; likewise for the receiver, but with messages and actions. The rows in the strategy matrices thus represent the situations where the players get to decide, and the respective entries in the row describe the probabilities with which they opt for the move in that column. \tb{More concisely, $P(m|t,S) = S_{tm}$ and likewise $P(a|m,R) = S_{ma}$.}  The sender, in this example, would choose $m_1$ with probability $0.2$ upon observing $t_1$, and with probability $1$ when observing $t_3$. The receiver, in turn, would play a mixed strategy when receiving $m_1$ from the sender. $t_1$ and $t_2$ are played with probability $0.5$ each, but never playing $a_3$.
-
-The semantics of the language fragment in question is modeled as a $(n \times m)$-matrix. If a state $t_i$ makes a message $m_j$ true, then the entry $x_{ij}$ in the matrix will be $1$, otherwise $0$. This matrix reporting the boolean values is called the \textit{Boolean Matrix} and denoted by $B$. For the purpose of illustration, an example where both $t_1$ and $t_2$ can be distinctly expressed, but the game contains no message meaning $t_3$: \tb{This can also be backgrounded. Or directly introduce the matrix you will use later}\\
-%Do we need this example? I would say it's the first to go if we run short of space.
-\begin{equation*}
-B =
-    \bordermatrix{
-              & m_1 & m_2    \cr
-          t_1 & 1 & 0  \cr
-          t_2 & 0 & 1  \cr
-          t_3 & 0 & 0
-        }
-\end{equation*}
-
+The semantics of the language fragment in question is modeled as a $(n \times m)$-matrix. If a state $t_i$ makes a message $m_j$ true, then the entry $x_{ij}$ in the matrix will be $1$, otherwise $0$. This matrix reporting the boolean values is called the \textit{Boolean Matrix} and denoted by $B$.  
 Players of level-0 are supposed to be \textit{naive} with respect to sending and receiving messages. Naive senders always send true messages, while naive receivers always take messages literally.
 The strategies of level-0 type are represented by the normalized boolean matrix. Normalization here simply means a mapping of some $(m\times n)$-matrix $A$ onto some other $(m\times n)$-matrix $B$ such that $B_i\propto A_i$ if $\sum_j (A_{ij})>0$ and $B_{ij}=\tfrac{1}{n}$ otherwise. In the case of the receiver the transposed boolean matrix is normalized.
 
@@ -110,12 +82,11 @@ More sophisticated players are modeled as to have some belief about the interloc
 Finally, we define the notion of \textit{best response} given a set of beliefs. A sender's best response to some receiver strategy $R$ is any strategy that maps each state to that signal which maximizes the expected utility. In case $n$ signals are tied for expected utility, the sender will play each with probability $\tfrac{1}{n}$.
 A receiver's best response to a sender's strategy $S$ is defined almost analogously. Except that there may be so-called \textit{surprise messages} $m_j$ for which $R{ij}=0$, for all $i$. These are messages the sender will use with probability 0, that is, never. Since strategies are plans of action for every conceivable contingency that might arise in the course of a game, we'll assume that a receiver will then play each option with probability $\tfrac{1}{|T|}$.
 
-\section{Harmful signaling}
-Let us now say that two people sharing some language engage in conversation, one as a speaker, the other as a listener. The speaker would like to communicate what kind of work a mutual acquaintance of the two does. The listener does not yet know what her occupation happens to be. The acquaintance could either be an ecologist or a geologist. To transfer this knowledge the speaker can utter either ''She's an ecologist.'', ''She's a professional treehugger, stupdily trying to protect plants and stuff.'', ''She's a geologist.'' or ''She's a professional stonehugger, stupidly looking at rocks and stuff.''. Assume that uttering any of the first two is true just in case the person is an ecologist and the last two if she's a geologist. As both of the two well know, the listener cares dearly for the environment, while the speaker does not. The listener, although she understands perfectly well what the speaker is trying to convey to her, would be deeply offended by her uttering the word ''treehugger''. The speaker herself couldn't care less what words are used when talking about ecology, as long as the message comes across and the hearer adopts the right belief about the mutual acquaintance's profession. However, the speaker has a deep-rooted fear of rocks. Hearing the word ''stonehugger'' sends chills down her spine.
+\section{Harmful Signals}
+Say two people share some language and engage in conversation, one as a speaker, the other as a listener. The speaker would like to communicate what kind of work a mutual acquaintance of the two does. The listener does not yet know what her occupation happens to be. The acquaintance could either be an ecologist or a geologist. To transfer this knowledge the speaker can utter either ''She's an ecologist.'', ''She's a professional treehugger, stupdily trying to protect plants and stuff.'', ''She's a geologist.'' or ''She's a professional stonehugger, stupidly looking at rocks and stuff.''. Assume that uttering any of the first two is true just in case the person is an ecologist and the last two if she's a geologist. As both of the two well know, the listener cares dearly for the environment, while the speaker does not. The listener, although she understands perfectly well what the speaker is trying to convey to her, would be deeply offended by her uttering the word ''treehugger''. The speaker herself couldn't care less what words are used when talking about ecology, as long as the message comes across and the hearer adopts the right belief about the mutual acquaintance's profession. However, the speaker has a deep-rooted fear of rocks. Hearing the word ''stonehugger'' sends chills down her spine.
 
-We will now use the IBR model to analyse the above communication. We will show how these message preferences do not affect successful communication but only make the communication non-optimal. We model message preferences by defining a cost vector for both sender and receiver.
-\subsection{The model}
-We have two players, $P_1$ and $P_2$. For now, let $P_1$ be the sender and $P_2$ the receiver. Let $T=\{t_{geo}, t_{eco}\}$, where $t_{geo}$ is a world where the acquaintence is a geologist, and in $t_{eco}$ an ecologist. We let both worlds be equally likely. We define the communication to be successful if the receiver adopts a belief which matches the state of the world. Both sender and receiver receive a payoff if communication is successful. Let that payoff be $a$ in case of success and 0 otherwise, where $a>0$.
+Using the IBR framework we can model this as follows.
+There are two players, $P_1$ and $P_2$. For now, let $P_1$ be the sender and $P_2$ the receiver. Let $T=\{t_{geo}, t_{eco}\}$, where $t_{geo}$ is a world where the acquaintance is a geologist and in $t_{eco}$ an ecologist. We let both worlds be equally likely. Both receiver and sender get a payoff of $a$ if communication is successful.
 
 The set of messages is $M=\{m_{geo}, m_{stone}, m_{eco}, m_{tree}\}$. Its semantics are given by $B$.
  \begin{equation*}
@@ -147,8 +118,8 @@ R_0=Norm(B^T)
 \end{equation*}
 We can see that the naive sender plays a mixed strategy when whishing to communicate the state, sending either applicable message half of the time. The receiver's actions are clearly determined by a pure strategy.
 
-The best response of a k-level players is based on the interlocutor's k-1 level with message cost taken into account. %Explain better%
-Thus we get the best response of the level-1 hearer and speaker: %  Following the IBR procedure we transpose $R_0$, subtract the cost vector $c^1$ and check row-wise for the best response to obtain $S_1$. \tb{No need to spell this out procedurally. Explain intuitively what higher level players do, and then just go straight to the formula. The step-by-step derivations are cumbersome and can be confusing. You have not said, in all generally, how they are computed up to here. So it's hard to digest for a na\"ive reader}  We proceed analogously for the receiver, the main difference being in this case that the receiver faces some actual cost, $c^2$. This then yields strategies for level-1 players:\\ %TODO : we need to add the prior. %
+The best response of a k-level players is based on the interlocutor's k-1 level when message cost taken into account. 
+We obtain the best response of the level-1 sender by analysing her reasoning about a level-0 receiver. She looks at what a naive receiver would do and then chooses the best answer to that strategy, while accounting for the cost of her own moves. We proceed analogously for the receiver. This then yields strategies for both level-1 players:
 \textbf{Level-1 Players}\\
 \begin{equation*}
 S_1= BR_S(R^T_0-c^1)=
@@ -220,7 +191,7 @@ BR_R(
      & 0 & 1 \cr
  }
 \end{equation*}
-We see that $R_1=R_0$, i.e. the receiver did not change strategy from 0-level to 1-level, thus we conclude that $S_2=S_1$. But $S_1 \neq S_0$ thus we calculate:
+We see that $R_1=R_0$, i.e. the receiver did not change strategy from 0-level to 1-level, thus we conclude that $S_2=S_1$. But $S_1 \neq S_0$, so we calculate:
 \begin{equation*}
 R_2=BR_R({S_1}^T-{c^2}^T)=
 \bordermatrix{
@@ -231,12 +202,12 @@ R_2=BR_R({S_1}^T-{c^2}^T)=
      & 0 & 1 \cr
  }
 \end{equation*}
-$S_3=S_2$ and $R_3=R_2$. Since neither strategy changed from 2-level to 3-level we have reached a fixed point of the reasoning process. That is,  $<S_2,R_2>$ is a stable strategy pair.
+$S_3=S_2$ and $R_3=R_2$. Since neither strategy changed from level 2 to level 3 we have reached a fixed point of the reasoning process. That is,  $<S_2,R_2>$ is a stable strategy pair.
 
 Some remarks about these strategies are in order. First, the sender will never send the message she finds offensive. Intuitively, this is because she has a non-costly alternative to choose from. Second, although the sender will never play $m_{stone}$ the receiver still needs has some plan of action for that contingency. Thirdly, while a sender of level zero still harms herself by blindly sending a costly message, senders above level zero will stop doing so. Thus, $m_{stone}$ will not be seen on higher levels. Fourth, and most relevant to our discussion, is that even though the $m_{tree}$ is costly for the receiver, the sender will still send it half of the time. This point is the main focus of the next section.
 
-\subsection{Problem characterization}
-The IBR model thus leads to a sitation where communication is successful. Using the stable strategy pair $<S_2,R_2>$ the \textit{sender's payoff} is always $a$. For the receiver, however, the story is different. When $S_2$ is played and $t_{eco}$ holds, $m_{tree}$ will be sent with probability 0.5. Since the probability of $t_{eco}$ is 0.5, $m_{tree}$ is sent in $\tfrac{1}{2}\times \tfrac{1}{2} = \tfrac{1}{4}$ of all cases on average, inflicting a cost of $\beta$. The \textit{receiver's payoff} is a mere $a-\tfrac{\beta}{4}$ as shown in the table below.
+\subsection{Room for Improvement}
+The players' reasonings lead to a situation where communication is successful. Using the stable strategy pair $<S_2,R_2>$ the \textit{sender's payoff} is always $a$. For the receiver, however, the story is different. When $S_2$ is played and $t_{eco}$ holds, $m_{tree}$ will be sent with probability 0.5. Since the probability of $t_{eco}$ is 0.5, $m_{tree}$ is sent in $\tfrac{1}{2}\times \tfrac{1}{2} = \tfrac{1}{4}$ of all cases on average, inflicting a cost of $\beta$. The \textit{receiver's payoff} is a mere $a-\tfrac{\beta}{4}$ as shown in the table below.
 
 \begin{table}[h]
 \centering
@@ -247,7 +218,8 @@ The IBR model thus leads to a sitation where communication is successful. Using 
 \multicolumn{1}{l|}{Level-k, $k>0$} & \multicolumn{1}{l|}{$a$}                  & \multicolumn{1}{l|}{$a-\tfrac{\beta}{4}$} \\ \cline{2-3}
 \end{tabular}
 \end{table}
-%As a way of intuitive explanation, consider the positions the agents are facing in this game. Whether the receiver likes the message or not, she can always reason what her interlocutor wants to communicate to her. If the messages $m_{geo}$ or $m_{eco}$ are sent, she will chose the corresponding action, communication is successfull, so both players get their payoff and everyone is happy. If the message $m_{tree}$ is sent, however, she pays the associated cost. Still, she knows what the sender is trying to communicate and her best response will be to cooperate. Refusing to understand is not an option, for it would only add insult to injury; she would both pay the cost of hearing $m_{tree}$ and lose the payoff of understanding correctly. Because the sender can anticipate the receiver to behave this way, she does not need to care about sending either semantically correct message. \tb{What does ``semantically correct'' mean? Maybe ``either true message'' or ``either message that holds in this state'', etc..}
+As a way of intuitive explanation, consider the positions the agents are facing in this game. Whether the receiver likes the message or not, she can always reason what her interlocutor wants to communicate to her. If the messages $m_{geo}$ or $m_{eco}$ are sent, she will chose the corresponding action, communication is successfull, so both players get their payoff and everyone is happy. If the message $m_{tree}$ is sent, however, she pays the associated cost. Still, she knows what the sender is trying to communicate and her best response will be to cooperate. Refusing to understand is not an option, for it would only add insult to injury; she would both pay the cost of hearing $m_{tree}$ and lose the payoff of understanding correctly. Because the sender can anticipate the receiver to behave this way, she does not need to care about sending either true message.
+
 Usually language users will encounter the expressions of their language many times over the course of their communicative lives - both as listeners as well as speakers. To capture this we'll posit a third player - nature - which decides at the beginning of the game who of the two players gets to talk and who gets to listen. Let's assume that nature decides uniformly thus making the game symmetrical with regard to roles. Thus their expected utility in repeated interactions is $\tfrac{1}{2}\times a + \tfrac{1}{2}\times (a-\tfrac{i}{4})=a-\tfrac{i}{8}$, for $i\in \{\alpha,\beta \}$.
 
 The crucial observation here is that the agents could have done better. To see this, imagine the agents only used $m_{eco}$ and $m_{geo}$ to communicate. That is, if they do not inflict cost on each other and communication is still successful, then both receive a full payoff of $a$. Never playing costly messages formally means that the respective sender plays strategy $S_*$ where neither $m_{tree}$ nor $m_{stone}$ are ever played. This leads us to the strategy pair $<S_*,R_*>$:
@@ -267,27 +239,21 @@ R_*= \bordermatrix{
 }
 \end{equation*}
 
-If this sender strategy is still able to convey the correct state, then everyone is better off or at least as well off as before thus resulting in better communication. Such an improvement would imply satisfying a criterium for efficiency, namely the \textit{Pareto optimality}.
-% We might want to add some text here and deal with Thomas' comment below.
-%tb{What does pareto optimality mean? Related back to your notion of ``better communication'' in the introduction. Pareto optimality captures a combination of behaviors where each agent fares best given the behavior of another agent -- this intuitively captures ... in communication}
-Intuitively, if strategy $s'$ gives any player a higher utility than strategy $s$, while no other player's utility decreases, we say that the $s'$ \textit{Pareto dominates} $s$. Some strategy is\textit{Pareto optimality} if it is not \textit{Pareto dominated} by some other strategy.
-%We can just skip the formula altogether. I think we should
-%Let $S$ be a set of strategies, $N$ a set of players, from 1 to n, and $u_i$ be each player's utility function. A strategy $s \in S$ Pareto dominates another strategy $s' \in S$ if:
-%\begin{equation*}
-%\forall i \in N: u_i(s) \geq u_i(s') \land \exists j \in N: u_j(s) > u_j(s')
-%\end{equation*}
-It is easy to see that the strategy pair $<S_*,R_*>$ is Pareto optimal since the highest possible utility for either player is $a$ and $<S_*,R_*>$ has utility of $a$ for both players thus there is no other strategy which \textit{Pareto dominates} it. Furthermore we see that $<S_*,R_*>$ \textit{Pareto dominates} the IBR strategy which has expected utility of $a-\tfrac{i}{8}$, for $i\in \{\alpha,\beta \}$. In the next section we show that a small adjustment to our model suffices to reach the strategy pairs $<S_*,R_*>$.
+If this sender strategy is still able to convey the correct state, then everyone is better off or at least as well off as before. Indeed, such an improvement would make the players' payoff meet the standards for \texit{Pareto optimality}. Pareto optimality captures the fact that no player could possibly be better off without the other player losing out. In the present context it means that the potential for better communication is only exhausted, once the players reach Pareto optimality.
+Technically speaking, some strategy is Pareto optimal if it is not \textit{Pareto dominated} by any other strategy. We say that the strategy $s'$ \textit{Pareto dominates} $s$, in turn, if $s'$ gives any player a higher utility than $s$, while no other player's utility decreases.
+It is straightforward to see that the strategy pair $<S_*,R_*>$ is Pareto optimal since the highest possible utility for either player is $a$ and $<S_*,R_*>$ has utility of $a$ for both players, therefore there is no other strategy which \textit{Pareto dominates} it. Furthermore we see that $<S_*,R_*>$ \textit{Pareto dominates} the IBR strategy which has expected utility of $a-\tfrac{i}{8}$, for $i\in \{\alpha,\beta \}$. In the next section we show that a small adjustment to our model suffices to reach the strategy pairs $<S_*,R_*>$.
 
 \section{Reaching the Optimum}
 %In general, I think that our emphasis should lie on the fact that this solution naturally arises out of the technicalities of our modeling. It's not interesting that we personally believe that the solution to both players missing out on payoff is empathy. What's interesting is that we point to a small formal variation of our model which then happens to have an intuitive counterpart in the concept of empathy/altruism/also caring about others well-being. Ideally, we would introduce the technical changes while offering a running commentary of what they mean in intuitive terms.
 %Also, the paper is not geared anymore to offer explanations for various types of behavior people actually exhibit. i would therefore not talk of offering explanations.
 %Many things were said multiple times here. I will need to work on it longer still to rid it of all redudancy.
-+So far it has been supposed that players in the role of the sender do not care about the harm they inflict when choosing one over the other message. Whether this is an accurate representation of human preferences is beyond the content of this paper. Nonetheless, we want to draw attention to the fact that if this assumption concerning the indifferent stance of the sender is given up, then the employment of different strategies is predicted. More to the point, we can gain clarity under which circumstances agents will play strategies that are Pareto optimal.
+\sh{+} So far it has been supposed that players in the role of the sender do not care about the harm they inflict when choosing one over the other message. Whether this is an accurate representation of human preferences is beyond the content of this paper. Nonetheless, we want to draw attention to the fact that if this assumption concerning the indifferent stance of the sender is given up, then the employment of different strategies is predicted. More to the point, we can gain clarity under which circumstances agents will play strategies that are Pareto optimal.
 % Silvan
-\section{The solution}
-We have presented the problem of offensive language use \tb{summarize in 1 sentence} and now we will present a solution which can explain offensive and non-offensive language use and puts the speaker in a position to decide between offensive and non-offensive language use. \tb{shorten sentence. These are 2-3 sentences} The core idea is to model the disposition of the speaker towards the receiver. For an example, the speaker can be indifferent, empathetic or even hostile towards the receiver. By modelling this disposition it allows us to make it in the speaker's interest to take the receiver's preferences into account. Furthermore we show that only if the speaker acts empathetically a Pareto optimal solution can be reached.
+\sh{This is a header we might want to skip}
+%\section{The solution}
+We have presented the problem of offensive language use \tb{summarize in 1 sentence} and now we will present a solution which can explain offensive and non-offensive language use and puts the speaker in a position to decide between offensive and non-offensive language use. \tb{shorten sentence. These are 2-3 sentences} The core idea is to model the disposition of the speaker towards the receiver. For an example, the speaker can be indifferent, empathetic or even hostile towards the receiver. \sh{Modeling} By modelling this disposition it allows us to make it in the speaker's interest to take the receiver's preferences into account. Furthermore we show that only if the speaker acts empathetically a Pareto optimal solution can be reached.
 %Silvan
-The core idea is to model the sender's disposition towards the receiver. The sender could be indifferent, empathetic or even hostile towards the receiver. We model this by letting the sender take the receiver's interest into account. We will show that only if the speaker acts in way we'll call \textit{emphatic} a Pareto optimal solution is reached.
+The core idea is to model the sender's disposition towards the receiver. The sender could be indifferent, empathetic or even hostile towards the receiver. We model this by letting the sender take the receiver's interest into account. We will show that only if the speaker acts in way we'll call \sh{empathetic} \textit{emphatic} a Pareto optimal solution is reached.
 +
 +As demonstrated before, payoffs could be optimal if senders were to adjust their best response. Until now, however, the strategies leading to such payoffs were not explicitly in the sender's interest and it happens to the player in this role who wields the power to decide over messages. Furthermore, if the players' positions are reversed systematically both players harmed each other by not taking the respective other's interest into account.
 +
