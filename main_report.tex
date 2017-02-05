@@ -1,4 +1,4 @@
-\documentclass[10pt]{article}
+\documentclass[10pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 
 \title{%
@@ -6,7 +6,7 @@
   \large The pragmatics of harmful language use}
 
 \usepackage{mathptmx} % "times new roman"
-\usepackage[a4paper,bindingoffset=0.2in, left=5cm,right=4cm,top=4.5cm,bottom=6.5cm,footskip=.25in]{geometry} % for submission requirements
+\usepackage[left=5cm,right=4cm,top=4.5cm,bottom=6.5cm,footskip=.25in]{geometry} % for submission requirements
 \usepackage{amssymb}
 \usepackage{amsmath, amsthm}
 \usepackage{amsfonts}
@@ -21,14 +21,11 @@
 \newcommand{\sh}[1]{\textcolor[rgb]{.8,.33,.0}{[TB: #1]}}% prints in orange
 \usepackage[normalem]{ulem}
 
-\bibliography{references.bib}
 \begin{document}
 \maketitle
 
 \section{Introduction}
-When Donald Trump was asked to explain calling women ``fat pigs'', ``dogs'', ``slobs'' and ``disgusting animals'' his reply was: ``\textit{I’ve been challenged by so many people, I don’t frankly have time for total political correctness. And to be honest with you, this country doesn’t have time either}''. \tb{Add reference for quote}
-%https://www.theguardian.com/us-news/2016/nov/30/political-correctness-how-the-right-invented-phantom-enemy-donald-trump
-In contrast to Mr Trump, the authors of the present paper had time. We provide a formal framework to analyze the pragmatic phenomenon of harmful use of language. If particular word choices are not a central element in the transmission of information, as tacitly suggested by Mr Trump, and may even be an impediment to the speaker, why may speakers notwithstanding refrain from using certain expressions over others? Furthermore, under which circumstances speakers are disposed to alter these expressions? We address these questions in the context of game theoretic models of natural language use. Specifically, we analyse situations where a speaker is indifferent to the use of one expression over another, while her audience has a clear preference. That is, we model communication in which the wording of an utterance can have an impact on the listener, despite its irrelevance in terms of information transfer. Cases in point are racial slurs and so-called \textit{trigger words} that cause listeners suffering from postraumatic stress disorder (PTSD) to re-live past trauma \cite{fagan2004confronting, yehuda2002post}. So although two expressions might be semantically identical, choosing one over the other can have a substantial effect on actual communication. We thus take the pragmatic slogan seriously that there is far more to communication than the literal meaning of the expressions employed, cf. \cite{grice1975logic}. %Format the cf correctly!
+When Donald Trump was asked to explain calling women ``fat pigs'', ``dogs'', ``slobs'' and ``disgusting animals'' his reply was: ``\textit{I’ve been challenged by so many people, I don’t frankly have time for total political correctness. And to be honest with you, this country doesn’t have time either}'' \cite{weigel2016}. In contrast to Mr Trump, the authors of the present paper had time. We provide a formal framework to analyze the pragmatic phenomenon of harmful use of language. If particular word choices are not a central element in the transmission of information, as tacitly suggested by Mr Trump, and may even be an impediment to the speaker, why may speakers notwithstanding refrain from using certain expressions over others? Furthermore, under which circumstances speakers are disposed to alter these expressions? We address these questions in the context of game theoretic models of natural language use. Specifically, we analyse situations where a speaker is indifferent to the use of one expression over another, while her audience has a clear preference. That is, we model communication in which the wording of an utterance can have an impact on the listener, despite its irrelevance in terms of information transfer. Cases in point are racial slurs and so-called \textit{trigger words} that cause listeners suffering from postraumatic stress disorder (PTSD) to re-live past trauma \cite{fagan2004confronting, yehuda2002post}. So although two expressions might be semantically identical, choosing one over the other can have a substantial effect on actual communication. We thus take the pragmatic slogan seriously that there is far more to communication than the literal meaning of the expressions employed, cf. \cite{grice1975logic}. %Format the cf correctly!
 
 We will present three core results: First, we offer a formal explanation for the reason why offensive use of language is so persistent. Second, we argue that there is potential for better communication. Third, we will argue that the degree of empathy language users exhibit is of crucial importance to reap these benefits. To this end, we us a game theoretic model of rational language use between agents that reason about each others linguistic choices \cite{franke2014pragmatic}. This approach looks to explain and predict pragmatic inferences of natural language users by modeling a back-and-forth reasoning between two agents engaged in conversation.
 Our formal contribution is to forgo the common assumption that it is exclusively the player sending a message for whom the word choice is costly. Instead, we will look at situations where the cost a message's recipient faces also varies depending on the expressions employed by the sender.
@@ -276,10 +273,12 @@ S_1=BR_S(
 $R_1=R_0$ thus $S_2=S_1$, we end up with $S_2=S^*$ and $R_2=R^*$ as stable strategies.
 As already shown, this strategy pair is Pareto optimal.
 \section{Discussion and Conclusion}
-We have analysed under what circumstance peple choose harmful words when there are non-harmful options available.
+We have analysed under what circumstances people choose harmful words when there are non-harmful options available.
 Our IBR model has shown that rational language users fail to behave optimally because they do not consider each other's interest. However, they could improve to Pareto Optimality if they were to show even a minimal amount of consideration. To make this case, we extended standard IBR with an empathy parameter that captures how the players view the interlocutor's cost.
 
 Due to constraints of space, we left relevant aspects out of our model. Among these are that omitting expressions might imply cost for the sender and that empathy could vary over players. Furthermore, it is subject to empirical research to what extent rational speakers really do behave as we predict.
 
 \subsection{References}
+\bibliographystyle{plain}
+\bibliography{references.bib}
 \end{document}
