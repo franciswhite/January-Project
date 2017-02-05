@@ -3,7 +3,7 @@
 
 \title{%
   Sticks and Stones \\
-  \large The pragmatics of harmful language use}
+  \large The Pragmatics of Harmful Language Use}
 
 \usepackage{mathptmx} % "times new roman"
 \usepackage[left=4cm,right=4cm,top=4.5cm,bottom=5.5cm,footskip=1cm]{geometry} % for submission requirements
@@ -17,24 +17,23 @@
 
 
 \usepackage{color}
-\newcommand{\tb}[1]{\textcolor[rgb]{.8,.33,.0}{[TB: #1]}}% prints in orange
-\newcommand{\sh}[1]{\textcolor[rgb]{.8,.33,.0}{[TB: #1]}}% prints in orange
 \usepackage[normalem]{ulem}
-
+\date{}
 \begin{document}
 \renewcommand{\arraystretch}{1.5}
 \maketitle
 
 \section{Introduction}
-When Donald Trump was asked to explain calling women ``fat pigs'', ``dogs'', ``slobs'' and ``disgusting animals'' his reply was: ``\textit{I’ve been challenged by so many people, I don’t frankly have time for total political correctness. And to be honest with you, this country doesn’t have time either}'' \cite{weigel2016}. In contrast to Mr Trump, the authors of the present paper had time. We provide a formal framework to analyze the pragmatic phenomenon of harmful use of language. If particular word choices are not a central element in the transmission of information, as tacitly suggested by Mr Trump, and may even be an impediment to the speaker, why may speakers notwithstanding refrain from using certain expressions over others? Furthermore, under which circumstances speakers are disposed to alter these expressions? We address these questions in the context of game theoretic models of natural language use. Specifically, we analyse situations where a speaker is indifferent to the use of one expression over another, while her audience has a clear preference. That is, we model communication in which the wording of an utterance can have an impact on the listener, despite its irrelevance in terms of information transfer. Cases in point are racial slurs and so-called \textit{trigger words} that cause listeners suffering from postraumatic stress disorder (PTSD) to re-live past trauma \cite{fagan2004confronting, yehuda2002post}. So although two expressions might be semantically identical, choosing one over the other can have a substantial effect on actual communication. We thus take the pragmatic slogan seriously that there is far more to communication than the literal meaning of the expressions employed, cf. \cite{grice1975logic}. %Format the cf correctly!
+When Donald Trump was asked to explain calling women ``fat pigs'', ``dogs'', ``slobs'' and ``disgusting animals'' his reply was: ``\textit{I’ve been challenged by so many people, I don’t frankly have time for total political correctness. And to be honest with you, this country doesn’t have time either}'' \cite{weigel2016}.
 
-We will present three core results: First, we offer a formal explanation for the reason why offensive use of language is so persistent. Second, we argue that there is potential for better communication. Third, we will argue that the degree of empathy language users exhibit is of crucial importance to reap these benefits. To this end, we us a game theoretic model of rational language use between agents that reason about each others linguistic choices \cite{franke2014pragmatic}. This approach looks to explain and predict pragmatic inferences of natural language users by modeling a back-and-forth reasoning between two agents engaged in conversation.
+In contrast to Mr Trump, the authors of the present paper had time. We provide a formal framework to analyze the pragmatic phenomenon of harmful use of language. If particular word choices are not a central element in the transmission of information, as tacitly suggested by Mr Trump, and may even be an impediment to the speaker, why may they still refrain from using certain expressions rather than others? Furthermore, under which circumstances are speakers disposed to alter their way of expressing themselves? We address these questions in the context of game theoretic models of natural language use. Specifically, we analyse situations where a speaker is indifferent to the use of one expression over another, while her audience has a clear preference. That is, we model communication in which the wording of an utterance can have an impact on the listener, despite its irrelevance in terms of information transfer. Cases in point are racial slurs and so-called \textit{trigger words} that cause listeners suffering from postraumatic stress disorder (PTSD) to re-live past trauma \cite{fagan2004confronting, yehuda2002post}. So although two expressions might be semantically identical, choosing one over the other can have a substantial effect on actual communication. We thus take the pragmatic slogan seriously that there is far more to communication than the literal meaning of the expressions employed (cf. \cite{grice1975logic}).
+
+We will present three core results: First, we offer a formal explanation for the reason why offensive use of language is so persistent. Second, we argue that there is potential for better communication, according to efficiency standards presently introduced. Third, we will argue that the degree of empathy language users exhibit is of crucial importance to reap these benefits. To this end, we us a game theoretic model of rational language use between agents that reason about each others linguistic choices \cite{franke2014pragmatic}. This approach looks to explain and predict pragmatic inferences of natural language users by modeling a back-and-forth reasoning between two agents engaged in conversation.
 Our formal contribution is to forgo the common assumption that it is exclusively the player sending a message for whom the word choice is costly. Instead, we will look at situations where the cost a message's recipient faces also varies depending on the expressions employed by the sender.
 
-In Section 1 we give a brief introduction to the application of game theory to the study of pragmatics as well as the specifics of the model we use.
-Section 2 contains the model's application to message related cost and a discussion of its predictions, while Section 3 presents an extension of the model.
-Section 4 discusses the results and concludes.
+Our exposition proceeds as follows: In \hyperref[section2]{Section 2} we give a brief introduction to the application of game theory to the study of pragmatics as well as the specifics of the model we use. \hyperref[section3]{Section 3} contains the model's application to message related cost and a discussion of its predictions, while \hyperref[section4]{Section 4} presents the addition of costly signals to extend the model. \hyperref[section5]{Section 5} discusses the results and concludes.
 \section{Game Theory and Pragmatics}
+\label{section2}
 \textbf{Signaling Games}\\
 We model language use as a signaling game. These are sequential games between two players: a sender and a receiver \cite{david1969convention}. The game is played in a particular state of the world, formally an element of set $T$ which represents possibles ways the world could be. Only the sender knows which state this happens to be and would like to transfer this information to the receiver. The receiver, who cannot observe the true state, tries to infer the true state by observing a signal which the sender emits.
 
@@ -70,6 +69,7 @@ Finally, we define the notion of \textit{best response} given a set of beliefs. 
 A receiver's best response to a sender's strategy $S$ is defined almost analogously. Except that there may be so-called \textit{surprise messages} $m_j$ for which $R{ij}=0$, for all $i$. These are messages the sender will use with probability 0, that is, never. Since strategies are plans of action for every conceivable contingency that might arise in the course of a game, we assume that a receiver will then play each option with probability $\tfrac{1}{|T|}$.
 
 \section{Harmful Signals}
+\label{section3}
 Say two people share some language and engage in conversation, one as a speaker, the other as a listener. The speaker would like to communicate what kind of work a mutual acquaintance of the two does. The listener does not yet know what her occupation happens to be. The acquaintance could either be an ecologist or a geologist. To transfer this knowledge the speaker can utter either ``She's an ecologist'', ``She's a professional treehugger, stupdily trying to protect plants and stuff'', ``She's a geologist'' or ``She's a professional stonehugger, stupidly looking at rocks and stuff''. Assume that uttering any of the first two is true just in case the person is an ecologist and the last two if she's a geologist. As both of the two well know, the listener cares dearly for the environment, while the speaker does not. The listener, although she understands perfectly well what the speaker is trying to convey to her, would be deeply offended by her uttering the word ``treehugger''. The speaker herself couldn't care less what words are used when talking about ecology, as long as the message comes across and the hearer adopts the right belief about the mutual acquaintance's profession. However, the speaker has a deep-rooted fear of rocks. Hearing the word ``stonehugger'' sends chills down her spine.
 
 Using the IBR framework we can model this as follows.
@@ -105,7 +105,7 @@ R_0=Norm(B^T)
 \end{equation*}
 We can see that the naive sender plays a mixed strategy when communicating the state, sending either applicable message half of the time. The receiver's actions are clearly determined by a pure strategy.
 
-The best response of a k-level players is based on the interlocutor's $k-1$ level when message cost taken into account.
+The best response of a $k$-level players is based on the interlocutor's $k-1$ level when message cost taken into account.
 
 We obtain the best response of the level-1 sender by analysing her reasoning about a level-0 receiver. She looks at what a naive receiver would do and then chooses the best answer to that strategy, while accounting for the cost of her own moves. We proceed analogously for the receiver. This then yields strategies for both level-1 players:
 \textbf{Level-1 Players}\\
@@ -232,6 +232,7 @@ Technically speaking, some strategy is Pareto optimal if it is not \textit{Paret
 It is straightforward to see that the strategy pair $<S_*,R_*>$ is Pareto optimal since the highest possible utility for either player is $a$ and $<S_*,R_*>$ has utility of $a$ for both players, therefore there is no other strategy which \textit{Pareto dominates} it. Furthermore we see that $<S_*,R_*>$ \textit{Pareto dominates} the IBR strategy which has expected utility of $a-\tfrac{i}{8}$, for $i\in \{\alpha,\beta \}$. In the next section we show that a small adjustment to our model suffices to reach the strategy pairs $<S_*,R_*>$.
 
 \section{Reaching the Optimum}
+\label{section4}
 So far it has been supposed that players in the role of the sender do not care about the harm they inflict when choosing one over the other message. We have seen that the players then arrive at non-optimal strategies because they are indifferent to the respective other's cost.
 However, if this assumption concerning the indifferent stance of the sender is given up, then the employment of different strategies is predicted. We can gain clarity under which circumstances agents will play strategies that are Pareto optimal.
 
@@ -249,7 +250,7 @@ S_1= BR_S(R_0^T-c^{1*})=BR_S(
  }
 )
 \end{equation*}
-Assume, for example, the sender fully considers the receiver's cost - $d=1$\footnote{Notice that we get the same prediction for any $d>0$.}
+Assume, for example, the sender fully considers the receiver's cost - $d=1$. Notice, however, that we would get the same prediction for any $d>0$.
 \begin{equation*}
 S_1=BR_S(
 \bordermatrix{
@@ -269,6 +270,7 @@ S_1=BR_S(
 $R_1=R_0$ thus $S_2=S_1$, we end up with $S_2=S^*$ and $R_2=R^*$ as stable strategies.
 As already shown, this strategy pair is Pareto optimal.
 \section{Discussion and Conclusion}
+\label{section5}
 Outline of section, Below numbering, Haukur's ideas/suggestions:
 1. Quick problem definition
 Why do people sometimes use hurtful/offensive words
@@ -288,9 +290,9 @@ We have argued that non-offensive language use is better for everyone in the lon
 It's hard to know before hand what words a person finds offensive, but that should not stop us. If we "just don't care" then we are inconsiderate assholes.
 
 We have analysed under what circumstances people choose harmful words when there are non-harmful options available.
-Our IBR model has shown that rational language users fail to behave optimally because they do not consider each other's interest. However, they could improve to Pareto Optimality if they were to show even a minimal amount of consideration. To make this case, we extended standard IBR with an empathy parameter that captures how the players view the interlocutor's cost.
+Our IBR model has shown that rational language users fail to behave optimally because they do not consider each other's interest. However, they could improve to according to standards of Pareto efficiency if they were to show even a minimal amount of consideration. To make this case, we extended standard IBR with an empathy parameter - $d$ - that captures how the players view the interlocutor's cost. For any positive value for $d$ the extended IBR model yields the prediction that players receive optimal payoff. Translating this in an informal way to language use suggests that simply caring a little bit about the effect one's choice of words has, aside from pure information transfer, may produce great benefits for all.
 
-Due to constraints of space, we left relevant aspects out of our model. Among these are that omitting expressions might imply cost for the sender and that empathy could vary over players. Furthermore, it is subject to empirical research to what extent rational speakers really do behave as we predict.
+Due to constraints of space, we left relevant aspects out of our model. Among these are that omitting expressions might imply cost for the sender, and that the degree of empathy could vary between players. Furthermore, it is subject to empirical research to what extent rational speakers really do behave as our model predicts.
 
 \bibliographystyle{abbrv}
 \bibliography{references.bib}
