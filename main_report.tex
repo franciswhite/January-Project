@@ -22,6 +22,7 @@
 \usepackage[normalem]{ulem}
 
 \begin{document}
+\renewcommand{\arraystretch}{1.5}
 \maketitle
 
 \section{Introduction}
@@ -199,10 +200,10 @@ The players' reasoning lead to a situation where communication is successful. Us
 \begin{table}[h]
 \centering
 \caption{Expected Payoff for Level of Sophistication}
-\begin{tabular}{lll}
-                                    & Sender                                  & Receiver                                \\ \cline{2-3}
-\multicolumn{1}{l|}{Level-0}        & \multicolumn{1}{l|}{$a-\tfrac{\alpha}{4}$} & \multicolumn{1}{l|}{$a-\tfrac{\beta}{4}$} \\ \cline{2-3}
-\multicolumn{1}{l|}{Level-k, $k>0$} & \multicolumn{1}{l|}{$a$}                  & \multicolumn{1}{l|}{$a-\tfrac{\beta}{4}$} \\ \cline{2-3}
+\begin{tabular}{lcc}
+                                    & Sender                                  & Receiver                                \\\cline{2-3}
+\multicolumn{1}{l|}{Level-0}        & \multicolumn{1}{c|}{$a-\tfrac{\alpha}{4}$} & \multicolumn{1}{c|}{$a-\tfrac{\beta}{4}$} \\\cline{2-3}
+\multicolumn{1}{l|}{Level-k, $k>0$} & \multicolumn{1}{c|}{$a$}                  & \multicolumn{1}{c|}{$a-\tfrac{\beta}{4}$} \\\cline{2-3}
 \end{tabular}
 \end{table}
 To provide some intuition, consider the positions the agents are facing in this game. Whether the receiver likes the message or not, she can always reason what her interlocutor wants to communicate to her. If the messages $m_{geo}$ or $m_{eco}$ are sent, she will chose the corresponding action, communication is successful, so both players get their payoff and everyone is happy. If the message $m_{tree}$ is sent, however, she pays the associated cost. Still, she knows what the sender is trying to communicate and her best response will be to cooperate. Refusing to understand is not an option, for it would only add insult to injury; she would both pay the cost of hearing $m_{tree}$ and lose the payoff of understanding correctly. Because the sender can anticipate the receiver to behave this way, she does not need to care about sending either true message.
