@@ -20,7 +20,7 @@
 \usepackage[normalem]{ulem}
 \date{}
 \begin{document}
-\renewcommand{\arraystretch}{1.5}
+\renewcommand{\arraystretch}{1.2}
 \maketitle
 
 \section{Introduction}
@@ -61,9 +61,7 @@ The matrices' entries represent the probability with which the players choose a 
 
 The semantics of the language fragment in question is modeled as a $(n \times m)$-matrix. If a state $t_i$ makes a message $m_j$ true, then the entry $x_{ij}$ in the matrix will be $1$, otherwise $0$. This matrix reporting the boolean values is called the \textit{Boolean Matrix} and denoted by $B$.
 Players of level-0 are supposed to be \textit{naive} with respect to sending and receiving messages. Naive senders always send true messages, while naive receivers always take messages literally.
-The strategies of level-0 type are represented by the normalized boolean matrix. Normalization here simply means a mapping of some $(m\times n)$-matrix $A$, onto some other $(m\times n)$-matrix $B$ such that $B_i\propto A_i$ if $\sum_j (A_{ij})>0$ and $B_{ij}=\tfrac{1}{n}$ otherwise. In the case of the receiver, the transposed boolean matrix is normalized.
-
-More sophisticated players are modeled to have some belief about the interlocutors behavior. We assume that players view all their opponents' strategies to be equally probable at first. \footnote{This corresponds to unbiased beliefs. We are leaving the details aside for ease of exposition, see \cite{franke2013pragmatic} for details.}
+The strategies of level-0 type are represented by the normalized boolean matrix. Normalization here simply means a mapping of some $(m\times n)$-matrix $A$, onto some other $(m\times n)$-matrix $B$ such that $B_i\propto A_i$ if $\sum_j (A_{ij})>0$ and $B_{ij}=\tfrac{1}{n}$ otherwise. In the case of the receiver, the transposed boolean matrix is normalized. More sophisticated players are modeled to have some belief about the interlocutors behavior. We assume that players view all their opponents' strategies to be equally probable at first. \footnote{This corresponds to unbiased beliefs. We are leaving the details aside for ease of exposition, see \cite{franke2013game} for details.}
 
 Finally, we define the notion of \textit{best response} given a set of beliefs. A sender's best response to some receiver strategy $R$ is any strategy that maps each state to that signal which maximizes the expected utility. In case $n$ signals are tied for expected utility, the sender will play each with probability $\tfrac{1}{n}$.
 A receiver's best response to a sender's strategy $S$ is defined almost analogously. Except that there may be so-called \textit{surprise messages} $m_j$ for which $R{ij}=0$, for all $i$. These are messages the sender will use with probability 0, that is, never. Since strategies are plans of action for every conceivable contingency that might arise in the course of a game, we assume that a receiver will then play each option with probability $\tfrac{1}{|T|}$.
@@ -89,19 +87,17 @@ $m_{stone}$ being played inflicts a cost of $\alpha$ to $P_1$, while $m_{tree}$ 
 \textbf{Level-0 Players}\\
 \begin{equation*}
 S_0=Norm(B)=
-\bordermatrix{
-            & & & &    \cr
- &       0.5 &         0.5 & 0       & 0 \cr
- &       0 &         0 & 0.5       & 0.5
- }\quad
-R_0=Norm(B^T)
-\bordermatrix{
-            &  & \cr
-    & 1 & 0 \cr
-     & 1 & 0 \cr
-     & 0 & 1 \cr
-     & 0 & 1 \cr
- }
+\begin{pmatrix}
+ 0.5 &         0.5 & 0       & 0 \cr
+ 0 &         0 & 0.5       & 0.5
+\end{pmatrix}\quad
+R_0=Norm(B^T)=
+\begin{pmatrix}
+      1 & 0 \cr
+      1 & 0 \cr
+      0 & 1 \cr
+      0 & 1 \cr
+\end{pmatrix}
 \end{equation*}
 We can see that the naive sender plays a mixed strategy when communicating the state, sending either applicable message half of the time. The receiver's actions are clearly determined by a pure strategy. The best response of $k$-level players is based on the interlocutor's $k-1$ level when message cost is taken into account.
 
@@ -110,83 +106,63 @@ We obtain the best response of the level-1 sender by analysing her reasoning abo
 \begin{equation*}
 S_1= BR_S(R^T_0-c^{P_1})=
 BR_S(
-\bordermatrix{
-            & & & &    \cr
- &       1 &         1 & 0       & 0 \cr
- &       0 &         0 & 1      & 1
- }
+\begin{pmatrix}
+ 1 &         1 & 0       & 0 \cr
+ 0 &         0 & 1      & 1
+\end{pmatrix}
 -
-\bordermatrix{
-            & & & &    \cr
- &       0 &         \alpha & 0       & 0 \cr
- }
+\begin{pmatrix}
+ 0 &         \alpha & 0       & 0
+\end{pmatrix}
 )
 \end{equation*}
 \begin{equation*}
 =BR_S(
-\bordermatrix{
-                & & & &    \cr
-     &       1 &         1-\alpha & 0       & 0 \cr
-     &       0 &         0-\alpha & 1      & 1
- }
+\begin{pmatrix}
+     1 &         1-\alpha & 0       & 0 \cr
+     0 &         0-\alpha & 1      & 1
+\end{pmatrix}
  )
 =
-\bordermatrix{
-                 & & & &    \cr
-      &       1 &         0 & 0       & 0 \cr
-      &       0 &         0 & 0.5      & 0.5
-  }
+\begin{pmatrix}
+      1 &         0 & 0       & 0 \cr
+      0 &         0 & 0.5      & 0.5
+\end{pmatrix}
 \end{equation*}
 \begin{equation*}
 R_1=BR_R({S_0}^T-{c^{P_2}}^T)=
 BR_R(
-\bordermatrix{
-            &  & \cr
-    & 0.5 & 0 \cr
-     & 0.5 & 0 \cr
-     & 0 & 0.5 \cr
-     & 0 & 0.5 \cr
- }
+\begin{pmatrix}
+    0.5 & 0 \cr
+     0.5 & 0 \cr
+     0 & 0.5 \cr
+     0 & 0.5 \cr
+\end{pmatrix}
 -
-\bordermatrix{
-  & \cr
-    & 0 \cr
-     & 0 \cr
-     & 0 \cr
-     & \beta \cr
- }
+\begin{pmatrix}
+    0 \cr
+    0 \cr
+    0 \cr
+    \beta
+\end{pmatrix}
 )
-\end{equation*}
-\begin{equation*}
 =
-BR_R(
-\bordermatrix{
-            &  & \cr
-    & 0.5 & 0 \cr
-     & 0.5 & 0 \cr
-     & 0 & 0.5 \cr
-     & 0-c & 0.5-c \cr
- }
- )
-=
-\bordermatrix{
-            &  & \cr
-    & 1 & 0 \cr
-     & 1 & 0 \cr
-     & 0 & 1 \cr
-     & 0 & 1 \cr
- }
+\begin{pmatrix}
+    1 & 0 \cr
+    1 & 0 \cr
+    0 & 1 \cr
+    0 & 1
+\end{pmatrix}
 \end{equation*}
 We see that $R_1=R_0$, i.e. the receiver did not change strategy from 0-level to 1-level, thus we conclude that $S_2=S_1$. But $S_1 \neq S_0$, so we calculate:
 \begin{equation*}
 R_2=BR_R({S_1}^T-{c^{P_2}}^T)=
-\bordermatrix{
-            &  & \cr
-    & 1 & 0 \cr
-     & 0.5 & 0.5 \cr
-     & 0 & 1 \cr
-     & 0 & 1 \cr
- }
+\begin{pmatrix}
+    1 & 0 \cr
+    0.5 & 0.5 \cr
+    0 & 1 \cr
+    0 & 1
+\end{pmatrix}
 \end{equation*}
 $S_3=S_2$ and $R_3=R_2$. Since neither strategy changed from level 2 to level 3 we have reached a fixed point of the reasoning process. That is,  $<S_2,R_2>$ is a stable strategy pair.
 
@@ -211,18 +187,17 @@ Usually, language users will encounter the expressions of their language many ti
 The crucial observation here is that the agents could have done better. To see this, imagine the agents only used $m_{eco}$ and $m_{geo}$ to communicate. That is, if they do not inflict cost on each other and communication is still successful, then both receive a full payoff of $a$. Never playing costly messages formally means that the respective sender plays strategy $S_*$ where neither $m_{tree}$ nor $m_{stone}$ are ever played. This leads us to the strategy pair $<S_*,R_*>$:
 \begin{equation*}
 S_*=
-\bordermatrix{
-            & & & &    \cr
- &       1 &    0      & 0       & 0 \cr
- &       0 &         0 & 1      & 0
- }\quad
-R_*= \bordermatrix{
-           &  & \cr
-   & 1 & 0 \cr
-    & 0.5 & 0.5 \cr
-    & 0 & 1 \cr
-    & 0.5 & 0.5 \cr
-}
+\begin{pmatrix}
+ 1 &    0      & 0       & 0 \cr
+ 0 &         0 & 1      & 0
+\end{pmatrix}\quad
+R_*=
+\begin{pmatrix}
+   1 & 0 \cr
+   0.5 & 0.5 \cr
+   0 & 1 \cr
+   0.5 & 0.5
+\end{pmatrix}
 \end{equation*}
 
 If this sender strategy is still able to convey the correct state, then everyone is better off or at least as well off as before. Indeed, such an improvement would make the players' payoff meet the standards for \textit{Pareto optimality}. Pareto optimality captures the fact that no player could possibly be better off without the other player losing out. In the present context, it means that the potential for better communication is only exhausted, once the players reach Pareto optimality.
@@ -236,33 +211,28 @@ However, if this assumption concerning the indifferent stance of the sender is g
 
 More to the point, we reach the optimal solution if both players must consider receiver's preferences. We do this by extending the sender's cost vector:
 $$c^{P_1*}=c^{P_1} + d \cdot c^{P_2}$$
-Where $c^{1}$ is the original sender's cost, $c^{2}$ the receiver's cost and $d \in \mathbb{R}$ a parameter representing the players' disposition to ''feel'' the other's cost. Intuitively, if $d>0$ the players are empathetic, if $d<0$ they are malicious and $d=0$ is the indifferent case. By extending the model in this way we can make the sender's interest in the receiver's cost explicit. Setting $d=0$ yields the original model because then $c^{1*}=c^{1}$, for all other values of $d$ we get an extended model.
-
-What happens when empathetic agents - $d$ - play the game from above again? $S_0$ and $R_0$ remain unchanged. So let us start with $S_1$:
+Where $c^{1}$ is the original sender's cost, $c^{2}$ the receiver's cost and $d \in \mathbb{R}$ a parameter representing the players' disposition to ''feel'' the other's cost. Intuitively, if $d>0$ the players are empathetic, if $d<0$ they are malicious and $d=0$ is the indifferent case. By extending the model in this way we can make the sender's interest in the receiver's cost explicit. Setting $d=0$ yields the original model because then $c^{1*}=c^{1}$, for all other values of $d$ we get an extended model. Let us now play the previous game with this extension. $S_0$ and $R_0$ remain unchanged. So let us start with $S_1$:
 \begin{equation*}
 S_1= BR_S(R_0^T-c^{1*})=BR_S(
-\bordermatrix{
-                & & & &    \cr
-     &       1 &         1-\alpha & 0       & 0-d\cdot \beta \cr
-     &       0 &         0-\alpha & 1      & 1-d\cdot \beta
- }
+\begin{pmatrix}
+     1 &         1-\alpha & 0       & 0-d\cdot \beta \cr
+     0 &         0-\alpha & 1      & 1-d\cdot \beta
+\end{pmatrix}
 )
 \end{equation*}
 Assume, for example, the sender fully considers the receiver's cost - $d=1$. Notice, however, that we would get the same prediction for any $d>0$.
 \begin{equation*}
 S_1=BR_S(
-\bordermatrix{
-                & & & &    \cr
-     &       1 &         1-\alpha & 0       & 0-\beta \cr
-     &       0 &         0-\alpha & 1      & 1-\beta
- }
+\begin{pmatrix}
+     1 &         1-\alpha & 0       & 0-\beta \cr
+     0 &         0-\alpha & 1      & 1-\beta
+\end{pmatrix}
  )
 =
-\bordermatrix{
-                & & & &    \cr
-     &       1 &         0 & 0       & 0 \cr
-     &       0 &         0 & 1      & 0
- }
+\begin{pmatrix}
+     1 &         0 & 0       & 0 \cr
+     0 &         0 & 1      & 0
+\end{pmatrix}
  =S_*
  \end{equation*}
 $R_1=R_0$ thus $S_2=S_1$, we end up with $S_2=S^*$ and $R_2=R^*$ as stable strategies.
